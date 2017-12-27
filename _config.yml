@@ -1,0 +1,60 @@
+# Site wide configuration
+
+title:            tgamblin.github.io
+locale:           en_US
+#url:              http://localhost:4000
+url:              https://tgamblin.github.io
+
+
+# Jekyll configuration
+
+permalink:   /:categories/:title/
+markdown:    kramdown
+highlighter: rouge
+sass:
+  sass_dir: _sass
+  style: compressed
+gems:
+  - jekyll-sitemap
+
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  enable_coderay: false
+
+
+# Site owner
+owner:
+  name: Todd Gamblin
+  avatar: me-grand-canyon.jpg
+  bio: "Computer Scientist<br/> <a href=\"http://people.llnl.gov/gamblin2\">Lawrence Livermore National Laboratory</a>"
+  email: tgamblin@llnl.gov
+  disqus-shortname: tgamblin
+  twitter: tgamblin
+  facebook: #tgamblin
+  google:
+    plus: #ToddGamblin
+    analytics:
+    verify:
+    ad-client:
+    ad-slot:
+  bing-verify:
+  github: tgamblin
+  stackoverflow: 9122/tgamblin
+  linkedin: tgamblin
+  hackernews: tgamblin
+  instagram: #username
+  lastfm: #username
+  tumblr: #username
+  pinterest: #username
+  foursquare: #username
+  steam: #username
+  dribbble: #username
+  scholar: ToddGamblin
+  llnl: #gamblin2
+
+
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"]

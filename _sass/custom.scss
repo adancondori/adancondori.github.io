@@ -1,0 +1,42 @@
+/* Ordered lists from bib2xhtml ==================================== */
+ol {
+  li {
+      @include font-size(14);
+      strong { color: #11458f; }
+  }
+}
+
+/* Project list css ==================================== */
+ul.projectlist {
+  padding: 0pt;
+
+  li {
+    border-style: solid;
+    border-color: grey;
+    border-width: 0pt 0pt 0pt 1pt;
+
+    list-style-type: none;
+
+    padding: 0pt 0pt 0pt 6pt;
+    margin: 0pt;
+
+    p {
+      margin: 5pt 0pt 5pt 0pt;
+      padding: 0pt;
+    }
+
+    h3 { margin: 20pt 0pt 5pt 0pt; }
+
+    i { margin-top: 5pt; }
+
+    img {
+      padding: 5pt;
+      margin: 0px;
+      float: right;
+      vertical-align: middle;
+      max-width: 96px;
+    }
+  }
+}
+
+span.postdate { float:right; }

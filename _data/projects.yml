@@ -1,0 +1,97 @@
+- title: Spack
+  logo: spack-logo-64.png
+  docs: http://llnl.github.io/spack
+  github: https://github.com/llnl/spack
+  content: >
+
+    A flexible package manager designed to support multiple versions,
+    configurations, platforms, and compilers.  Provides a simple
+    expression langauge to simplify the task of configuring HPC
+    software.
+
+- title: Cram
+  logo: cram-logo-square.png
+  link: https://computation-rnd.llnl.gov/parallel-software-development-tools/cram.php
+  github: http://github.com/llnl/cram
+  download:
+  content: >
+
+    Cram runs many small MPI jobs within a single, large MPI job by
+    virtualizing its MPI operations. Cram has been used to run 1.5
+    million concurrent MPI jobs on LLNL's
+    [Sequoia](http://computation.llnl.gov/computers/sequoia) machine.
+
+- title: Rubik
+  logo: rubik.png
+  link:
+  github: https://github.com/llnl/rubik
+  docs: https://computation-rnd.llnl.gov/performance-analysis-through-visualization/software/rubik/docs
+  download:
+  content: >
+
+    Rubik generates MPI task mapping files for structured applications
+    and torus or mesh networks.  It applies transforamtions to an
+    application topology to generate the mappings.
+
+- title: Muster
+  logo: muster.png
+  link:
+  github: https://github.com/llnl/muster
+  docs: https://llnl.github.io/muster
+  download:
+  content: >
+
+    Parallel K-medoids clustering library, used in performance and
+    debugging tools. Implements PAM, CLARA, the
+    [CAPEK](http://wwwx.cs.unc.edu/~tgamblin/pubs/scalable-cluster-ics10.pdf)
+    parallel clustering algorithm, and an MPI-parallel Bayesian
+    Information Criterion (BIC) calculation.
+
+- title: wrap.py
+  logo:
+  link:
+  github: https://github.com/llnl/wrap
+  docs: https://github.com/llnl/wrap/blob/master/examples/tutorial.w
+  download:
+  content: >
+
+    Simple language for generating libraries of
+    [PMPI](http://www.netlib.org/utk/papers/mpi-book/node182.html)
+    wrapper functions. Based on the profiling wrapper generator in
+    [MPE](http://www.mcs.anl.gov/research/projects/perfvis/download/)
+    but with more features. Generates C and Fortran bindings.
+
+- title: Callpath
+  logo:
+  link:
+  github: https://github.com/llnl/callpath
+  docs:
+  download:
+  content: >
+
+    Library for representing, transferring, and analyzing stack traces
+    scalably in distributed applications.
+
+- title: Nami
+  logo:
+  link:
+  github: https://github.com/llnl/nami
+  docs:
+  download:
+  content: >
+
+    Parallel wavelet transform and
+    [EZW](http://en.wikipedia.org/wiki/Embedded_Zerotrees_of_Wavelet_transforms)
+    compression library.
+
+- title: perf-dump
+  logo:
+  link:
+  github: https://github.com/llnl/perf-dump
+  docs:
+  download:
+  content: >
+
+    Records per-process, per-timestep PAPI performance counter
+    values. Saves them in an HDF5 file using parallel I/O. Think of
+    this as a checkpointing library for basic performance data.
