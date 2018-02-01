@@ -8,9 +8,5 @@ image:
   feature: banners/horseshoe.jpg
 ---
 
-I am a computer scientist in the [Center for Applied Scientific
-Computing](http://computation.llnl.gov/casc/) at [Lawrence Livermore
-National Laboratory](https://www.llnl.gov).  My research focuses on
-scalable tools and algorithms for measuring, analyzing, visualizing,
-and understanding the massively parallel simulations that run on
-supercomputers.
+I am a computer engineer in the [Analista de Desarrollo Tecnológico de Innovacion en Fondo Financiero Privadoo](https://www.fassilnet.com.bo).
+I am Bolivian, currently living in Santa Cruz.
