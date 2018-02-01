@@ -5,7 +5,7 @@ tags: [home, about, Todd, Gamblin, homepage]
 modified: 2014-08-08T20:53:07.573882-04:00
 comments: false
 image:
-  feature: banners/horseshoe.jpg
+  feature: banners/hacker.jpg
 ---
 
 I am a computer engineer in the [Analista de Desarrollo Tecnológico de Innovacion en Fondo Financiero Privado](https://www.fassilnet.com.bo).
