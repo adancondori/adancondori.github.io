@@ -27,24 +27,24 @@ kramdown:
 
 # Site owner
 owner:
-  name: Todd Gamblin
+  name: Adan Condori C.
   avatar: image-my.jpg
   bio: "Computer Scientist<br/> <a href=\"http://people.llnl.gov/gamblin2\">Lawrence Livermore National Laboratory</a>"
-  email: tgamblin@llnl.gov
-  disqus-shortname: tgamblin
-  twitter: tgamblin
-  facebook: #tgamblin
+  email: adan.condoric@gmail.com
+  disqus-shortname: acondori
+  twitter: AdanCondori
+  facebook: adancondori
   google:
-    plus: #ToddGamblin
+    plus: AdanCondoriC
     analytics:
     verify:
     ad-client:
     ad-slot:
   bing-verify:
-  github: tgamblin
-  stackoverflow: 9122/tgamblin
-  linkedin: tgamblin
-  hackernews: tgamblin
+  github: adancondori
+  stackoverflow: #9122/adancondori
+  linkedin: adancondori
+  hackernews: #username
   instagram: #username
   lastfm: #username
   tumblr: #username
@@ -52,7 +52,7 @@ owner:
   foursquare: #username
   steam: #username
   dribbble: #username
-  scholar: ToddGamblin
+  scholar: adancondori
   llnl: #gamblin2
 
 
