@@ -4,7 +4,7 @@ title: Curriculum Vitae
 date:
 modified:
 excerpt:
-tags: [cv, todd, gamblin, resume, bio, biography]
+tags: [cv, adan, gamblin, resume, bio, biography]
 image:
   feature: banners/miyajima.jpg
 ---

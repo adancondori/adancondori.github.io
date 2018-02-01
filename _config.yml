@@ -1,9 +1,9 @@
 # Site wide configuration
 
-title:            tgamblin.github.io
+title:            adancondori.github.io
 locale:           en_US
 #url:              http://localhost:4000
-url:              https://tgamblin.github.io
+url:              https://adancondori.github.io
 
 
 # Jekyll configuration
@@ -28,7 +28,7 @@ kramdown:
 # Site owner
 owner:
   name: Todd Gamblin
-  avatar: me-grand-canyon.jpg
+  avatar: image-my.jpg
   bio: "Computer Scientist<br/> <a href=\"http://people.llnl.gov/gamblin2\">Lawrence Livermore National Laboratory</a>"
   email: tgamblin@llnl.gov
   disqus-shortname: tgamblin
