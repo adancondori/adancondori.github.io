@@ -6,7 +6,7 @@ modified:
 excerpt:
 tags: [cv, adan, gamblin, resume, bio, biography]
 image:
-  feature: banners/miyajima.jpg
+  feature: banners/mac-pro_adan.jpg
 ---
 
 <i class="fa fa-file-pdf-o"></i> [Download CV](adan-cv.pdf)
