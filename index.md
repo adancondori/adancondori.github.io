@@ -10,3 +10,9 @@ image:
 
 I am a computer engineer in the [Analista de Desarrollo Tecnológico de Banco Fassil](https://www.fassil.com.bo).
 I am Bolivian, currently living in Santa Cruz.
+
+{% include _education.html %}
+{% include _skills.html %}
+{% include _projects.html %}
+{% include _work.html %}
+
