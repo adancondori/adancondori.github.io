@@ -229,7 +229,6 @@ $button-size: 1.5rem;
 		}
 	}
 	.pageall {
-		@include content;
 		@include grid(12,10);
 		@include prefix(12,1);
 		@include suffix(12,1);
