@@ -6,6 +6,20 @@
       <span class="cat-head-line"></span>
     </div>
     <div class="cat-body">
+        
+      <div class="listing">
+          <div class="list-icon"></div>
+          <div class="list-item">
+            <div class="title">Level of knowledge</div>
+            <div class="list-more flex-horizontal">
+              {% for level in site.data.skill_captions %}
+                <span class="item"> <span class="dull">{{ level[1] }}</span></span>
+              {% else %}
+                There are no items!
+              {% endfor %}
+            </div>
+          </div>
+      </div>
 
     {% for skill in site.data.skills %}
       <div class="listing">

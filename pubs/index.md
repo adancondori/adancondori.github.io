@@ -6,7 +6,7 @@ modified:
 excerpt:
 tags: [todd, gamblin, publications, papers, research]
 image:
-  feature: banners/sedona.jpg
+  feature: banners/mac-destop.png
 ---
 
 {% include bibliography.html %}

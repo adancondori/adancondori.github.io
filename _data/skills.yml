@@ -23,6 +23,8 @@
       level: 1
     - name: Jekyll
       level: 3
+    - name: Javasript
+      level: 3
 
 - title: Languages
   items:
@@ -38,6 +40,8 @@
       level: 2
     - name: NodeJS
       level: 1
+    - name: React Native
+      level: 3
 
 - title: Services
   items:
@@ -62,3 +66,5 @@
       level: 1
     - name: Scripting
       level: 3
+    - name: Postgres
+      level: 2
