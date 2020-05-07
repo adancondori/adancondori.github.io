@@ -2,33 +2,33 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">adancondori.github.io</title>
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
-<link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2020-04-29T22:22:19-04:00</updated>
-<id>http://localhost:4000/</id>
+<link rel="self" type="application/atom+xml" href="https://adancondori.github.io/feed.xml" />
+<link rel="alternate" type="text/html" href="https://adancondori.github.io" />
+<updated>2020-05-07T13:57:40-04:00</updated>
+<id>https://adancondori.github.io/</id>
 <author>
   <name>Adan Condori C.</name>
-  <uri>http://localhost:4000/</uri>
+  <uri>https://adancondori.github.io/</uri>
   <email>adan.condoric@gmail.com</email>
 </author>
 
 
 <entry>
   <title type="html"><![CDATA[Job Opportunities]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/job-opportunities/" />
-  <id>http://localhost:4000/job-opportunities</id>
+  <link rel="alternate" type="text/html" href="https://adancondori.github.io/job-opportunities/" />
+  <id>https://adancondori.github.io/job-opportunities</id>
   <published>2018-01-02T02:23:53-04:00</published>
   <updated>2018-01-02T02:23:53-04:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://localhost:4000</uri>
+    <uri>https://adancondori.github.io</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;Nothing&lt;/p&gt;
 
 &lt;p&gt;If this sounds interesting to you, &lt;a href=&quot;mailto:adan.condoric@gmail.com&quot;&gt;email me!&lt;/a&gt;&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/job-opportunities/&quot;&gt;Job Opportunities&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://localhost:4000&quot;&gt;adancondori.github.io&lt;/a&gt; on January 02, 2018.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;https://adancondori.github.io/job-opportunities/&quot;&gt;Job Opportunities&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;https://adancondori.github.io&quot;&gt;adancondori.github.io&lt;/a&gt; on January 02, 2018.&lt;/p&gt;</content>
 </entry>
 
 </feed>

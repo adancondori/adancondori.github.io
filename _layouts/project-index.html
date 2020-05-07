@@ -61,6 +61,14 @@
             <i class="fa fa-external-link-square"></i>
             <a href="{{ project.github }}"><small>Site</small></a>&nbsp;
           {% endif %}
+          
+          <h4>{{ project.title-assistants }}</h4>
+          <dl>
+            {% for developer in project.developers %}
+              <dd>{{ developer.name }}</dd>
+            {% endfor %}
+          </dl>
+          
         </li>
         {% endfor %}
     </ul>

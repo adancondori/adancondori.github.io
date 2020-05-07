@@ -1,6 +1,44 @@
+- title: Escuela Bíblica Virtual
+  logo: escuelabiblica.png
+  docs: https://play.google.com/store/apps/details?id=org.ub.virtualbibleschool
+  github: https://play.google.com/store/apps/details?id=org.ub.virtualbibleschool
+  content: >
+    21 Lecciones inteartivas sobre el Libro de Apocalipsis 
+    (ya incluyen los textos Bíblicos y campos de respuestas), 
+    esta es una iniciativa de la Iglesia Adventista del Séptimo Día - Unión Boliviana.
+    El propósito de la app es que puedas de una manera sencilla comprender y estudiar el Libro del Apocalipsis
+  title-assistants: Developers
+  developers:
+    - name: Ing. Adan Condori Callisaya
+      link: ''
+    - name: Ing. Alex Jhonny Cruz Mamani
+      link: ''
+
+- title: ConquisLike
+  logo: conquislike.png
+  docs: https://play.google.com/store/apps/details?id=com.conquislike.adancondori
+  github: https://play.google.com/store/apps/details?id=com.conquislike.adancondori
+  content: >
+    Jovenes con gran pasión en el Club de Conquistadores
+    La presente aplicación contiene un buen número de especialidades la cual podras
+    visualizar y compartir con tus amigos.
+  title-assistants: Developers
+  developers:
+    - name: Ing. Adan Condori Callisaya
+      link: ''
+
 - title: Joven@Joven
   logo: joveajoven.png
   docs: https://play.google.com/store/apps/details?id=org.mob.estudios
   github: https://play.google.com/store/apps/details?id=org.mob.estudios
   content: >
-    Is a project to Church Adventist Sevent
+    Estudio Online de Joven @ Joven "La Fe de Jesús", ahora en tu teléfono. 
+    18 Lecciones (ya incluyen los textos Bíblicos y campos de respuestas), 
+    esta es una iniciativa de la Iglesia Adventista del Séptimo Día, 
+    en la Misión del Oriente Boliviano.
+  title-assistants: Developers
+  developers:
+    - name: Ing. Adan Condori Callisaya
+      link: ''
+    - name: Ing. Alex Jhonny Cruz Mamani
+      link: ''
