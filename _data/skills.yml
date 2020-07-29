@@ -41,30 +41,34 @@
     - name: NodeJS
       level: 1
     - name: React Native
-      level: 3
+      level: 2
 
 - title: Services
   items:
     - name: Heroku
       level: 2
     - name: Bitbucket
-      level: 1
+      level: 3
     - name: GitHub
-      level: 2
+      level: 3
     - name: Travis CI
       level: 1
+    - name: GitLab
+      level: 3
+    - name: Team Foundation Server
+      level: 3
 
 - title: Misc
   items:
     - name: MySql
       level: 3
     - name: SqlServer
-      level: 2
+      level: 3
     - name: Database
       level: 2
     - name: Designing
-      level: 1
+      level: 3
     - name: Scripting
       level: 3
     - name: Postgres
-      level: 2
+      level: 3

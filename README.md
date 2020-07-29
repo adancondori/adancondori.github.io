@@ -25,3 +25,6 @@ To learn how to install and use this theme check out the [Setup Guide](http://mm
 
 ## Getting Started
 http://127.0.0.1:4000
+
+## Install and Run
+bundle exec jekyll serve
