@@ -5,14 +5,18 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>All Posts &#8211; adancondori.github.io</title>
-<meta name="description" content="A List of All Posts">
+<title>Desing Patterns - Spanish &#8211; adancondori.github.io</title>
+<meta name="description" content="
+Son técnicas de desarrollo aplicables bajo el paradigma orientado a objetos que tienen como objetivo principal dar una solución genérica a problemáticas tipicas y recurrentes que se presentan en la etapa de diseño en cualquier metodología de desarrollo de software.
+">
 <meta name="keywords" content="">
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="All Posts">
-<meta name="twitter:description" content="A List of All Posts">
+<meta name="twitter:title" content="Desing Patterns - Spanish">
+<meta name="twitter:description" content="
+Son técnicas de desarrollo aplicables bajo el paradigma orientado a objetos que tienen como objetivo principal dar una solución genérica a problemáticas tipicas y recurrentes que se presentan en la etapa de diseño en cualquier metodología de desarrollo de software.
+">
 <meta name="twitter:site" content="@AdanCondori">
 <meta name="twitter:creator" content="@AdanCondori">
 
@@ -22,9 +26,11 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="All Posts">
-<meta property="og:description" content="A List of All Posts">
-<meta property="og:url" content="http://localhost:4000/posts/">
+<meta property="og:title" content="Desing Patterns - Spanish">
+<meta property="og:description" content="
+Son técnicas de desarrollo aplicables bajo el paradigma orientado a objetos que tienen como objetivo principal dar una solución genérica a problemáticas tipicas y recurrentes que se presentan en la etapa de diseño en cualquier metodología de desarrollo de software.
+">
+<meta property="og:url" content="http://localhost:4000/desing-patterns/">
 <meta property="og:site_name" content="adancondori.github.io">
 <script>
 
@@ -54,7 +60,7 @@
 
 
 
-<link rel="canonical" href="http://localhost:4000/posts/">
+<link rel="canonical" href="http://localhost:4000/desing-patterns/">
 <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="adancondori.github.io Feed">
 <link rel="author" href="http://plus.google.com/+AdanCondoriC?rel=author">
 
@@ -95,7 +101,7 @@
 
 </head>
 
-<body class="post-index">
+<body class="post">
 
 <!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
 
@@ -154,56 +160,69 @@
 <a href="http://scholar.google.com/citations?user=adancondori" class="author-social" target="_blank"><i class="fa fa-graduation-cap"></i> Google Scholar</a>
 
   </div>
-  <div id="index">
-    <h1>All Posts</h1>
-    
-    
-      <h3>2020</h3>
+  <article class="post">
+    <div class="headline-wrap">
       
-      <article>
-        
-          <span class="postdate"><i>October 21, 2020</i></span>
-          <h2><a href="http://localhost:4000/software-design/" title="¿What is Software Design? - Spanish">¿What is Software Design? - Spanish</a></h2>
-          <p>
-La ingenieria de softtware es un conjunto de procesos en la cual se define test unitarios, arquitectura, componentes, interfaces y entre otras característic...</p>
-        
-      </article>
-    
-    
-        
-        
-        
+        <h1><a href="http://localhost:4000/desing-patterns/" rel="bookmark" title="Desing Patterns - Spanish">Desing Patterns - Spanish</a></h1>
       
-      <article>
-        
-          <span class="postdate"><i>October 16, 2020</i></span>
-          <h2><a href="http://localhost:4000/desing-patterns/" title="Desing Patterns - Spanish">Desing Patterns - Spanish</a></h2>
-          <p>
-Son técnicas de desarrollo aplicables bajo el paradigma orientado a objetos que tienen como objetivo principal dar una solución genérica a problemáticas tip...</p>
-        
-      </article>
-    
-    
-        
-        
-        
-          <h3>2019</h3>
-        
-      
-      <article>
-        
-          <span class="postdate"><i>December 05, 2019</i></span>
-          <h2><a href="http://localhost:4000/android-vs-kotlin/" title="Kotlin vs Java  - Spanish">Kotlin vs Java  - Spanish</a></h2>
-          <p>
-Entonces, estas son las razones por las que mudarse a Kotlin es una de las mejores cosas que puede hacer.
-</p>
-        
-      </article>
-    
-  </div><!-- /#index -->
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <h2 id="patrones-de-diseño-desing-patern">Patrones de Diseño (Desing Patern)</h2>
+
+<p>Soy un programdor y muchas siempre escuche hablar de patrones de diseño.  Y de seguro que has manejado o conoces algunos patrones como el conocido Singleton. Los patrones de diseño son muy útiles al momento de hacer software, por lo cual cada programados deberia conocer por lo menos los patrones mas conocidos de esta manera evitaremos dolores de  cabeza.</p>
+
+<p>Bueno a acontinuacion emplicar la importancia del uso de estos patrones  en un software.</p>
+
+<h3 id="qué-son-los-patrones-de-diseño">¿Qué son los patrones de diseño?</h3>
+
+<p>Son técnicas de desarrollo aplicables bajo el paradigma orientado a objetos que tienen como objetivo principal dar una solución genérica a problemáticas tipicas y recurrentes que se presentan en la etapa de diseño en cualquier metodología de desarrollo de software.</p>
+
+<h3 id="por-qué-usar-patrones-de-diseño">¿Por qué usar patrones de diseño?</h3>
+
+<p>Como ya vimos en el artículo sobre <a href="https://www.genbetadev.com/metodologias-de-programacion/doce-principios-de-diseno-que-todo-desarrollador-deberia-conocer">principios de diseño</a>, si queremos desarrollar aplicaciones robustas y fáciles de mantener, debemos cumplir ciertas “reglas”. Lo pongo entre comillas porque aunque estas reglas de diseño son recomendables (muy recomendables), no son obligatorias. Siempre podemos decidir no aplicarlas. Aunque si no lo hacemos, hay que ser conscientes de la razón de no aplicarlas y de sus consecuencias.</p>
+
+<p><strong>Los patrones de diseño nos ayudan a cumplir muchos de estos principios o reglas de diseño</strong>. Programación <a href="https://www.genbetadev.com/paradigmas-de-programacion/solid-cinco-principios-basicos-de-diseno-de-clases">SOLID</a>, control de cohesión y acoplamiento o reutilización de código son algunos de los beneficios que podemos conseguir al utilizar patrones.</p>
+
+      <hr />
+      <footer role="contentinfo">
+        <div class="article-author-bottom">
+          
+
+
+	<img src="http://localhost:4000/images/image-my.jpg" class="bio-photo" alt="Adan Condori C. bio photo">
+
+<h3>Adan Condori C.</h3>
+<p>Computer Engineer<br/> <a href="https://adancondori.github.io">Web Page</a></p>
+<a href="mailto:adan.condoric@gmail.com" class="author-social" target="_blank"><i class="fa fa-envelope-square"></i> Email</a>
+<a href="http://twitter.com/AdanCondori" class="author-social" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a>
+<a href="http://facebook.com/adan.condoric" class="author-social" target="_blank"><i class="fa fa-facebook-square"></i> Facebook</a>
+<a href="http://plus.google.com/+AdanCondoriC" class="author-social" target="_blank"><i class="fa fa-google-plus-square"></i> Google+</a>
+<a href="http://linkedin.com/in/adancondori" class="author-social" target="_blank"><i class="fa fa-linkedin-square"></i> LinkedIn</a>
+
+
+<a href="http://github.com/adancondori" class="author-social" target="_blank"><i class="fa fa-github"></i> Github</a>
+
+
+
+
+
+
+
+
+<a href="http://scholar.google.com/citations?user=adancondori" class="author-social" target="_blank"><i class="fa fa-graduation-cap"></i> Google Scholar</a>
+
+        </div>
+        <p class="byline">
+          Published <time datetime="2020-10-16T02:23:53-04:00">October 16, 2020</time>.</p>
+      </footer>
+    </div><!-- /.article-wrap -->
+  
+  </article>
 </div><!-- /#main -->
 
 <div class="footer-wrap">
+  
+
   <footer>
     
 

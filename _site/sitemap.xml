@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>http://localhost:4000/job-opportunities/</loc>
-<lastmod>2018-01-02T02:23:53-04:00</lastmod>
+<loc>http://localhost:4000/android-vs-kotlin/</loc>
+<lastmod>2019-12-05T22:23:53-04:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/desing-patterns/</loc>
+<lastmod>2020-10-16T02:23:53-04:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/software-design/</loc>
+<lastmod>2020-10-21T02:23:53-04:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/code/</loc>

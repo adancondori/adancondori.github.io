@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2020-07-29T00:25:00-04:00</updated>
+<updated>2020-10-31T09:06:14-04:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Adan Condori C.</name>
@@ -14,21 +14,161 @@
 
 
 <entry>
-  <title type="html"><![CDATA[Job Opportunities]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/job-opportunities/" />
-  <id>http://localhost:4000/job-opportunities</id>
-  <published>2018-01-02T02:23:53-04:00</published>
-  <updated>2018-01-02T02:23:53-04:00</updated>
+  <title type="html"><![CDATA[¿What is Software Design? - Spanish]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/software-design/" />
+  <id>http://localhost:4000/software-design</id>
+  <published>2020-10-21T02:23:53-04:00</published>
+  <updated>2020-10-21T02:23:53-04:00</updated>
   <author>
     <name>Adan Condori C.</name>
     <uri>http://localhost:4000</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
-  <content type="html">&lt;p&gt;Nothing&lt;/p&gt;
+  <content type="html">&lt;h3 id=&quot;qué-es-diseño-de--de-software&quot;&gt;¿Qué es Diseño de  de Software?&lt;/h3&gt;
 
-&lt;p&gt;If this sounds interesting to you, &lt;a href=&quot;mailto:adan.condoric@gmail.com&quot;&gt;email me!&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;La ingenieria de softtware es un conjunto de procesos en la cual se define test unitarios, arquitectura, componentes, interfaces y entre otras características con el objetivo de obtener la solución requerida.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/job-opportunities/&quot;&gt;Job Opportunities&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://localhost:4000&quot;&gt;adancondori.github.io&lt;/a&gt; on January 02, 2018.&lt;/p&gt;</content>
+&lt;p&gt;Asi mismo el diseño de software viene desde la sexta generación de computadoras 1900 en adelante, tal vez en ese entonces nos se conocia el termino Diseño de Software, pero si se ultilizaban los mismos pasos que se utilizan en la actualidad como la captura de requisitos, arquitectura, diseño de interfaces etc., pero en los ultimos 10 años, al diseño de software le ha acompañado las metodologias de desarrollo como Lean, Scrun con el objetivo de mejorar proceso de desarrollo asi mismo el diseño de software.&lt;/p&gt;
+
+&lt;p&gt;Algunas procesos del diseño de software han hido perfeccionando a lo largo del tiempo como las formas de realizar capturas de requisitos, nuevas arquitecturas de software, la automatización de pruebas, tambien la documentacion se ha mejorando, disminuyendo  y adaptandose a la necesitad real del Software.&lt;/p&gt;
+
+&lt;p&gt;Desde nuestro punto de vista el Desarrollo de software mantiene los siguientes pasos, captura de requisitos, análisis, Diseño del software, implementación y pruebas, tomando como factor importanto el Diseño de Software ya que este puntos sera el que defina si el sistemas sera robusto y algo pequeño, ya que en el Diseño de Software se define la Arquitectura del software, interfaces, tecnologías, si se aplicaran patrones de diseño  etc. El tiempo de Diseño de Software deberia ser la mitad del tiempo estimado tomando en cuenta los siguientes puntos segun Davis:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;El diseño tendría que ser rastreable por el modelo de análisis.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;El diseño no tendría que reinventar la rueda.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;El diseño debe “minimizar la distancia intelectual” entre el software y el problema tal y como existe en el mundo real.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;El diseño tiene que exhibir uniformidad e integración.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;El diseño tendría que ser estructurado para adaptarse al cambio.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;El diseño tendría que estar estructurado para degradarse suavemente, incluso cuándo los datos, los acontecimientos o las condiciones operativas son irregulares.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;El diseño no es codificación, la codificación no es diseño.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;La calidad del diseño tendría que ser evaluado cuando se está creando, no después.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;El diseño tendría que ser revisado para minimizar los errores conceptuales (semánticos)&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;conclución&quot;&gt;Conclución:&lt;/h3&gt;
+
+&lt;p&gt;El Diseño de Software es muy importante en el desarrollo de software ya que esta definira la estabilidad, el rendimiento, los nuevos cambios que se necesiten. Por lo cual se debe tomarse un buen tiempo de análisis para definir el Diseño del Software.&lt;/p&gt;
+
+&lt;h3 id=&quot;referencias&quot;&gt;Referencias:&lt;/h3&gt;
+
+&lt;p&gt;https://es.wikipedia.org/wiki/Dise%C3%B1o_de_software&lt;/p&gt;
+
+&lt;p&gt;https://sesitdigital.com/tendencias-de-desarrollo-de-software-para-el-2020/&lt;/p&gt;
+
+&lt;p&gt;https://www.monografias.com/trabajos73/diseno-software/diseno-software.shtml&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/software-design/&quot;&gt;¿What is Software Design? - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://localhost:4000&quot;&gt;adancondori.github.io&lt;/a&gt; on October 21, 2020.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Desing Patterns - Spanish]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/desing-patterns/" />
+  <id>http://localhost:4000/desing-patterns</id>
+  <published>2020-10-16T02:23:53-04:00</published>
+  <updated>2020-10-16T02:23:53-04:00</updated>
+  <author>
+    <name>Adan Condori C.</name>
+    <uri>http://localhost:4000</uri>
+    <email>adan.condoric@gmail.com</email>
+  </author>
+  <content type="html">&lt;h2 id=&quot;patrones-de-diseño-desing-patern&quot;&gt;Patrones de Diseño (Desing Patern)&lt;/h2&gt;
+
+&lt;p&gt;Soy un programdor y muchas siempre escuche hablar de patrones de diseño.  Y de seguro que has manejado o conoces algunos patrones como el conocido Singleton. Los patrones de diseño son muy útiles al momento de hacer software, por lo cual cada programados deberia conocer por lo menos los patrones mas conocidos de esta manera evitaremos dolores de  cabeza.&lt;/p&gt;
+
+&lt;p&gt;Bueno a acontinuacion emplicar la importancia del uso de estos patrones  en un software.&lt;/p&gt;
+
+&lt;h3 id=&quot;qué-son-los-patrones-de-diseño&quot;&gt;¿Qué son los patrones de diseño?&lt;/h3&gt;
+
+&lt;p&gt;Son técnicas de desarrollo aplicables bajo el paradigma orientado a objetos que tienen como objetivo principal dar una solución genérica a problemáticas tipicas y recurrentes que se presentan en la etapa de diseño en cualquier metodología de desarrollo de software.&lt;/p&gt;
+
+&lt;h3 id=&quot;por-qué-usar-patrones-de-diseño&quot;&gt;¿Por qué usar patrones de diseño?&lt;/h3&gt;
+
+&lt;p&gt;Como ya vimos en el artículo sobre &lt;a href=&quot;https://www.genbetadev.com/metodologias-de-programacion/doce-principios-de-diseno-que-todo-desarrollador-deberia-conocer&quot;&gt;principios de diseño&lt;/a&gt;, si queremos desarrollar aplicaciones robustas y fáciles de mantener, debemos cumplir ciertas “reglas”. Lo pongo entre comillas porque aunque estas reglas de diseño son recomendables (muy recomendables), no son obligatorias. Siempre podemos decidir no aplicarlas. Aunque si no lo hacemos, hay que ser conscientes de la razón de no aplicarlas y de sus consecuencias.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Los patrones de diseño nos ayudan a cumplir muchos de estos principios o reglas de diseño&lt;/strong&gt;. Programación &lt;a href=&quot;https://www.genbetadev.com/paradigmas-de-programacion/solid-cinco-principios-basicos-de-diseno-de-clases&quot;&gt;SOLID&lt;/a&gt;, control de cohesión y acoplamiento o reutilización de código son algunos de los beneficios que podemos conseguir al utilizar patrones.&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/desing-patterns/&quot;&gt;Desing Patterns - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://localhost:4000&quot;&gt;adancondori.github.io&lt;/a&gt; on October 16, 2020.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Kotlin vs Java  - Spanish]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/android-vs-kotlin/" />
+  <id>http://localhost:4000/android-vs-kotlin</id>
+  <published>2019-12-05T22:23:53-04:00</published>
+  <updated>2019-12-05T22:23:53-04:00</updated>
+  <author>
+    <name>Adan Condori C.</name>
+    <uri>http://localhost:4000</uri>
+    <email>adan.condoric@gmail.com</email>
+  </author>
+  <content type="html">&lt;h2 id=&quot;kotlin-vs-java-&quot;&gt;**Kotlin vs Java **&lt;/h2&gt;
+
+&lt;p&gt;En mis 7 años desarrollando Android Java sigue siendo estandar para el desarrollo de aplicaciones nativas, pero no quiero decir que sea mejor o bueno, recordemos que Kotlin es un idioma con soporte oficial para escribir aplicaciones de Android, aún puede sentir que no hay suficientes razones para cambiar. Se ha demostrado que Java funciona para todos estos, entonces, ¿por qué debería cambiar?&lt;/p&gt;
+
+&lt;p&gt;Entonces, estas son las razones por las que mudarse a Kotlin es una de las mejores cosas que puede hacer.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;strong&gt;Parámetro&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;Java&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;Kotlin&lt;/strong&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compilacion&lt;/td&gt;
+      &lt;td&gt;Bytecodes&lt;/td&gt;
+      &lt;td&gt;Máquina virtual&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Seguridad nula&lt;/td&gt;
+      &lt;td&gt;Χ&lt;/td&gt;
+      &lt;td&gt;√&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Expresión Lambda&lt;/td&gt;
+      &lt;td&gt;Χ&lt;/td&gt;
+      &lt;td&gt;√&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Matriz invariante&lt;/td&gt;
+      &lt;td&gt;Χ&lt;/td&gt;
+      &lt;td&gt;√&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Campos no privados&lt;/td&gt;
+      &lt;td&gt;√&lt;/td&gt;
+      &lt;td&gt;Χ&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Casts inteligentes&lt;/td&gt;
+      &lt;td&gt;Χ&lt;/td&gt;
+      &lt;td&gt;√&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Miembros estáticos&lt;/td&gt;
+      &lt;td&gt;√&lt;/td&gt;
+      &lt;td&gt;Χ&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Tipos de comodines&lt;/td&gt;
+      &lt;td&gt;√&lt;/td&gt;
+      &lt;td&gt;Χ&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Objetos Singletons&lt;/td&gt;
+      &lt;td&gt;√&lt;/td&gt;
+      &lt;td&gt;√&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/android-vs-kotlin/&quot;&gt;Kotlin vs Java  - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://localhost:4000&quot;&gt;adancondori.github.io&lt;/a&gt; on December 05, 2019.&lt;/p&gt;</content>
 </entry>
 
 </feed>
