@@ -17,7 +17,7 @@ date: 2020-10-20T23:23:53-07:00
 
 La ingenieria de softtware es un conjunto de procesos en la cual se define test unitarios, arquitectura, componentes, interfaces y entre otras características con el objetivo de obtener la solución requerida.
 
-Asi mismo el diseño de software viene desde la sexta generación de computadoras 1900 en adelante, tal vez en ese entonces nos se conocia el termino Diseño de Software, pero si se ultilizaban los mismos pasos que se utilizan en la actualidad como la captura de requisitos, arquitectura, diseño de interfaces etc., pero en los ultimos 10 años, al diseño de software le ha acompañado las metodologias de desarrollo como Lean, Scrun con el objetivo de mejorar proceso de desarrollo asi mismo el diseño de software. 
+Asi mismo el diseño de software viene desde la sexta generación de computadoras 1900 en adelante, tal vez en ese entonces nos se conocia el termino Diseño de Software, pero si se ultilizaban los mismos pasos que se utilizan en la actualidad como la captura de requisitos, arquitectura, diseño de interfaces etc., pero en los ultimos 10 años, al diseño de software le ha acompañado las metodologias de desarrollo como Lean, Scrum con el objetivo de mejorar proceso de desarrollo asi mismo el diseño de software. 
 
 Algunas procesos del diseño de software han hido perfeccionando a lo largo del tiempo como las formas de realizar capturas de requisitos, nuevas arquitecturas de software, la automatización de pruebas, tambien la documentacion se ha mejorando, disminuyendo  y adaptandose a la necesitad real del Software.
 

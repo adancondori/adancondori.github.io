@@ -17,7 +17,7 @@ date: 2020-10-15T23:23:53-07:00
 
 Soy un programdor y muchas siempre escuche hablar de patrones de diseño.  Y de seguro que has manejado o conoces algunos patrones como el conocido Singleton. Los patrones de diseño son muy útiles al momento de hacer software, por lo cual cada programados deberia conocer por lo menos los patrones mas conocidos de esta manera evitaremos dolores de  cabeza.
 
-Bueno a acontinuacion emplicar la importancia del uso de estos patrones  en un software.
+Bueno a acontinuación explicare la importancia del uso de estos patrones  en un software.
 
 ### ¿Qué son los patrones de diseño?
 

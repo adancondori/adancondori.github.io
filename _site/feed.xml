@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2020-10-31T09:06:14-04:00</updated>
+<updated>2021-01-19T10:17:55-04:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Adan Condori C.</name>
@@ -28,7 +28,7 @@
 
 &lt;p&gt;La ingenieria de softtware es un conjunto de procesos en la cual se define test unitarios, arquitectura, componentes, interfaces y entre otras características con el objetivo de obtener la solución requerida.&lt;/p&gt;
 
-&lt;p&gt;Asi mismo el diseño de software viene desde la sexta generación de computadoras 1900 en adelante, tal vez en ese entonces nos se conocia el termino Diseño de Software, pero si se ultilizaban los mismos pasos que se utilizan en la actualidad como la captura de requisitos, arquitectura, diseño de interfaces etc., pero en los ultimos 10 años, al diseño de software le ha acompañado las metodologias de desarrollo como Lean, Scrun con el objetivo de mejorar proceso de desarrollo asi mismo el diseño de software.&lt;/p&gt;
+&lt;p&gt;Asi mismo el diseño de software viene desde la sexta generación de computadoras 1900 en adelante, tal vez en ese entonces nos se conocia el termino Diseño de Software, pero si se ultilizaban los mismos pasos que se utilizan en la actualidad como la captura de requisitos, arquitectura, diseño de interfaces etc., pero en los ultimos 10 años, al diseño de software le ha acompañado las metodologias de desarrollo como Lean, Scrum con el objetivo de mejorar proceso de desarrollo asi mismo el diseño de software.&lt;/p&gt;
 
 &lt;p&gt;Algunas procesos del diseño de software han hido perfeccionando a lo largo del tiempo como las formas de realizar capturas de requisitos, nuevas arquitecturas de software, la automatización de pruebas, tambien la documentacion se ha mejorando, disminuyendo  y adaptandose a la necesitad real del Software.&lt;/p&gt;
 
@@ -78,7 +78,7 @@
 
 &lt;p&gt;Soy un programdor y muchas siempre escuche hablar de patrones de diseño.  Y de seguro que has manejado o conoces algunos patrones como el conocido Singleton. Los patrones de diseño son muy útiles al momento de hacer software, por lo cual cada programados deberia conocer por lo menos los patrones mas conocidos de esta manera evitaremos dolores de  cabeza.&lt;/p&gt;
 
-&lt;p&gt;Bueno a acontinuacion emplicar la importancia del uso de estos patrones  en un software.&lt;/p&gt;
+&lt;p&gt;Bueno a acontinuación explicare la importancia del uso de estos patrones  en un software.&lt;/p&gt;
 
 &lt;h3 id=&quot;qué-son-los-patrones-de-diseño&quot;&gt;¿Qué son los patrones de diseño?&lt;/h3&gt;
 
@@ -105,9 +105,17 @@
     <uri>http://localhost:4000</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
-  <content type="html">&lt;h2 id=&quot;kotlin-vs-java-&quot;&gt;**Kotlin vs Java **&lt;/h2&gt;
+  <content type="html">&lt;h2 id=&quot;kotlin-vs-java&quot;&gt;&lt;strong&gt;Kotlin vs Java&lt;/strong&gt;&lt;/h2&gt;
 
-&lt;p&gt;En mis 7 años desarrollando Android Java sigue siendo estandar para el desarrollo de aplicaciones nativas, pero no quiero decir que sea mejor o bueno, recordemos que Kotlin es un idioma con soporte oficial para escribir aplicaciones de Android, aún puede sentir que no hay suficientes razones para cambiar. Se ha demostrado que Java funciona para todos estos, entonces, ¿por qué debería cambiar?&lt;/p&gt;
+&lt;p&gt;En mis 7 años desarrollando Android Java sigue siendo estandar para el desarrollo de aplicaciones nativas, pero no quiero decir que sea mejor o bueno, recordemos que Kotlin es un idioma con soporte oficial para escribir aplicaciones de Android, asi mismo kotlin en los últimos años a ganado bastante popularidad, a continuación listo algunas razones porque mudarse a kotlin.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;El lenguaje y el entorno están maduros&lt;/li&gt;
+  &lt;li&gt;Está perfectamente integrado con Android Studio&lt;/li&gt;
+  &lt;li&gt;Su evolución está bien cubierta&lt;/li&gt;
+  &lt;li&gt;Es mucho más seguro que Java&lt;/li&gt;
+  &lt;li&gt;Kotlin es multi-plataforma&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;Entonces, estas son las razones por las que mudarse a Kotlin es una de las mejores cosas que puede hacer.&lt;/p&gt;
 

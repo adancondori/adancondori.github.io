@@ -1,12 +1,27 @@
+- title: Entredely
+  logo: entredely.png
+  docs: https://entredely.com/
+  github: https://entredely.com/
+  content: >
+    Crea ordenes o pedidos y asígnalas a tus conductores con su aplicación móvil y todo de forma gratuita.
+    Los conductores ahora reciben sus ordenes por entregar a través de notificaciones push a su aplicación.
+    El proyecto contiene Frontend, Backend, App Movil.
+  title-assistants: Principal Developers
+  developers:
+    - name: Ing. Adan Condori Callisaya
+      link: ''
+    - name: Ing. Darlyn Bravo Peña
+      link: ''
+
 - title: Escuela Bíblica Virtual
   logo: escuelabiblica.png
-  docs: https://play.google.com/store/apps/details?id=org.ub.virtualbibleschool
+  docs: http://escuelabiblicavirtual.org.bo/
   github: https://play.google.com/store/apps/details?id=org.ub.virtualbibleschool
   content: >
     En esta Aplicación podrás encontrar una variedad de Cursos Bíblicos, que abordan diferentes temáticas, tales cómo; el Matrimonio, las Profecías y otros. Algunos de ellos incluso están elaborados para atender la necesidad de los jóvenes, adolescentes o niños.
     Por medio de esta herramienta podrás estudiar, descubrir y compartir de las grandes verdades que Dios tiene registradas en las Sagradas Escrituras. 
     Proyecto para Android, iOS, Panel Administrativo.
-  title-assistants: Developers
+  title-assistants: Developer by
   developers:
     - name: Ing. Adan Condori Callisaya
       link: ''
