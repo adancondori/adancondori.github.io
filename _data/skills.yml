@@ -1,4 +1,4 @@
-- title: Server
+- title: Server Backend
   items:
     - name: Ruby on Rails
       level: 3
@@ -13,6 +13,8 @@
 
 - title: Web
   items:
+    - name: React
+      level: 2
     - name: Vue.js
       level: 2
     - name: CSS
@@ -44,6 +46,8 @@
       level: 1
     - name: React Native
       level: 2
+    - name: C#
+      level: 3
 
 - title: Services
   items:
@@ -76,3 +80,16 @@
       level: 3
     - name: Postgres
       level: 3
+
+- title: Server
+  items:
+    - name: AWS
+      level: 3
+    - name: Digital Ocean
+      level: 2
+    - name: Heroku
+      level: 2
+    - name: Firebase
+      level: 3
+
+

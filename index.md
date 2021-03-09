@@ -8,7 +8,7 @@ image:
   feature: banners/mac-pro_adan.jpg
 ---
 
-I am a computer engineer in the [Analista de Desarrollo Tecnológico de Banco Fassil](https://www.fassil.com.bo).
+I am a computer engineer in the [Jefe de Desarrollo Tecnológico](https://www.fassil.com.bo).
 I am Bolivian, currently living in Santa Cruz.
 
 {% include _education.html %}

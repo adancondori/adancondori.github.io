@@ -1,0 +1,17 @@
+I"4<p>Overview Slides:</p>
+
+<ul>
+  <li><a href="Gamblin-Spack-SC16-Tutorial-Overview.pdf">Spack Overview and introduction (III)</a></li>
+</ul>
+
+<p>Material that will become our tutorial presentation is available here:</p>
+
+<ul>
+  <li><a href="http://software.llnl.gov/spack/getting_started.html">Getting Started: Download and Installation(III)</a></li>
+  <li><a href="http://software.llnl.gov/spack/basic_usage.html">Spack Basic Usage Guide (III)</a></li>
+  <li><a href="http://software.llnl.gov/spack/packaging_guide.html">Spack Packaging Guide (IV-VI)</a></li>
+  <li><a href="http://software.llnl.gov/spack/basic_usage.html#extensions-python-support">Working with Python (III.e, IX.a)</a></li>
+  <li><a href="http://software.llnl.gov/spack/packaging_guide.html#extensions">Building Python Packages (IX.a)</a></li>
+</ul>
+
+:ET

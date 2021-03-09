@@ -1,0 +1,71 @@
+I""<h2 id="kotlin-vs-java"><strong>Kotlin vs Java</strong></h2>
+
+<p>En mis 7 años desarrollando Android Java sigue siendo estandar para el desarrollo de aplicaciones nativas, pero no quiero decir que sea mejor o bueno, recordemos que Kotlin es un idioma con soporte oficial para escribir aplicaciones de Android, asi mismo kotlin en los últimos años a ganado bastante popularidad, a continuación listo algunas razones porque mudarse a kotlin.</p>
+
+<ul>
+  <li>El lenguaje y el entorno están maduros</li>
+  <li>Está perfectamente integrado con Android Studio</li>
+  <li>Su evolución está bien cubierta</li>
+  <li>Es mucho más seguro que Java</li>
+  <li>Kotlin es multi-plataforma</li>
+</ul>
+
+<p>Entonces, estas son las razones por las que mudarse a Kotlin es una de las mejores cosas que puede hacer.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Parámetro</strong></th>
+      <th><strong>Java</strong></th>
+      <th><strong>Kotlin</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Compilacion</td>
+      <td>Bytecodes</td>
+      <td>Máquina virtual</td>
+    </tr>
+    <tr>
+      <td>Seguridad nula</td>
+      <td>Χ</td>
+      <td>√</td>
+    </tr>
+    <tr>
+      <td>Expresión Lambda</td>
+      <td>Χ</td>
+      <td>√</td>
+    </tr>
+    <tr>
+      <td>Matriz invariante</td>
+      <td>Χ</td>
+      <td>√</td>
+    </tr>
+    <tr>
+      <td>Campos no privados</td>
+      <td>√</td>
+      <td>Χ</td>
+    </tr>
+    <tr>
+      <td>Casts inteligentes</td>
+      <td>Χ</td>
+      <td>√</td>
+    </tr>
+    <tr>
+      <td>Miembros estáticos</td>
+      <td>√</td>
+      <td>Χ</td>
+    </tr>
+    <tr>
+      <td>Tipos de comodines</td>
+      <td>√</td>
+      <td>Χ</td>
+    </tr>
+    <tr>
+      <td>Objetos Singletons</td>
+      <td>√</td>
+      <td>√</td>
+    </tr>
+  </tbody>
+</table>
+:ET
