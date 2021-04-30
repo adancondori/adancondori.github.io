@@ -4,13 +4,185 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2021-03-09T10:13:11-04:00</updated>
+<updated>2021-04-30T08:25:35-04:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Adan Condori C.</name>
   <uri>http://localhost:4000/</uri>
   <email>adan.condoric@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Notes Git - Spanish]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/notes-git/" />
+  <id>http://localhost:4000/notes-git</id>
+  <published>2021-04-29T11:23:53-04:00</published>
+  <updated>2021-04-29T11:23:53-04:00</updated>
+  <author>
+    <name>Adan Condori C.</name>
+    <uri>http://localhost:4000</uri>
+    <email>adan.condoric@gmail.com</email>
+  </author>
+  <content type="html">&lt;h1 id=&quot;notes-git-spanish&quot;&gt;Notes Git (Spanish)&lt;/h1&gt;
+
+&lt;h2 id=&quot;configuración-de-git&quot;&gt;Configuración de Git&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Primer paso: Generar tus llaves SSH&lt;/strong&gt;. Recuerda que es muy buena idea proteger tu llave privada con una contraseña.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh-keygen &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; rsa &lt;span class=&quot;nt&quot;&gt;-b&lt;/span&gt; 4096 &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;youremail@example.com&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Segundo paso&lt;/strong&gt;: Terminar de configurar nuestro sistema.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;En Windows y Linux&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Encender el &quot;servidor&quot; de llaves SSH de tu computadora:&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;eval&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;ssh-agent &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Añadir tu llave SSH a este &quot;servidor&quot;:&lt;/span&gt;
+ssh-add ruta-donde-guardaste-tu-llave-privada
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;En Mac&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Encender el &quot;servidor&quot; de llaves SSH de tu computadora:&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;eval&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;ssh-agent &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Si usas una versión de OSX superior a Mac Sierra (v10.12)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# debes crear o modificar un archivo &quot;config&quot; en la carpeta&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# de tu usuario con el siguiente contenido (ten cuidado con&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# las mayúsculas):&lt;/span&gt;
+Host &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
+				&lt;span class=&quot;nv&quot;&gt;IPQoS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;throughput &lt;span class=&quot;c&quot;&gt;## this line is optional in diferents version on mac&lt;/span&gt;
+        AddKeysToAgent &lt;span class=&quot;nb&quot;&gt;yes
+        &lt;/span&gt;UseKeychain &lt;span class=&quot;nb&quot;&gt;yes
+        &lt;/span&gt;IdentityFile ruta-donde-guardaste-tu-llave-privada
+
+&lt;span class=&quot;c&quot;&gt;# Añadir tu llave SSH al &quot;servidor&quot; de llaves SSH de tu&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# computadora (en caso de error puedes ejecutar este&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# mismo comando pero sin el argumento -K):&lt;/span&gt;
+ssh-add &lt;span class=&quot;nt&quot;&gt;-K&lt;/span&gt; ruta-donde-guardaste-tu-llave-privada
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/post/git_multiuserflow.png&quot; alt=&quot;git_multiuserflow&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;comandos-de-ayuda&quot;&gt;Comandos de ayuda&lt;/h2&gt;
+
+&lt;p&gt;Como volver atrás después de hacer un &lt;strong&gt;git add .&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git add &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; // or git add name_file
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;luego borramos los cambios desde el staging&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git &lt;span class=&quot;nb&quot;&gt;rm &lt;/span&gt;name_file
+git &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt;  &lt;span class=&quot;nt&quot;&gt;--cached&lt;/span&gt; name_file
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Como comparar el historial de un archivo modificado&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git log
+git diff hash1 hash2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Como volver commit anterior&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git reset &lt;span class=&quot;nb&quot;&gt;hash&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--hard&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Mostrar todos los log y diferencias&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git log &lt;span class=&quot;nt&quot;&gt;--stat&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Crear alias para mostrar gráfico en consola&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;arbolito&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;git log --all --graph --decorate --oneline&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;manejo-de-tags&quot;&gt;Manejo de Tags&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Creación de tagg&lt;/span&gt;
+git tag &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; nametag &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;mensaje personalizado referente del tag&quot;&lt;/span&gt; hashcommit
+&lt;span class=&quot;c&quot;&gt;# Sube todos los tags creados&lt;/span&gt;
+git push origin &lt;span class=&quot;nt&quot;&gt;--tags&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Borra Tags locales&lt;/span&gt;
+git tag &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; nametag
+&lt;span class=&quot;c&quot;&gt;# Borrar Tags de los repositorios remotos&lt;/span&gt;
+git push origin :refs/tags/tagName 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Delete Tag&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git tag &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;buscar-palabras-en-archivos-y-commit&quot;&gt;Buscar palabras en archivos y commit&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git grep color&lt;/code&gt;&lt;/strong&gt; –&amp;gt; use la palabra color&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git grep la&lt;/code&gt;&lt;/strong&gt; –&amp;gt; donde use la palabra la&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git grep -n color&lt;/code&gt;&lt;/strong&gt; –&amp;gt; en que lineas use la palabra color&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git grep -n platzi&lt;/code&gt;&lt;/strong&gt; –&amp;gt; en que lineas use la palabra platzi&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git grep -c la&lt;/code&gt;&lt;/strong&gt; –&amp;gt; cuantas veces use la palabra la&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git grep -c paltzi&lt;/code&gt;&lt;/strong&gt; –&amp;gt; cuantas veces use la palabra platzi&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git grep -c “&amp;lt;p&amp;gt;”&lt;/code&gt;&lt;/strong&gt; –&amp;gt; cuantas veces use la etiqueta &amp;lt;p&amp;gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git log-S “cabecera”&lt;/code&gt;&lt;/strong&gt; –&amp;gt; cuantas veces use la palabra cabecera en
+todos los commits.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;grep&lt;/code&gt;&lt;/strong&gt; –&amp;gt; para los archivos`&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;log&lt;/code&gt;&lt;/strong&gt; -&amp;gt; para los commits.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;comandos-colaborativos&quot;&gt;Comandos colaborativos&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git shortlog&lt;/code&gt;&lt;/strong&gt;: Ver cuantos commits a hecho los miembros del equipo&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git shortlog -sn&lt;/code&gt;&lt;/strong&gt;: Las personas que han hecho ciertos commits&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git shortlog -sn --all&lt;/code&gt;&lt;/strong&gt;: Todos los commits (también los borrados)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git shortlog -sn --all --no-merges&lt;/code&gt;&lt;/strong&gt;: muestra las estadisticas de los comigs del repositorio donde estoy&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git config --global alias.stats “shortlog -sn --all --no-merges”&lt;/code&gt;&lt;/strong&gt;: configura el comando “shortlog -sn –all –no-merges” en un Alias en las configuraciones globales de git del pc&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git blame -c blogpost.html&lt;/code&gt;&lt;/strong&gt;: Muestra quien ha hecho cambios en dicho archivo identado&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git blame --help&lt;/code&gt;&lt;/strong&gt;: Muestra en el navegador el uso del comando&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git blame archivo -L 35, 60 -c&lt;/code&gt;&lt;/strong&gt;: Muestra quien escribio el codigo con informacion de la linea 35 a la 60, EJ: &lt;code class=&quot;highlighter-rouge&quot;&gt;git blame css/estilos.css -L 35, 60 -c&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git branch -r&lt;/code&gt;&lt;/strong&gt;: Muestra las Ramas remotas de GitHub&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git branch -a&lt;/code&gt;&lt;/strong&gt;: Muestra todas las Ramas del repo y remotas de GitHub&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;estados-del-archivos&quot;&gt;Estados del archivos&lt;/h2&gt;
+
+&lt;p&gt;Untracked  -&amp;gt; staging  -&amp;gt; repository local -&amp;gt; remote&lt;/p&gt;
+
+&lt;h2 id=&quot;more-command&quot;&gt;More Command&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;git log –oneline&lt;/strong&gt; -&amp;gt;Te muestra el id commit y el título del commit.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;git log –decorate&lt;/strong&gt; -&amp;gt; Te muestra donde se encuentra el head point en el log.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;git log –stat&lt;/strong&gt; -&amp;gt; Explica el número de líneas que se cambiaron brevemente.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;git log -p&lt;/strong&gt; -&amp;gt; Explica el número de líneas que se cambiaron y te muestra que se cambió en el contenido.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;git shortlog&lt;/strong&gt; -&amp;gt; Indica que commits ha realizado un usuario, mostrando el usuario y el titulo de sus commits.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;git log –graph –oneline –decorate&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;git log –pretty=format:”%cn hizo un commit %h el dia %cd”&lt;/strong&gt; - Muestra mensajes personalizados de los commits.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;git log -3&lt;/strong&gt; -&amp;gt; Limitamos el número de commits.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;git log –after=“2018-1-2”&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;git log –after=“today”&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;git log –after=“2018-1-2” –before=“today”&lt;/strong&gt; -&amp;gt; Commits para localizar por fechas.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;git log –author=“Name Author”&lt;/strong&gt; - Commits realizados por autor que cumplan exactamente con el nombre.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;git log –grep=“INVIE”&lt;/strong&gt; - Busca los commits que cumplan tal cual está escrito entre las comillas.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;git log – index.html&lt;/strong&gt; -&amp;gt; Busca los commits en un archivo en específico.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;git log -S “Por contenido”&lt;/strong&gt; -&amp;gt; Buscar los commits con el contenido dentro del archivo.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;git log &amp;gt; log.txt&lt;/strong&gt; -&amp;gt; guardar los logs en un archivo txt&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;referencias&quot;&gt;Referencias&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;https://platzi.com/clases/git-github/&lt;/li&gt;
+  &lt;li&gt;https://ndpsoftware.com/git-cheatsheet.html#loc=remote_repo&lt;/li&gt;
+&lt;/ul&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/notes-git/&quot;&gt;Notes Git - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://localhost:4000&quot;&gt;adancondori.github.io&lt;/a&gt; on April 29, 2021.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
