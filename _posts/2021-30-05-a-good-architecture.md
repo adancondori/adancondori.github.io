@@ -28,11 +28,11 @@ date: 2021-05-29T08:23:53-07:00
 
 ## Resumen 
 
-En la actualidad los productos de software son muy variados y por lo tanto se utiliza una variedad de arquitecturas de software. Las cuales demuestran el éxito de un proyecto de software y la aceptación como una buena arquitectura, es por eso que en este ensayo estaremos hablando acerca de los beneficios, practicas, recomendaciones y conceptos fundamentales  para llegar a tener una buena arquitectura de software. Debo mencionarles que no se hablara acerca de tecnologías porque están cambian rápidamente en nuestra profesión.
+En la actualidad los productos de software son muy variados y por lo tanto se utiliza una variedad de arquitecturas de software. Las cuales demuestran el éxito de un proyecto de software y la aceptación como una buena arquitectura, es por eso que en este ensayo estaremos hablando acerca de los beneficios, practicas, recomendaciones y conceptos fundamentales  para llegar a tener una buena arquitectura de software. Debo mencionarles que no se hablara acerca de tecnologías porque estas cambian rápidamente en nuestra profesión.
 
 ## Contexto 
 
-Entonces empecemos hablando sobre ¿Qué es una Arquitectura de Software?, No existe una definición correcta para referirse a los que es la Arquitectura de Software. Sin embargo existen varias definiciones que tienen el mismo concepto, Ejemplo  "Una Arquitectura de Software representa la estructura o estructura del sistema, que consta de componentes de software, las propiedades visibles externas de esos componentes y la relación entre ellos.", teniendo como base la anterior definición podemos comentar e inferir que la arquitectura de software no solo se limita a definir los componentes y sus relaciones, sino a tener claro las relaciones entre objetos, identificación de tecnologías adecuadas para construir el sistemas, por otro lado es importante entender los requisitos no funcionales del sistema, documentar y comunicar a las partes interesadas.
+Entonces empecemos hablando sobre ¿Qué es una Arquitectura de Software?, No existe una definición correcta para referirse a qué es la Arquitectura de Software. Sin embargo existen varias definiciones que tienen el mismo concepto, Ejemplo  "Una Arquitectura de Software representa la estructura o estructura del sistema, que consta de componentes de software, las propiedades visibles externas de esos componentes y la relación entre ellos.", teniendo como base la anterior definición podemos comentar e inferir que la arquitectura de software no solo se limita a definir los componentes y sus relaciones, sino a tener claro las relaciones entre objetos, identificación de tecnologías adecuadas para construir el sistemas, por otro lado es importante entender los requisitos no funcionales del sistema, documentar y comunicar a las partes interesadas.
 
 ## Cuerpo 
 
@@ -48,14 +48,11 @@ A continuación responderemos las siguientes preguntas:
 
   1. **Comprensibilidad**.- Significa que nuestra arquitectura es de fácil de entender por el equipo de desarrollo y las partes interesadas, al mismo tiempo debe abarcar todos los requisitos del negocio.  
   2. **Facilidad de uso y Aprendizaje**.- Este punto esta relacionado con los requerimientos de  UX/UI lo cual es importante al momento de definir la tecnología en la que se desarrollara el software. Los arquitectos deben ser consciente a la hora de definir la tecnología y la arquitectura. 
-  3. **Seguridad**.- Es un factor importante para el software, consiste en restringir el acceso de los usuarios ó componente basándose en la autenticación. De esta manera se podrá proteger de ataques DDoS, inyección de SQL y alertar al sistema.
+  3. **Seguridad**.- Es un factor importante para el software, consiste en restringir el acceso de los usuarios ó componente basándose en la autenticación. De esta manera se podrá proteger de ataques DDoS, inyección de SQL y alertar al sistema. De esta manera se resguardaran los datos.
   4. **Fiabilidad y Disponibilidad**.- Es muy importante en el diseño de la arquitectura de software porque las fiabilidad es un atributo del sistema responsable de la capacidad de seguir funcionando en condiciones predefinidas y la Disponibilidad representa que el sistemas estará funcionando el 99,9 %, caso contrario se debe tener medidas de contingencia como correos, notificaciones.
   5. **Interoperabilidad**.- La mayoría de los servicios de las aplicaciones deben comunicarse con sistemas externos para proporcionar servicios completos. Una arquitectura de software bien diseñada facilita la interoperabilidad de la aplicación para comunicarse e intercambiar datos con sistemas externos o sistemas heredados.
   6. **Testablidad**.-  La base de una buena arquitectura de software se base en asegurase de que el diseño de cada componente sea testeable. Una arquitectura testable debe mostrar claramente todas las interfaces, y la integración entre los componentes. Todos los requisitos funcionales y no funcionales (NFR) del negocio deben ser coherentes y completamente comprobables. Asegúrese de que todos los entornos DEV, TEST, UAT y PRODUCCIÓN sean similares.
   7. **Escalabilidad**.- La arquitectura tecnológica definida debe ser capas de escalar sin afectar el rendimiento. Hay dos tipos de escalado: el escalado vertical y el escalado horizontal. El escalado vertical consiste en añadir más hardware de CPU/memoria/disco al servidor existente. El escalado horizontal consiste en dividir la carga y responder a las peticiones añadiendo más servidores/instancias al clúster de servidores. El escalado horizontal es recomendado.
-  8. **Agilidad/Rendimiento**.- Para aportar agilidad a la arquitectura debemos seguir la dirección de la "anticipación informada", la arquitectura no debe anticiparse y diseñar la aplicación, lo que retrasará la entrega de la aplicación y añadirá más complejidad al desarrollador. Al mismo tiempo, no debe subanticiparse a las futuras demandas de la aplicación, lo que supondrá un riesgo para el desarrollo de características en ausencia de una guía de arquitectura. La agilidad de la arquitectura requiere la anticipación "justa". Para lograr esta anticipación "justa" de la arquitectura es necesario estar "informado" hay varios métodos para informarse cómo el análisis de dependencias, el backlog del producto y la deuda técnica.
-  9. **Observabilidad**.- Las aplicaciones y los servicios se desarrollan utilizando diferentes estilos de arquitectura como los microservicios, sin servidor y basados en eventos. La monitorización se ha convertido en la clave para mantener la salud de estos servicios. La observabilidad no es sólo un nuevo término elegante para la monitorización. La observabilidad añade mucho más junto con la información procesable junto con la monitorización, como la agregación/análisis de registros y las notificaciones.
-  10. **Tolerancia a fallos** Cuando se diseñan aplicaciones o servicios que van a comunicar diferentes sistemas en diferentes infraestructuras y que tienden a fallar parcialmente o totalmente debido a la Latencia de la Red, a la rotura de la conexión, o a cualquier otra razón. En caso de estos fallos, el Arquitecto debe diseñar donde la Aplicación o los Servicios deben continuar con su funcionamiento posiblemente a un nivel reducido en caso de fallo. Hay dos tipos de tácticas que se pueden adoptar en tiempo de diseño y en tiempo de ejecución. Durante el tiempo de diseño, podemos esperar qué valores de retorno se esperan de cada operación y asegurarnos de que no hay desbordamientos de búfer. En tiempo de ejecución, debemos adoptar qué segunda acción se debe tomar en caso de fallo para asegurarnos de que el sistema sigue funcionando.
 
 - ### Which benefits does the architecture provide over the inhabitants of the system?
 
@@ -84,7 +81,7 @@ A continuación responderemos las siguientes preguntas:
 
   - **Latencia frente a rendimiento**
 
-  - **Seguridad, Eslabilidad, Mantenibilidad**
+  - **Seguridad, Estabilidad, Mantenibilidad**
 
     
 
@@ -97,7 +94,7 @@ A continuación responderemos las siguientes preguntas:
   3. Definir qué patrones de arquitectura se va a utilizar.
   4. Definir qué componentes se va utilizar  o se va crear.
   5. Recomendar que el equipo tenga conocimientos de algunos conceptos como SOLID, KISS, DRY y YAGNI, estos conceptos ayudara a que el equipo pueda realizar un código mantenible. 
-  6. Conocer patrones de diseño y refactorización los cuales nos ayudaran a tener un código limpio.
+  6. Conocer y aplicar patrones de diseño, refactorización los cuales nos ayudaran a tener un código limpio.
 
 ## Conclusión 
 
