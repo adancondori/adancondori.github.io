@@ -1,7 +1,7 @@
 ---
 layout: post
 
-title: "Una buenas Arquitectura de Software - Spanish"
+title: "Una buena Arquitectura de Software - Spanish"
 
 modified:
 
