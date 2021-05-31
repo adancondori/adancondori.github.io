@@ -26,15 +26,15 @@ date: 2021-05-29T08:23:53-07:00
 
 
 
-## Abstract 
+## Resumen 
 
 En la actualidad los productos de software son muy variados y por lo tanto se utiliza una variedad de arquitecturas de software. Las cuales demuestran el éxito de un proyecto de software y la aceptación como una buena arquitectura, es por eso que en este ensayo estaremos hablando acerca de los beneficios, practicas, recomendaciones y conceptos fundamentales  para llegar a tener una buena arquitectura de software. Debo mencionarles que no se hablara acerca de tecnologías porque están cambian rápidamente en nuestra profesión.
 
-## Context 
+## Contexto 
 
 Entonces empecemos hablando sobre ¿Qué es una Arquitectura de Software?, No existe una definición correcta para referirse a los que es la Arquitectura de Software. Sin embargo existen varias definiciones que tienen el mismo concepto, Ejemplo  "Una Arquitectura de Software representa la estructura o estructura del sistema, que consta de componentes de software, las propiedades visibles externas de esos componentes y la relación entre ellos.", teniendo como base la anterior definición podemos comentar e inferir que la arquitectura de software no solo se limita a definir los componentes y sus relaciones, sino a tener claro las relaciones entre objetos, identificación de tecnologías adecuadas para construir el sistemas, por otro lado es importante entender los requisitos no funcionales del sistema, documentar y comunicar a las partes interesadas.
 
-## Body 
+## Cuerpo 
 
 La Arquitectura de Software sirve como vision de un plano para el equipo de desarrollo de software quienes  estarán implementando los requerimientos del negocio puedan tener mejor idea. La arquitectura de software no es un plano estático mas al contrario es un proceso de evolución en estrategias, técnicas, patrones de diseño, diseños arquitectónicos y componentes. Al construir una buena arquitectura podremos identificar los riesgos de diseño y mitigarlos con anticipación.
 
