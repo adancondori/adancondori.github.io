@@ -1,7 +1,7 @@
 ---
 layout: post
 
-title: "Summary About: \n Success Skills for Architects with Neil Ford - Spanish"
+title: "Summary About: \n Success Skills for Architects with Neil Ford - English"
 
 modified:
 
