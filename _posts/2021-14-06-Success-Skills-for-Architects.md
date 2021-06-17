@@ -1,7 +1,7 @@
 ---
 layout: post
 
-title: "Success Skills for Architects with Neil Ford - Spanish"
+title: "Summary About: \n Success Skills for Architects with Neil Ford - Spanish"
 
 modified:
 
@@ -23,9 +23,7 @@ date: 2021-06-15T08:08:53-07:00
 
 ---
 
-# Summary About:
 
-# Success Skills for Architects with Neil Ford
 
 This article was extracted from [Potcast Episode 287 for Neil Ford](http://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford/).
 
