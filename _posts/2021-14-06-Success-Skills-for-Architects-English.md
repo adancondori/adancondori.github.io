@@ -29,7 +29,7 @@ This article was extracted from [Potcast Episode 287 for Neil Ford](http://www.s
 
 
 
-## Resumen
+## Summary
 
 In this Postcast we will find several tips on skills and strategies to be a good software architect, then I will present a summary of this podcast which is very interesting about the experience of Neil Ford.
 
