@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2021-09-06T12:36:12-04:00</updated>
+<updated>2021-09-06T13:19:41-04:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Adan Condori C.</name>
@@ -378,9 +378,9 @@ Host &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
 ssh-add &lt;span class=&quot;nt&quot;&gt;-K&lt;/span&gt; ruta-donde-guardaste-tu-llave-privada
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;ejemplos&quot;&gt;Ejemplos&lt;/h2&gt;
+&lt;h2 id=&quot;ejemplo&quot;&gt;Ejemplo&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/post/git_multiuserflow.png&quot; alt=&quot;git_multiuserflow&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Usando git&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/post/git_multiuserflow.png&quot; alt=&quot;git_multiuserflow&quot; /&gt;&lt;/p&gt;
 
