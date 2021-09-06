@@ -1,0 +1,46 @@
+I"�<p>This article was extracted from <a href="http://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford/">Potcast Episode 287 for Neil Ford</a>.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>In this Postcast we will find several tips on skills and strategies to be a good software architect, then I will present a summary of this podcast which is very interesting about the experience of Neil Ford.</p>
+
+<p>All people involved with software development get to make decisions in it, but the architect is the one who must have extensive knowledge about the technologies, technical skills and also have soft skills to communicate with users, managers and the development team. Architects must be in constant training with other architects to acquire knowledge, also the architect must be a leader in their environment, then let’s see some characteristics of a good software architect:</p>
+
+<ul>
+  <li>Have vision in the defined architecture decisions.</li>
+  <li>Understand and know technologies, and multiple ways to implement the architecture.</li>
+  <li>Have soft skills.</li>
+  <li>Possess knowledge in terms of security, scalability, reliability, maintainability, etc.</li>
+</ul>
+
+<p>Therefore an architect must have several skills and knowledge so he should never stop training, among the skills with the development team the architect should promote pair programming, define a representation on the architecture used which will serve the team and users, such as the C4 Model which is a representation by levels very easy to apply and very useful. It is also recommended to have all technical decisions recorded for future decisions.</p>
+
+<p>When developing software it is important to make good decisions about the things we use because all this could lead to the failure or success of the software, these decisions are important to share with the whole team and especially with the new ones. Each component of the software is important so you should spend considerable time in the coding of these components, accompanied by good practices in the development and not leaving technical debts for later or for other developers, these technical debts eventually become a problem or a legacy code difficult to modify.</p>
+
+<p>A good coder applies good practices in its development, is creative when providing solutions and above all delivers a product with high quality programming, architects must guide and accompany the development of each developer until they are autonomous. Each Scrum team must support each other and deliver products in their sprint, in case of not being able to deliver, the reason must be identified and continuous improvement must be sought.</p>
+
+<p>Finally, today’s world and the world of software development is constantly changing so we must adapt to change with an evolutionary architecture, then the architect must live with the system to make improvements. Just as micro-services are being implemented today every architect must read books, learn design patterns and keep up to date every day.</p>
+
+<h2 id="important-points">Important points</h2>
+
+<ul>
+  <li>
+    <p>A Software Architect must be in constant training.</p>
+  </li>
+  <li>
+    <p>An important characteristic of an Architect is to have soft skills with product owners, teams, etc.</p>
+  </li>
+  <li>
+    <p>Once a requirement is finalized and in DONE move to production as soon as possible.</p>
+  </li>
+  <li>
+    <p>The decisions made influence the life of the software.</p>
+  </li>
+</ul>
+
+<h3 id="references">References</h3>
+
+<ul>
+  <li>Success Skills for Architects with Neil Ford page https://www.se-radio.net/se-radio-episode-287-success-skills-for-architects-with-neil-ford/</li>
+</ul>
+:ET

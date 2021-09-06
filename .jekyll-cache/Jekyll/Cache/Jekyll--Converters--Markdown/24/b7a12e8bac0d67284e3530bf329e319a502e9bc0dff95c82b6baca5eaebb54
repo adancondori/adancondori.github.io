@@ -1,4 +1,4 @@
-I"�&<h1 id="notes-git-spanish">Notes Git (Spanish)</h1>
+I"'<h1 id="notes-git-spanish">Notes Git (Spanish)</h1>
 
 <h2 id="configuración-de-git">Configuración de Git</h2>
 
@@ -41,6 +41,7 @@ ssh-add <span class="nt">-K</span> ruta-donde-guardaste-tu-llave-privada
 
 <p><img src="/../images/post/git_multiuserflow.png" alt="git_multiuserflow" /></p>
 
+<p><img src="../images/post/branching-strategy.png" alt="git_multiuserflow" /></p>
 <h2 id="comandos-de-ayuda">Comandos de ayuda</h2>
 
 <p>Como volver atrás después de hacer un <strong>git add .</strong></p>

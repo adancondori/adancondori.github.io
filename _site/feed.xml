@@ -4,13 +4,326 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2021-04-30T09:01:31-04:00</updated>
+<updated>2021-09-06T12:17:17-04:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Adan Condori C.</name>
   <uri>http://localhost:4000/</uri>
   <email>adan.condoric@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Architecture Representation]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/Architecture-representation/" />
+  <id>http://localhost:4000/Architecture-representation</id>
+  <published>2021-07-06T00:00:00-04:00</published>
+  <updated>2021-07-06T00:00:00-04:00</updated>
+  <author>
+    <name>Adan Condori C.</name>
+    <uri>http://localhost:4000</uri>
+    <email>adan.condoric@gmail.com</email>
+  </author>
+  <content type="html">&lt;h2 id=&quot;representación-de-arquitectura-de-software&quot;&gt;Representación de Arquitectura de Software&lt;/h2&gt;
+
+&lt;h2 id=&quot;resumen&quot;&gt;Resumen&lt;/h2&gt;
+
+&lt;p&gt;Cuando nosotros diseñamos una Arquitectura de Software necesitamos representarla en documentos de tal manera que podamos describir y comunicar a nuestro clientes, equipo de desarrollo, dueños de productos etc.,  con el objetivo de trasmitir de forma sencilla, clara todas las tecnologías, componentes que estaremos utilizando en el diseño de Software.&lt;/p&gt;
+
+&lt;p&gt;En este articulo tratare de mostrar algunos enfoques para la documentación del diseño de arquitectura, estos enfoques me han servido en mi experiencia laboral y las he utilizado con algunos cliente que he llegado a tener. Así mismo tratare de mencionar algunas recomendaciones y ventajas sobre representaciones de Software. Este articulo no lo hago para que tu lo utilices al pie de la letra sino para que puedan conocer los enfoques que he manejado y estoy aprendiendo, por lo tanto tu puedes decidir la herramienta y el enfoque que mas se adecue a tu proyecto.&lt;/p&gt;
+
+&lt;h2 id=&quot;contexto&quot;&gt;Contexto&lt;/h2&gt;
+
+&lt;p&gt;Actualmente tenemos varias notaciones y herramientas para representar y modelar el diseño de una Arquitectura de Software. Pero cuando estamos realizando un proyecto para una empresa consolidada o que tenga un departamento de desarrollo, nos solicitaran una documentación sobre la representación de nuestra arquitectura, por lo cual nosotros tenemos que elegir la representación que mas se adecue a nuestro proyecto, también debo mencionar que algunas empresas no piden ninguna representación de la arquitectura ó la documentación del software, solo les importa que software funcione.&lt;/p&gt;
+
+&lt;h2 id=&quot;cuerpo&quot;&gt;Cuerpo&lt;/h2&gt;
+
+&lt;p&gt;Bueno cuando nosotros empezamos a diseñar debemos elegir el enfoque de documentación que tengan todas las características que necesitamos para representar nuestro proyecto.  Entre las representaciones de diseño de arquitectura tenemos los siguientes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Modelo C4: El modelo C4 se creó como una forma de ayudar a los equipos de desarrollo de software a describir y comunicar la arquitectura de software, tanto durante las sesiones de diseño iniciales como al documentar retrospectivamente una base de código existente. &lt;a href=&quot;https://c4model.com/&quot;&gt;Model C4&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;ADR: Cada proyecto de software incluye un conjunto de decisiones de arquitectura que definen límites y restricciones para un mayor diseño e implementación. Es importante documentar esas decisiones de alguna manera o, de lo contrario, es posible que un equipo de desarrollo no sepa qué decisiones se tomaron y con qué suposiciones. &lt;a href=&quot;https://www.hascode.com/2018/05/managing-architecture-decision-records-with-adr-tools/&quot;&gt;Managing Architecture Decision Records with ADR-Tools&lt;/a&gt;, &lt;a href=&quot;https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions&quot;&gt;Documenting Architecture Decisions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;ARC42: Es una opilación de experiencia practica de muchos sistemas en varios dominios, desde sistemas de información y web, en tiempo real e integrados hasta inteligencia empresarial y almacenes de datos, proporciona una plantilla para la &lt;a href=&quot;https://www.notion.so/Arc42-Notion-Template-b3662172ccec40e69a9c3d64ef2c6223&quot;&gt;&lt;strong&gt;documentación y comunicación&lt;/strong&gt;&lt;/a&gt; y admite &lt;strong&gt;tecnologías y herramientas arbitrarias&lt;/strong&gt;. &lt;a href=&quot;https://arc42.org/&quot;&gt;ARC42&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Modelo de Vistas de Arquitectura: También llamado &lt;strong&gt;4+1&lt;/strong&gt;, es un modelo diseñado por Philippe Kruchten para describir la arquitectura de sistemas software, basados en el uso de múltiples vistas concurrentes. &lt;a href=&quot;https://es.wikipedia.org/wiki/Modelo_de_Vistas_de_Arquitectura_4%2B1&quot;&gt;Modelo de Vistas de Arquitectura 4+1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Y Notaciones de UML: El lenguaje de modelado unificado ayuda a especificar, visualizar y documentar modelos de sistemas de software, incluida su estructura y diseño, de una manera que cumpla con todos estos requisitos &lt;a href=&quot;https://www.uml.org/what-is-uml.htm&quot;&gt;UML&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Cada una de los representaciones anteriores mencionadas tienen sus fortalezas y debilidades por lo cual nosotros deberemos elegir con todo el equipo de desarrollo.&lt;/p&gt;
+
+&lt;p&gt;En mi opinión una de las representación mas utilizada es el Modelo C4 el cual tiene como objetivo describir nuestra arquitectura desde un nivel bajo hasta un nivel alto, es decir desde un nivel de clases y componentes hasta un nivel de arquitectura el cual podra ser entendido por nuestros clientes y el equipo de desarrollo de software.&lt;/p&gt;
+
+&lt;p&gt;A continuación responderemos las siguientes preguntas:&lt;/p&gt;
+
+&lt;h3 id=&quot;qué-criterios-debemos-utilizar-para-definir-dicho-método-de-representación-como-bueno&quot;&gt;¿Qué criterios debemos utilizar para definir dicho método de representación como bueno?&lt;/h3&gt;
+
+&lt;p&gt;Todos los criterios dependerán del tamaño de Proyecto que estemos realizando, pero los criterios mas comunes que deberíamos utilizar son los siguientes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Cambios en el tiempo:&lt;/strong&gt; la representación que utilicemos debería adecuarse a posibles cambios que exista en el proyecto o en la arquitectura de software, es decir nuevos requerimientos de funcionalidades o nuevas tecnologías.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;La documentación no debe se pesada:&lt;/strong&gt; La representación de arquitectura de contener la  documentación  necesaria y no así demasiados diagramas porque luego se vuelven inservibles y no se llegan a utilizar.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;La documentación debe representar al código:&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Niveles de Abstracción:&lt;/strong&gt; La representación que se elija debe contener todas las notaciones básicas para  demostrar los niveles de abstracción del diseño de nuestra arquitectura como por ejemplo:
+    &lt;ol&gt;
+      &lt;li&gt;&lt;strong&gt;Forma:&lt;/strong&gt;  Es aquella que representa los componentes y estructura del software como patrones de diseño por ejemplo: API, Monolitics Web, MVC, MVP etc. En este punto podremos identificar que es el sistema y contiene el sistema.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Comportamiento:&lt;/strong&gt; Describe el comportamiento, funcionalidades del sistema las cuales son representadas por diagramas como Casos de Uso.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Operaciones:&lt;/strong&gt; Describe la infraestructura que utiliza el sistema, es importante que podamos identificar para ver cómo organizar y que tecnologías se utilizaran por ejemplo: Multi-tenant despliegue, Micro-services, Load-Balances service etc.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;qué-ventajas-aporta-el-método-de-representación-a-los-habitantes-del-sistema&quot;&gt;¿Qué ventajas aporta el método de representación a los habitantes del sistema?&lt;/h3&gt;
+
+&lt;p&gt;Los habitantes del sistemas son todos aquellas personas que interactúan con el software, por los cual si se elige una  representación donde nuestros habitantes lleguen a entender y comprender sera fácil hacer cambios al sistemas como también se tendrá claro el alcance que puede tener nuestro software.&lt;/p&gt;
+
+&lt;h3 id=&quot;qué-recomendaciones-de-mejora-tiene-sobre-el-método-de-representación&quot;&gt;¿Qué recomendaciones de mejora tiene sobre el método de representación?&lt;/h3&gt;
+
+&lt;p&gt;Mi recomendación es apegarse a la representación que se llegue a elegir ocupando todas sus notaciones y herramientas que nos provee, porque si solo seguimos a medio nuestra representación fracasara y el sistemas no podrá  ser comprendida por ningún  integrante del equipo.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusión&quot;&gt;Conclusión&lt;/h2&gt;
+
+&lt;p&gt;Existen diferentes tipos de representación para el diseño de Arquitectura de software, por lo cual es importante utilizar alguna de ellas para extender la vida de nuestro software, ademas de tener un panorama amplio de las formas, comportamientos y como sera el despliegue de nuestro sistema.&lt;/p&gt;
+
+&lt;p&gt;En este articulo he presentado mis investigaciones he ideas sobre las representaciones de una arquitectura de software. Cada una de estas características merece una discusión más larga y también hay otras características que no se mencionado.&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/Architecture-representation/&quot;&gt;Architecture Representation&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://localhost:4000&quot;&gt;adancondori.github.io&lt;/a&gt; on July 06, 2021.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Summary About: 
+ Success Skills for Architects with Neil Ford - Spanish]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/Success-Skills-for-Architects/" />
+  <id>http://localhost:4000/Success-Skills-for-Architects</id>
+  <published>2021-06-15T11:08:53-04:00</published>
+  <updated>2021-06-15T11:08:53-04:00</updated>
+  <author>
+    <name>Adan Condori C.</name>
+    <uri>http://localhost:4000</uri>
+    <email>adan.condoric@gmail.com</email>
+  </author>
+  <content type="html">&lt;p&gt;This article was extracted from &lt;a href=&quot;http://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford/&quot;&gt;Potcast Episode 287 for Neil Ford&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;resumen&quot;&gt;Resumen&lt;/h2&gt;
+
+&lt;p&gt;En este Postcast encontraremos varios consejos sobre habilidades y estrategias para ser un buen arquitecto de software, a continuación presentaré un resumen de este podcast el cual es muy interesante sobre las experiencia de Neil Ford.&lt;/p&gt;
+
+&lt;p&gt;Todas las personas que estén involucradas con el desarrollo de software llegan a tomar decisiones en la misma, pero el arquitecto es quien debe tener amplio conocimiento sobre las tecnologías, habilidades técnicas y además de tener habilidades blandas para comunicarse con los usuarios, gerentes y el equipo de desarrollo. Los arquitectos deben estar en constante capacitación con otros arquitectos para adquirir conocimiento, también el arquitecto debe poder ser un líder en su entorno, a continuación veamos alguna características de un buen arquitecto de software:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Tener vision en las decision de arquitectura definidas.&lt;/li&gt;
+  &lt;li&gt;Comprender y conocer tecnologías, y multiples maneras de implementar la arquitectura.&lt;/li&gt;
+  &lt;li&gt;Tener habilidades blandas.&lt;/li&gt;
+  &lt;li&gt;Poseer conocimientos en términos como seguridad, escalabilidad, confiabilidad, mantenibilidad etc.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Por lo tanto un arquitecto debe tener varias habilidades y conocimiento por lo cual nunca debe dejar de capacitarse, entre las habilidades con el equipo de desarrollo el arquitecto de promover la programación en pareja, definir una representación sobre la arquitectura utilizada la cual servirá al equipo y los usuarios, como por ejemplo el Modelo C4 el cual es una representación por niveles muy fácil de aplicar y de mucha utilidad. También se recomienda tener registrada todas las decisiones técnicas para futuras decisiones.&lt;/p&gt;
+
+&lt;p&gt;Cuando se desarrolla un software es importante tomar buenas decisiones sobre las cosas que utilizamos porque todo esto podría conducir al fracaso o éxito del software, estas decisiones son importante compartirlas con todo el equipo y en especial con los nuevos. Cada componente del software es importante por lo cual se debe dedicar un tiempo considerable en la codificación de dichos componentes, acompañados de buenas prácticas en el desarrollo y no dejando deudas técnicas para más tarde o para otros desarrolladores, estas deudas técnicas con el tiempo se vuelven un problema o un código legado difícil de modificar.&lt;/p&gt;
+
+&lt;p&gt;Un codificador bueno aplica buenas prácticas en su desarrollo es creativo al momento de dar soluciones y por sobre todo entrega un productos con alta calidad de programación, los arquitectos deben guiar y acompañar el desarrollo a cada desarrollador hasta que sean autónomos. Cada equipo Scrum debe apoyarse y sacar productos en su sprint en caso de no poder realizar entregables se debe identificar el porqué y tratar de realizar una mejora continua.&lt;/p&gt;
+
+&lt;p&gt;Finalmente el mundo actual y el de desarrollo de software cambia constantemente por lo cual debemos adecuarnos al cambio con una arquitectura evolutiva, entonces el arquitecto de vivir con el sistema para realizar mejoras. Así como los micro-servicios se están implementando en la actualidad cada arquitecto debe leer libros, aprender patrones de diseño y mantenerse actualizado cada día.&lt;/p&gt;
+
+&lt;h2 id=&quot;puntos-importantes&quot;&gt;Puntos importantes&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Un Arquitecto de Software debe estar en constante Capacitación&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Una característica importante de un Arquitecto es tener habilidades blandas con los dueños del producto, equipos, etc.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Una vez finalizado un requerimiento y este en DONE mover a producción tan pronto como sea posible.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Las decisiones tomadas influyen en la vida del software.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;referencias&quot;&gt;Referencias&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Success Skills for Architects with Neil Ford page https://www.se-radio.net/se-radio-episode-287-success-skills-for-architects-with-neil-ford/&lt;/li&gt;
+&lt;/ul&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/Success-Skills-for-Architects/&quot;&gt;Summary About: 
+ Success Skills for Architects with Neil Ford - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://localhost:4000&quot;&gt;adancondori.github.io&lt;/a&gt; on June 15, 2021.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Summary About: 
+ Success Skills for Architects with Neil Ford - English]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/Success-Skills-for-Architects-English/" />
+  <id>http://localhost:4000/Success-Skills-for-Architects-English</id>
+  <published>2021-06-15T11:08:53-04:00</published>
+  <updated>2021-06-15T11:08:53-04:00</updated>
+  <author>
+    <name>Adan Condori C.</name>
+    <uri>http://localhost:4000</uri>
+    <email>adan.condoric@gmail.com</email>
+  </author>
+  <content type="html">&lt;p&gt;This article was extracted from &lt;a href=&quot;http://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford/&quot;&gt;Potcast Episode 287 for Neil Ford&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;In this Postcast we will find several tips on skills and strategies to be a good software architect, then I will present a summary of this podcast which is very interesting about the experience of Neil Ford.&lt;/p&gt;
+
+&lt;p&gt;All people involved with software development get to make decisions in it, but the architect is the one who must have extensive knowledge about the technologies, technical skills and also have soft skills to communicate with users, managers and the development team. Architects must be in constant training with other architects to acquire knowledge, also the architect must be a leader in their environment, then let’s see some characteristics of a good software architect:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Have vision in the defined architecture decisions.&lt;/li&gt;
+  &lt;li&gt;Understand and know technologies, and multiple ways to implement the architecture.&lt;/li&gt;
+  &lt;li&gt;Have soft skills.&lt;/li&gt;
+  &lt;li&gt;Possess knowledge in terms of security, scalability, reliability, maintainability, etc.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Therefore an architect must have several skills and knowledge so he should never stop training, among the skills with the development team the architect should promote pair programming, define a representation on the architecture used which will serve the team and users, such as the C4 Model which is a representation by levels very easy to apply and very useful. It is also recommended to have all technical decisions recorded for future decisions.&lt;/p&gt;
+
+&lt;p&gt;When developing software it is important to make good decisions about the things we use because all this could lead to the failure or success of the software, these decisions are important to share with the whole team and especially with the new ones. Each component of the software is important so you should spend considerable time in the coding of these components, accompanied by good practices in the development and not leaving technical debts for later or for other developers, these technical debts eventually become a problem or a legacy code difficult to modify.&lt;/p&gt;
+
+&lt;p&gt;A good coder applies good practices in its development, is creative when providing solutions and above all delivers a product with high quality programming, architects must guide and accompany the development of each developer until they are autonomous. Each Scrum team must support each other and deliver products in their sprint, in case of not being able to deliver, the reason must be identified and continuous improvement must be sought.&lt;/p&gt;
+
+&lt;p&gt;Finally, today’s world and the world of software development is constantly changing so we must adapt to change with an evolutionary architecture, then the architect must live with the system to make improvements. Just as micro-services are being implemented today every architect must read books, learn design patterns and keep up to date every day.&lt;/p&gt;
+
+&lt;h2 id=&quot;important-points&quot;&gt;Important points&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;A Software Architect must be in constant training.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;An important characteristic of an Architect is to have soft skills with product owners, teams, etc.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Once a requirement is finalized and in DONE move to production as soon as possible.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The decisions made influence the life of the software.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Success Skills for Architects with Neil Ford page https://www.se-radio.net/se-radio-episode-287-success-skills-for-architects-with-neil-ford/&lt;/li&gt;
+&lt;/ul&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/Success-Skills-for-Architects-English/&quot;&gt;Summary About: 
+ Success Skills for Architects with Neil Ford - English&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://localhost:4000&quot;&gt;adancondori.github.io&lt;/a&gt; on June 15, 2021.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Una buena Arquitectura de Software - Spanish]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/a-good-architecture/" />
+  <id>http://localhost:4000/a-good-architecture</id>
+  <published>2021-05-29T11:23:53-04:00</published>
+  <updated>2021-05-29T11:23:53-04:00</updated>
+  <author>
+    <name>Adan Condori C.</name>
+    <uri>http://localhost:4000</uri>
+    <email>adan.condoric@gmail.com</email>
+  </author>
+  <content type="html">&lt;h1 id=&quot;a-good-software-architecture&quot;&gt;A good Software Architecture&lt;/h1&gt;
+
+&lt;h2 id=&quot;resumen&quot;&gt;Resumen&lt;/h2&gt;
+
+&lt;p&gt;En la actualidad los productos de software son muy variados y por lo tanto se utiliza una variedad de arquitecturas de software. Las cuales demuestran el éxito de un proyecto de software y la aceptación como una buena arquitectura, es por eso que en este ensayo estaremos hablando acerca de los beneficios, practicas, recomendaciones y conceptos fundamentales  para llegar a tener una buena arquitectura de software. Debo mencionarles que no se hablara acerca de tecnologías porque estas cambian rápidamente en nuestra profesión.&lt;/p&gt;
+
+&lt;h2 id=&quot;contexto&quot;&gt;Contexto&lt;/h2&gt;
+
+&lt;p&gt;Entonces empecemos hablando sobre ¿Qué es una Arquitectura de Software?, No existe una definición correcta para referirse a qué es la Arquitectura de Software. Sin embargo existen varias definiciones que tienen el mismo concepto, Ejemplo  “Una Arquitectura de Software representa la estructura o estructura del sistema, que consta de componentes de software, las propiedades visibles externas de esos componentes y la relación entre ellos.”, teniendo como base la anterior definición podemos comentar e inferir que la arquitectura de software no solo se limita a definir los componentes y sus relaciones, sino a tener claro las relaciones entre objetos, identificación de tecnologías adecuadas para construir el sistemas, por otro lado es importante entender los requisitos no funcionales del sistema, documentar y comunicar a las partes interesadas.&lt;/p&gt;
+
+&lt;h2 id=&quot;cuerpo&quot;&gt;Cuerpo&lt;/h2&gt;
+
+&lt;p&gt;La Arquitectura de Software sirve como vision de un plano para el equipo de desarrollo de software quienes  estarán implementando los requerimientos del negocio puedan tener mejor idea. La arquitectura de software no es un plano estático mas al contrario es un proceso de evolución en estrategias, técnicas, patrones de diseño, diseños arquitectónicos y componentes. Al construir una buena arquitectura podremos identificar los riesgos de diseño y mitigarlos con anticipación.&lt;/p&gt;
+
+&lt;p&gt;Algo que he aprendido con los años de experiencia en el desarrollo de software  es que ni siquiera el cliente sabra lo que quiere. Por lo tanto es importante tener algún documento para todos los requerimientos funcionales y no funcionales, ademas de una serie de entrevistas con todos los involucrados al software, todo esto con el objetivo de entender el negocio. De esta manera podremos definir una arquitectura base acorde a las necesidades del cliente, también se podrá definir las tecnologías que se adecuen al sistema.&lt;/p&gt;
+
+&lt;p&gt;A continuación responderemos las siguientes preguntas:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h3 id=&quot;which-criteria-do-you-use-to-define-such-architecture-as-good&quot;&gt;Which criteria do you use to define such architecture as good?&lt;/h3&gt;
+
+    &lt;p&gt;Hay muchos criterios de calidad del sistema que podemos discutir, pero para mí, las siguientes características de la arquitectura son una base sólida para obtener una buena arquitectura de software.&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;&lt;strong&gt;Comprensibilidad&lt;/strong&gt;.- Significa que nuestra arquitectura es de fácil de entender por el equipo de desarrollo y las partes interesadas, al mismo tiempo debe abarcar todos los requisitos del negocio.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Facilidad de uso y Aprendizaje&lt;/strong&gt;.- Este punto esta relacionado con los requerimientos de  UX/UI lo cual es importante al momento de definir la tecnología en la que se desarrollara el software. Los arquitectos deben ser consciente a la hora de definir la tecnología y la arquitectura.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Seguridad&lt;/strong&gt;.- Es un factor importante para el software, consiste en restringir el acceso de los usuarios ó componente basándose en la autenticación. De esta manera se podrá proteger de ataques DDoS, inyección de SQL y alertar al sistema. De esta manera se resguardaran los datos.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Fiabilidad y Disponibilidad&lt;/strong&gt;.- Es muy importante en el diseño de la arquitectura de software porque las fiabilidad es un atributo del sistema responsable de la capacidad de seguir funcionando en condiciones predefinidas y la Disponibilidad representa que el sistemas estará funcionando el 99,9 %, caso contrario se debe tener medidas de contingencia como correos, notificaciones.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Interoperabilidad&lt;/strong&gt;.- La mayoría de los servicios de las aplicaciones deben comunicarse con sistemas externos para proporcionar servicios completos. Una arquitectura de software bien diseñada facilita la interoperabilidad de la aplicación para comunicarse e intercambiar datos con sistemas externos o sistemas heredados.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Testablidad&lt;/strong&gt;.-  La base de una buena arquitectura de software se base en asegurase de que el diseño de cada componente sea testeable. Una arquitectura testable debe mostrar claramente todas las interfaces, y la integración entre los componentes. Todos los requisitos funcionales y no funcionales (NFR) del negocio deben ser coherentes y completamente comprobables. Asegúrese de que todos los entornos DEV, TEST, UAT y PRODUCCIÓN sean similares.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Escalabilidad&lt;/strong&gt;.- La arquitectura tecnológica definida debe ser capas de escalar sin afectar el rendimiento. Hay dos tipos de escalado: el escalado vertical y el escalado horizontal. El escalado vertical consiste en añadir más hardware de CPU/memoria/disco al servidor existente. El escalado horizontal consiste en dividir la carga y responder a las peticiones añadiendo más servidores/instancias al clúster de servidores. El escalado horizontal es recomendado.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h3 id=&quot;which-benefits-does-the-architecture-provide-over-the-inhabitants-of-the-system&quot;&gt;Which benefits does the architecture provide over the inhabitants of the system?&lt;/h3&gt;
+
+    &lt;p&gt;Los beneficios de una buenas arquitectura son:&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;Crear un plano o base solidad para el proyecto de software&lt;/li&gt;
+      &lt;li&gt;Escalabilidad del Proyecto de software.&lt;/li&gt;
+      &lt;li&gt;Reduce costos de mantenimiento.&lt;/li&gt;
+      &lt;li&gt;Aumenta el rendimiento del Proyecto de software.&lt;/li&gt;
+      &lt;li&gt;Mejor mantenibilidad en el código.&lt;/li&gt;
+      &lt;li&gt;Permite cambios rápidos en el proyectos.&lt;/li&gt;
+      &lt;li&gt;Ayuda en la gestión de riesgos . Ayuda a reducir los riesgos y la posibilidad de fallas.&lt;/li&gt;
+      &lt;li&gt;Mayor adaptabilidad para nuevos requerimiento, ya que la arquitectura del software crea una clara separación de preocupaciones.&lt;/li&gt;
+      &lt;li&gt;Mejor comunicación con las partes interesadas&lt;/li&gt;
+      &lt;li&gt;Auditable y testeable.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h3 id=&quot;which-trade-offs-have-been-made-in-the-system-to-keep-the-architecture&quot;&gt;Which trade-offs have been made in the system to keep the architecture?&lt;/h3&gt;
+
+    &lt;p&gt;En el Diseño de Arquitectura existen consideraciones importantes a tomar decisiones:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Flexibilidad frente a simplicidad&lt;/strong&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Espacio contra tiempo&lt;/strong&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Latencia frente a rendimiento&lt;/strong&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Seguridad, Estabilidad, Mantenibilidad&lt;/strong&gt;&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h3 id=&quot;which-recommendations-for-improvements-you-have-over-the-architecture&quot;&gt;Which recommendations for improvements you have over the architecture?&lt;/h3&gt;
+
+    &lt;p&gt;Para el diseño de una buena arquitectura es importante tener un equipo multi-diciplinario y algunos de sus integrantes tengan varios años de experiencia en el desarrollo de software, a continuación voy a listar algunas recomendaciones que utilidad y investigado cuando he desarrollado software.&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;Analizar y Verificar si existen dependencias con componentes, API, externos. En caso de existir se debe definir el protocolo de comunicación.&lt;/li&gt;
+      &lt;li&gt;Tener estrecha comunicación  con el cliente para conocer el proceso y los requerimientos de la solución.&lt;/li&gt;
+      &lt;li&gt;Definir qué patrones de arquitectura se va a utilizar.&lt;/li&gt;
+      &lt;li&gt;Definir qué componentes se va utilizar  o se va crear.&lt;/li&gt;
+      &lt;li&gt;Recomendar que el equipo tenga conocimientos de algunos conceptos como SOLID, KISS, DRY y YAGNI, estos conceptos ayudara a que el equipo pueda realizar un código mantenible.&lt;/li&gt;
+      &lt;li&gt;Conocer y aplicar patrones de diseño, refactorización los cuales nos ayudaran a tener un código limpio.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;conclusión&quot;&gt;Conclusión&lt;/h2&gt;
+
+&lt;p&gt;En este articulo he presentado mis investigaciones he ideas sobre cuáles deberían ser las características de una buena arquitectura de software. Cada una de estas características merece una discusión más larga y también hay otras características que no se tocan.&lt;/p&gt;
+
+&lt;p&gt;La arquitectura de software que diseñes siempre debe estar enfocada a lo que necesita el cliente, en entender que es lo que nuestro software va a trabajar y cómo lo va a hacer. Pudiendo ser capaces de conocer los pro y contras de cada opción que tomemos desde antes de empezar a codificar.&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/a-good-architecture/&quot;&gt;Una buena Arquitectura de Software - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://localhost:4000&quot;&gt;adancondori.github.io&lt;/a&gt; on May 29, 2021.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -67,6 +380,7 @@ ssh-add &lt;span class=&quot;nt&quot;&gt;-K&lt;/span&gt; ruta-donde-guardaste-tu
 
 &lt;p&gt;&lt;img src=&quot;/../images/post/git_multiuserflow.png&quot; alt=&quot;git_multiuserflow&quot; /&gt;&lt;/p&gt;
 
+&lt;p&gt;&lt;img src=&quot;../images/post/git_multiuserflow.png&quot; alt=&quot;git_multiuserflow&quot; /&gt;&lt;/p&gt;
 &lt;h2 id=&quot;comandos-de-ayuda&quot;&gt;Comandos de ayuda&lt;/h2&gt;
 
 &lt;p&gt;Como volver atrás después de hacer un &lt;strong&gt;git add .&lt;/strong&gt;&lt;/p&gt;
