@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2021-09-06T13:19:41-04:00</updated>
+<updated>2021-09-06T14:39:45-04:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Adan Condori C.</name>
@@ -469,6 +469,21 @@ todos los commits.&lt;/li&gt;
 &lt;h2 id=&quot;estados-del-archivos&quot;&gt;Estados del archivos&lt;/h2&gt;
 
 &lt;p&gt;Untracked  -&amp;gt; staging  -&amp;gt; repository local -&amp;gt; remote&lt;/p&gt;
+
+&lt;h2 id=&quot;migrar-repositorio&quot;&gt;Migrar repositorio&lt;/h2&gt;
+&lt;p&gt;Mover contenido de repositorio Git a otro repositorio conservando el Historia&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone 
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;go-directore
+git branch &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; // To see a list of the different branches
+git branch &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;\-&amp;gt;&apos;&lt;/span&gt; | &lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;read &lt;/span&gt;remote&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;git branch &lt;span class=&quot;nt&quot;&gt;--track&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;remote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;#origin/&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$remote&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;done
+&lt;/span&gt;git fetch &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;
+git pull &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;
+git remote &lt;span class=&quot;nb&quot;&gt;rm &lt;/span&gt;origin
+git remote add origin &amp;lt;url to NEW repo&amp;gt;
+git push origin &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;
+git push &lt;span class=&quot;nt&quot;&gt;--tags&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;more-command&quot;&gt;More Command&lt;/h2&gt;
 
