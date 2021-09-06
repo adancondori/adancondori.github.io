@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2021-09-06T12:17:17-04:00</updated>
+<updated>2021-09-06T12:36:12-04:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Adan Condori C.</name>
@@ -378,9 +378,12 @@ Host &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
 ssh-add &lt;span class=&quot;nt&quot;&gt;-K&lt;/span&gt; ruta-donde-guardaste-tu-llave-privada
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/../images/post/git_multiuserflow.png&quot; alt=&quot;git_multiuserflow&quot; /&gt;&lt;/p&gt;
+&lt;h2 id=&quot;ejemplos&quot;&gt;Ejemplos&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;../images/post/git_multiuserflow.png&quot; alt=&quot;git_multiuserflow&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/post/git_multiuserflow.png&quot; alt=&quot;git_multiuserflow&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/post/git_multiuserflow.png&quot; alt=&quot;git_multiuserflow&quot; /&gt;&lt;/p&gt;
+
 &lt;h2 id=&quot;comandos-de-ayuda&quot;&gt;Comandos de ayuda&lt;/h2&gt;
 
 &lt;p&gt;Como volver atrás después de hacer un &lt;strong&gt;git add .&lt;/strong&gt;&lt;/p&gt;
