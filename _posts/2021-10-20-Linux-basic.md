@@ -2,7 +2,7 @@
 
 layout: post
 
-title: "Notes Git - Spanish"
+title: "Notes Linux"
 
 modified:
 
@@ -10,7 +10,7 @@ categories:
 
 excerpt: >
 
- Mis notas sobre el curso y mi experiencia con Git y gitHub
+ Mis notas sobre el curso y mi experiencia con Linux
 
 tags: []
 
@@ -24,7 +24,7 @@ date: 2021-04-29T08:23:53-07:00
 
 
 
-# Notes Linux Command (Spanish)
+# Notes Linux Command (Spanish) - Building.....
 
 
 
