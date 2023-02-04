@@ -1,0 +1,183 @@
+I"�<h1 id="notes-linux-command-spanish---building">Notes Linux Command (Spanish) - Building…..</h1>
+
+<h2 id="directorio-base-de-linux">Directorio base de Linux</h2>
+
+<p><strong>Primer paso: Generar tus llaves SSH</strong>. Recuerda que es muy buena idea proteger tu llave privada con una contraseña.</p>
+
+<pre><code class="language-gfm">```mermaid
+stateDiagram
+    [*] --&gt; Still
+    Still --&gt; [*]
+
+    Still --&gt; Moving
+    Moving --&gt; Still
+    Moving --&gt; Crash
+    Crash --&gt; [*]
+```
+</code></pre>
+
+<h2 id="comands">Comands</h2>
+
+<p>Listar archivos:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls
+ls</span> <span class="nt">-lS</span>
+<span class="nb">ls</span> <span class="nt">-lr</span>
+<span class="nb">ls </span>namedirectory
+</code></pre></div></div>
+
+<p>Listar archivos para ver su peso de una manera mas mas legible</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span> <span class="nt">-lh</span>
+</code></pre></div></div>
+
+<p>Listar archivos ocultos:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span> <span class="nt">-a</span>
+</code></pre></div></div>
+
+<p>Identificar la ruta en la que estamos en nuestro sistema: <strong>P</strong>rint <strong>W</strong>orking <strong>D</strong>irectory</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">pwd</span>
+</code></pre></div></div>
+
+<p>Movernos entre directorios:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span>
+</code></pre></div></div>
+
+<p>Crear un directorio:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir namedirectory
+</code></pre></div></div>
+
+<p>Copiar un archivo:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span>
+</code></pre></div></div>
+
+<p>Borrar un archivo:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm
+rm</span> <span class="nt">-i</span> myfile // interactive directory
+<span class="nb">rm</span> <span class="nt">-ir</span> directory // delete all child directory
+</code></pre></div></div>
+
+<p>Mover un archivo: or you can use to rename</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mv 
+mv </span>filename filename2
+</code></pre></div></div>
+
+<p>Borrar un directorio:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rmdir</span>
+</code></pre></div></div>
+
+<p>Limpiar la terminal</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>clear
+</code></pre></div></div>
+
+<p>Crear archivo</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">touch </span>namefile
+</code></pre></div></div>
+
+<p>Show detail content by default is 10</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">head </span>file
+<span class="nb">head </span>file 10 // show 10 lines
+</code></pre></div></div>
+
+<p>Show detail content by default is 10</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tail </span>file
+<span class="nb">tail</span> <span class="nt">-f</span> file // shoe file current changes
+</code></pre></div></div>
+
+<p>Less edit text</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>less file // you be able to use / to search 
+</code></pre></div></div>
+
+<p>open file</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xdg-open file
+open file 
+</code></pre></div></div>
+
+<p>Type file</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type ls</span> 
+</code></pre></div></div>
+
+<p>Create Alisa</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">alias </span>lista_larga <span class="o">=</span> <span class="s2">"ls -lSh"</span>
+</code></pre></div></div>
+
+<p>Man</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>man &lt;<span class="nb">command</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p>Wildcards: sirve para buscar archivos de extensión o nombres</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls </span>nameext<span class="k">*</span>
+<span class="nb">ls </span>nameext?
+<span class="nb">ls</span> <span class="k">*</span>.html
+<span class="nb">ls</span> <span class="o">[</span>:alnum:]
+<span class="nb">ls</span> <span class="nt">-d</span> <span class="o">[</span>:upper:]
+</code></pre></div></div>
+
+<p>Wildcards</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls </span>dirTest1 <span class="o">&gt;</span> misDirTest1.txt // create new file with all result
+<span class="nb">ls </span>downloads <span class="o">&gt;&gt;</span> misDirTest1.txt // create and concat file with all result
+<span class="nb">ls </span>f2q3fdfsd 2&gt; error.txt
+</code></pre></div></div>
+
+<p>Aditional</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cowsay <span class="s2">"Hola mundo"</span> | lolcat
+</code></pre></div></div>
+
+<h3 id="encadenando-comandos-operadores-de-control">Encadenando comandos: operadores de control</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>comand1 <span class="o">&amp;&amp;</span> comand2 // comando1 depend of comand2, only excete is command1 es success 
+</code></pre></div></div>
+
+<p>Comandos or</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>comand1 <span class="o">||</span> comand2 // comando1 NOT depend of comand2
+</code></pre></div></div>
+
+<ul>
+  <li><strong>Comandos separados por punto y coma “;” :</strong> Se ejecutan uno seguido del otro en el orden en que fueron puesto. Uno no se ejecuta hasta que el otro proceso aya terminado.</li>
+  <li><strong>Comandos separados por &amp; :</strong> Se ejecutan todos al mismo tiempo, es decir de forma asíncrona.</li>
+  <li><strong>Comandos separados por &amp;&amp; :</strong> Se ejecutan solo si el comando anterior se aya ejecutado exitosamente. Suponemos que A, B y C son comando:
+A &amp;&amp; B &amp;&amp; C
+El B solo se va ejecutar si el A se ejecuta exitosamente, y el C solo se va ejecutar si el B si ejecuta exitosamente. Si el B no se ejecuta exitosamenta el C no se ejecuta. Si el A no se ejecuta exitomante el B y el C no se ejecutan.</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>**Comandos separados por</td>
+          <td> </td>
+          <td>:** Solo se ejecuta uno. Sea cuantos comandos tienes separados por</td>
+          <td> </td>
+          <td>solo ejecuta o toma en cuenta el primer que se ejecuta exitosamente (bajo la redundacia), y descarta automaticamente los demas. Cuando uno de los comandos se ejecuta exitosamente, descarta los demas comandos.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h2 id="referencias">Referencias</h2>
+
+<ul>
+  <li>https://platzi.com/clases/git-github/</li>
+  <li>https://ndpsoftware.com/git-cheatsheet.html#loc=remote_repo</li>
+</ul>
+:ET

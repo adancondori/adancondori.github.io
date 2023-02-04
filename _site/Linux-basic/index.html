@@ -1,0 +1,408 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Notes Linux &#8211; adancondori.github.io</title>
+<meta name="description" content="
+Mis notas sobre el curso y mi experiencia con Linux
+">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Notes Linux">
+<meta name="twitter:description" content="
+Mis notas sobre el curso y mi experiencia con Linux
+">
+<meta name="twitter:site" content="@AdanCondori">
+<meta name="twitter:creator" content="@AdanCondori">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Notes Linux">
+<meta property="og:description" content="
+Mis notas sobre el curso y mi experiencia con Linux
+">
+<meta property="og:url" content="http://localhost:4000/Linux-basic/">
+<meta property="og:site_name" content="adancondori.github.io">
+<script>
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-113648108-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-113648108-1');
+</script>
+-->
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/Linux-basic/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="adancondori.github.io Feed">
+<link rel="author" href="http://plus.google.com/+AdanCondoriC?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://localhost:4000">adancondori.github.io</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+					    
+					    <li><a href="http://localhost:4000/posts/" >Posts</a></li>
+					  
+					    
+					    <li><a href="http://localhost:4000/code/" >Code</a></li>
+					  
+					    
+					    <li><a href="http://localhost:4000/pubs/" >Publications</a></li>
+					  
+					    
+					    <li><a href="http://localhost:4000/cv/" >CV</a></li>
+					  
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    
+
+
+	<img src="http://localhost:4000/images/perfil-cv.jpeg" class="bio-photo" alt="Adan Condori C. bio photo">
+
+<h3>Adan Condori C.</h3>
+<p>Computer Engineer<br/> <a href="https://adancondori.github.io">Web Page</a></p>
+<a href="mailto:adan.condoric@gmail.com" class="author-social" target="_blank"><i class="fa fa-envelope-square"></i> Email</a>
+<a href="http://twitter.com/AdanCondori" class="author-social" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a>
+<a href="http://facebook.com/adan.condoric" class="author-social" target="_blank"><i class="fa fa-facebook-square"></i> Facebook</a>
+<a href="http://plus.google.com/+AdanCondoriC" class="author-social" target="_blank"><i class="fa fa-google-plus-square"></i> Google+</a>
+<a href="http://linkedin.com/in/adancondori" class="author-social" target="_blank"><i class="fa fa-linkedin-square"></i> LinkedIn</a>
+
+
+<a href="http://github.com/adancondori" class="author-social" target="_blank"><i class="fa fa-github"></i> Github</a>
+
+
+
+
+
+
+
+
+<a href="http://scholar.google.com/citations?user=adancondori" class="author-social" target="_blank"><i class="fa fa-graduation-cap"></i> Google Scholar</a>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="http://localhost:4000/Linux-basic/" rel="bookmark" title="Notes Linux">Notes Linux</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <h1 id="notes-linux-command-spanish---building">Notes Linux Command (Spanish) - Building…..</h1>
+
+<h2 id="directorio-base-de-linux">Directorio base de Linux</h2>
+
+<p><strong>Primer paso: Generar tus llaves SSH</strong>. Recuerda que es muy buena idea proteger tu llave privada con una contraseña.</p>
+
+<pre><code class="language-gfm">```mermaid
+stateDiagram
+    [*] --&gt; Still
+    Still --&gt; [*]
+
+    Still --&gt; Moving
+    Moving --&gt; Still
+    Moving --&gt; Crash
+    Crash --&gt; [*]
+```
+</code></pre>
+
+<h2 id="comands">Comands</h2>
+
+<p>Listar archivos:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls
+ls</span> <span class="nt">-lS</span>
+<span class="nb">ls</span> <span class="nt">-lr</span>
+<span class="nb">ls </span>namedirectory
+</code></pre></div></div>
+
+<p>Listar archivos para ver su peso de una manera mas mas legible</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span> <span class="nt">-lh</span>
+</code></pre></div></div>
+
+<p>Listar archivos ocultos:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span> <span class="nt">-a</span>
+</code></pre></div></div>
+
+<p>Identificar la ruta en la que estamos en nuestro sistema: <strong>P</strong>rint <strong>W</strong>orking <strong>D</strong>irectory</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">pwd</span>
+</code></pre></div></div>
+
+<p>Movernos entre directorios:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span>
+</code></pre></div></div>
+
+<p>Crear un directorio:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir namedirectory
+</code></pre></div></div>
+
+<p>Copiar un archivo:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span>
+</code></pre></div></div>
+
+<p>Borrar un archivo:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm
+rm</span> <span class="nt">-i</span> myfile // interactive directory
+<span class="nb">rm</span> <span class="nt">-ir</span> directory // delete all child directory
+</code></pre></div></div>
+
+<p>Mover un archivo: or you can use to rename</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mv 
+mv </span>filename filename2
+</code></pre></div></div>
+
+<p>Borrar un directorio:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rmdir</span>
+</code></pre></div></div>
+
+<p>Limpiar la terminal</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>clear
+</code></pre></div></div>
+
+<p>Crear archivo</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">touch </span>namefile
+</code></pre></div></div>
+
+<p>Show detail content by default is 10</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">head </span>file
+<span class="nb">head </span>file 10 // show 10 lines
+</code></pre></div></div>
+
+<p>Show detail content by default is 10</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tail </span>file
+<span class="nb">tail</span> <span class="nt">-f</span> file // shoe file current changes
+</code></pre></div></div>
+
+<p>Less edit text</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>less file // you be able to use / to search 
+</code></pre></div></div>
+
+<p>open file</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xdg-open file
+open file 
+</code></pre></div></div>
+
+<p>Type file</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type ls</span> 
+</code></pre></div></div>
+
+<p>Create Alisa</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">alias </span>lista_larga <span class="o">=</span> <span class="s2">"ls -lSh"</span>
+</code></pre></div></div>
+
+<p>Man</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>man &lt;<span class="nb">command</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p>Wildcards: sirve para buscar archivos de extensión o nombres</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls </span>nameext<span class="k">*</span>
+<span class="nb">ls </span>nameext?
+<span class="nb">ls</span> <span class="k">*</span>.html
+<span class="nb">ls</span> <span class="o">[</span>:alnum:]
+<span class="nb">ls</span> <span class="nt">-d</span> <span class="o">[</span>:upper:]
+</code></pre></div></div>
+
+<p>Wildcards</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls </span>dirTest1 <span class="o">&gt;</span> misDirTest1.txt // create new file with all result
+<span class="nb">ls </span>downloads <span class="o">&gt;&gt;</span> misDirTest1.txt // create and concat file with all result
+<span class="nb">ls </span>f2q3fdfsd 2&gt; error.txt
+</code></pre></div></div>
+
+<p>Aditional</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cowsay <span class="s2">"Hola mundo"</span> | lolcat
+</code></pre></div></div>
+
+<h3 id="encadenando-comandos-operadores-de-control">Encadenando comandos: operadores de control</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>comand1 <span class="o">&amp;&amp;</span> comand2 // comando1 depend of comand2, only excete is command1 es success 
+</code></pre></div></div>
+
+<p>Comandos or</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>comand1 <span class="o">||</span> comand2 // comando1 NOT depend of comand2
+</code></pre></div></div>
+
+<ul>
+  <li><strong>Comandos separados por punto y coma “;” :</strong> Se ejecutan uno seguido del otro en el orden en que fueron puesto. Uno no se ejecuta hasta que el otro proceso aya terminado.</li>
+  <li><strong>Comandos separados por &amp; :</strong> Se ejecutan todos al mismo tiempo, es decir de forma asíncrona.</li>
+  <li><strong>Comandos separados por &amp;&amp; :</strong> Se ejecutan solo si el comando anterior se aya ejecutado exitosamente. Suponemos que A, B y C son comando:
+A &amp;&amp; B &amp;&amp; C
+El B solo se va ejecutar si el A se ejecuta exitosamente, y el C solo se va ejecutar si el B si ejecuta exitosamente. Si el B no se ejecuta exitosamenta el C no se ejecuta. Si el A no se ejecuta exitomante el B y el C no se ejecutan.</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>**Comandos separados por</td>
+          <td> </td>
+          <td>:** Solo se ejecuta uno. Sea cuantos comandos tienes separados por</td>
+          <td> </td>
+          <td>solo ejecuta o toma en cuenta el primer que se ejecuta exitosamente (bajo la redundacia), y descarta automaticamente los demas. Cuando uno de los comandos se ejecuta exitosamente, descarta los demas comandos.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h2 id="referencias">Referencias</h2>
+
+<ul>
+  <li>https://platzi.com/clases/git-github/</li>
+  <li>https://ndpsoftware.com/git-cheatsheet.html#loc=remote_repo</li>
+</ul>
+
+      <hr />
+      <footer role="contentinfo">
+        <div class="article-author-bottom">
+          
+
+
+	<img src="http://localhost:4000/images/perfil-cv.jpeg" class="bio-photo" alt="Adan Condori C. bio photo">
+
+<h3>Adan Condori C.</h3>
+<p>Computer Engineer<br/> <a href="https://adancondori.github.io">Web Page</a></p>
+<a href="mailto:adan.condoric@gmail.com" class="author-social" target="_blank"><i class="fa fa-envelope-square"></i> Email</a>
+<a href="http://twitter.com/AdanCondori" class="author-social" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a>
+<a href="http://facebook.com/adan.condoric" class="author-social" target="_blank"><i class="fa fa-facebook-square"></i> Facebook</a>
+<a href="http://plus.google.com/+AdanCondoriC" class="author-social" target="_blank"><i class="fa fa-google-plus-square"></i> Google+</a>
+<a href="http://linkedin.com/in/adancondori" class="author-social" target="_blank"><i class="fa fa-linkedin-square"></i> LinkedIn</a>
+
+
+<a href="http://github.com/adancondori" class="author-social" target="_blank"><i class="fa fa-github"></i> Github</a>
+
+
+
+
+
+
+
+
+<a href="http://scholar.google.com/citations?user=adancondori" class="author-social" target="_blank"><i class="fa fa-graduation-cap"></i> Google Scholar</a>
+
+        </div>
+        <p class="byline">
+          Published <time datetime="2021-04-29T11:23:53-04:00">April 29, 2021</time>.</p>
+      </footer>
+    </div><!-- /.article-wrap -->
+  
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  
+
+  <footer>
+    
+
+<span>&copy; 2023 Adan Condori C.. Powered by <a href="#">Adan Condori C.</a> using the <a href="http://mademistakes.com/minimal-mistakes/">Minimal Mistakes</a> theme.</span>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+
+
+</body>
+</html>

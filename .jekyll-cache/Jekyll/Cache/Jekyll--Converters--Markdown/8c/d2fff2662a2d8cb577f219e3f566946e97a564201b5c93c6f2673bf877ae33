@@ -1,4 +1,4 @@
-I"<6<p>I am a computer engineer in the <a href="https://www.fassil.com.bo">Jefe de Desarrollo Tecnológico</a>.
+I"k8<p>I am a computer engineer in the <a href="https://www.fassil.com.bo">Jefe de Desarrollo Tecnológico</a>.
 I am Bolivian, currently living in Santa Cruz.</p>
 
 <!-- education -->
@@ -327,10 +327,24 @@ I am Bolivian, currently living in Santa Cruz.</p>
       <div class="listing">
         <div class="list-icon"></div>
         <div class="list-item">
-          <div class="title">Analista de Desarrollo Tecnologico</div>
+          <div class="title">Technical leader</div>
           <div class="item-with-time">
-            <span class="item">Banco Fassil</span>
-            <span class="time">2017-12<span class="longdash"></span>present</span>
+            <span class="item">NETACTICA</span>
+            <span class="time">2021-11<span class="longdash"></span>present</span>
+          </div>
+          <div class="list-more block">
+            Technical Leader / Web and Mobile Developer / Integration with payment gateway <br />Responsible for 1 and more teams.
+          </div>
+        </div>
+      </div>
+    
+      <div class="listing">
+        <div class="list-icon"></div>
+        <div class="list-item">
+          <div class="title">Head of Technology Development</div>
+          <div class="item-with-time">
+            <span class="item">Banco Fassil S.A.</span>
+            <span class="time">2017-12<span class="longdash"></span>2021-10</span>
           </div>
           <div class="list-more block">
             Developing Open Project, Android, iOS, Flutter, Python, C#, Php, and projetcs in Docker contains. <br />Responsible for 5 teams and defining the software architecture.

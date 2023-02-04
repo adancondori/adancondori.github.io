@@ -1,7 +1,14 @@
-- title: Analista de Desarrollo Tecnologico
-  org: Banco Fassil
-  startTime: 2017-12
+- title: Technical leader
+  org: NETACTICA - Colombia
+  startTime: 2021-11
   endTime: present
+  desc: Technical Leader / Web and Mobile Developer / Integration with payment gateway
+       <br/>Responsible for 1 and more teams.
+
+- title: Head of Technology Development
+  org: Banco Fassil S.A. - Bolivia
+  startTime: 2017-12
+  endTime: 2021-10
   desc: Developing Open Project, Android, iOS, Flutter, Python, C#, Php, and projetcs in Docker contains.
        <br/>Responsible for 5 teams and defining the software architecture.
 
@@ -12,25 +19,25 @@
   desc: Developing All type of the Project with Android, iOS, RoR, PHP and Python
 
 - title: Software Engineer
-  org: Ticketeg S.R.L.
+  org: Ticketeg S.R.L. - Bolivia
   startTime: 2015-01
   endTime: 2017-11
   desc: Developed Website a Custom  using Ruby on Rails, Android.
 
 - title: Software Engineer
-  org: V8 S.R.L.
+  org: V8 S.R.L. - Bolivia
   startTime: 2014-08
   endTime: 2015-12
   desc: Developed Website a Custom  using YII Framework PHP, Android.
 
 - title: Software Engineer
-  org: Zoom Bolivia
+  org: Zoom Bolivia - Bolivia
   startTime: 2013-03
   endTime: 2014-11
   desc: Developed Website a Custom  using Symfony PHP, Android.
 
 - title: Laboratory Assistant, Teacher Assistant
-  org: Autonomous University Gabriel Rene Moreno
+  org: Autonomous University Gabriel Rene Moreno - Bolivia
   startTime: 2011-02
   endTime: 2012-12
   desc: Laboratory manager and Teacher Assistant.
