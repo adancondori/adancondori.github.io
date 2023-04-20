@@ -8,7 +8,8 @@ image:
   feature: banners/mac-pro_adan.jpg
 ---
 
-I am a computer engineer with 5+ years of software development, passionate and enthusiastic about technology. 
+I am a computer engineer with 5+ years of software development, passionate and enthusiastic about technology. Tengo experiencia en el desarrollo web tanto en frontEnd y Ba
+I am a Fullstack Developer with experience in web development in frontend, backend and mobile development. 
 
 I am Bolivian, currently living in Santa Cruz.
 
