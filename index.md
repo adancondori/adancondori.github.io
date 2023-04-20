@@ -8,7 +8,8 @@ image:
   feature: banners/mac-pro_adan.jpg
 ---
 
-I am a computer engineer at [NETACTICA](https://www.linkedin.com/company/netactica/mycompany/) in Colombia with the position of technical leader, previously worked at [Banco Fassil S.A.](https://www.fassil.com.bo/) in Bolivia with the position of Head of Technological Development. 
+I am a computer engineer with 5+ years of software development, passionate and enthusiastic about technology. 
+
 I am Bolivian, currently living in Santa Cruz.
 
 {% include _education.html %}
