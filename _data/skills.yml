@@ -1,55 +1,26 @@
-- title: Server Backend
-  items:
-    - name: Ruby on Rails
-      level: 3
-    - name: Java
-      level: 2
-    - name: Django
-      level: 2
-    - name: Pyramid
-      level: 1
-    - name: Php
-      level: 3
 
-- title: Web
+- title: Languages / Framework
   items:
-    - name: React
-      level: 2
-    - name: Vue.js
-      level: 2
-    - name: CSS
-      level: 2
-    - name: JavaScript
-      level: 2
-    - name: Bootstrap
-      level: 1
-    - name: Jekyll
-      level: 3
-    - name: Javasript
-      level: 3
-
-- title: Languages
-  items:
-    - name: Android
-      level: 3
     - name: iOS Obj-C 
-      level: 3
+      level: 4
     - name: iOS Swift
       level: 4
-    - name: Python
+    - name: Python / Anaconda
       level: 2
-    - name: C++
+    - name: Ruby / Ruby on Rails
       level: 2
-    - name: Java
+    - name: Dart / Flutter
       level: 2
-    - name: NodeJS
+    - name: Java Web / Android Studio
+      level: 2
+    - name: Node JS
       level: 1
-    - name: React Native
+    - name: React Native (Mobile)
       level: 2
-    - name: C#
+    - name: Vue.js
       level: 3
 
-- title: Services
+- title: Tool / Services
   items:
     - name: Heroku
       level: 2
@@ -65,31 +36,31 @@
       level: 3
     - name: Jira
       level: 3
+    - name: Azure DevOps
+      level: 3
 
-- title: Misc
+- title: Data Base
   items:
     - name: MySql
       level: 3
     - name: SqlServer
       level: 3
-    - name: Database
+    - name: SQLite
       level: 2
-    - name: Designing
-      level: 3
-    - name: Scripting
-      level: 3
     - name: Postgres
       level: 3
 
-- title: Server
+- title: Cloud Server
   items:
     - name: AWS
       level: 3
+    - name: Azure DevOps
+      level: 4
     - name: Digital Ocean
       level: 2
     - name: Heroku
       level: 2
-    - name: Firebase
+    - name: IBM
       level: 3
 
 

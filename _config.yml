@@ -1,6 +1,6 @@
 # Site wide configuration
-
-title:            adancondori.github.io
+minimal_mistakes_skin: "mint" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+title:            ADAN CONDORI
 locale:           en_US
 #url:              http://localhost:4000
 url:              https://adancondori.github.io
