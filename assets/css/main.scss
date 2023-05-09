@@ -251,6 +251,20 @@ a {
 }
 
 
+.columna {
+    width: calc(100% / 3);
+    padding: 1px;
+    box-sizing: border-box;
+}
+
+.columna .dull {
+    opacity: 0.3;
+    font-size: 0.9em;
+}
+.columna i {
+    font-size: 20px;
+    margin-right: 10px;
+}
 /**
  * Awards
  */

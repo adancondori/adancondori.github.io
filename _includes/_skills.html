@@ -27,9 +27,13 @@
         <div class="list-item">
           <div class="title">{{ skill.title }}</div>
           <div class="list-more flex-horizontal">
-          {% for item in skill.items %}
-            <span class="item">{{ item.name }}<span class="dull">{{ site.data.skill_captions[item.level] }}</span></span>
-          {% endfor %}
+            {% for item in skill.items %}
+              <span class="columna">
+                <i class="fa fa-check-circle" ></i>
+                {{ item.name }} 
+                <span class="dull"> //{{site.data.skill_captions[item.level]}}</span>
+              </span>
+            {% endfor %}
           </div>
         </div>
       </div>
