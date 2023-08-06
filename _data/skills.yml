@@ -6,17 +6,17 @@
     - name: iOS Swift
       level: 4
     - name: Python / Anaconda
-      level: 2
+      level: 3
     - name: Ruby / Ruby on Rails
-      level: 2
+      level: 4
     - name: Dart / Flutter
-      level: 2
+      level: 4
     - name: Java Web / Android Studio
-      level: 2
+      level: 5
     - name: Node JS
       level: 1
-    - name: React Native (Mobile)
-      level: 2
+    - name: React Web / Native
+      level: 3
     - name: Vue.js
       level: 3
 

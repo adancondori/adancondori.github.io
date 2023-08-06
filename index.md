@@ -11,6 +11,5 @@ image:
 {% include _about.html %}
 {% include _education.html %}
 {% include _skills.html %}
-{% include _projects.html %}
 {% include _work.html %}
 
