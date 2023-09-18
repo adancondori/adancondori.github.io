@@ -4,13 +4,124 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2023-08-05T23:26:48-04:00</updated>
+<updated>2023-09-17T19:26:53-04:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Adan Condori C.</name>
   <uri>http://localhost:4000/</uri>
   <email>adan.condoric@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Aplicando los Principios de Código Limpio de "Clean Code" en la Práctica]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/refactoring/clean-code-tips/" />
+  <id>http://localhost:4000/refactoring/clean-code-tips</id>
+  <published>2023-08-01T11:12:53-04:00</published>
+  <updated>2023-08-01T11:12:53-04:00</updated>
+  <author>
+    <name>Adan Condori C.</name>
+    <uri>http://localhost:4000</uri>
+    <email>adan.condoric@gmail.com</email>
+  </author>
+  <content type="html">&lt;p&gt;&lt;strong&gt;Objetivo:&lt;/strong&gt; El objetivo de este artículo es explorar la aplicación de los principios de código limpio del libro “Clean Code” de Robert C. Martin en ejemplos concretos. Esto promoverá la comprensión y la práctica de las buenas prácticas de programación, resaltando la importancia de escribir código limpio y mantenible en el desarrollo de software.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Introducción:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;El desarrollo de software es una disciplina en constante evolución, y uno de los desafíos clave es escribir código que sea fácil de entender, mantener y mejorar con el tiempo. El libro “Clean Code” de Robert C. Martin proporciona una guía invaluable sobre cómo lograr esto. En este artículo, exploraremos varios conceptos claves del libro y los ilustraremos con ejemplos prácticos. También destacaremos una cita relevante de cada concepto para enriquecer nuestra comprensión.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Concepto 1: Nombres Significativos&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Definición:&lt;/strong&gt; Los nombres de variables, funciones y clases deben ser descriptivos y significativos. Los nombres deben comunicar claramente la intención del código y el propósito de la entidad nombrada.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Resultado:&lt;/strong&gt; Facilita la comprensión del código, reduce la necesidad de comentarios excesivos y mejora la mantenibilidad.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ejemplo Práctico:&lt;/strong&gt; Supongamos que estamos escribiendo una función en Python para calcular el promedio de una lista de números:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;calcular_promedio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lista_de_numeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;suma&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lista_de_numeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;cantidad&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lista_de_numeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;promedio&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;suma&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cantidad&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;promedio&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Explicación:&lt;/strong&gt; Los nombres de variables como &lt;code class=&quot;highlighter-rouge&quot;&gt;suma&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;cantidad&lt;/code&gt; y &lt;code class=&quot;highlighter-rouge&quot;&gt;promedio&lt;/code&gt; son descriptivos y comunican claramente su propósito en el cálculo del promedio.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cita Relevante:&lt;/strong&gt; “El nombre de una variable, función o clase debe revelar su intención” - “Clean Code”&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Concepto 2: Funciones Pequeñas y Concisas&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Definición:&lt;/strong&gt; Las funciones deben ser cortas y hacer una sola cosa. Deben seguir el principio de “una función, una responsabilidad”.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Resultado:&lt;/strong&gt; Facilita la comprensión, promueve la reutilización y simplifica las pruebas.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ejemplo Práctico:&lt;/strong&gt; Consideremos una función en JavaScript que valida si una cadena es un número decimal:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;esNumeroDecimal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cadena&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;isNaN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cadena&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;parseFloat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cadena&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cadena&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Explicación:&lt;/strong&gt; La función &lt;code class=&quot;highlighter-rouge&quot;&gt;esNumeroDecimal&lt;/code&gt; es corta y se enfoca en una sola tarea: verificar si una cadena es un número decimal.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cita Relevante:&lt;/strong&gt; “Las funciones pequeñas son más fáciles de entender que las grandes” - “Clean Code”&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Concepto 3: Comentarios Significativos&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Definición:&lt;/strong&gt; Los comentarios deben utilizarse para explicar el “por qué” detrás del código, no el “cómo”. El código en sí mismo debe ser lo suficientemente claro como para no necesitar comentarios explicativos.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Resultado:&lt;/strong&gt; Evita la confusión, mantiene la documentación relevante y facilita las actualizaciones futuras.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ejemplo Práctico:&lt;/strong&gt; En un programa C++, explicamos por qué se utiliza un algoritmo específico para ordenar una lista de números:&lt;/p&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Utilizamos el algoritmo QuickSort porque es eficiente en listas de gran tamaño&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ordenarLista&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lista&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inicio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Implementación de QuickSort aquí&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Explicación:&lt;/strong&gt; El comentario explica la elección del algoritmo, lo que puede ser útil para los desarrolladores que trabajan en el código en el futuro.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cita Relevante:&lt;/strong&gt; “Los comentarios nunca compensan el código pobre” - “Clean Code”&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Concepto 4: Evitar la Repetición&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Definición:&lt;/strong&gt; El código duplicado (repetido) debe ser eliminado. Se debe buscar oportunidades para refactorizar y crear abstracciones que eviten la duplicación.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Resultado:&lt;/strong&gt; Reduce errores, facilita el mantenimiento y mejora la consistencia del código.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ejemplo Práctico:&lt;/strong&gt; Supongamos que estamos desarrollando un juego en Java y tenemos dos clases que tienen métodos similares para mover personajes:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Jugador&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;moverArriba&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Lógica para mover arriba&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;moverAbajo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Lógica para mover abajo&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Enemigo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;moverArriba&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Lógica para mover arriba&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;moverAbajo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Lógica para mover abajo&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Explicación:&lt;/strong&gt; Podríamos crear una clase base común para ambos, eliminando la duplicación de código.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cita Relevante:&lt;/strong&gt; “La duplicación puede dar lugar a errores sutiles y costosos” - “Clean Code”&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Conclusión:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;La aplicación de los principios de código limpio de “Clean Code” es esencial para crear software de calidad. Los conceptos de nombres significativos, funciones pequeñas y concisas, comentarios significativos y evitar la repetición son fundamentales para escribir código limpio y mantenible. Al seguir estos principios, los desarrolladores pueden mejorar la calidad de su código y facilitar la colaboración en proyectos de desarrollo de software. En última instancia, la búsqueda de la excelencia en la escritura de código es un objetivo que beneficia tanto a los desarrolladores como a los usuarios finales del software.&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/refactoring/clean-code-tips/&quot;&gt;Aplicando los Principios de Código Limpio de "Clean Code" en la Práctica&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://localhost:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on August 01, 2023.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>

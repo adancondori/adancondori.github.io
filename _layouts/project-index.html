@@ -48,7 +48,18 @@
           {% endif %}
 
           {{ project.content | markdownify }}
+          
+          {% if project.technologies %}
+            <strong>Technologies used</strong>
+            {{ project.technologies | markdownify }}
+          {% endif %}
 
+          <strong>{{ project.title-assistants }}</strong>
+          <dl>
+            {% for developer in project.developers %}
+              <dd>{{ developer.name }}</dd>
+            {% endfor %}
+          </dl>
           {% if project.github %}
             <i class="fa fa-git-square"></i>
             <a href="{{ project.github }}"><small>GitHub</small></a>&nbsp;
@@ -61,14 +72,6 @@
             <i class="fa fa-external-link-square"></i>
             <a href="{{ project.github }}"><small>Site</small></a>&nbsp;
           {% endif %}
-          
-          <h4>{{ project.title-assistants }}</h4>
-          <dl>
-            {% for developer in project.developers %}
-              <dd>{{ developer.name }}</dd>
-            {% endfor %}
-          </dl>
-          
         </li>
         {% endfor %}
     </ul>

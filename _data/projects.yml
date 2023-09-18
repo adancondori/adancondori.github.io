@@ -1,3 +1,20 @@
+- title: QRADM
+  logo: qradm.jpg
+  docs: https://github.com/adancondori/QRADM
+  github: https://github.com/adancondori/QRADM
+  content: >
+    Aplicacion WEB y Mobile para la gestion de ingreso a eventos mediante QR.
+    Gestión para entrega de Objetos registrado por QR.
+    Gestion de puntuación a grupos por QR. <br>
+    Se utilizo infraestura como código con AWS los yml se encuentra en el mismo repo, se trabajo con SCRUM. <br>
+    WEB APP: https://github.com/adancondori/QRADM <br>
+    Mobile APP: https://github.com/adancondori/qradm-mobile <br>
+  technologies: AWS, Flutter, Ruby on Rails, HTML, CSS, JavaScript, Docker Compose.
+  title-assistants: Principal Developers
+  developers:
+    - name: Ing. Adan Condori Callisaya
+      link: ''
+
 - title: Entredely
   logo: entredely.png
   docs: https://entredely.com/
@@ -6,6 +23,7 @@
     Crea ordenes o pedidos y asígnalas a tus conductores con su aplicación móvil y todo de forma gratuita.
     Los conductores ahora reciben sus ordenes por entregar a través de notificaciones push a su aplicación.
     El proyecto contiene Frontend, Backend, App Movil.
+  technologies: AWS, Ruby on Rails, React js, Android Native, React Native, HTML, CSS, JavaScript, Docker Compose.
   title-assistants: Principal Developers
   developers:
     - name: Ing. Adan Condori Callisaya
@@ -21,6 +39,7 @@
     En esta Aplicación podrás encontrar una variedad de Cursos Bíblicos, que abordan diferentes temáticas, tales cómo; el Matrimonio, las Profecías y otros. Algunos de ellos incluso están elaborados para atender la necesidad de los jóvenes, adolescentes o niños.
     Por medio de esta herramienta podrás estudiar, descubrir y compartir de las grandes verdades que Dios tiene registradas en las Sagradas Escrituras. 
     Proyecto para Android, iOS, Panel Administrativo.
+  technologies: AWS, Ruby on Rails, React js, Android Native, IOS Swift, HTML, CSS, JavaScript, Docker Compose.
   title-assistants: Developer by
   developers:
     - name: Ing. Adan Condori Callisaya
@@ -36,7 +55,7 @@
     Jovenes con gran pasión en el Club de Conquistadores
     La presente aplicación contiene un buen número de especialidades la cual podras
     visualizar y compartir con tus amigos.
-    Proyecto para Android, Firebase.
+  technologies: Android Java Native, Firebase, Database Realtime, Auth.
   title-assistants: Developers
   developers:
     - name: Ing. Adan Condori Callisaya
@@ -52,6 +71,7 @@
     esta es una iniciativa de la Iglesia Adventista del Séptimo Día, 
     en la Misión del Oriente Boliviano.
     Proyecto para Android, Panel Administrativo.
+  technologies: Android Java Native.
   title-assistants: Developers
   developers:
     - name: Ing. Adan Condori Callisaya
@@ -66,6 +86,7 @@
   content: >
     Proyecto desarrolado para BCS BROKERS CORPORATIVOS DE SEGUROS S.R.L. el cual beneficia al mercado de seguros con una aplicación que ayudará a nuestros clientes a comunicarnos en los momentos más críticos en todos los casos de siniestros.
     Proyecto para Android.
+  technologies: Android Java Native, Fragment, Notification, Google Maps, Markers, Broadcast, Google Play Store.
   title-assistants: Developers
   developers:
     - name: Ing. Adan Condori Callisaya
