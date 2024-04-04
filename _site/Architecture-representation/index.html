@@ -1,4 +1,200 @@
-<h2 id="representación-de-arquitectura-de-software">Representación de Arquitectura de Software</h2>
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Representación de Arquitectura de Software &#8211; ADAN CONDORI</title>
+<meta name="description" content="
+Mis notas sobre Representación de Arquitectura de Software
+">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Representación de Arquitectura de Software">
+<meta name="twitter:description" content="
+Mis notas sobre Representación de Arquitectura de Software
+">
+<meta name="twitter:site" content="@AdanCondori">
+<meta name="twitter:creator" content="@AdanCondori">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://0.0.0.0:4000/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Representación de Arquitectura de Software">
+<meta property="og:description" content="
+Mis notas sobre Representación de Arquitectura de Software
+">
+<meta property="og:url" content="http://0.0.0.0:4000/Architecture-representation/">
+<meta property="og:site_name" content="ADAN CONDORI">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MS21XR0LRR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MS21XR0LRR');
+</script>
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TC6P38H');
+</script>
+  <!-- End Google Tag Manager -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-113648108-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-113648108-1');
+</script>
+-->
+
+
+
+
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/Architecture-representation/">
+<link href="http://0.0.0.0:4000/feed.xml" type="application/atom+xml" rel="alternate" title="ADAN CONDORI Feed">
+<link rel="author" href="http://plus.google.com/+AdanCondoriC?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://0.0.0.0:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://0.0.0.0:4000/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://0.0.0.0:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://0.0.0.0:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://0.0.0.0:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://0.0.0.0:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://0.0.0.0:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://0.0.0.0:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://0.0.0.0:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://0.0.0.0:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC6P38H"
+    height="0" width="0" style="display:none;visibility:hidden">
+</iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://0.0.0.0:4000">ADAN CONDORI</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+					    
+					    <li><a href="http://0.0.0.0:4000/posts/" >Posts</a></li>
+					  
+					    
+					    <li><a href="http://0.0.0.0:4000/code/" >My Projects</a></li>
+					  
+					    
+					    <li><a href="http://0.0.0.0:4000/pubs/" >My Publications</a></li>
+					  
+					    
+					    <li><a href="http://0.0.0.0:4000/cv/" >CV</a></li>
+					  
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    
+
+
+	<img src="http://0.0.0.0:4000/images/perfil-cv.jpeg" class="bio-photo" alt="Adan Condori C. bio photo">
+
+<h3>Adan Condori C.</h3>
+<p>Computer Engineer<br/> <a href="https://adancondori.github.io">Web Page</a></p>
+<a href="mailto:adan.condoric@gmail.com" class="author-social" target="_blank"><i class="fa fa-envelope-square"></i> Email</a>
+<a href="http://twitter.com/AdanCondori" class="author-social" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a>
+<a href="http://facebook.com/adan.condoric" class="author-social" target="_blank"><i class="fa fa-facebook-square"></i> Facebook</a>
+<a href="http://plus.google.com/+AdanCondoriC" class="author-social" target="_blank"><i class="fa fa-google-plus-square"></i> Google+</a>
+<a href="http://linkedin.com/in/adancondori" class="author-social" target="_blank"><i class="fa fa-linkedin-square"></i> LinkedIn</a>
+
+
+<a href="http://github.com/adancondori" class="author-social" target="_blank"><i class="fa fa-github"></i> Github</a>
+
+
+
+
+
+
+
+
+<a href="http://scholar.google.com/citations?user=adancondori" class="author-social" target="_blank"><i class="fa fa-graduation-cap"></i> Google Scholar</a>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="http://0.0.0.0:4000/Architecture-representation/" rel="bookmark" title="Representación de Arquitectura de Software">Representación de Arquitectura de Software</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <h2 id="representación-de-arquitectura-de-software">Representación de Arquitectura de Software</h2>
 
 <h2 id="resumen">Resumen</h2>
 
@@ -59,3 +255,60 @@
 
 <p>En este articulo he presentado mis investigaciones he ideas sobre las representaciones de una arquitectura de software. Cada una de estas características merece una discusión más larga y también hay otras características que no se mencionado.</p>
 
+
+      <hr />
+      <footer role="contentinfo">
+        <div class="article-author-bottom">
+          
+
+
+	<img src="http://0.0.0.0:4000/images/perfil-cv.jpeg" class="bio-photo" alt="Adan Condori C. bio photo">
+
+<h3>Adan Condori C.</h3>
+<p>Computer Engineer<br/> <a href="https://adancondori.github.io">Web Page</a></p>
+<a href="mailto:adan.condoric@gmail.com" class="author-social" target="_blank"><i class="fa fa-envelope-square"></i> Email</a>
+<a href="http://twitter.com/AdanCondori" class="author-social" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a>
+<a href="http://facebook.com/adan.condoric" class="author-social" target="_blank"><i class="fa fa-facebook-square"></i> Facebook</a>
+<a href="http://plus.google.com/+AdanCondoriC" class="author-social" target="_blank"><i class="fa fa-google-plus-square"></i> Google+</a>
+<a href="http://linkedin.com/in/adancondori" class="author-social" target="_blank"><i class="fa fa-linkedin-square"></i> LinkedIn</a>
+
+
+<a href="http://github.com/adancondori" class="author-social" target="_blank"><i class="fa fa-github"></i> Github</a>
+
+
+
+
+
+
+
+
+<a href="http://scholar.google.com/citations?user=adancondori" class="author-social" target="_blank"><i class="fa fa-graduation-cap"></i> Google Scholar</a>
+
+        </div>
+        <p class="byline">
+          Published <time datetime="2021-07-06T15:23:53+00:00">July 06, 2021</time>.</p>
+      </footer>
+    </div><!-- /.article-wrap -->
+  
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  
+
+  <footer>
+    
+
+<span>&copy; 2024 Adan Condori C.. Powered by <a href="#">Adan Condori C.</a> using the <a href="http://mademistakes.com/minimal-mistakes/">Minimal Mistakes</a> theme.</span>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://0.0.0.0:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://0.0.0.0:4000/assets/js/scripts.min.js"></script>
+
+
+
+</body>
+</html>

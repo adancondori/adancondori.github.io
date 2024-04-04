@@ -3,10 +3,8 @@
   docs: https://github.com/adancondori/QRADM
   github: https://github.com/adancondori/QRADM
   content: >
-    Aplicacion WEB y Mobile para la gestion de ingreso a eventos mediante QR.
-    Gestión para entrega de Objetos registrado por QR.
-    Gestion de puntuación a grupos por QR. <br>
-    Se utilizo infraestura como código con AWS los yml se encuentra en el mismo repo, se trabajo con SCRUM. <br>
+    WEB and Mobile application for the management of event entry through QR. Management for delivery of objects registered by QR. Management of score to groups by QR.
+    Infrastructure was used as code with AWS yml is in the same repo, working with SCRUM.<br>
     WEB APP: https://github.com/adancondori/QRADM <br>
     Mobile APP: https://github.com/adancondori/qradm-mobile <br>
   technologies: AWS, Flutter, Ruby on Rails, HTML, CSS, JavaScript, Docker Compose.
@@ -20,15 +18,11 @@
   docs: https://entredely.com/
   github: https://entredely.com/
   content: >
-    Crea ordenes o pedidos y asígnalas a tus conductores con su aplicación móvil y todo de forma gratuita.
-    Los conductores ahora reciben sus ordenes por entregar a través de notificaciones push a su aplicación.
-    El proyecto contiene Frontend, Backend, App Movil.
+    Create orders and assign them to your drivers with your mobile app, all for free. Drivers now receive their orders to be delivered via push notifications to your app. The project contains Frontend, Backend, Mobile App.
   technologies: AWS, Ruby on Rails, React js, Android Native, React Native, HTML, CSS, JavaScript, Docker Compose.
   title-assistants: Principal Developers
   developers:
     - name: Ing. Adan Condori Callisaya
-      link: ''
-    - name: Ing. Darlyn Bravo Peña
       link: ''
 
 - title: Escuela Bíblica Virtual
@@ -36,9 +30,7 @@
   docs: http://escuelabiblicavirtual.org.bo/
   github: https://play.google.com/store/apps/details?id=org.ub.virtualbibleschool
   content: >
-    En esta Aplicación podrás encontrar una variedad de Cursos Bíblicos, que abordan diferentes temáticas, tales cómo; el Matrimonio, las Profecías y otros. Algunos de ellos incluso están elaborados para atender la necesidad de los jóvenes, adolescentes o niños.
-    Por medio de esta herramienta podrás estudiar, descubrir y compartir de las grandes verdades que Dios tiene registradas en las Sagradas Escrituras. 
-    Proyecto para Android, iOS, Panel Administrativo.
+    In this Application you can find a variety of Bible Courses, which address different topics, such as; Marriage, Prophecies and others. Some of them are even elaborated to meet the needs of young people, teenagers or children. Through this tool you can study, discover and share the great truths that God has recorded in the Holy Scriptures. Project for Android, iOS, Administrative Panel.
   technologies: AWS, Ruby on Rails, React js, Android Native, IOS Swift, HTML, CSS, JavaScript, Docker Compose.
   title-assistants: Developer by
   developers:

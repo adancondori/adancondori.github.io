@@ -1,3 +1,26 @@
+---
+
+layout: post
+
+title: "Representación de Arquitectura de Software"
+
+modified:
+
+categories:
+
+excerpt: >
+
+ Mis notas sobre Representación de Arquitectura de Software
+
+tags: []
+
+image:
+
+feature:
+
+date: 2021-07-06T08:23:53-07:00
+
+---
 ## Representación de Arquitectura de Software
 
 

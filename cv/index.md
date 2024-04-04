@@ -9,7 +9,8 @@ image:
   feature: banners/mac-pro_adan.jpg
 ---
 
-<i class="fa fa-file-pdf-o"></i> [Download CV](adan-cv.pdf)
+<i class="fa fa-file-pdf-o"> Click </i> **[Download CV](cv-adancc.pdf){:target="_blank"}**
+
 
 ### Short Bio
 Adan is a computer engineer graduated from the Gabriel Rene Moreno Autonomo University, as a person Adan have a great passion for the development of applications, using patterns of designs and guided by some methodology of software development, for long time working I acquired greater dexterity in web development.
@@ -17,3 +18,4 @@ Adan like to take on challenges as well as experimenting with new technologies s
 
 Adan currently works at [NETACTICA](https://www.linkedin.com/company/netactica/mycompany/) in Colombia as a technical leader, he previously worked at [Banco Fassil S.A.](https://www.fassil.com.bo/) in Bolivia as a Head of Technology Development. 
 
+![Planificacion](/images/cv/cv-adan.jpg)

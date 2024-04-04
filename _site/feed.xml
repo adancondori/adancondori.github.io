@@ -2,26 +2,144 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">ADAN CONDORI</title>
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
-<link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2023-09-17T19:26:53-04:00</updated>
-<id>http://localhost:4000/</id>
+<link rel="self" type="application/atom+xml" href="http://0.0.0.0:4000/feed.xml" />
+<link rel="alternate" type="text/html" href="http://0.0.0.0:4000" />
+<updated>2024-04-04T04:56:39+00:00</updated>
+<id>http://0.0.0.0:4000/</id>
 <author>
   <name>Adan Condori C.</name>
-  <uri>http://localhost:4000/</uri>
+  <uri>http://0.0.0.0:4000/</uri>
   <email>adan.condoric@gmail.com</email>
 </author>
 
 
 <entry>
-  <title type="html"><![CDATA[Aplicando los Principios de Código Limpio de "Clean Code" en la Práctica]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/refactoring/clean-code-tips/" />
-  <id>http://localhost:4000/refactoring/clean-code-tips</id>
-  <published>2023-08-01T11:12:53-04:00</published>
-  <updated>2023-08-01T11:12:53-04:00</updated>
+  <title type="html"><![CDATA[🚀 ¡Migra tu infraestructura de IBM a AWS con éxito! 🚀]]></title>
+  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/aws,/ibm,/cloud/migration-ibm-aws/" />
+  <id>http://0.0.0.0:4000/aws,/ibm,/cloud/migration-ibm-aws</id>
+  <published>2023-12-24T15:12:53+00:00</published>
+  <updated>2023-12-24T15:12:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://localhost:4000</uri>
+    <uri>http://0.0.0.0:4000</uri>
+    <email>adan.condoric@gmail.com</email>
+  </author>
+  <content type="html">&lt;p&gt;&lt;strong&gt;Contexto:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;En un mundo empresarial cada vez más digitalizado, la migración de infraestructuras de TI hacia entornos en la nube se ha convertido en un imperativo para muchas organizaciones. 
+En este Post te comparto mi experiencia el proceso de migración, como comprenderas este proceso es extenso largo pero tratare de resumir colocando los pasos mas importantes. 
+En esta transición de la infraestructura entre Clouds como IBM a AWS las empresas que buscan optimizar sus operaciones, mejorar la escalabilidad y la agilidad, así como reducir costos.&lt;/p&gt;
+
+&lt;p&gt;Aquí tienes una lista de 5 tipos de migración que se pueden aplicar en el contexto de la migración de infraestructura de TI:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Clonado:&lt;/strong&gt; Consiste en duplicar exactamente la configuración y los datos de una infraestructura en un nuevo entorno, como una copia idéntica de un servidor o una base de datos.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Rehosting (o Lift and Shift):&lt;/strong&gt; Esta estrategia implica mover las aplicaciones y los datos de un entorno de origen a un entorno de destino sin realizar cambios significativos en la arquitectura o el código. Es útil para migrar rápidamente aplicaciones existentes a la nube con mínima modificación.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Replatforming (o Lift, Tinker, and Shift):&lt;/strong&gt; En esta estrategia, las aplicaciones se ajustan ligeramente para aprovechar las características específicas del entorno de destino, como la optimización de recursos o la adopción de servicios administrados, sin una reconstrucción completa.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Refactoring (o Re-Architecting):&lt;/strong&gt; Implica reescribir o modificar significativamente las aplicaciones existentes para aprovechar al máximo las características y servicios nativos de la nube, lo que puede resultar en mejoras significativas en la eficiencia, escalabilidad y mantenibilidad.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Repurchasing (o Rebuy):&lt;/strong&gt; Esta estrategia implica reemplazar aplicaciones existentes con soluciones de software como servicio (SaaS) o comprar nuevas soluciones que satisfagan las necesidades de la organización, a menudo eliminando la necesidad de migración de datos.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Requerimiento:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Buenos en este Post usaremos &lt;strong&gt;Migración Clonado&lt;/strong&gt; con la herramienta &lt;a href=&quot;https://docs.aws.amazon.com/mgn/latest/ug/what-is-application-migration-service.html&quot;&gt;MGN&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Antes de empesar con la migracion se requiere hacer relevamientos necesarios aqui te muestro algunos puntos tecnicos importantes.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Diagrama de arquitectura actualizado (con los nombres de los recursos)&lt;/li&gt;
+  &lt;li&gt;Accesos a la cuentas Cloud&lt;/li&gt;
+  &lt;li&gt;Obtener el inventario de versiones de sistema operativo, binarios, lenguaje de programación.&lt;/li&gt;
+  &lt;li&gt;Mapeo de dominios y subdomionios&lt;/li&gt;
+  &lt;li&gt;Diagnosticar el impacto de la migración de dominios&lt;/li&gt;
+  &lt;li&gt;Obtener volumetría de datos en Bases de Datos&lt;/li&gt;
+  &lt;li&gt;Planificación&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ejemplo de Planificacion
+&lt;img src=&quot;/images/post/awsmgn/image.png&quot; alt=&quot;Planificacion&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Proceso Técnico:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;La migración técnica de la infraestructura de IBM a AWS implica una serie de pasos cruciales:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/post/awsmgn/architecture.png&quot; alt=&quot;arquitecture&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Evaluación de la infraestructura existente:&lt;/strong&gt; Comienza con un análisis exhaustivo de la infraestructura de TI actual en IBM, identificando servidores, bases de datos, aplicaciones y otros recursos que necesitan ser migrados.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Selección de servicios equivalentes en AWS:&lt;/strong&gt; Identifica los servicios de AWS que mejor se ajustan a las necesidades de la empresa, como EC2 para servidores virtuales, RDS para bases de datos y S3 para almacenamiento.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Planificación de la migración:&lt;/strong&gt; Desarrolla un plan detallado que incluya fechas de inicio y finalización, recursos necesarios, requisitos de seguridad y estrategias de respaldo y recuperación.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Configuración de la infraestructura en AWS:&lt;/strong&gt; Configura los recursos necesarios en AWS, como instancias EC2, bases de datos RDS, grupos de seguridad y otros servicios relevantes.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Migración de datos:&lt;/strong&gt; Transfiere los datos de los sistemas en IBM a AWS, incluyendo bases de datos, archivos y aplicaciones críticas.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Pruebas y optimización:&lt;/strong&gt; Realiza pruebas exhaustivas para garantizar que todos los sistemas funcionen correctamente en el entorno de AWS. Esto incluye pruebas de rendimiento, seguridad y continuidad del negocio.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Implementación:&lt;/strong&gt; Despliega los sistemas en producción y asegúrate de que estén funcionando correctamente. Proporciona soporte continuo para abordar cualquier problema que pueda surgir durante la transición.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Proceso Comercial:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;La migración de IBM a AWS también requiere una cuidadosa consideración de los aspectos comerciales:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Identificación de necesidades comerciales:&lt;/strong&gt; Comprende los objetivos y necesidades comerciales de la organización para garantizar que la migración a AWS esté alineada con la estrategia general de la empresa.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Análisis de costos:&lt;/strong&gt; Realiza un análisis detallado de los costos asociados con la migración a AWS, incluyendo infraestructura, licencias de software, servicios profesionales y otros gastos relacionados.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Desarrollo de un caso de negocio:&lt;/strong&gt; Utiliza los resultados del análisis de costos para desarrollar un caso de negocio convincente que demuestre los beneficios de migrar a AWS, como ahorros en costos operativos y mejoras en la escalabilidad y la disponibilidad.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Negociación con AWS:&lt;/strong&gt; Negocia los términos y condiciones del acuerdo con AWS, incluyendo precios, niveles de servicio y compromisos de uso.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Planificación de la transición:&lt;/strong&gt; Desarrolla un plan detallado para la transición de IBM a AWS, teniendo en cuenta los requisitos comerciales y técnicos de la empresa.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Comunicación y capacitación:&lt;/strong&gt; Comunica los detalles de la migración a todas las partes interesadas y proporciona capacitación adecuada sobre cómo utilizar los servicios de AWS.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Conclusiones:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;La migración de la infraestructura de IBM a AWS es un proceso complejo que requiere una cuidadosa planificación y ejecución. Sin embargo, con una estrategia bien definida y la colaboración adecuada entre los equipos técnicos y comerciales, las empresas pueden lograr una transición exitosa hacia la nube. Al migrar a AWS, las organizaciones pueden beneficiarse de una mayor flexibilidad, escalabilidad y agilidad, allanando el camino hacia la innovación y el crecimiento empresarial en el futuro digital.&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/aws,/ibm,/cloud/migration-ibm-aws/&quot;&gt;🚀 ¡Migra tu infraestructura de IBM a AWS con éxito! 🚀&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on December 24, 2023.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Aplicando los Principios de Código Limpio de "Clean Code" en la Práctica]]></title>
+  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/refactoring/clean-code-tips/" />
+  <id>http://0.0.0.0:4000/refactoring/clean-code-tips</id>
+  <published>2023-08-01T15:12:53+00:00</published>
+  <updated>2023-08-01T15:12:53+00:00</updated>
+  <author>
+    <name>Adan Condori C.</name>
+    <uri>http://0.0.0.0:4000</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;&lt;strong&gt;Objetivo:&lt;/strong&gt; El objetivo de este artículo es explorar la aplicación de los principios de código limpio del libro “Clean Code” de Robert C. Martin en ejemplos concretos. Esto promoverá la comprensión y la práctica de las buenas prácticas de programación, resaltando la importancia de escribir código limpio y mantenible en el desarrollo de software.&lt;/p&gt;
@@ -120,19 +238,19 @@
 &lt;p&gt;La aplicación de los principios de código limpio de “Clean Code” es esencial para crear software de calidad. Los conceptos de nombres significativos, funciones pequeñas y concisas, comentarios significativos y evitar la repetición son fundamentales para escribir código limpio y mantenible. Al seguir estos principios, los desarrolladores pueden mejorar la calidad de su código y facilitar la colaboración en proyectos de desarrollo de software. En última instancia, la búsqueda de la excelencia en la escritura de código es un objetivo que beneficia tanto a los desarrolladores como a los usuarios finales del software.&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/refactoring/clean-code-tips/&quot;&gt;Aplicando los Principios de Código Limpio de "Clean Code" en la Práctica&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://localhost:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on August 01, 2023.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/refactoring/clean-code-tips/&quot;&gt;Aplicando los Principios de Código Limpio de "Clean Code" en la Práctica&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on August 01, 2023.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
-  <title type="html"><![CDATA[Architecture Representation]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/Architecture-representation/" />
-  <id>http://localhost:4000/Architecture-representation</id>
-  <published>2021-07-06T00:00:00-04:00</published>
-  <updated>2021-07-06T00:00:00-04:00</updated>
+  <title type="html"><![CDATA[Representación de Arquitectura de Software]]></title>
+  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/Architecture-representation/" />
+  <id>http://0.0.0.0:4000/Architecture-representation</id>
+  <published>2021-07-06T15:23:53+00:00</published>
+  <updated>2021-07-06T15:23:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://localhost:4000</uri>
+    <uri>http://0.0.0.0:4000</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;h2 id=&quot;representación-de-arquitectura-de-software&quot;&gt;Representación de Arquitectura de Software&lt;/h2&gt;
@@ -197,20 +315,20 @@
 &lt;p&gt;En este articulo he presentado mis investigaciones he ideas sobre las representaciones de una arquitectura de software. Cada una de estas características merece una discusión más larga y también hay otras características que no se mencionado.&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/Architecture-representation/&quot;&gt;Architecture Representation&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://localhost:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on July 06, 2021.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/Architecture-representation/&quot;&gt;Representación de Arquitectura de Software&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on July 06, 2021.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Summary About: 
  Success Skills for Architects with Neil Ford - Spanish]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/Success-Skills-for-Architects/" />
-  <id>http://localhost:4000/Success-Skills-for-Architects</id>
-  <published>2021-06-15T11:08:53-04:00</published>
-  <updated>2021-06-15T11:08:53-04:00</updated>
+  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/Success-Skills-for-Architects/" />
+  <id>http://0.0.0.0:4000/Success-Skills-for-Architects</id>
+  <published>2021-06-15T15:08:53+00:00</published>
+  <updated>2021-06-15T15:08:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://localhost:4000</uri>
+    <uri>http://0.0.0.0:4000</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;This article was extracted from &lt;a href=&quot;http://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford/&quot;&gt;Potcast Episode 287 for Neil Ford&lt;/a&gt;.&lt;/p&gt;
@@ -259,21 +377,21 @@
   &lt;li&gt;Success Skills for Architects with Neil Ford page https://www.se-radio.net/se-radio-episode-287-success-skills-for-architects-with-neil-ford/&lt;/li&gt;
 &lt;/ul&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/Success-Skills-for-Architects/&quot;&gt;Summary About: 
- Success Skills for Architects with Neil Ford - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://localhost:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on June 15, 2021.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/Success-Skills-for-Architects/&quot;&gt;Summary About: 
+ Success Skills for Architects with Neil Ford - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on June 15, 2021.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Summary About: 
  Success Skills for Architects with Neil Ford - English]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/Success-Skills-for-Architects-English/" />
-  <id>http://localhost:4000/Success-Skills-for-Architects-English</id>
-  <published>2021-06-15T11:08:53-04:00</published>
-  <updated>2021-06-15T11:08:53-04:00</updated>
+  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/Success-Skills-for-Architects-English/" />
+  <id>http://0.0.0.0:4000/Success-Skills-for-Architects-English</id>
+  <published>2021-06-15T15:08:53+00:00</published>
+  <updated>2021-06-15T15:08:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://localhost:4000</uri>
+    <uri>http://0.0.0.0:4000</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;This article was extracted from &lt;a href=&quot;http://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford/&quot;&gt;Potcast Episode 287 for Neil Ford&lt;/a&gt;.&lt;/p&gt;
@@ -322,20 +440,20 @@
   &lt;li&gt;Success Skills for Architects with Neil Ford page https://www.se-radio.net/se-radio-episode-287-success-skills-for-architects-with-neil-ford/&lt;/li&gt;
 &lt;/ul&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/Success-Skills-for-Architects-English/&quot;&gt;Summary About: 
- Success Skills for Architects with Neil Ford - English&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://localhost:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on June 15, 2021.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/Success-Skills-for-Architects-English/&quot;&gt;Summary About: 
+ Success Skills for Architects with Neil Ford - English&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on June 15, 2021.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Una buena Arquitectura de Software - Spanish]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/a-good-architecture/" />
-  <id>http://localhost:4000/a-good-architecture</id>
-  <published>2021-05-29T11:23:53-04:00</published>
-  <updated>2021-05-29T11:23:53-04:00</updated>
+  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/a-good-architecture/" />
+  <id>http://0.0.0.0:4000/a-good-architecture</id>
+  <published>2021-05-29T15:23:53+00:00</published>
+  <updated>2021-05-29T15:23:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://localhost:4000</uri>
+    <uri>http://0.0.0.0:4000</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;h1 id=&quot;a-good-software-architecture&quot;&gt;A good Software Architecture&lt;/h1&gt;
@@ -433,19 +551,19 @@
 &lt;p&gt;La arquitectura de software que diseñes siempre debe estar enfocada a lo que necesita el cliente, en entender que es lo que nuestro software va a trabajar y cómo lo va a hacer. Pudiendo ser capaces de conocer los pro y contras de cada opción que tomemos desde antes de empezar a codificar.&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/a-good-architecture/&quot;&gt;Una buena Arquitectura de Software - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://localhost:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on May 29, 2021.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/a-good-architecture/&quot;&gt;Una buena Arquitectura de Software - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on May 29, 2021.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Notes Linux]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/Linux-basic/" />
-  <id>http://localhost:4000/Linux-basic</id>
-  <published>2021-04-29T11:23:53-04:00</published>
-  <updated>2021-04-29T11:23:53-04:00</updated>
+  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/Linux-basic/" />
+  <id>http://0.0.0.0:4000/Linux-basic</id>
+  <published>2021-04-29T15:23:53+00:00</published>
+  <updated>2021-04-29T15:23:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://localhost:4000</uri>
+    <uri>http://0.0.0.0:4000</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;h1 id=&quot;notes-linux-command-spanish---building&quot;&gt;Notes Linux Command (Spanish) - Building…..&lt;/h1&gt;
@@ -631,19 +749,19 @@ El B solo se va ejecutar si el A se ejecuta exitosamente, y el C solo se va ejec
   &lt;li&gt;https://ndpsoftware.com/git-cheatsheet.html#loc=remote_repo&lt;/li&gt;
 &lt;/ul&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/Linux-basic/&quot;&gt;Notes Linux&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://localhost:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on April 29, 2021.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/Linux-basic/&quot;&gt;Notes Linux&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on April 29, 2021.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Notes Git - Spanish]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/notes-git/" />
-  <id>http://localhost:4000/notes-git</id>
-  <published>2021-04-29T11:23:53-04:00</published>
-  <updated>2021-04-29T11:23:53-04:00</updated>
+  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/notes-git/" />
+  <id>http://0.0.0.0:4000/notes-git</id>
+  <published>2021-04-29T15:23:53+00:00</published>
+  <updated>2021-04-29T15:23:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://localhost:4000</uri>
+    <uri>http://0.0.0.0:4000</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;h1 id=&quot;notes-git-spanish&quot;&gt;Notes Git (Spanish)&lt;/h1&gt;
@@ -785,7 +903,7 @@ todos los commits.&lt;/li&gt;
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone 
 &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;go-directore
 git branch &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; // To see a list of the different branches
-git branch &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;\-&amp;gt;&apos;&lt;/span&gt; | &lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;read &lt;/span&gt;remote&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;git branch &lt;span class=&quot;nt&quot;&gt;--track&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;remote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;#origin/&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$remote&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;done
+git branch &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'\-&amp;gt;'&lt;/span&gt; | &lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;read &lt;/span&gt;remote&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;git branch &lt;span class=&quot;nt&quot;&gt;--track&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;remote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;#origin/&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$remote&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;done
 &lt;/span&gt;git fetch &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;
 git pull &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;
 git remote &lt;span class=&quot;nb&quot;&gt;rm &lt;/span&gt;origin
@@ -823,19 +941,19 @@ git push &lt;span class=&quot;nt&quot;&gt;--tags&lt;/span&gt;
   &lt;li&gt;https://ndpsoftware.com/git-cheatsheet.html#loc=remote_repo&lt;/li&gt;
 &lt;/ul&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/notes-git/&quot;&gt;Notes Git - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://localhost:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on April 29, 2021.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/notes-git/&quot;&gt;Notes Git - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on April 29, 2021.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[¿What is Software Design? - Spanish]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/software-design/" />
-  <id>http://localhost:4000/software-design</id>
-  <published>2020-10-21T02:23:53-04:00</published>
-  <updated>2020-10-21T02:23:53-04:00</updated>
+  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/software-design/" />
+  <id>http://0.0.0.0:4000/software-design</id>
+  <published>2020-10-21T06:23:53+00:00</published>
+  <updated>2020-10-21T06:23:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://localhost:4000</uri>
+    <uri>http://0.0.0.0:4000</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;h3 id=&quot;qué-es-diseño-de--de-software&quot;&gt;¿Qué es Diseño de  de Software?&lt;/h3&gt;
@@ -873,19 +991,19 @@ git push &lt;span class=&quot;nt&quot;&gt;--tags&lt;/span&gt;
 &lt;p&gt;https://www.monografias.com/trabajos73/diseno-software/diseno-software.shtml&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/software-design/&quot;&gt;¿What is Software Design? - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://localhost:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on October 21, 2020.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/software-design/&quot;&gt;¿What is Software Design? - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on October 21, 2020.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Desing Patterns - Spanish]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/desing-patterns/" />
-  <id>http://localhost:4000/desing-patterns</id>
-  <published>2020-10-16T02:23:53-04:00</published>
-  <updated>2020-10-16T02:23:53-04:00</updated>
+  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/desing-patterns/" />
+  <id>http://0.0.0.0:4000/desing-patterns</id>
+  <published>2020-10-16T06:23:53+00:00</published>
+  <updated>2020-10-16T06:23:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://localhost:4000</uri>
+    <uri>http://0.0.0.0:4000</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;h2 id=&quot;patrones-de-diseño-desing-patern&quot;&gt;Patrones de Diseño (Desing Patern)&lt;/h2&gt;
@@ -904,19 +1022,19 @@ git push &lt;span class=&quot;nt&quot;&gt;--tags&lt;/span&gt;
 
 &lt;p&gt;&lt;strong&gt;Los patrones de diseño nos ayudan a cumplir muchos de estos principios o reglas de diseño&lt;/strong&gt;. Programación &lt;a href=&quot;https://www.genbetadev.com/paradigmas-de-programacion/solid-cinco-principios-basicos-de-diseno-de-clases&quot;&gt;SOLID&lt;/a&gt;, control de cohesión y acoplamiento o reutilización de código son algunos de los beneficios que podemos conseguir al utilizar patrones.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/desing-patterns/&quot;&gt;Desing Patterns - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://localhost:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on October 16, 2020.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/desing-patterns/&quot;&gt;Desing Patterns - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on October 16, 2020.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Kotlin vs Java  - Spanish]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/android-vs-kotlin/" />
-  <id>http://localhost:4000/android-vs-kotlin</id>
-  <published>2019-12-05T22:23:53-04:00</published>
-  <updated>2019-12-05T22:23:53-04:00</updated>
+  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/android-vs-kotlin/" />
+  <id>http://0.0.0.0:4000/android-vs-kotlin</id>
+  <published>2019-12-06T02:23:53+00:00</published>
+  <updated>2019-12-06T02:23:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://localhost:4000</uri>
+    <uri>http://0.0.0.0:4000</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;h2 id=&quot;kotlin-vs-java&quot;&gt;&lt;strong&gt;Kotlin vs Java&lt;/strong&gt;&lt;/h2&gt;
@@ -990,7 +1108,7 @@ git push &lt;span class=&quot;nt&quot;&gt;--tags&lt;/span&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/android-vs-kotlin/&quot;&gt;Kotlin vs Java  - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://localhost:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on December 05, 2019.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/android-vs-kotlin/&quot;&gt;Kotlin vs Java  - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on December 06, 2019.&lt;/p&gt;</content>
 </entry>
 
 </feed>
