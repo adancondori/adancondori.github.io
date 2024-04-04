@@ -2,15 +2,27 @@
   org: NETACTICA - Colombia
   startTime: 2021-11
   endTime: present
-  desc: Technical Leader / Web and Mobile Developer / Integration with payment gateway
-       <br/>Responsible for 1 and more teams.
+  desc: -Worked with IBM migration to AWS (EC2, RDS, S3, Cloud Formation, NAT, R53)<br/>
+        -Web Development with Ruby on Rails with React and Vue<br/>
+        -Development with Python, Scripts and Mappings.<br/>
+        -Mobile Application Development with Android and iOS (Swift/Obj-C)<br/>
+        -API Rest - SOA<br/>
+        -External integrations Payment Gateways,<br/>
+        -MySQL, SqlServer, Postgres<br/>
+        -Responsible for 1 and more teams.<br/>
 
 - title: Head of Technology Development
   org: Banco Fassil S.A. - Bolivia
   startTime: 2017-12
   endTime: 2021-10
-  desc: Developing Open Project, Android, iOS, Flutter, Python, C#, Php, and projetcs in Docker contains.
-       <br/>Responsible for 5 teams and defining the software architecture.
+  desc: Full stack developer<br/>
+        Analitics and Project Management.<br/>
+        People Management<br/>
+        Intermediate knowledge in cloud platforms such as Azure, with specific experience in Azure Repos, Pipelines, Artifacts, and Boards<br/>
+        Development of WEB .Net Applications.<br/>
+        Development of Mobile Applications IOS, Android.<br/>
+        SCRUM Master<br/>
+        Responsible for 5 teams and defining the software architecture.
 
 - title: Freelancer Developer
   org: Inside and outside of the country
