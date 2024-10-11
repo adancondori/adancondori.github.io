@@ -427,3 +427,68 @@ a {
         font-size: 13px;
     }
 }
+
+
+.listing .list-more-details {
+    // display: flex;
+}
+
+/* Estilos para el timeline de trabajos */
+.timeline {
+    position: relative;
+    margin: 2em 0;
+    padding: 0 0 2em 2em;
+    border-left: 2px solid rgba(0, 0, 0, 0.2); /* Línea del timeline */
+}
+
+.timeline .listing {
+    position: relative;
+    margin: 0 0 2em 2em;
+}
+
+.timeline .list-icon-custom {
+    position: absolute;
+    left: -2em;
+    top: 0;
+    width: 1em;
+    height: 1em;
+    background-color: #64696e;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.toggle-button {
+    background-color: #3a8379;
+    color: white;
+    border: none;
+    padding: 0.4em 0.8em;
+    cursor: pointer;
+    margin-top: 0.5em;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-button:hover {
+    background-color: #3d6f68;
+}
+
+/* Oculta la sección de detalles por defecto */
+.hidden {
+    display: none;
+}
+
+/* Estilo para cuando la sección está visible */
+.visible {
+    display: block;
+}
+
+/* Estilo de cursor para indicar que es clicable */
+.toggle-details {
+    cursor: pointer;
+    font-weight: bold;
+    color: #737b84;
+}
+
+.toggle-details:hover {
+    text-decoration: underline;
+}

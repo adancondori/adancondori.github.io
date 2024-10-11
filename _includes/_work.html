@@ -1,27 +1,52 @@
 <!-- work experience -->
-  <div class="category work">
-    <div class="cat-title">
-      <span class="cat-name">Jobs</span>
-      <span class="cat-head-line"></span>
-    </div>
-    <div class="cat-body">
+<div class="category work">
+  <div class="cat-title">
+    <span class="cat-name">Jobs</span>
+    <span class="cat-head-line"></span>
+  </div>
+  <div class="cat-body timeline">
 
     {% for w in site.data.work %}
-      <div class="listing">
-        <div class="list-icon"></div>
-        <div class="list-item">
-          <div class="title">{{ w.title }}</div>
-          <div class="item-with-time">
-            <span class="item">{{ w.org }}</span>
-            <span class="time">{{ w.startTime }}<span class="longdash"></span>{{ w.endTime }}</span>
-          </div>
-          <div class="list-more block">
-            {{ w.desc }}
-          </div>
+    <div class="listing">
+      <div class="list-icon-custom"></div>
+      <div class="list-item">
+        <div class="title toggle-details">
+          {{ w.title }}
         </div>
+        <div class="item-with-time">
+          <span class="item">{{ w.org }}</span>
+          <span class="time">{{ w.startTime }}<span class="longdash"></span>{{ w.endTime }}</span>
+        </div>
+        <div class="list-more-details  details hidden">
+          {{ w.desc }}
+        </div>
+        <button class="toggle-button" onclick="toggleDetails(this)">More...</button>
       </div>
+    </div>
     {% endfor %}
 
-    </div>
   </div>
+</div>
 <!-- end -->
+
+
+
+<!-- end -->
+<script>
+  function toggleDetails(button) {
+    // Seleccionar el div .list-more correspondiente al botón presionado
+    const details = button.parentElement.querySelector('.list-more-details');
+
+    if (details.classList.contains('hidden')) {
+      // Si está oculto, mostrarlo
+      details.classList.remove('hidden');
+      details.classList.add('visible');
+      button.textContent = 'Less...';
+    } else {
+      // Si está visible, ocultarlo
+      details.classList.remove('visible');
+      details.classList.add('hidden');
+      button.textContent = 'More...';
+    }
+  }
+</script>
