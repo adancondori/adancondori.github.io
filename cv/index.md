@@ -13,9 +13,15 @@ image:
 
 
 ### Short Bio
-Adan is a computer engineer graduated from the Gabriel Rene Moreno Autonomo University, as a person Adan have a great passion for the development of applications, using patterns of designs and guided by some methodology of software development, for long time working I acquired greater dexterity in web development.
-Adan like to take on challenges as well as experimenting with new technologies such as libraries, framework among others, since the proper use of them contributes to making high quality software in less time.
 
-Adan currently works at [NETACTICA](https://www.linkedin.com/company/netactica/mycompany/) in Colombia as a technical leader, he previously worked at [Banco Fassil S.A.](https://www.fassil.com.bo/) in Bolivia as a Head of Technology Development. 
+Adan Condori is a Computer Engineer graduated from the Gabriel René Moreno Autonomous University, with a strong passion for developing innovative and efficient software solutions. Guided by software design patterns and agile methodologies, Adan has honed his expertise in web development over years of hands-on experience, delivering high-quality applications tailored to user and business needs.
+
+He thrives on tackling challenges and exploring new technologies, including frameworks, libraries, and modern tools, leveraging them to create scalable, high-quality software efficiently.
+
+Adan completed a Master's in Strategic Management in Software Engineering and a Degree in Higher Education at the Gabriel René Moreno Autonomous University in Bolivia.
+
+He currently serves as a Full Stack Engineer at [Playbypoint (USA)](https://www.linkedin.com/company/playbypoint/posts/?feedView=all) .
 
 ![Planificacion](/images/cv/cv-adan.jpg)
+
+{% include _work.html %}

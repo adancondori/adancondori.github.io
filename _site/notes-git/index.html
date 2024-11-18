@@ -284,7 +284,7 @@ git push origin <span class="nt">--tags</span>
 <span class="c"># Borra Tags locales</span>
 git tag <span class="nt">-d</span> nametag
 <span class="c"># Borrar Tags de los repositorios remotos</span>
-git push origin :refs/tags/tagName 
+git push origin :refs/tags/tagName
 </code></pre></div></div>
 
 <p>Delete Tag</p>
@@ -330,7 +330,7 @@ todos los commits.</li>
 <h2 id="migrar-repositorio">Migrar repositorio</h2>
 <p>Mover contenido de repositorio Git a otro repositorio conservando el Historia</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone 
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone
 <span class="nb">cd </span>go-directore
 git branch <span class="nt">-a</span> // To see a list of the different branches
 git branch <span class="nt">-r</span> | <span class="nb">grep</span> <span class="nt">-v</span> <span class="s1">'\-&gt;'</span> | <span class="k">while </span><span class="nb">read </span>remote<span class="p">;</span> <span class="k">do </span>git branch <span class="nt">--track</span> <span class="s2">"</span><span class="k">${</span><span class="nv">remote</span><span class="p">#origin/</span><span class="k">}</span><span class="s2">"</span> <span class="s2">"</span><span class="nv">$remote</span><span class="s2">"</span><span class="p">;</span> <span class="k">done
@@ -341,6 +341,25 @@ git remote add origin &lt;url to NEW repo&gt;
 git push origin <span class="nt">--all</span>
 git push <span class="nt">--tags</span>
 
+</code></pre></div></div>
+
+<h2 id="creacion-de-alias">Creacion de Alias</h2>
+
+<p>Creando alias:</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git confing <span class="nt">--global</span> alias.&lt;<span class="nb">alias</span><span class="o">&gt;</span> <span class="s1">'&lt;texto&gt;'</span>
+</code></pre></div></div>
+<p>Por ejemplo:</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> alias.lod <span class="s1">'log --oneline --decorate --color'</span>
+git config <span class="nt">--global</span> alias.lodag <span class="s1">'log --oneline --decorate --all --graph'</span>
+</code></pre></div></div>
+<p>Listar alias:</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> <span class="nt">--get-regexp</span> <span class="nb">alias</span>
+</code></pre></div></div>
+<p>Eliminar un alias:</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> <span class="nt">--unset</span> alias.&lt;<span class="nb">alias</span><span class="o">&gt;</span>
+</code></pre></div></div>
+<p>Por ejemplo:</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> <span class="nt">--unset</span> alias.lodag
 </code></pre></div></div>
 
 <h2 id="more-command">More Command</h2>
