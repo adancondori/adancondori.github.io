@@ -1,7 +1,7 @@
 ---
 layout: post
 
-title: 🚀 ¡Seguridad en Transacciones 3DS! 🚀
+title: 🛡️🔒 ¡Seguridad en Transacciones 3DS! 🔒🛡️
 
 modified:
 
