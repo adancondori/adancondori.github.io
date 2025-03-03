@@ -7,13 +7,13 @@
     - Full Stack Web Development: Developed and deployed scalable web applications using modern front-end and back-end technologies.<br/>
     - Collaborative Projects: Worked in cross-functional teams to deliver software solutions that improved business operations.<br/>
     - Operational Improvements: Identified and implemented technological improvements to optimize processes and increase efficiency.<br/>
-    - Payment Solutions: Integrated multiple payment gateways like PayPal, Stripe, PayFast, GetNet and streamline transaction processes.<br/><br/>
+    - Payment Solutions: Integrated multiple payment gateways like PayPal, Stripe and streamline transaction processes.<br/><br/>
 
     <strong>Technical Skills:</strong><br/>
     - Ruby on Rails for web development.<br/>
     - React JS.<br/>
-    - Payment gateway integration.<br/>
-    - API development and management (REST and SOAP).<br/>
+    - Payment gateway integration (Stripe, BAC, OnePay, PayFast, GetNet and more....).<br/>
+    - API development and management (Api REST, GraphQl ).<br/>
     - AWS using services such as EC2, RDS, S3, CloudFormation, NAT, and Route 53.
 
 - title: University Professor

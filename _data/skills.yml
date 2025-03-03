@@ -1,22 +1,20 @@
 
 - title: Languages / Framework
   items:
-    - name: iOS Obj-C 
+    - name: Ruby / Ruby on Rails
       level: 4
-    - name: iOS Swift
+    - name: React Web / Native
+      level: 4
+    - name: IOS Obj-C / Swift
+      level: 4
+    - name: Android Java / Kotlin
       level: 4
     - name: Python / Anaconda
       level: 3
-    - name: Ruby / Ruby on Rails
-      level: 4
     - name: Dart / Flutter
       level: 4
-    - name: Java Web / Android Studio
-      level: 5
     - name: Node JS
       level: 1
-    - name: React Web / Native
-      level: 3
     - name: Vue.js
       level: 3
 
@@ -36,7 +34,7 @@
       level: 3
     - name: Jira
       level: 3
-    - name: Azure DevOps
+    - name: Azure Dev Ops
       level: 3
 
 - title: Data Base
@@ -52,9 +50,9 @@
 
 - title: Cloud Server
   items:
-    - name: AWS
+    - name: Amazon Web Services
       level: 3
-    - name: Azure DevOps
+    - name: Azure Dev Ops
       level: 4
     - name: Digital Ocean
       level: 2
@@ -62,5 +60,3 @@
       level: 2
     - name: IBM
       level: 3
-
-
