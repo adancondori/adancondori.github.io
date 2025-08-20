@@ -1,8 +1,8 @@
 ---
 layout: home
-title: About Me.
-tags: [home, about, Todd, Gamblin, homepage]
-modified: 2018-01-01T20:53:07.573882-04:00
+title: Senior Engineering Leader | 10+ Years Building Scalable Systems
+tags: [engineering leader, software architect, cloud solutions, fintech, payments]
+modified: 2025-08-20T20:53:07.573882-04:00
 comments: false
 image:
   feature: banners/mac-pro_adan.jpg

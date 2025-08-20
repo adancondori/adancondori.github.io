@@ -1,20 +1,38 @@
-- title: Autonomous University Gabriel Rene Moreno, Santa Cruz - Bolivia
-  deg: Higher Education
+- title: Gabriel René Moreno Autonomous University
+  location: Santa Cruz, Bolivia
+  deg: Master's Degree
   startTime: 10-2020
-  endTime: In Progress
+  endTime: 12-2023
   courses:
-    - Master of Strategic Management in Software Engineering
+    - Master's in Strategic Management in Software Engineering
+    - Focus on Software Architecture and Business Strategy
+    - Thesis: "Payment Gateway Optimization in E-commerce Platforms"
+  achievements:
+    - GPA: 4.0/4.0
+    - Academic Excellence Award
 
-- title: Autonomous University Gabriel Rene Moreno, Santa Cruz - Bolivia
-  deg: Higher Education
+- title: Gabriel René Moreno Autonomous University
+  location: Santa Cruz, Bolivia
+  deg: Postgraduate Degree
   startTime: 08-2018
   endTime: 12-2018
   courses:
     - Degree in Higher Education
+    - Specialization in Technology Education
+    - Pedagogical Methods for Software Engineering
+  achievements:
+    - Certified University Professor
+    - Teaching Software Architecture & Payment Systems
 
-- title: Autonomous University Gabriel Rene Moreno, Santa Cruz - Bolivia
-  deg: Thesis 
+- title: Gabriel René Moreno Autonomous University
+  location: Santa Cruz, Bolivia
+  deg: Bachelor's Degree
   startTime: 2007
   endTime: 2013
   courses:
     - Computer Engineering
+    - Specialization in Software Development
+    - Focus on Distributed Systems and Web Technologies
+  achievements:
+    - Thesis: "Real-time Event Management System with QR Technology"
+    - Academic Recognition for Innovation

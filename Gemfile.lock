@@ -75,6 +75,7 @@ GEM
 
 PLATFORMS
   aarch64-linux-musl
+  ruby
 
 DEPENDENCIES
   eventmachine (~> 1.2)
