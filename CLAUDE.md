@@ -22,10 +22,20 @@ docker logs adancondorigithubio-jekyll-1
 # Stop containers
 docker compose down
 
+# Rebuild after changes
+docker compose build --no-cache
+
 # Site will be available at http://localhost:4000
+# LiveReload available at http://localhost:35729
 ```
 
-**Note**: The Dockerfile uses Ruby 2.7 and installs Jekyll within the container. There may be platform compatibility issues (linux/amd64 vs linux/arm64).
+**Stack**: Ruby 3.3 Alpine, Jekyll 4.3.4, Node.js 22
+**Features**: Live reload enabled, optimized caching with Docker volumes
+
+**URL Configuration**: 
+- Development uses `_config.dev.yml` which sets `url: ""` for relative URLs
+- Production (GitHub Pages) uses only `_config.yml` with `url: https://adancondori.github.io`
+- This ensures links work correctly in both environments
 
 ### Local Development without Docker
 ```bash
@@ -119,12 +129,15 @@ grunt
 
 ### Dependencies
 - **Ruby Gems** (Gemfile):
-  - jekyll: Static site generator
-  - jekyll-sitemap: SEO sitemap generation
-  - octopress: Additional Jekyll tools
-  - webrick: Web server for Ruby 3+
-- **Node Packages** (package.json):
-  - Grunt and various plugins for asset optimization
+  - jekyll ~> 4.3.4: Static site generator (latest stable)
+  - jekyll-sitemap ~> 1.4: SEO sitemap generation
+  - jekyll-feed ~> 0.17: RSS/Atom feed generation
+  - jekyll-seo-tag ~> 2.8: SEO meta tags
+  - jekyll-paginate ~> 1.1: Pagination support
+  - jekyll-include-cache ~> 0.2: Performance optimization
+  - webrick ~> 1.8: Web server for Ruby 3+
+  - eventmachine ~> 1.2: Event-driven I/O for live reload
+- **Node.js**: Minimal setup, no longer using Grunt (simplified build process)
 
 ### Content Management
 - Blog posts must follow Jekyll front matter format:

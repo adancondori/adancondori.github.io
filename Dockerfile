@@ -1,24 +1,39 @@
-# Utilizamos una imagen base de Ruby
-FROM ruby:2.7
+# Use Ruby 3.3 Alpine for smaller image size and better security
+FROM ruby:3.3-alpine
 
-# Instalamos las dependencias necesarias para Jekyll
-RUN apt-get update -qq && apt-get install -y nodejs
+# Install dependencies for Jekyll and native extensions
+RUN apk add --no-cache \
+    build-base \
+    git \
+    nodejs \
+    npm \
+    libffi-dev \
+    libxml2-dev \
+    libxslt-dev
 
-# Directorio de trabajo dentro del contenedor
+# Set working directory
 WORKDIR /app
 
-# Copiamos el Gemfile y Gemfile.lock
-COPY Gemfile /app/Gemfile
-COPY Gemfile.lock /app/Gemfile.lock
+# Copy Gemfile first
+COPY Gemfile ./
 
-# Instalamos las gemas, incluyendo Jekyll
-RUN bundle install
+# Create empty Gemfile.lock if it doesn't exist
+RUN touch Gemfile.lock
 
-# Copiamos el resto del proyecto al directorio de trabajo
-COPY . /app
+# Install Ruby dependencies
+RUN bundle install --jobs 4 --retry 3
 
-# Exponemos el puerto 4000, que es el puerto por defecto de Jekyll
+# Copy package.json for Node dependencies (if needed)
+COPY package*.json ./
+
+# Install Node dependencies (if package-lock.json exists, otherwise skip)
+RUN if [ -f "package-lock.json" ]; then npm ci; elif [ -f "package.json" ]; then npm install; fi
+
+# Copy the rest of the application
+COPY . .
+
+# Expose Jekyll default port
 EXPOSE 4000
 
-# Comando para iniciar Jekyll
-CMD ["jekyll", "serve", "--host", "0.0.0.0"]
+# Run Jekyll with live reload and host binding
+CMD ["bundle", "exec", "jekyll", "serve", "--host", "0.0.0.0", "--livereload", "--force_polling", "--config", "_config.yml,_config.dev.yml"]

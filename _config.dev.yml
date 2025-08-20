@@ -1,0 +1,21 @@
+# Development configuration overrides
+# =====================================
+# This file is used for local development with Docker.
+# It overrides settings in _config.yml when running locally.
+# 
+# IMPORTANT: This file is intentionally committed to the repository
+# so that development works out-of-the-box on any machine.
+# GitHub Pages will ignore this file and only use _config.yml
+
+# Use empty URL for development so Jekyll uses the serving host
+# This prevents hardcoded URLs and allows the site to work on localhost
+url: ""
+
+# Optional: Enable more verbose output for debugging
+verbose: true
+
+# Optional: Show draft posts in development
+show_drafts: true
+
+# Disable analytics in development
+google_analytics:

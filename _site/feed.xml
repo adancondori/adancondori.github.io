@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://0.0.0.0:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://0.0.0.0:4000" />
-<updated>2025-08-20T02:14:29+00:00</updated>
+<updated>2025-08-20T03:10:30+00:00</updated>
 <id>http://0.0.0.0:4000/</id>
 <author>
   <name>Adan Condori C.</name>
@@ -41,9 +41,9 @@ Tres palabras que pueden parecer simples, pero en el contexto de un sistema dist
 
 &lt;ol&gt;
   &lt;li&gt;El usuario hace clic en &lt;strong&gt;“Pagar”&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;La petición llega al backend (por ejemplo, en el &lt;code class=&quot;highlighter-rouge&quot;&gt;servidor-03&lt;/code&gt;).&lt;/li&gt;
+  &lt;li&gt;La petición llega al backend (por ejemplo, en el &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;servidor-03&lt;/code&gt;).&lt;/li&gt;
   &lt;li&gt;Se ejecuta la lógica que interactúa con la &lt;strong&gt;pasarela de pago&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;Unos minutos después, llega un &lt;strong&gt;webhook&lt;/strong&gt; a otro servidor (&lt;code class=&quot;highlighter-rouge&quot;&gt;servidor-08&lt;/code&gt;).&lt;/li&gt;
+  &lt;li&gt;Unos minutos después, llega un &lt;strong&gt;webhook&lt;/strong&gt; a otro servidor (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;servidor-08&lt;/code&gt;).&lt;/li&gt;
   &lt;li&gt;Ese webhook dispara un &lt;strong&gt;WebSocket&lt;/strong&gt; para actualizar al usuario en tiempo real.&lt;/li&gt;
 &lt;/ol&gt;
 
@@ -53,9 +53,9 @@ Tres palabras que pueden parecer simples, pero en el contexto de un sistema dist
 
 &lt;hr /&gt;
 
-&lt;h2 id=&quot;-la-solución-trace_id-nuestro-hilo-de-ariadna&quot;&gt;🧠 La Solución: &lt;code class=&quot;highlighter-rouge&quot;&gt;trace_id&lt;/code&gt;, Nuestro Hilo de Ariadna&lt;/h2&gt;
+&lt;h2 id=&quot;-la-solución-trace_id-nuestro-hilo-de-ariadna&quot;&gt;🧠 La Solución: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;trace_id&lt;/code&gt;, Nuestro Hilo de Ariadna&lt;/h2&gt;
 
-&lt;p&gt;Para unir todos los puntos de ese flujo, necesitas un &lt;strong&gt;ID de correlación&lt;/strong&gt;. Ese &lt;code class=&quot;highlighter-rouge&quot;&gt;trace_id&lt;/code&gt; nace al inicio de la solicitud y vive durante todo el recorrido, de extremo a extremo.&lt;/p&gt;
+&lt;p&gt;Para unir todos los puntos de ese flujo, necesitas un &lt;strong&gt;ID de correlación&lt;/strong&gt;. Ese &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;trace_id&lt;/code&gt; nace al inicio de la solicitud y vive durante todo el recorrido, de extremo a extremo.&lt;/p&gt;
 
 &lt;p&gt;Con él:&lt;/p&gt;
 
@@ -69,13 +69,13 @@ Tres palabras que pueden parecer simples, pero en el contexto de un sistema dist
 
 &lt;h2 id=&quot;️-cómo-lo-implementamos&quot;&gt;🛠️ Cómo lo Implementamos&lt;/h2&gt;
 
-&lt;h3 id=&quot;1-currentattributes-contexto-seguro-y-limpio&quot;&gt;1. &lt;code class=&quot;highlighter-rouge&quot;&gt;CurrentAttributes&lt;/code&gt;: Contexto Seguro y Limpio&lt;/h3&gt;
+&lt;h3 id=&quot;1-currentattributes-contexto-seguro-y-limpio&quot;&gt;1. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CurrentAttributes&lt;/code&gt;: Contexto Seguro y Limpio&lt;/h3&gt;
 
-&lt;p&gt;Usamos &lt;code class=&quot;highlighter-rouge&quot;&gt;ActiveSupport::CurrentAttributes&lt;/code&gt; para mantener el &lt;code class=&quot;highlighter-rouge&quot;&gt;trace_id&lt;/code&gt; accesible, sin tener que pasarlo como parámetro entre métodos. Un middleware o filtro en el controlador base hace lo siguiente:&lt;/p&gt;
+&lt;p&gt;Usamos &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ActiveSupport::CurrentAttributes&lt;/code&gt; para mantener el &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;trace_id&lt;/code&gt; accesible, sin tener que pasarlo como parámetro entre métodos. Un middleware o filtro en el controlador base hace lo siguiente:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Revisa si el header de la petición ya trae un &lt;code class=&quot;highlighter-rouge&quot;&gt;trace_id&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;Si no existe, genera un &lt;code class=&quot;highlighter-rouge&quot;&gt;UUID&lt;/code&gt; nuevo y lo guarda como contexto global.&lt;/li&gt;
+  &lt;li&gt;Revisa si el header de la petición ya trae un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;trace_id&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Si no existe, genera un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UUID&lt;/code&gt; nuevo y lo guarda como contexto global.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Esto asegura que cada flujo tenga un identificador único y consistente.&lt;/p&gt;
@@ -84,7 +84,7 @@ Tres palabras que pueden parecer simples, pero en el contexto de un sistema dist
 
 &lt;h3 id=&quot;2-módulo-de-logging-reutilizable&quot;&gt;2. Módulo de Logging Reutilizable&lt;/h3&gt;
 
-&lt;p&gt;Creamos un módulo (&lt;code class=&quot;highlighter-rouge&quot;&gt;PaymentLogger&lt;/code&gt;, por ejemplo) con un solo método:&lt;/p&gt;
+&lt;p&gt;Creamos un módulo (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PaymentLogger&lt;/code&gt;, por ejemplo) con un solo método:&lt;/p&gt;
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;log_payment_event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -95,9 +95,9 @@ Tres palabras que pueden parecer simples, pero en el contexto de un sistema dist
     &lt;p&gt;Enriquecer automáticamente cada log con:&lt;/p&gt;
 
     &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;trace_id&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;timestamp&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;hostname&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;trace_id&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;timestamp&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hostname&lt;/code&gt;&lt;/li&gt;
       &lt;li&gt;Datos del usuario (si están disponibles)&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
@@ -111,52 +111,52 @@ Tres palabras que pueden parecer simples, pero en el contexto de un sistema dist
 
 &lt;h3 id=&quot;3-instrumentación-estratégica&quot;&gt;3. Instrumentación Estratégica&lt;/h3&gt;
 
-&lt;p&gt;Aplicamos &lt;code class=&quot;highlighter-rouge&quot;&gt;log_payment_event&lt;/code&gt; en los puntos críticos del flujo, ejemplos en ruby on rails:&lt;/p&gt;
+&lt;p&gt;Aplicamos &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;log_payment_event&lt;/code&gt; en los puntos críticos del flujo, ejemplos en ruby on rails:&lt;/p&gt;
 
 &lt;h4 id=&quot;-inicio-api-controller&quot;&gt;🟢 Inicio (API Controller)&lt;/h4&gt;
 
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;log_payment_event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;tag: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'payment_flow.started'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;data: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;params: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;params&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;log_payment_event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;tag: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;payment_flow.started&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;data: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;params: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;params&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;-interacción-con-pasarela-service-layer&quot;&gt;🔁 Interacción con Pasarela (Service Layer)&lt;/h4&gt;
 
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;log_payment_event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;tag: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'payment_gateway.request'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;data: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;gateway_params: &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;log_payment_event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;tag: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'payment_gateway.response'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;data: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;response: &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'success'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;log_payment_event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;tag: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;payment_gateway.request&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;data: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;gateway_params: &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;log_payment_event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;tag: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;payment_gateway.response&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;data: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;response: &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;status: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;success&apos;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;-webhook-confirmación-asíncrona&quot;&gt;📩 Webhook (Confirmación Asíncrona)&lt;/h4&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Extraemos el &lt;code class=&quot;highlighter-rouge&quot;&gt;order_id&lt;/code&gt; del webhook.&lt;/li&gt;
-  &lt;li&gt;Lo usamos para setear nuevamente el &lt;code class=&quot;highlighter-rouge&quot;&gt;trace_id&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Extraemos el &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;order_id&lt;/code&gt; del webhook.&lt;/li&gt;
+  &lt;li&gt;Lo usamos para setear nuevamente el &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;trace_id&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;log_payment_event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;tag: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'webhook.received'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;data: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;payload: &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;log_payment_event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;tag: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;webhook.received&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;data: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;payload: &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;-websocket-notificación-al-usuario&quot;&gt;📡 WebSocket (Notificación al Usuario)&lt;/h4&gt;
 
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;log_payment_event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;tag: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'socket.emitted'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;data: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;channel: &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;event: &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;log_payment_event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;tag: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;socket.emitted&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;data: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;channel: &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;event: &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;hr /&gt;
 
 &lt;h2 id=&quot;-resultado-diagnóstico-en-tiempo-real&quot;&gt;🔍 Resultado: Diagnóstico en Tiempo Real&lt;/h2&gt;
 
-&lt;p&gt;Cuando alguien del equipo de soporte te da un &lt;code class=&quot;highlighter-rouge&quot;&gt;user_id&lt;/code&gt;, simplemente haces esto:&lt;/p&gt;
+&lt;p&gt;Cuando alguien del equipo de soporte te da un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user_id&lt;/code&gt;, simplemente haces esto:&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Buscas el &lt;code class=&quot;highlighter-rouge&quot;&gt;user_id&lt;/code&gt; en Kibana:&lt;/strong&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;json.context.user_id: &quot;12345&quot;&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Buscas el &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user_id&lt;/code&gt; en Kibana:&lt;/strong&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;json.context.user_id: &quot;12345&quot;&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Extraes el &lt;code class=&quot;highlighter-rouge&quot;&gt;trace_id&lt;/code&gt;:&lt;/strong&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;uuid-abc-123&quot;&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Extraes el &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;trace_id&lt;/code&gt;:&lt;/strong&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;uuid-abc-123&quot;&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;&lt;strong&gt;Rastreás todo el flujo:&lt;/strong&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;json.trace_id: &quot;uuid-abc-123&quot;&lt;/code&gt;&lt;/p&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;json.trace_id: &quot;uuid-abc-123&quot;&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
@@ -168,7 +168,7 @@ Tres palabras que pueden parecer simples, pero en el contexto de un sistema dist
 
 &lt;p&gt;Diseñar un sistema de trazabilidad no es un lujo, es un requisito. En plataformas de pagos con 3DS, donde los errores pueden costar dinero (y reputación), no tener visibilidad es inaceptable.&lt;/p&gt;
 
-&lt;p&gt;Con un enfoque basado en &lt;code class=&quot;highlighter-rouge&quot;&gt;trace_id&lt;/code&gt;, logs estructurados y contexto compartido, transformamos un sistema opaco en una máquina transparente, confiable y lista para escalar.&lt;/p&gt;
+&lt;p&gt;Con un enfoque basado en &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;trace_id&lt;/code&gt;, logs estructurados y contexto compartido, transformamos un sistema opaco en una máquina transparente, confiable y lista para escalar.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;&lt;em&gt;La próxima vez que leas “el pago falló”, no sentirás pánico. Tendrás el mapa.&lt;/em&gt;&lt;/p&gt;
@@ -311,7 +311,7 @@ Tres palabras que pueden parecer simples, pero en el contexto de un sistema dist
 &lt;p&gt;🔍 Aunque las pasarelas de pago comparten propósito, cada una tiene sus propias reglas, flujos y APIs. Algunos desafíos típicos:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;APIs heterogéneas:&lt;/strong&gt; Lo que en Stripe es un &lt;code class=&quot;highlighter-rouge&quot;&gt;PaymentIntent&lt;/code&gt;, en otros casos es una combinación de &lt;code class=&quot;highlighter-rouge&quot;&gt;token + confirmación&lt;/code&gt;. La semántica cambia.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;APIs heterogéneas:&lt;/strong&gt; Lo que en Stripe es un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PaymentIntent&lt;/code&gt;, en otros casos es una combinación de &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;token + confirmación&lt;/code&gt;. La semántica cambia.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Errores y asincronía:&lt;/strong&gt; Cada proveedor maneja códigos de error y callbacks (como 3D Secure, OXXO o QR) de forma distinta.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Mantenimiento y sandbox:&lt;/strong&gt; Integrar múltiples entornos de prueba es engorroso, y los cambios en producción de una pasarela pueden romper el flujo si no tienes una arquitectura robusta.&lt;/li&gt;
 &lt;/ul&gt;
@@ -325,7 +325,7 @@ Tres palabras que pueden parecer simples, pero en el contexto de un sistema dist
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;Open/Closed Principle:&lt;/strong&gt; Nuestro motor de pagos está abierto a extensiones (nuevas pasarelas), pero cerrado a modificaciones.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Separación de responsabilidades:&lt;/strong&gt; La lógica de negocio no sabe nada de las APIs externas. Todo lo maneja un adaptador.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Contrato común:&lt;/strong&gt; Usamos una clase base (&lt;code class=&quot;highlighter-rouge&quot;&gt;PaymentService::Gateway::Base&lt;/code&gt;) que obliga a cada pasarela a implementar el método &lt;code class=&quot;highlighter-rouge&quot;&gt;call&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Contrato común:&lt;/strong&gt; Usamos una clase base (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PaymentService::Gateway::Base&lt;/code&gt;) que obliga a cada pasarela a implementar el método &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;call&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PaymentService::Gateway::Base&lt;/span&gt;
@@ -341,7 +341,7 @@ Tres palabras que pueden parecer simples, pero en el contexto de un sistema dist
 
 &lt;h3 id=&quot;-3-patrón-de-estrategia-para-selección-dinámica&quot;&gt;🧠 3. Patrón de Estrategia para Selección Dinámica&lt;/h3&gt;
 
-&lt;p&gt;Cuando un usuario realiza un pago, nuestro sistema selecciona automáticamente la pasarela adecuada basándose en la configuración de su empresa (&lt;code class=&quot;highlighter-rouge&quot;&gt;empresa&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Cuando un usuario realiza un pago, nuestro sistema selecciona automáticamente la pasarela adecuada basándose en la configuración de su empresa (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;empresa&lt;/code&gt;).&lt;/p&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;payment_gateway&lt;/span&gt;
   &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gateway_namespace&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gateway_name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;action_name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;constantize&lt;/span&gt;
@@ -351,9 +351,9 @@ Tres palabras que pueden parecer simples, pero en el contexto de un sistema dist
 &lt;p&gt;Ejemplo real:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Llamas a &lt;code class=&quot;highlighter-rouge&quot;&gt;PaymentService::Sale.call(...)&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Si la &lt;code class=&quot;highlighter-rouge&quot;&gt;empresa&lt;/code&gt; usa Stripe, se ejecuta &lt;code class=&quot;highlighter-rouge&quot;&gt;PaymentService::Gateway::Stripe::Sale.call(...)&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Si usa BAC, se ejecuta &lt;code class=&quot;highlighter-rouge&quot;&gt;PaymentService::Gateway::BAC::Sale.call(...)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Llamas a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PaymentService::Sale.call(...)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Si la &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;empresa&lt;/code&gt; usa Stripe, se ejecuta &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PaymentService::Gateway::Stripe::Sale.call(...)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Si usa BAC, se ejecuta &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PaymentService::Gateway::BAC::Sale.call(...)&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Esto nos permite escalar sin tocar el core.&lt;/p&gt;
@@ -366,9 +366,9 @@ Tres palabras que pueden parecer simples, pero en el contexto de un sistema dist
 
 &lt;ul&gt;
   &lt;li&gt;Verificamos firmas con HMAC o JWT&lt;/li&gt;
-  &lt;li&gt;Usamos un &lt;code class=&quot;highlighter-rouge&quot;&gt;WebhookProcessor&lt;/code&gt; que delega según el proveedor&lt;/li&gt;
+  &lt;li&gt;Usamos un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;WebhookProcessor&lt;/code&gt; que delega según el proveedor&lt;/li&gt;
   &lt;li&gt;Manejamos idempotencia para evitar duplicados&lt;/li&gt;
-  &lt;li&gt;Cada pasarela tiene su handler: &lt;code class=&quot;highlighter-rouge&quot;&gt;Webhooks::StripeHandler&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Webhooks::MERUHandler&lt;/code&gt;, etc.&lt;/li&gt;
+  &lt;li&gt;Cada pasarela tiene su handler: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Webhooks::StripeHandler&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Webhooks::MERUHandler&lt;/code&gt;, etc.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;
@@ -383,7 +383,7 @@ Tres palabras que pueden parecer simples, pero en el contexto de un sistema dist
   &lt;li&gt;&lt;strong&gt;Flujo completo:&lt;/strong&gt; Simulamos reservas o ventas completas que requieren callbacks o redirecciones.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Además, evitamos ambientes sandbox inconsistentes usando registros grabados (&lt;code class=&quot;highlighter-rouge&quot;&gt;VCR&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;WebMock&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Además, evitamos ambientes sandbox inconsistentes usando registros grabados (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;VCR&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;WebMock&lt;/code&gt;).&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -392,9 +392,9 @@ Tres palabras que pueden parecer simples, pero en el contexto de un sistema dist
 &lt;p&gt;Integrar &lt;strong&gt;PayFast&lt;/strong&gt;, un gateway popular en Sudáfrica, tomó menos de 2 semanas gracias a esta arquitectura:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Creamos &lt;code class=&quot;highlighter-rouge&quot;&gt;PaymentService::Gateway::PayFast::Sale&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Creamos &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PaymentService::Gateway::PayFast::Sale&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;Implementamos el handler de webhooks&lt;/li&gt;
-  &lt;li&gt;Configuramos la &lt;code class=&quot;highlighter-rouge&quot;&gt;empresa&lt;/code&gt; para usar PayFast&lt;/li&gt;
+  &lt;li&gt;Configuramos la &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;empresa&lt;/code&gt; para usar PayFast&lt;/li&gt;
   &lt;li&gt;Sin modificar una línea del core&lt;/li&gt;
 &lt;/ol&gt;
 
@@ -566,13 +566,13 @@ En esta transición de la infraestructura entre Clouds como IBM a AWS las empres
 &lt;p&gt;&lt;strong&gt;Ejemplo Práctico:&lt;/strong&gt; Supongamos que estamos escribiendo una función en Python para calcular el promedio de una lista de números:&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;calcular_promedio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lista_de_numeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;suma&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lista_de_numeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;cantidad&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lista_de_numeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;suma&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lista_de_numeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;cantidad&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lista_de_numeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;promedio&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;suma&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cantidad&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;promedio&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;strong&gt;Explicación:&lt;/strong&gt; Los nombres de variables como &lt;code class=&quot;highlighter-rouge&quot;&gt;suma&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;cantidad&lt;/code&gt; y &lt;code class=&quot;highlighter-rouge&quot;&gt;promedio&lt;/code&gt; son descriptivos y comunican claramente su propósito en el cálculo del promedio.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Explicación:&lt;/strong&gt; Los nombres de variables como &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;suma&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cantidad&lt;/code&gt; y &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;promedio&lt;/code&gt; son descriptivos y comunican claramente su propósito en el cálculo del promedio.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Cita Relevante:&lt;/strong&gt; “El nombre de una variable, función o clase debe revelar su intención” - “Clean Code”&lt;/p&gt;
 
@@ -584,12 +584,12 @@ En esta transición de la infraestructura entre Clouds como IBM a AWS las empres
 
 &lt;p&gt;&lt;strong&gt;Ejemplo Práctico:&lt;/strong&gt; Consideremos una función en JavaScript que valida si una cadena es un número decimal:&lt;/p&gt;
 
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;esNumeroDecimal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cadena&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;isNaN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cadena&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;parseFloat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cadena&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cadena&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;esNumeroDecimal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cadena&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;isNaN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cadena&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;parseFloat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cadena&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cadena&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;strong&gt;Explicación:&lt;/strong&gt; La función &lt;code class=&quot;highlighter-rouge&quot;&gt;esNumeroDecimal&lt;/code&gt; es corta y se enfoca en una sola tarea: verificar si una cadena es un número decimal.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Explicación:&lt;/strong&gt; La función &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;esNumeroDecimal&lt;/code&gt; es corta y se enfoca en una sola tarea: verificar si una cadena es un número decimal.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Cita Relevante:&lt;/strong&gt; “Las funciones pequeñas son más fáciles de entender que las grandes” - “Clean Code”&lt;/p&gt;
 
@@ -1025,7 +1025,7 @@ ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-lS&lt;/span&gt;
 
 &lt;p&gt;Crear un directorio:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir namedirectory
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir namedirectory
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Copiar un archivo:&lt;/p&gt;
@@ -1080,7 +1080,7 @@ mv &lt;/span&gt;filename filename2
 
 &lt;p&gt;open file&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;xdg-open file
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;xdg-open file
 open file 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -1274,32 +1274,32 @@ git push origin :refs/tags/tagName
 &lt;h2 id=&quot;buscar-palabras-en-archivos-y-commit&quot;&gt;Buscar palabras en archivos y commit&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git grep color&lt;/code&gt;&lt;/strong&gt; –&amp;gt; use la palabra color&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git grep la&lt;/code&gt;&lt;/strong&gt; –&amp;gt; donde use la palabra la&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git grep -n color&lt;/code&gt;&lt;/strong&gt; –&amp;gt; en que lineas use la palabra color&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git grep -n platzi&lt;/code&gt;&lt;/strong&gt; –&amp;gt; en que lineas use la palabra platzi&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git grep -c la&lt;/code&gt;&lt;/strong&gt; –&amp;gt; cuantas veces use la palabra la&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git grep -c paltzi&lt;/code&gt;&lt;/strong&gt; –&amp;gt; cuantas veces use la palabra platzi&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git grep -c “&amp;lt;p&amp;gt;”&lt;/code&gt;&lt;/strong&gt; –&amp;gt; cuantas veces use la etiqueta &amp;lt;p&amp;gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git log-S “cabecera”&lt;/code&gt;&lt;/strong&gt; –&amp;gt; cuantas veces use la palabra cabecera en
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git grep color&lt;/code&gt;&lt;/strong&gt; –&amp;gt; use la palabra color&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git grep la&lt;/code&gt;&lt;/strong&gt; –&amp;gt; donde use la palabra la&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git grep -n color&lt;/code&gt;&lt;/strong&gt; –&amp;gt; en que lineas use la palabra color&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git grep -n platzi&lt;/code&gt;&lt;/strong&gt; –&amp;gt; en que lineas use la palabra platzi&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git grep -c la&lt;/code&gt;&lt;/strong&gt; –&amp;gt; cuantas veces use la palabra la&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git grep -c paltzi&lt;/code&gt;&lt;/strong&gt; –&amp;gt; cuantas veces use la palabra platzi&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git grep -c “&amp;lt;p&amp;gt;”&lt;/code&gt;&lt;/strong&gt; –&amp;gt; cuantas veces use la etiqueta &amp;lt;p&amp;gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git log-S “cabecera”&lt;/code&gt;&lt;/strong&gt; –&amp;gt; cuantas veces use la palabra cabecera en
 todos los commits.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;grep&lt;/code&gt;&lt;/strong&gt; –&amp;gt; para los archivos`&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;log&lt;/code&gt;&lt;/strong&gt; -&amp;gt; para los commits.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;grep&lt;/code&gt;&lt;/strong&gt; –&amp;gt; para los archivos`&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;log&lt;/code&gt;&lt;/strong&gt; -&amp;gt; para los commits.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;comandos-colaborativos&quot;&gt;Comandos colaborativos&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git shortlog&lt;/code&gt;&lt;/strong&gt;: Ver cuantos commits a hecho los miembros del equipo&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git shortlog -sn&lt;/code&gt;&lt;/strong&gt;: Las personas que han hecho ciertos commits&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git shortlog -sn --all&lt;/code&gt;&lt;/strong&gt;: Todos los commits (también los borrados)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git shortlog -sn --all --no-merges&lt;/code&gt;&lt;/strong&gt;: muestra las estadisticas de los comigs del repositorio donde estoy&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git config --global alias.stats “shortlog -sn --all --no-merges”&lt;/code&gt;&lt;/strong&gt;: configura el comando “shortlog -sn –all –no-merges” en un Alias en las configuraciones globales de git del pc&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git blame -c blogpost.html&lt;/code&gt;&lt;/strong&gt;: Muestra quien ha hecho cambios en dicho archivo identado&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git blame --help&lt;/code&gt;&lt;/strong&gt;: Muestra en el navegador el uso del comando&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git blame archivo -L 35, 60 -c&lt;/code&gt;&lt;/strong&gt;: Muestra quien escribio el codigo con informacion de la linea 35 a la 60, EJ: &lt;code class=&quot;highlighter-rouge&quot;&gt;git blame css/estilos.css -L 35, 60 -c&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git branch -r&lt;/code&gt;&lt;/strong&gt;: Muestra las Ramas remotas de GitHub&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git branch -a&lt;/code&gt;&lt;/strong&gt;: Muestra todas las Ramas del repo y remotas de GitHub&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git shortlog&lt;/code&gt;&lt;/strong&gt;: Ver cuantos commits a hecho los miembros del equipo&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git shortlog -sn&lt;/code&gt;&lt;/strong&gt;: Las personas que han hecho ciertos commits&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git shortlog -sn --all&lt;/code&gt;&lt;/strong&gt;: Todos los commits (también los borrados)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git shortlog -sn --all --no-merges&lt;/code&gt;&lt;/strong&gt;: muestra las estadisticas de los comigs del repositorio donde estoy&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git config --global alias.stats “shortlog -sn --all --no-merges”&lt;/code&gt;&lt;/strong&gt;: configura el comando “shortlog -sn –all –no-merges” en un Alias en las configuraciones globales de git del pc&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git blame -c blogpost.html&lt;/code&gt;&lt;/strong&gt;: Muestra quien ha hecho cambios en dicho archivo identado&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git blame --help&lt;/code&gt;&lt;/strong&gt;: Muestra en el navegador el uso del comando&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git blame archivo -L 35, 60 -c&lt;/code&gt;&lt;/strong&gt;: Muestra quien escribio el codigo con informacion de la linea 35 a la 60, EJ: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git blame css/estilos.css -L 35, 60 -c&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git branch -r&lt;/code&gt;&lt;/strong&gt;: Muestra las Ramas remotas de GitHub&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git branch -a&lt;/code&gt;&lt;/strong&gt;: Muestra todas las Ramas del repo y remotas de GitHub&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;estados-del-archivos&quot;&gt;Estados del archivos&lt;/h2&gt;
@@ -1312,7 +1312,7 @@ todos los commits.&lt;/li&gt;
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone
 &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;go-directore
 git branch &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; // To see a list of the different branches
-git branch &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'\-&amp;gt;'&lt;/span&gt; | &lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;read &lt;/span&gt;remote&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;git branch &lt;span class=&quot;nt&quot;&gt;--track&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;remote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;#origin/&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$remote&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;done
+git branch &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;\-&amp;gt;&apos;&lt;/span&gt; | &lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;read &lt;/span&gt;remote&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;git branch &lt;span class=&quot;nt&quot;&gt;--track&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;remote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;#origin/&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$remote&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;done
 &lt;/span&gt;git fetch &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;
 git pull &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;
 git remote &lt;span class=&quot;nb&quot;&gt;rm &lt;/span&gt;origin
@@ -1325,11 +1325,11 @@ git push &lt;span class=&quot;nt&quot;&gt;--tags&lt;/span&gt;
 &lt;h2 id=&quot;creacion-de-alias&quot;&gt;Creacion de Alias&lt;/h2&gt;
 
 &lt;p&gt;Creando alias:&lt;/p&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git confing &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; alias.&amp;lt;&lt;span class=&quot;nb&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&amp;lt;texto&amp;gt;'&lt;/span&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git confing &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; alias.&amp;lt;&lt;span class=&quot;nb&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;&amp;lt;texto&amp;gt;&apos;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Por ejemplo:&lt;/p&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; alias.lod &lt;span class=&quot;s1&quot;&gt;'log --oneline --decorate --color'&lt;/span&gt;
-git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; alias.lodag &lt;span class=&quot;s1&quot;&gt;'log --oneline --decorate --all --graph'&lt;/span&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; alias.lod &lt;span class=&quot;s1&quot;&gt;&apos;log --oneline --decorate --color&apos;&lt;/span&gt;
+git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; alias.lodag &lt;span class=&quot;s1&quot;&gt;&apos;log --oneline --decorate --all --graph&apos;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Listar alias:&lt;/p&gt;
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--get-regexp&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;alias&lt;/span&gt;

@@ -295,32 +295,32 @@ git push origin :refs/tags/tagName
 <h2 id="buscar-palabras-en-archivos-y-commit">Buscar palabras en archivos y commit</h2>
 
 <ul>
-  <li><strong><code class="highlighter-rouge">git grep color</code></strong> –&gt; use la palabra color</li>
-  <li><strong><code class="highlighter-rouge">git grep la</code></strong> –&gt; donde use la palabra la</li>
-  <li><strong><code class="highlighter-rouge">git grep -n color</code></strong> –&gt; en que lineas use la palabra color</li>
-  <li><strong><code class="highlighter-rouge">git grep -n platzi</code></strong> –&gt; en que lineas use la palabra platzi</li>
-  <li><strong><code class="highlighter-rouge">git grep -c la</code></strong> –&gt; cuantas veces use la palabra la</li>
-  <li><strong><code class="highlighter-rouge">git grep -c paltzi</code></strong> –&gt; cuantas veces use la palabra platzi</li>
-  <li><strong><code class="highlighter-rouge">git grep -c “&lt;p&gt;”</code></strong> –&gt; cuantas veces use la etiqueta &lt;p&gt;</li>
-  <li><strong><code class="highlighter-rouge">git log-S “cabecera”</code></strong> –&gt; cuantas veces use la palabra cabecera en
+  <li><strong><code class="language-plaintext highlighter-rouge">git grep color</code></strong> –&gt; use la palabra color</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">git grep la</code></strong> –&gt; donde use la palabra la</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">git grep -n color</code></strong> –&gt; en que lineas use la palabra color</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">git grep -n platzi</code></strong> –&gt; en que lineas use la palabra platzi</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">git grep -c la</code></strong> –&gt; cuantas veces use la palabra la</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">git grep -c paltzi</code></strong> –&gt; cuantas veces use la palabra platzi</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">git grep -c “&lt;p&gt;”</code></strong> –&gt; cuantas veces use la etiqueta &lt;p&gt;</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">git log-S “cabecera”</code></strong> –&gt; cuantas veces use la palabra cabecera en
 todos los commits.</li>
-  <li><strong><code class="highlighter-rouge">grep</code></strong> –&gt; para los archivos`</li>
-  <li><strong><code class="highlighter-rouge">log</code></strong> -&gt; para los commits.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">grep</code></strong> –&gt; para los archivos`</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">log</code></strong> -&gt; para los commits.</li>
 </ul>
 
 <h2 id="comandos-colaborativos">Comandos colaborativos</h2>
 
 <ul>
-  <li><strong><code class="highlighter-rouge">git shortlog</code></strong>: Ver cuantos commits a hecho los miembros del equipo</li>
-  <li><strong><code class="highlighter-rouge">git shortlog -sn</code></strong>: Las personas que han hecho ciertos commits</li>
-  <li><strong><code class="highlighter-rouge">git shortlog -sn --all</code></strong>: Todos los commits (también los borrados)</li>
-  <li><strong><code class="highlighter-rouge">git shortlog -sn --all --no-merges</code></strong>: muestra las estadisticas de los comigs del repositorio donde estoy</li>
-  <li><strong><code class="highlighter-rouge">git config --global alias.stats “shortlog -sn --all --no-merges”</code></strong>: configura el comando “shortlog -sn –all –no-merges” en un Alias en las configuraciones globales de git del pc</li>
-  <li><strong><code class="highlighter-rouge">git blame -c blogpost.html</code></strong>: Muestra quien ha hecho cambios en dicho archivo identado</li>
-  <li><strong><code class="highlighter-rouge">git blame --help</code></strong>: Muestra en el navegador el uso del comando</li>
-  <li><strong><code class="highlighter-rouge">git blame archivo -L 35, 60 -c</code></strong>: Muestra quien escribio el codigo con informacion de la linea 35 a la 60, EJ: <code class="highlighter-rouge">git blame css/estilos.css -L 35, 60 -c</code></li>
-  <li><strong><code class="highlighter-rouge">git branch -r</code></strong>: Muestra las Ramas remotas de GitHub</li>
-  <li><strong><code class="highlighter-rouge">git branch -a</code></strong>: Muestra todas las Ramas del repo y remotas de GitHub</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">git shortlog</code></strong>: Ver cuantos commits a hecho los miembros del equipo</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">git shortlog -sn</code></strong>: Las personas que han hecho ciertos commits</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">git shortlog -sn --all</code></strong>: Todos los commits (también los borrados)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">git shortlog -sn --all --no-merges</code></strong>: muestra las estadisticas de los comigs del repositorio donde estoy</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">git config --global alias.stats “shortlog -sn --all --no-merges”</code></strong>: configura el comando “shortlog -sn –all –no-merges” en un Alias en las configuraciones globales de git del pc</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">git blame -c blogpost.html</code></strong>: Muestra quien ha hecho cambios en dicho archivo identado</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">git blame --help</code></strong>: Muestra en el navegador el uso del comando</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">git blame archivo -L 35, 60 -c</code></strong>: Muestra quien escribio el codigo con informacion de la linea 35 a la 60, EJ: <code class="language-plaintext highlighter-rouge">git blame css/estilos.css -L 35, 60 -c</code></li>
+  <li><strong><code class="language-plaintext highlighter-rouge">git branch -r</code></strong>: Muestra las Ramas remotas de GitHub</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">git branch -a</code></strong>: Muestra todas las Ramas del repo y remotas de GitHub</li>
 </ul>
 
 <h2 id="estados-del-archivos">Estados del archivos</h2>

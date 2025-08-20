@@ -1,8 +1,15 @@
-version: '3'
 services:
   jekyll:
     build: .
     volumes:
       - .:/app
+      - bundle_cache:/usr/local/bundle
     ports:
       - "4000:4000"
+      - "35729:35729"  # LiveReload port
+    environment:
+      - JEKYLL_ENV=development
+    command: bundle exec jekyll serve --host 0.0.0.0 --livereload --force_polling --config _config.yml,_config.dev.yml
+
+volumes:
+  bundle_cache:
