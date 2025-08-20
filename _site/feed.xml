@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://0.0.0.0:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://0.0.0.0:4000" />
-<updated>2025-08-20T03:12:58+00:00</updated>
+<updated>2025-08-20T03:21:30+00:00</updated>
 <id>http://0.0.0.0:4000/</id>
 <author>
   <name>Adan Condori C.</name>
@@ -435,8 +435,8 @@ Tres palabras que pueden parecer simples, pero en el contexto de un sistema dist
   </author>
   <content type="html">&lt;p&gt;&lt;strong&gt;Contexto:&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;En un mundo empresarial cada vez más digitalizado, la migración de infraestructuras de TI hacia entornos en la nube se ha convertido en un imperativo para muchas organizaciones.
-En este Post te comparto mi experiencia el proceso de migración, como comprenderas este proceso es extenso largo pero tratare de resumir colocando los pasos mas importantes.
+&lt;p&gt;En un mundo empresarial cada vez más digitalizado, la migración de infraestructuras de TI hacia entornos en la nube se ha convertido en un imperativo para muchas organizaciones. 
+En este Post te comparto mi experiencia el proceso de migración, como comprenderas este proceso es extenso largo pero tratare de resumir colocando los pasos mas importantes. 
 En esta transición de la infraestructura entre Clouds como IBM a AWS las empresas que buscan optimizar sus operaciones, mejorar la escalabilidad y la agilidad, así como reducir costos.&lt;/p&gt;
 
 &lt;p&gt;Aquí tienes una lista de 5 tipos de migración que se pueden aplicar en el contexto de la migración de infraestructura de TI:&lt;/p&gt;
@@ -729,7 +729,7 @@ En esta transición de la infraestructura entre Clouds como IBM a AWS las empres
 
 
 <entry>
-  <title type="html"><![CDATA[Summary About:
+  <title type="html"><![CDATA[Summary About: 
  Success Skills for Architects with Neil Ford - Spanish]]></title>
   <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/Success-Skills-for-Architects/" />
   <id>http://0.0.0.0:4000/Success-Skills-for-Architects</id>
@@ -786,13 +786,13 @@ En esta transición de la infraestructura entre Clouds como IBM a AWS las empres
   &lt;li&gt;Success Skills for Architects with Neil Ford page https://www.se-radio.net/se-radio-episode-287-success-skills-for-architects-with-neil-ford/&lt;/li&gt;
 &lt;/ul&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/Success-Skills-for-Architects/&quot;&gt;Summary About:
+  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/Success-Skills-for-Architects/&quot;&gt;Summary About: 
  Success Skills for Architects with Neil Ford - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on June 15, 2021.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
-  <title type="html"><![CDATA[Summary About:
+  <title type="html"><![CDATA[Summary About: 
  Success Skills for Architects with Neil Ford - English]]></title>
   <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/Success-Skills-for-Architects-English/" />
   <id>http://0.0.0.0:4000/Success-Skills-for-Architects-English</id>
@@ -849,7 +849,7 @@ En esta transición de la infraestructura entre Clouds como IBM a AWS las empres
   &lt;li&gt;Success Skills for Architects with Neil Ford page https://www.se-radio.net/se-radio-episode-287-success-skills-for-architects-with-neil-ford/&lt;/li&gt;
 &lt;/ul&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/Success-Skills-for-Architects-English/&quot;&gt;Summary About:
+  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/Success-Skills-for-Architects-English/&quot;&gt;Summary About: 
  Success Skills for Architects with Neil Ford - English&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on June 15, 2021.&lt;/p&gt;</content>
 </entry>
 
@@ -1042,7 +1042,7 @@ rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; myfile // inter
 
 &lt;p&gt;Mover un archivo: or you can use to rename&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;mv
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;mv 
 mv &lt;/span&gt;filename filename2
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -1075,18 +1075,18 @@ mv &lt;/span&gt;filename filename2
 
 &lt;p&gt;Less edit text&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;less file // you be able to use / to search
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;less file // you be able to use / to search 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;open file&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;xdg-open file
-open file
+open file 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Type file&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;type ls&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;type ls&lt;/span&gt; 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Create Alisa&lt;/p&gt;
@@ -1122,7 +1122,7 @@ open file
 
 &lt;h3 id=&quot;encadenando-comandos-operadores-de-control&quot;&gt;Encadenando comandos: operadores de control&lt;/h3&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;comand1 &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; comand2 // comando1 depend of comand2, only excete is command1 es success
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;comand1 &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; comand2 // comando1 depend of comand2, only excete is command1 es success 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Comandos or&lt;/p&gt;
