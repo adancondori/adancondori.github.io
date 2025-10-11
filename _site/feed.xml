@@ -4,13 +4,1610 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://0.0.0.0:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://0.0.0.0:4000" />
-<updated>2025-10-11T01:52:26+00:00</updated>
+<updated>2025-10-11T02:44:19+00:00</updated>
 <id>http://0.0.0.0:4000/</id>
 <author>
   <name>Adan Condori C.</name>
   <uri>http://0.0.0.0:4000/</uri>
   <email>adan.condoric@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Guardia del Sprint - el escudo invisible del equipo de desarrollo]]></title>
+  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/agile,/devops,/engineering/guardia-del-sprint-triage-engineer/" />
+  <id>http://0.0.0.0:4000/agile,/devops,/engineering/guardia-del-sprint-triage-engineer</id>
+  <published>2025-10-10T15:12:53+00:00</published>
+  <updated>2025-10-10T15:12:53+00:00</updated>
+  <author>
+    <name>Adan Condori C.</name>
+    <uri>http://0.0.0.0:4000</uri>
+    <email>adan.condoric@gmail.com</email>
+  </author>
+  <content type="html">&lt;h2 id=&quot;introducción-cuando-el-mundo-arde-y-alguien-tiene-que-sostener-el-fuego&quot;&gt;Introducción: Cuando el mundo arde y alguien tiene que sostener el fuego&lt;/h2&gt;
+
+&lt;p&gt;En un equipo de desarrollo ágil, siempre hay una persona que detiene el fuego mientras el resto sigue construyendo.&lt;/p&gt;
+
+&lt;p&gt;Esa persona eres tú. O lo serás pronto.&lt;/p&gt;
+
+&lt;p&gt;En mis más de 10 años como ingeniero de software, he sido guardia del sprint decenas de veces, y también he liderado equipos donde implementamos este rol de forma estructurada. No es el trabajo más glamoroso, pero es &lt;strong&gt;el más crítico para la estabilidad del producto y la salud mental del equipo&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;✅ &lt;em&gt;El guardia del sprint no apaga incendios: los previene, los canaliza y documenta para que no vuelvan a ocurrir.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Este artículo es una guía práctica, honesta y técnica sobre qué es ser guardia del sprint (o &lt;strong&gt;triage engineer&lt;/strong&gt;), por qué importa tanto, y cómo implementarlo sin morir en el intento.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;1-qué-diablos-es-un-guardia-del-sprint&quot;&gt;1. ¿Qué diablos es un Guardia del Sprint?&lt;/h2&gt;
+
+&lt;p&gt;Déjame ser claro desde el inicio:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;El guardia del sprint es la persona designada para atender incidentes, errores y bugs de baja/media complejidad durante un periodo determinado (generalmente una semana o un sprint completo), garantizando la continuidad operativa del sistema y la eficiencia del equipo.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;En otras palabras:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;🚨 &lt;strong&gt;Eres el firewall humano&lt;/strong&gt; que intercepta interrupciones antes de que lleguen al resto del equipo&lt;/li&gt;
+  &lt;li&gt;🔍 &lt;strong&gt;Clasificas, priorizas y atiendes&lt;/strong&gt; reportes de producción&lt;/li&gt;
+  &lt;li&gt;🩹 &lt;strong&gt;Resuelves lo urgente&lt;/strong&gt; sin romper el flujo del sprint&lt;/li&gt;
+  &lt;li&gt;📋 &lt;strong&gt;Documentas y escala&lt;/strong&gt; lo que requiere más trabajo&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;2-por-qué-necesitas-este-rol&quot;&gt;2. ¿Por qué necesitas este rol?&lt;/h2&gt;
+
+&lt;p&gt;Si alguna vez has estado en un sprint donde:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;El equipo es interrumpido 15 veces al día por bugs menores&lt;/li&gt;
+  &lt;li&gt;Los reportes de producción quedan sin atender durante días&lt;/li&gt;
+  &lt;li&gt;Nadie sabe quién debe responder al mensaje de “el pago falló”&lt;/li&gt;
+  &lt;li&gt;El tech lead está debuggeando en producción mientras debería estar en planning&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Necesitas un guardia del sprint.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Este rol existe para resolver problemas estructurales:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Problema&lt;/th&gt;
+      &lt;th&gt;Solución con Guardia&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Interrupciones constantes&lt;/td&gt;
+      &lt;td&gt;El guardia absorbe todas las alertas&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Bugs sin priorizar&lt;/td&gt;
+      &lt;td&gt;Clasifica (triage) según urgencia&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Tiempo de resolución alto&lt;/td&gt;
+      &lt;td&gt;Respuesta inmediata a incidentes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Caos en producción&lt;/td&gt;
+      &lt;td&gt;Un solo punto de contacto claro&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Sprint con scope creep&lt;/td&gt;
+      &lt;td&gt;El backlog del sprint se protege&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;3-responsabilidades-del-guardia-lo-que-realmente-haces&quot;&gt;3. Responsabilidades del Guardia (lo que realmente haces)&lt;/h2&gt;
+
+&lt;p&gt;Déjame ser específico, porque este rol no es solo “estar disponible”:&lt;/p&gt;
+
+&lt;h3 id=&quot;incidentes-en-producción&quot;&gt;Incidentes en producción&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Monitorear dashboards (Datadog, New Relic, Sentry, Honeybadger)&lt;/li&gt;
+  &lt;li&gt;Responder a alertas críticas en menos de 5 minutos&lt;/li&gt;
+  &lt;li&gt;Analizar logs y tracebacks&lt;/li&gt;
+  &lt;li&gt;Ejecutar rollbacks temporales si es necesario&lt;/li&gt;
+  &lt;li&gt;Coordinar con DevOps/SRE para problemas de infra&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Ejemplo real:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Detectas un timeout en Stripe Webhooks&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Logs revelan que un job de Sidekiq está bloqueando la cola&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Acción inmediata:&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;SomeHeavyJob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;cancel_all&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Liberas la cola&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;Bugsnag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;notify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Stripe webhooks blocked by job X&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Notificas&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Creas ticket en Jira para refactorizar el job&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;bugs-simples-1-3-horas&quot;&gt;Bugs simples (1-3 horas)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Correcciones menores que no requieren diseño&lt;/li&gt;
+  &lt;li&gt;Typos en mensajes, validaciones faltantes&lt;/li&gt;
+  &lt;li&gt;Problemas de permisos o configuración&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Ejemplo:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Usuario reporta: &quot;No puedo editar mi perfil&quot;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// El guardia detecta:&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;role&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;admin&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// ❌ Lógica incorrecta&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Fix en 20 minutos:&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;can_edit_profile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// ✅ Usa permisos reales&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;soporte-interno&quot;&gt;Soporte interno&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Responder dudas técnicas del equipo de soporte&lt;/li&gt;
+  &lt;li&gt;Ayudar a QA a reproducir bugs complejos&lt;/li&gt;
+  &lt;li&gt;Validar configuraciones con producto&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;mantenimiento-menor&quot;&gt;Mantenimiento menor&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Limpiar jobs fallidos en Sidekiq/Resque&lt;/li&gt;
+  &lt;li&gt;Reiniciar workers bloqueados&lt;/li&gt;
+  &lt;li&gt;Revisar métricas y uso de recursos&lt;/li&gt;
+  &lt;li&gt;Verificar que los cronjobs estén corriendo&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;documentación-crítica&quot;&gt;Documentación crítica&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Registrar cada incidente en Jira/Linear/Notion&lt;/li&gt;
+  &lt;li&gt;Crear runbooks para problemas recurrentes&lt;/li&gt;
+  &lt;li&gt;Actualizar el wiki técnico con lecciones aprendidas&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;4-duración-y-rotación-del-rol&quot;&gt;4. Duración y Rotación del Rol&lt;/h2&gt;
+
+&lt;p&gt;La duración y rotación del guardia &lt;strong&gt;depende completamente del equipo y la cultura de la empresa&lt;/strong&gt;. No hay una regla única, pero estas son las modalidades más comunes:&lt;/p&gt;
+
+&lt;h3 id=&quot;rotación-semanal-la-más-común&quot;&gt;Rotación Semanal (la más común)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Lunes a viernes:&lt;/strong&gt; Una persona es guardia&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Siguiente semana:&lt;/strong&gt; Rota a otro miembro del equipo&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Ventaja:&lt;/strong&gt; Nadie se quema, el conocimiento se distribuye rápidamente&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;rotación-por-sprint-completo&quot;&gt;Rotación por Sprint Completo&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Una persona toma el rol durante todo el sprint (1-2 semanas)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Ventaja:&lt;/strong&gt; Mayor continuidad en el seguimiento de incidentes&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Desventaja:&lt;/strong&gt; Puede ser más agotador para quien lo hace&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;rotación-diaria&quot;&gt;Rotación Diaria&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Equipos grandes rotan día a día&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Ventaja:&lt;/strong&gt; Menor carga individual&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Desventaja:&lt;/strong&gt; Menos continuidad en el seguimiento&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;rotación-por-tamaño-de-equipo&quot;&gt;Rotación por Tamaño de Equipo&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Equipos pequeños (2-4 devs):&lt;/strong&gt; Por sprint completo&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Equipos medianos (5-8 devs):&lt;/strong&gt; Semanal&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Equipos grandes (9+ devs):&lt;/strong&gt; Pueden rotar cada 2-3 días o tener dos guardias simultáneos&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Ventajas de rotar (independiente del periodo):&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Todo el equipo conoce el sistema end-to-end&lt;/li&gt;
+  &lt;li&gt;Se comparte el conocimiento de producción&lt;/li&gt;
+  &lt;li&gt;Nadie se quema haciendo solo esto&lt;/li&gt;
+  &lt;li&gt;Fortalece la empatía y responsabilidad compartida&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Pro tip:&lt;/strong&gt; Si tu equipo tiene on-call 24/7, combina este rol con guardias fuera de horario (pagadas y rotativas).&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;5-soft-skills-lo-que-realmente-te-hace-un-buen-guardia&quot;&gt;5. Soft Skills: Lo que realmente te hace un buen Guardia&lt;/h2&gt;
+
+&lt;p&gt;Ser guardia del sprint &lt;strong&gt;no es solo técnica&lt;/strong&gt;. De hecho, las soft skills pueden ser más importantes que saber debuggear. Aquí están las habilidades clave:&lt;/p&gt;
+
+&lt;h3 id=&quot;comunicación-clara-y-proactiva&quot;&gt;Comunicación clara y proactiva&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Lo que NO debes hacer:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❌ &quot;No sé qué pasa, lo veo después&quot;
+❌ *Silencio por 2 horas mientras investigas*
+❌ &quot;Está roto, no tengo idea de cómo arreglarlo&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Lo que SÍ debes hacer:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;✅ &quot;Recibido, estoy investigando. Les actualizo en 15 minutos&quot;
+✅ &quot;Reproduje el bug. Voy a revisar los logs de Stripe&quot;
+✅ &quot;Este flujo es complejo, voy a pedir ayuda a @juan que lo implementó&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;saber-pedir-ayuda-sin-miedo-ni-ego&quot;&gt;Saber pedir ayuda (sin miedo ni ego)&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Cuándo pedir ayuda:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Después de 20-30 minutos sin avance claro&lt;/li&gt;
+  &lt;li&gt;Cuando el incidente es crítico y no tienes contexto&lt;/li&gt;
+  &lt;li&gt;Cuando involucra un flujo que nunca has tocado&lt;/li&gt;
+  &lt;li&gt;Cuando la solución requiere decisiones de arquitectura&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cómo pedir ayuda correctamente:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;❌ MAL:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;@tech-lead ayuda, esto no funciona&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;✅ BIEN:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;@juan necesito ayuda con el flujo de pagos 3DS
+
+Contexto:
+- Usuario no puede completar pago con Visa
+- Error: &apos;authentication_required&apos; desde Stripe
+- Ya revisé: logs, webhook handler, job de confirmación
+
+Lo que intenté:
+1. Reinicié el job manualmente → mismo error
+2. Probé con otra tarjeta → funciona
+3. Revisé docs de Stripe → menciona 3DS v2
+
+¿Podrías revisar si el flujo 3DS está configurado
+correctamente para tarjetas europeas?&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;coordinación-con-otros-equipos&quot;&gt;Coordinación con otros equipos&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Con Operaciones/Soporte:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Mantén comunicación bidireccional constante&lt;/li&gt;
+  &lt;li&gt;Actualiza el estado del ticket cada 30-60 minutos&lt;/li&gt;
+  &lt;li&gt;Explica en lenguaje simple, sin jerga técnica excesiva&lt;/li&gt;
+  &lt;li&gt;Anticipa preguntas: “¿Cuándo estará resuelto?” → “Estimo 1 hora más”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Ejemplo de actualización a soporte:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#support-channel
+
+@soporte-team Update sobre ticket #12345
+
+✅ Identificamos la causa: timeout en gateway de pagos
+🚧 Solución en progreso: ajustando timeout de 30s → 60s
+⏱️ ETA: Deploy en 20 minutos
+📋 Workaround temporal: Pedir al usuario que reintente
+
+Les aviso cuando esté resuelto.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Con el equipo técnico:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;No interrumpas a todos, identifica al experto del módulo&lt;/li&gt;
+  &lt;li&gt;Usa hilos/threads en Slack para no contaminar canales&lt;/li&gt;
+  &lt;li&gt;Documenta lo que aprendiste para la próxima rotación&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;empatía-bajo-presión&quot;&gt;Empatía bajo presión&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Recuerda:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;El usuario final está frustrado, no enojado contigo&lt;/li&gt;
+  &lt;li&gt;Soporte está presionado por el cliente, no te está atacando&lt;/li&gt;
+  &lt;li&gt;Tu equipo confía en ti, no espera que seas perfecto&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Frases que ayudan:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;“Entiendo la urgencia, estoy en esto”&lt;/li&gt;
+  &lt;li&gt;“Gracias por el reporte detallado, me ayuda mucho”&lt;/li&gt;
+  &lt;li&gt;“Buen catch, no había visto ese edge case”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;documentar-mientras-resuelves&quot;&gt;Documentar mientras resuelves&lt;/h3&gt;
+
+&lt;p&gt;Un buen guardia deja rastro para el futuro. Ejemplo de post-mortem rápido (5 minutos después de resolver):&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Post-mortem: Timeout en pagos con Visa 3DS&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; 2025-10-10 15:30 UTC&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Duración:&lt;/strong&gt; 45 minutos&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Impacto:&lt;/strong&gt; 8 usuarios afectados&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Root cause:&lt;/strong&gt;
+Timeout configurado en 30s, pero bancos europeos tardan ~45s en responder el challenge 3DS.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solución aplicada:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Aumenté timeout a 60s en &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;payment_service.rb:89&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Deploy a producción en 20 minutos&lt;/li&gt;
+  &lt;li&gt;Verificado con usuario afectado&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Aprendizajes:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Documentar timeouts específicos por región&lt;/li&gt;
+  &lt;li&gt;Crear alerta si 3DS tarda &amp;gt;40s&lt;/li&gt;
+  &lt;li&gt;Agregar retry automático para timeouts&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Próximos pasos:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Crear ticket para refactorizar configuración de timeouts&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Agregar tests para este edge case&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;gestión-del-estrés-y-autoconocimiento&quot;&gt;Gestión del estrés y autoconocimiento&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Tips prácticos:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Si llevas 2 horas sin resolver algo crítico → &lt;strong&gt;Escala, no te quemes&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Toma breaks de 5 minutos cada hora, aunque estés en medio de un incidente&lt;/li&gt;
+  &lt;li&gt;No te lleves trabajo mental fuera del horario de guardia&lt;/li&gt;
+  &lt;li&gt;Pide feedback después de tu semana: “¿Qué puedo mejorar?”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Señales de que debes escalar:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Sientes pánico o bloqueo mental&lt;/li&gt;
+  &lt;li&gt;El incidente supera tu nivel de conocimiento técnico&lt;/li&gt;
+  &lt;li&gt;Han pasado 30+ minutos sin avance en un crítico&lt;/li&gt;
+  &lt;li&gt;Necesitas tomar una decisión de arquitectura importante&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;6-beneficios-reales-no-es-solo-sufrimiento&quot;&gt;6. Beneficios Reales (no es solo sufrimiento)&lt;/h2&gt;
+
+&lt;p&gt;Sé que ser guardia puede sonar agotador, pero cuando lo implementas bien:&lt;/p&gt;
+
+&lt;p&gt;✅ &lt;strong&gt;El equipo puede concentrarse&lt;/strong&gt; en completar el sprint sin interrupciones&lt;br /&gt;
+✅ &lt;strong&gt;Los incidentes se resuelven más rápido&lt;/strong&gt; (de horas a minutos)&lt;br /&gt;
+✅ &lt;strong&gt;Mejora la satisfacción del cliente&lt;/strong&gt; porque los bugs se atienden inmediatamente&lt;br /&gt;
+✅ &lt;strong&gt;Se fortalece la cultura de ownership&lt;/strong&gt; compartido&lt;br /&gt;
+✅ &lt;strong&gt;Se documenta mejor&lt;/strong&gt; porque el guardia tiene tiempo para escribir&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;En proyectos anteriores donde implementé este rol:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;⬇️ &lt;strong&gt;MTTR bajó de 4 horas a 45 minutos&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;⬆️ &lt;strong&gt;Sprint completion rate subió del 65% al 85%&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;📈 &lt;strong&gt;Customer satisfaction aumentó 20 puntos&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;6-buenas-prácticas-para-no-morir-en-el-intento&quot;&gt;6. Buenas Prácticas para No Morir en el Intento&lt;/h2&gt;
+
+&lt;p&gt;Después de años haciendo esto, aprendí qué funciona y qué no:&lt;/p&gt;
+
+&lt;h3 id=&quot;1-canal-dedicado-y-estructura-de-requests&quot;&gt;1. Canal dedicado y estructura de requests&lt;/h3&gt;
+
+&lt;p&gt;Los requests del guardia pueden llegar por diferentes canales, &lt;strong&gt;dependiendo de las herramientas que use tu empresa&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Canales comunes:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Slack/Teams:&lt;/strong&gt; Canal dedicado como &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#oncall-incidents&lt;/code&gt; o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#guardia-sprint&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Jira/Linear:&lt;/strong&gt; Tickets con label &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[GUARDIA]&lt;/code&gt; o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[TRIAGE]&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;PagerDuty/Opsgenie:&lt;/strong&gt; Para incidentes críticos de producción&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Email:&lt;/strong&gt; Para reportes de clientes o soporte (menos común)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Estructura de un Request bien formado:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Todo request debe contener esta información mínima para ser atendido eficientemente:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;📋 Template de Request para Guardia&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Título:&lt;/strong&gt; [PROD] Timeout en checkout de pagos&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Prioridad:&lt;/strong&gt; 🔴 Critical / 🟠 High / 🟡 Medium / 🟢 Low&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Descripción:&lt;/strong&gt;
+Usuario no puede completar el pago. Al hacer clic en “Pagar”, la página se queda cargando indefinidamente.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Flujo de Reproducción:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Ir a https://app.ejemplo.com/checkout&lt;/li&gt;
+  &lt;li&gt;Seleccionar método de pago “Tarjeta de crédito”&lt;/li&gt;
+  &lt;li&gt;Ingresar datos: 4242 4242 4242 4242&lt;/li&gt;
+  &lt;li&gt;Click en “Pagar”&lt;/li&gt;
+  &lt;li&gt;❌ Error: La página se queda en loading&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Logs/Screenshots/Video:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Video: https://loom.com/share/abc123&lt;/li&gt;
+  &lt;li&gt;Screenshot del console: [adjunto]&lt;/li&gt;
+  &lt;li&gt;Error en logs: “Stripe timeout after 30s”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Usuario afectado:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Email: cliente@ejemplo.com&lt;/li&gt;
+  &lt;li&gt;ID: 12345&lt;/li&gt;
+  &lt;li&gt;Browser: Chrome 120 / MacOS&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Reportado por:&lt;/strong&gt; @soporte-team
+&lt;strong&gt;Fecha/Hora:&lt;/strong&gt; 2025-10-10 14:30 UTC&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ejemplo en Slack:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#oncall-incidents
+
+@guardia 🔴 URGENT
+
+**Título:** Payment gateway down - Stripe webhooks failing
+
+**Descripción:**
+Últimos 50 webhooks de Stripe están fallando.
+Pagos se procesan pero no se confirman en el sistema.
+
+**Logs:**
+https://datadog.com/logs?query=stripe+webhook+500
+
+**Impacto:**
+~20 usuarios afectados en últimos 15 minutos
+
+**Acción inmediata sugerida:**
+Revisar Sidekiq queue y status de workers
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Ejemplo en Jira:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Campo&lt;/th&gt;
+      &lt;th&gt;Valor&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Tipo&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Bug - Guardia&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Prioridad&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;High&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Labels&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;[GUARDIA], [PROD], [PAYMENTS]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Título&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Usuario no puede editar perfil&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Descripción&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Ver template arriba&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Attachments&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;video.mp4, screenshot.png, logs.txt&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Asignado a&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Guardia actual (rotar automáticamente)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;2-tablero-de-triage-con-prioridades-y-estados&quot;&gt;2. Tablero de triage con prioridades y estados&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Todo request debe tener dos dimensiones: Prioridad y Estado.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Prioridades y SLAs:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Prioridad&lt;/th&gt;
+      &lt;th&gt;SLA&lt;/th&gt;
+      &lt;th&gt;Acción&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;🔴 Critical&lt;/td&gt;
+      &lt;td&gt;&amp;lt; 15 min&lt;/td&gt;
+      &lt;td&gt;Escala inmediatamente&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;🟠 High&lt;/td&gt;
+      &lt;td&gt;&amp;lt; 2 horas&lt;/td&gt;
+      &lt;td&gt;Resuelve en el día&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;🟡 Medium&lt;/td&gt;
+      &lt;td&gt;&amp;lt; 1 día&lt;/td&gt;
+      &lt;td&gt;Agenda para próximos días&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;🟢 Low&lt;/td&gt;
+      &lt;td&gt;Backlog&lt;/td&gt;
+      &lt;td&gt;Envía a sprint planning&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Estados del ciclo de vida:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Estado&lt;/th&gt;
+      &lt;th&gt;Descripción&lt;/th&gt;
+      &lt;th&gt;Quién lo actualiza&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;📥 To Do&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Request recibido, pendiente de revisión&lt;/td&gt;
+      &lt;td&gt;Sistema/Reporter&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;🔍 Investigating&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Guardia está analizando logs, reproduciendo el bug&lt;/td&gt;
+      &lt;td&gt;Guardia&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;🚧 In Progress&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Solución en desarrollo o aplicándose&lt;/td&gt;
+      &lt;td&gt;Guardia&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;⏸️ Blocked&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Requiere información adicional o depende de otro equipo&lt;/td&gt;
+      &lt;td&gt;Guardia&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;✅ Done&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Resuelto y verificado en producción&lt;/td&gt;
+      &lt;td&gt;Guardia&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;📋 Backlog&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;No urgente, se agenda para próximo sprint&lt;/td&gt;
+      &lt;td&gt;Guardia/Tech Lead&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;🔄 Escalated&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Requiere intervención del tech lead o equipo completo&lt;/td&gt;
+      &lt;td&gt;Guardia&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Ejemplo de flujo completo en Jira:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Soporte crea ticket → Estado: 📥 To Do&lt;/li&gt;
+  &lt;li&gt;Guardia lo toma → Estado: 🔍 Investigating&lt;/li&gt;
+  &lt;li&gt;Reproducido, inicia fix → Estado: 🚧 In Progress&lt;/li&gt;
+  &lt;li&gt;Necesita info del usuario → Estado: ⏸️ Blocked&lt;/li&gt;
+  &lt;li&gt;Info recibida, continúa → Estado: 🚧 In Progress&lt;/li&gt;
+  &lt;li&gt;Fix deployado y verificado → Estado: ✅ Done&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Pro tip:&lt;/strong&gt; Configura un dashboard tipo Kanban con estas columnas para visualizar el estado en tiempo real.&lt;/p&gt;
+
+&lt;h3 id=&quot;3-automatiza-alertas&quot;&gt;3. Automatiza alertas&lt;/h3&gt;
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# datadog-monitors.yml&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;monitors&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Stripe&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Webhook&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Failures&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;sum(last_5m):sum:stripe.webhook.failed&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;10&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;@slack-#oncall&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;URGENT:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Stripe&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;webhooks&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;failing&quot;&lt;/span&gt;
+
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Sidekiq&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Queue&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Blocked&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;avg(last_10m):avg:sidekiq.queue_latency&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;300&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;@pagerduty&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;High&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;latency&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;detected&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;4-retrospectiva-de-incidentes&quot;&gt;4. Retrospectiva de incidentes&lt;/h3&gt;
+&lt;p&gt;Cada semana, en la retro del sprint:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;¿Cuántos incidentes hubo?&lt;/li&gt;
+  &lt;li&gt;¿Cuáles fueron recurrentes?&lt;/li&gt;
+  &lt;li&gt;¿Qué podemos automatizar o prevenir?&lt;/li&gt;
+  &lt;li&gt;¿El guardia tuvo suficiente soporte?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;7-caso-real-una-semana-como-guardia-del-sprint&quot;&gt;7. Caso Real: Una Semana como Guardia del Sprint&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Lunes 9:00 AM&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Recibo el pase de guardia del compañero anterior&lt;/li&gt;
+  &lt;li&gt;Reviso el dashboard: 3 alertas menores del fin de semana&lt;/li&gt;
+  &lt;li&gt;Clasifico y creo tickets&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Martes 2:30 PM&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;🚨 Alerta crítica: Payment gateway timeout en Stripe&lt;/li&gt;
+  &lt;li&gt;Analizo logs → Job bloqueando Sidekiq&lt;/li&gt;
+  &lt;li&gt;Cancelo el job, libero cola, notififico&lt;/li&gt;
+  &lt;li&gt;Tiempo total: 18 minutos&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Miércoles 11:00 AM&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Soporte reporta: “Usuario no puede reservar canchas”&lt;/li&gt;
+  &lt;li&gt;Reproduzco el bug → validación incorrecta&lt;/li&gt;
+  &lt;li&gt;Fix en 25 minutos, deploy a producción&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Jueves&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Día tranquilo, actualizo runbooks&lt;/li&gt;
+  &lt;li&gt;Limpio jobs fallidos del mes anterior&lt;/li&gt;
+  &lt;li&gt;Reviso métricas de uso&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Viernes 4:00 PM&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Hago handoff al siguiente guardia&lt;/li&gt;
+  &lt;li&gt;Comparto aprendizajes de la semana&lt;/li&gt;
+  &lt;li&gt;📊 Resultado: 12 incidentes atendidos, 8 bugs resueltos, 0 escalaciones&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;8-reflexión-final&quot;&gt;8. Reflexión Final&lt;/h2&gt;
+
+&lt;p&gt;Ser guardia del sprint no es solo “apagar incendios”. Es cuidar la salud del producto, proteger el tiempo del equipo y asegurar que los usuarios sigan confiando en la plataforma.&lt;/p&gt;
+
+&lt;p&gt;Es un rol de &lt;strong&gt;responsabilidad&lt;/strong&gt;, &lt;strong&gt;empatía&lt;/strong&gt; y &lt;strong&gt;técnica&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Si tu equipo todavía no tiene este rol implementado, te invito a probarlo. Empieza con una semana, rota entre 2-3 personas, y mide el impacto.&lt;/p&gt;
+
+&lt;p&gt;Te garantizo que en un mes, no querrán volver a trabajar sin un guardia del sprint.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;¿Has sido guardia del sprint? ¿Qué estrategias te funcionaron mejor? Déjame saber en los comentarios o contáctame directamente.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Escrito desde la trinchera, con café y mucho cariño técnico.&lt;/em&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/agile,/devops,/engineering/guardia-del-sprint-triage-engineer/&quot;&gt;Guardia del Sprint - el escudo invisible del equipo de desarrollo&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on October 10, 2025.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Definition of Ready y Definition of Done - Los guardianes de la calidad en desarrollo ágil]]></title>
+  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/agile,/software/engineering,/best/practices/definition-of-ready-definition-of-done/" />
+  <id>http://0.0.0.0:4000/agile,/software/engineering,/best/practices/definition-of-ready-definition-of-done</id>
+  <published>2025-08-15T15:12:53+00:00</published>
+  <updated>2025-08-15T15:12:53+00:00</updated>
+  <author>
+    <name>Adan Condori C.</name>
+    <uri>http://0.0.0.0:4000</uri>
+    <email>adan.condoric@gmail.com</email>
+  </author>
+  <content type="html">&lt;h2 id=&quot;introducción-el-problema-del-casi-listo&quot;&gt;Introducción: El problema del “casi listo”&lt;/h2&gt;
+
+&lt;p&gt;¿Cuántas veces has escuchado esto en tu carrera?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;“Esta tarea está lista para desarrollar” → Te sientas a trabajar y te faltan 10 piezas de información&lt;/li&gt;
+  &lt;li&gt;“Este feature está terminado” → Lo deploys y encuentras 5 bugs en producción&lt;/li&gt;
+  &lt;li&gt;“Solo falta un detallito” → Ese detallito toma 3 días más&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;En mis más de 10 años desarrollando software, he visto equipos paralizados por la falta de claridad sobre dos preguntas fundamentales:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;¿Cuándo una tarea está realmente lista para empezar?&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;¿Cuándo un feature está realmente terminado?&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;La respuesta a estas preguntas son dos conceptos que separan equipos amateur de equipos profesionales:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Definition of Ready (DoR)&lt;/strong&gt; - El contrato de entrada&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Definition of Done (DoD)&lt;/strong&gt; - El contrato de salida&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Este artículo es una guía práctica y técnica sobre cómo implementar DoR y DoD en equipos de desarrollo modernos, con ejemplos reales de sistemas complejos que gestionan pagos, reservaciones y operaciones críticas.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;1-qué-es-definition-of-ready-dor&quot;&gt;1. ¿Qué es Definition of Ready (DoR)?&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Definition of Ready es el checklist que asegura que una historia de usuario tiene suficiente claridad, contexto y detalle antes de que el equipo comience a trabajar en ella.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;el-costo-de-no-tener-dor&quot;&gt;El costo de no tener DoR&lt;/h3&gt;
+
+&lt;p&gt;Sin DoR, esto es lo que pasa:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;El desarrollador empieza a trabajar y descubre que falta información → &lt;strong&gt;Bloqueo&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Hace suposiciones incorrectas → &lt;strong&gt;Retrabajo&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Interrumpe a PM/Product constantemente → &lt;strong&gt;Pérdida de foco&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Las estimaciones están mal porque no había contexto completo → &lt;strong&gt;Sprint fallido&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Caso real que viví:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Un desarrollador tomó un ticket que decía “Arreglar bug en pagos”. Sin DoR:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;No sabía qué gateway estaba fallando (Stripe, PayPal, BAC?)&lt;/li&gt;
+  &lt;li&gt;No sabía cómo reproducir el bug&lt;/li&gt;
+  &lt;li&gt;No sabía el impacto (¿cuántos usuarios afectados?)&lt;/li&gt;
+  &lt;li&gt;Pasó 4 horas investigando antes de poder empezar&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Con DoR, esas 4 horas se habrían ahorrado.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;2-criterios-de-dor---el-checklist-definitivo&quot;&gt;2. Criterios de DoR - El Checklist Definitivo&lt;/h2&gt;
+
+&lt;h3 id=&quot;21-contexto-y-justificación&quot;&gt;2.1 Contexto y Justificación&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Qué debe incluir:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Título descriptivo con número de ticket&lt;/li&gt;
+  &lt;li&gt;El “por qué” de la funcionalidad&lt;/li&gt;
+  &lt;li&gt;Valor de negocio o problema que resuelve&lt;/li&gt;
+  &lt;li&gt;Módulo/área del sistema afectada&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Ejemplo real:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;❌ Mal (sin DoR):&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Ticket: Arreglar rangos de edad
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;✅ Bien (con DoR):&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PLAT-2768 | Corregir rangos de edad superpuestos en pricing de turnos
+
+**Contexto:**
+Los grupos de edad 18-65 y 65-100 se superponen. Un usuario de 65 años
+aparece en ambos grupos, causando precios duplicados en facturación.
+
+**Impacto:**
+- 150 usuarios afectados en último mes
+- Descuadre en reportes financieros
+- Confusión en clientes (+10 tickets de soporte)
+
+**Módulo:** Pricing / Reservations
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;22-criterios-de-aceptación-verificables&quot;&gt;2.2 Criterios de Aceptación Verificables&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Qué debe incluir:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Happy path (caso de éxito)&lt;/li&gt;
+  &lt;li&gt;Edge cases y escenarios de error&lt;/li&gt;
+  &lt;li&gt;Validaciones necesarias&lt;/li&gt;
+  &lt;li&gt;Comportamiento esperado del sistema&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Ejemplo con casos reales:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;**Criterios de Aceptación:**
+
+Happy Path:
+✅ El rango 18-65 debe cambiar a 18-64
+✅ El rango 65-100 permanece sin cambios
+✅ Un usuario de 64 años debe tener precio del grupo 18-64
+✅ Un usuario de 65 años debe tener SOLO precio del grupo 65-100
+
+Edge Cases:
+✅ Usuario sin edad definida → usar precio default
+✅ Edad = 0 o negativa → error de validación
+✅ Edad &amp;gt; 150 → error de validación
+
+Validaciones:
+✅ No puede haber rangos superpuestos
+✅ Rangos deben cubrir todas las edades posibles (1-100+)
+✅ Precio debe ser mayor a 0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;23-alcance-técnico-definido&quot;&gt;2.3 Alcance Técnico Definido&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Qué debe incluir:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Archivos/módulos probablemente afectados&lt;/li&gt;
+  &lt;li&gt;Integraciones o dependencias externas&lt;/li&gt;
+  &lt;li&gt;Migraciones de datos si son necesarias&lt;/li&gt;
+  &lt;li&gt;Impacto en APIs (GraphQL, REST)&lt;/li&gt;
+  &lt;li&gt;Cambios en packs/packages específicos&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Ejemplo real:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;**Alcance Técnico:**
+
+Backend (Ruby on Rails):
+- Models: PricingRule, ShiftPrice, AgeGroup
+- Validations: AgeGroupValidator (actualizar lógica de rangos)
+- Services: PricingCalculator (recalcular para edades límite)
+- Migrations: UpdateOverlappingAgeRanges
+
+APIs afectadas:
+- GraphQL: shiftPricing query
+- REST: /api/v1/pricing/calculate (deprecado pero aún en uso)
+
+Frontend:
+- React components: PricingForm, AgeRangeSelector
+- Redux: pricing slice
+
+Migraciones:
+- Actualizar ~500 registros de pricing_rules existentes
+- Recalcular precios históricos afectados (opcional)
+
+Packs/Packages:
+- Core app (no packs externos)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;24-multi-tenancy-y-consideraciones-de-scope&quot;&gt;2.4 Multi-tenancy y Consideraciones de Scope&lt;/h3&gt;
+
+&lt;p&gt;Para sistemas SaaS o multi-tenant:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;**Multi-tenancy:**
+- Scope: Por facility (cada instalación tiene sus rangos)
+- Timezone: No aplica (edad no depende de timezone)
+- Datos existentes: 45 facilities con rangos a actualizar
+- Configuración: Migración automática + opción manual post-deploy
+
+**Backward Compatibility:**
+- Mobile app v2.3+ soporta nuevos rangos
+- Mobile app &amp;lt; v2.3 seguirá usando API legacy (sin cambios)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;25-seguridad-y-compliance&quot;&gt;2.5 Seguridad y Compliance&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;**Seguridad:**
+- Datos sensibles: No (solo rangos de edad, no PII)
+- Autorización: Solo admins pueden editar pricing rules (CanCanCan :manage, PricingRule)
+- Auditoría: Loggear cambios en pricing_rules_audit_log
+- Compliance: No aplica PCI/GDPR
+
+**Permisos requeridos:**
+- Desarrollo: :facility_admin o :super_admin
+- QA: :facility_admin en staging
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;26-plan-de-testing&quot;&gt;2.6 Plan de Testing&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;**Testing Strategy:**
+
+Unit Tests:
+- AgeGroupValidator#validate_no_overlaps
+- PricingCalculator#price_for_age(64) → grupo 18-64
+- PricingCalculator#price_for_age(65) → grupo 65-100
+
+Integration Tests:
+- Crear reserva con usuario edad 64 → precio correcto
+- Crear reserva con usuario edad 65 → precio correcto
+- Actualizar pricing rule → validaciones funcionan
+
+System Tests (Playwright/Cypress):
+- Admin crea nuevo pricing rule con rangos válidos
+- Admin intenta crear rangos superpuestos → error visible
+
+Testing Manual:
+- Verificar migración en staging antes de producción
+- Probar con 3-5 facilities reales
+- Validar cálculos históricos no afectados
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;27-dependencias-y-blockers&quot;&gt;2.7 Dependencias y Blockers&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;**Dependencias:**
+- PLAT-2750: Refactor de PricingCalculator (debe estar en develop)
+- Staging con datos recientes (snapshot de prod &amp;lt; 7 días)
+
+**Blockers:**
+- Ninguno identificado
+
+**Riesgos:**
+- Migración podría tomar &amp;gt;10min en prod (500k registros)
+  Mitigación: Ejecutar en horario de bajo tráfico
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;3-qué-es-definition-of-done-dod&quot;&gt;3. ¿Qué es Definition of Done (DoD)?&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Definition of Done es el checklist que asegura que una historia está completamente terminada, probada, documentada y lista para producción.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;el-costo-de-no-tener-dod&quot;&gt;El costo de no tener DoD&lt;/h3&gt;
+
+&lt;p&gt;Sin DoD:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Features “terminados” que rompen en producción&lt;/li&gt;
+  &lt;li&gt;Tests que faltan o están skippeados&lt;/li&gt;
+  &lt;li&gt;Documentación que nunca se actualiza&lt;/li&gt;
+  &lt;li&gt;Code review superficial porque no hay estándar claro&lt;/li&gt;
+  &lt;li&gt;Deuda técnica que crece exponencialmente&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Caso real:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Un desarrollador hizo merge de un feature “terminado”:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Funcionaba en su máquina ✅&lt;/li&gt;
+  &lt;li&gt;Pero no tenía tests ❌&lt;/li&gt;
+  &lt;li&gt;Rompió el build de CI ❌&lt;/li&gt;
+  &lt;li&gt;No documentó las variables de entorno nuevas ❌&lt;/li&gt;
+  &lt;li&gt;Deployment falló en staging ❌&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Resultado: 2 días de downtime, 3 desarrolladores bloqueados, PM frustrado, cliente enojado.&lt;/p&gt;
+
+&lt;p&gt;Con DoD, esto no habría pasado del code review.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;4-criterios-de-dod---el-checklist-de-calidad&quot;&gt;4. Criterios de DoD - El Checklist de Calidad&lt;/h2&gt;
+
+&lt;h3 id=&quot;41-código-implementado-y-clean&quot;&gt;4.1 Código Implementado y Clean&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;**Checklist:**
+✅ Funcionalidad completa según criterios de aceptación
+✅ Código sigue convenciones del proyecto (RuboCop, ESLint, Prettier)
+✅ No hay código comentado sin justificación
+✅ No hay console.log o binding.pry olvidados
+✅ Variables tienen nombres descriptivos
+✅ Métodos tienen responsabilidad única (SRP)
+
+**Validación:**
+bundle exec rubocop -A                    # Ruby
+npm run lint                              # JavaScript
+bundle exec rails runner &apos;system(&quot;packwerk check&quot;)&apos;  # Pack boundaries
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;42-tests-completos-y-pasando&quot;&gt;4.2 Tests Completos y Pasando&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;El mínimo aceptable:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;**Unit Tests:**
+✅ Toda lógica de negocio tiene tests
+✅ Edge cases cubiertos
+✅ Mocks/stubs usados apropiadamente
+✅ Coverage no disminuye (mínimo mantener %)
+
+**Integration Tests:**
+✅ Flujos completos end-to-end
+✅ Integraciones con servicios externos (Stripe, AWS, etc.)
+✅ Background jobs probados
+
+**System Tests (si aplica):**
+✅ UX crítica probada (checkout, login, pagos)
+✅ Tests no son flaky (usar Timecop, stubs consistentes)
+
+**Validación:**
+bundle exec rspec                         # Todos los tests
+SIMPLECOV_REPORT=true bundle exec rspec   # Con coverage
+bin/test_system system_specs/pricing/     # System tests
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Ejemplo de test bien hecho:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# spec/validators/age_group_validator_spec.rb&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;RSpec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;describe&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;AgeGroupValidator&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;describe&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;#validate_no_overlaps&apos;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;when ranges overlap&apos;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;adds error for overlapping ranges&apos;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;rule1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:pricing_rule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;age_min: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;age_max: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;65&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;rule2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:pricing_rule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;age_min: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;65&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;age_max: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;validator&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;AgeGroupValidator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rule1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rule2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;validator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;valid?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;validator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;Age ranges cannot overlap&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;when ranges do not overlap&apos;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;is valid&apos;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;rule1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:pricing_rule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;age_min: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;age_max: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;rule2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:pricing_rule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;age_min: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;65&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;age_max: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;validator&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;AgeGroupValidator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rule1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rule2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;validator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;valid?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;43-manejo-de-timezone-y-time-crítico-en-apps-globales&quot;&gt;4.3 Manejo de Timezone y Time (crítico en apps globales)&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;✅ Usar Time.current en lugar de Time.now
+✅ Usar Time.zone.parse en lugar de Time.parse
+✅ Respetar timezone de facility/user según contexto
+✅ Tests con tiempo usan Timecop.freeze para evitar flakiness
+
+**Ejemplo correcto:**
+# ❌ Mal
+created_at = Time.now
+due_date = Date.today + 7.days
+
+# ✅ Bien
+created_at = Time.current
+due_date = 7.days.from_now
+
+# ✅ Mejor (con timezone específico)
+created_at = Time.current.in_time_zone(facility.timezone)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;44-consideraciones-de-pago-y-finanzas&quot;&gt;4.4 Consideraciones de Pago y Finanzas&lt;/h3&gt;
+
+&lt;p&gt;Para features que tocan dinero:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;✅ Usar transacciones de DB para operaciones financieras
+✅ Jobs de pago son idempotentes
+✅ Validar montos y precisión (cents vs dollars)
+✅ Manejar correctamente gateway selection
+✅ Loggear TODAS las operaciones financieras
+✅ Nunca hacer cálculos con floats (usar Money gem o cents en integers)
+
+**Ejemplo de idempotencia:**
+def process_payment(payment_id)
+  payment = Payment.find(payment_id)
+
+  return if payment.processed? # Idempotencia
+
+  Payment.transaction do
+    result = gateway.charge(payment.amount_cents)
+    payment.update!(
+      status: &apos;processed&apos;,
+      gateway_transaction_id: result.id
+    )
+    PaymentAuditLog.create!(payment: payment, action: &apos;processed&apos;)
+  end
+rescue Stripe::CardError =&amp;gt; e
+  payment.update!(status: &apos;failed&apos;, error: e.message)
+  raise
+end
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;45-background-jobs-robustos&quot;&gt;4.5 Background Jobs Robustos&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;✅ Jobs reciben argumentos como hash con symbolized keys
+✅ Validar args.is_a?(Hash) antes de procesar
+✅ Variables inicializadas antes de rescue blocks
+✅ Jobs son idempotentes (pueden ejecutarse múltiples veces)
+✅ Retry logic configurado apropiadamente
+✅ Dead letter queue para failures críticos
+
+**Ejemplo robusto:**
+class ProcessRefundJob &amp;lt; ApplicationJob
+  queue_as :critical
+
+  retry_on Stripe::APIConnectionError, wait: :exponentially_longer, attempts: 5
+  discard_on Stripe::InvalidRequestError
+
+  def perform(args)
+    raise ArgumentError, &apos;Hash expected&apos; unless args.is_a?(Hash)
+
+    args = args.deep_symbolize_keys
+    payment_id = args.fetch(:payment_id)
+    reason = args.fetch(:reason, &apos;customer_request&apos;)
+
+    payment = Payment.find(payment_id)
+
+    return if payment.refunded? # Idempotencia
+
+    # ... lógica de refund
+  rescue =&amp;gt; e
+    ErrorTracker.notify(e, payment_id: payment_id)
+    raise
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;46-seguridad-y-autorización&quot;&gt;4.6 Seguridad y Autorización&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;✅ Endpoints tienen autorización apropiada (CanCanCan, Pundit)
+✅ No se exponen IDs de DB en APIs (usar UUIDs o secure_ids)
+✅ Datos sensibles están encriptados (attr_encrypted)
+✅ SQL injection prevenido (usar placeholders, no string interpolation)
+✅ XSS prevenido (sanitize inputs)
+✅ CSRF tokens en formularios
+
+**Ejemplo de autorización correcta:**
+# app/controllers/api/v1/pricing_rules_controller.rb
+class Api::V1::PricingRulesController &amp;lt; ApiController
+  load_and_authorize_resource # CanCanCan
+
+  def update
+    # authorize! ya fue ejecutado por load_and_authorize_resource
+
+    if @pricing_rule.update(pricing_rule_params)
+      render json: @pricing_rule
+    else
+      render json: { errors: @pricing_rule.errors }, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def pricing_rule_params
+    params.require(:pricing_rule).permit(:age_min, :age_max, :price_cents)
+  end
+end
+
+# app/models/ability.rb
+class Ability
+  include CanCan::Ability
+
+  def initialize(user)
+    return unless user.present?
+
+    if user.admin?
+      can :manage, PricingRule
+    elsif user.facility_manager?
+      can :manage, PricingRule, facility_id: user.facility_id
+    else
+      can :read, PricingRule
+    end
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;47-cicd-checks-pasando&quot;&gt;4.7 CI/CD Checks Pasando&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;✅ RuboCop sin warnings
+✅ Brakeman sin vulnerabilidades nuevas
+✅ Tests en CI pasando (no solo local)
+✅ Coverage no disminuyó
+✅ Build artifacts generados correctamente
+✅ Docker image builds (si aplica)
+
+**Validación local antes de push:**
+bundle exec rails ci                    # Ejecuta todos los checks
+bundle exec brakeman -z                 # Security scan
+bundle exec pronto run -c develop       # Code review automatizado
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;48-migraciones-de-base-de-datos&quot;&gt;4.8 Migraciones de Base de Datos&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;✅ Migraciones son reversibles (método down implementado)
+✅ Migraciones de datos si es necesario (backfill)
+✅ Probadas en staging antes de prod
+✅ Indexes apropiados para queries nuevas
+✅ Compatible con zero-downtime deployment
+✅ Considera volumen de datos en producción
+
+**Ejemplo de migración reversible:**
+class UpdateAgeRangesBounds &amp;lt; ActiveRecord::Migration[6.1]
+  def up
+    # Actualizar rangos 18-65 a 18-64
+    PricingRule.where(age_min: 18, age_max: 65).find_each do |rule|
+      rule.update_columns(age_max: 64, updated_at: Time.current)
+    end
+  end
+
+  def down
+    # Revertir cambios
+    PricingRule.where(age_min: 18, age_max: 64).find_each do |rule|
+      rule.update_columns(age_max: 65, updated_at: Time.current)
+    end
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;49-documentación-actualizada&quot;&gt;4.9 Documentación Actualizada&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;✅ Comentarios en código complejo explicando el &quot;por qué&quot;
+✅ Métodos públicos documentados (YARD, JSDoc)
+✅ GraphQL schema tiene descriptions
+✅ README actualizado si hay nuevos setup steps
+✅ Variables de entorno documentadas (.env.example)
+✅ API docs actualizados (Swagger/OpenAPI)
+✅ Cambios arquitectónicos documentados en /docs
+
+**Ejemplo de documentación clara:**
+# app/services/pricing_calculator.rb
+
+# Calcula el precio de una reserva considerando:
+# - Edad del usuario (aplica descuentos por grupo etario)
+# - Horario del turno (peak vs off-peak)
+# - Membresía activa (descuentos adicionales)
+# - Promociones vigentes
+#
+# @param user [User] Usuario que hace la reserva
+# @param shift [Shift] Turno a reservar
+# @return [Money] Precio final en cents
+# @raise [PricingError] Si no se puede calcular precio
+#
+# @example
+#   calculator = PricingCalculator.new(user, shift)
+#   price = calculator.calculate
+#   # =&amp;gt; #&amp;lt;Money cents: 1500 currency: USD&amp;gt;
+def calculate
+  # ...
+end
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;410-code-review-aprobado&quot;&gt;4.10 Code Review Aprobado&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;✅ PR tiene descripción clara con contexto
+✅ Screenshots para cambios de UI
+✅ Al menos 1 reviewer aprobó (2 para features críticos)
+✅ Todos los comentarios resueltos
+✅ No hay merge conflicts
+✅ Branch está actualizado con develop/main
+
+**Template de PR bien hecho:**
+
+## 🎯 Objetivo
+PLAT-2768: Corregir rangos de edad superpuestos en pricing
+
+## 📝 Cambios
+- Actualizar AgeGroupValidator para prevenir overlaps
+- Cambiar rango 18-65 a 18-64 en migración
+- Agregar tests para edge cases
+
+## 🧪 Testing
+- ✅ Unit tests: 12 nuevos, todos pasan
+- ✅ Integration tests: Flujo completo de pricing
+- ✅ Manual: Probado en staging con 5 facilities
+
+## 📸 Screenshots
+[imagen del form con validación de overlaps]
+
+## ⚠️ Consideraciones
+- Migración toma ~5min en prod (estimado)
+- Ejecutar en horario de bajo tráfico
+- Rollback disponible vía down migration
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;411-performance-y-queries&quot;&gt;4.11 Performance y Queries&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;✅ No hay N+1 queries (usar includes/preload)
+✅ Queries complejas optimizadas
+✅ Caching donde es apropiado (Redis, Rails.cache)
+✅ Background jobs para operaciones pesadas (&amp;gt;5 segundos)
+✅ Pagination en listados grandes
+
+**Ejemplo de prevención N+1:**
+# ❌ Mal (N+1)
+facilities.each do |facility|
+  puts facility.owner.name  # Query por cada facility
+end
+
+# ✅ Bien
+facilities.includes(:owner).each do |facility|
+  puts facility.owner.name  # Una sola query
+end
+
+**Validación en Rails console:**
+ActiveRecord::Base.logger = Logger.new(STDOUT)
+# Ejecutar código y contar queries
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;5-flujo-de-trabajo-con-dor-y-dod&quot;&gt;5. Flujo de Trabajo con DoR y DoD&lt;/h2&gt;
+
+&lt;h3 id=&quot;el-proceso-ideal&quot;&gt;El proceso ideal&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. Product/PM crea ticket
+   ↓
+2. Equipo revisa contra DoR en refinement
+   ├─ ✅ Cumple DoR → Pasa a backlog &quot;Ready&quot;
+   └─ ❌ No cumple → Regresa a PM para completar
+   ↓
+3. Sprint Planning: Desarrollador toma ticket de backlog &quot;Ready&quot;
+   ↓
+4. Desarrollo e implementación
+   ↓
+5. Desarrollador auto-revisa DoD antes de crear PR
+   ↓
+6. Code review verifica DoD
+   ├─ ✅ Cumple DoD → Aprobado para merge
+   └─ ❌ No cumple → Request changes
+   ↓
+7. Merge a develop → Auto-deploy a staging
+   ↓
+8. QA verifica en staging
+   ↓
+9. Deploy a producción
+   ↓
+10. Monitoring post-deploy (24-48h)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;6-adaptaciones-según-contexto&quot;&gt;6. Adaptaciones según Contexto&lt;/h2&gt;
+
+&lt;h3 id=&quot;hotfixes-de-producción&quot;&gt;Hotfixes de Producción&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;DoR simplificado:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Contexto: ¿Qué está roto y por qué?&lt;/li&gt;
+  &lt;li&gt;Impacto: ¿Cuántos usuarios afectados?&lt;/li&gt;
+  &lt;li&gt;Solución propuesta: ¿Cómo arreglarlo?&lt;/li&gt;
+  &lt;li&gt;Rollback plan: ¿Cómo revertir si falla?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;DoD mínimo pero NO negociable:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Tests (al menos el happy path)&lt;/li&gt;
+  &lt;li&gt;Code review (puede ser post-merge en casos extremos)&lt;/li&gt;
+  &lt;li&gt;Documentación (puede ser post-fix)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;spikes-de-investigación&quot;&gt;Spikes de Investigación&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;DoR para spikes:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Preguntas a responder&lt;/li&gt;
+  &lt;li&gt;Opciones a evaluar&lt;/li&gt;
+  &lt;li&gt;Criterio de decisión&lt;/li&gt;
+  &lt;li&gt;Timebox (ej: 4 horas max)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;DoD para spikes:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Documento con hallazgos&lt;/li&gt;
+  &lt;li&gt;Recomendación técnica&lt;/li&gt;
+  &lt;li&gt;Tickets de implementación si procede&lt;/li&gt;
+  &lt;li&gt;Actualización de arquitectura docs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;refactors-técnicos&quot;&gt;Refactors Técnicos&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;DoR para refactors:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Justificación técnica clara (performance, mantenibilidad, etc.)&lt;/li&gt;
+  &lt;li&gt;Métricas actuales (ej: coverage 60%, tiempo de CI 15min)&lt;/li&gt;
+  &lt;li&gt;Métricas objetivo (ej: coverage 80%, tiempo de CI 8min)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;DoD para refactors:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Comportamiento NO cambió (tests originales siguen pasando)&lt;/li&gt;
+  &lt;li&gt;Nuevos tests agregados si hay nueva lógica&lt;/li&gt;
+  &lt;li&gt;Métricas objetivo alcanzadas&lt;/li&gt;
+  &lt;li&gt;Documentación de cambios arquitectónicos&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;7-señales-de-alerta&quot;&gt;7. Señales de Alerta&lt;/h2&gt;
+
+&lt;h3 id=&quot;dor-insuficiente-síntomas&quot;&gt;DoR insuficiente (síntomas):&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Desarrolladores haciendo &amp;gt; 5 preguntas por ticket durante desarrollo&lt;/li&gt;
+  &lt;li&gt;Historias bloqueadas por dependencias no identificadas&lt;/li&gt;
+  &lt;li&gt;Estimaciones erradas por factor de 2x o más&lt;/li&gt;
+  &lt;li&gt;Retrabajo frecuente por malentendidos&lt;/li&gt;
+  &lt;li&gt;Desarrolladores rechazando tickets del backlog&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;dod-no-seguido-síntomas&quot;&gt;DoD no seguido (síntomas):&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Bugs en features recién desplegadas (&amp;lt; 48h)&lt;/li&gt;
+  &lt;li&gt;Code reviews que toman &amp;gt; 1 día&lt;/li&gt;
+  &lt;li&gt;Tests skippeados o pendientes en develop&lt;/li&gt;
+  &lt;li&gt;Deuda técnica creciendo sprint tras sprint&lt;/li&gt;
+  &lt;li&gt;Rollbacks frecuentes en producción&lt;/li&gt;
+  &lt;li&gt;Coverage decreciendo consistentemente&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;8-caso-real-completo&quot;&gt;8. Caso Real Completo&lt;/h2&gt;
+
+&lt;h3 id=&quot;historia-corregir-rangos-de-edad-superpuestos&quot;&gt;Historia: Corregir rangos de edad superpuestos&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;DoR Checklist (Pre-desarrollo):&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;✅ Contexto: Rangos 18-65 y 65-100 causan precios duplicados
+✅ Impacto: 150 usuarios/mes, descuadre en reportes
+✅ Criterios aceptación: Cambiar a 18-64, validar no-overlap
+✅ Alcance técnico:
+   - Backend: PricingRule model, AgeGroupValidator
+   - Migración: UpdateAgeRangeBounds
+   - Tests: Unit + integration
+✅ Multi-tenancy: Por facility, 45 facilities afectadas
+✅ Seguridad: Solo admins, auditoría en logs
+✅ Testing plan: Definido (ver arriba)
+✅ Documentación: Actualizar validator docs
+✅ Dependencias: Ninguna
+✅ Estimación: 5 story points (1-2 días)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Desarrollo (2 días)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Día 1:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Actualizar AgeGroupValidator con lógica no-overlap&lt;/li&gt;
+  &lt;li&gt;Crear migración UpdateAgeRangeBounds&lt;/li&gt;
+  &lt;li&gt;Tests unitarios (12 specs nuevos)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Día 2:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Tests de integración (flujo completo pricing)&lt;/li&gt;
+  &lt;li&gt;Probar migración en staging&lt;/li&gt;
+  &lt;li&gt;Documentar cambios&lt;/li&gt;
+  &lt;li&gt;Code review self-check&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;DoD Checklist (Pre-PR):&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;✅ Código: Validaciones implementadas, migración creada
+✅ Tests: 15 specs nuevos, coverage +2%, todos pasan
+✅ RuboCop: 0 warnings
+✅ Brakeman: 0 issues nuevos
+✅ Migraciones: Reversible, probada en staging
+✅ Performance: Sin queries adicionales, usa índices existentes
+✅ Documentación: Comentarios en validator, migración documentada
+✅ PR: Descripción completa, screenshots de admin UI
+✅ CI: Todos los checks en verde
+✅ QA: Probado en staging con 5 facilities reales
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Code Review (1 día)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Comentarios:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;“Agregar test para edad = null” → Agregado&lt;/li&gt;
+  &lt;li&gt;“Migración podría ser lenta en prod” → Agregada nota en PR&lt;/li&gt;
+  &lt;li&gt;“Falta docs en GraphQL schema” → Agregado&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Resultado:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Merge exitoso&lt;/li&gt;
+  &lt;li&gt;Deploy a producción sin issues&lt;/li&gt;
+  &lt;li&gt;0 bugs reportados post-deploy&lt;/li&gt;
+  &lt;li&gt;Tiempo total: 3 días (según estimación)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;9-implementando-dordod-en-tu-equipo&quot;&gt;9. Implementando DoR/DoD en tu Equipo&lt;/h2&gt;
+
+&lt;h3 id=&quot;paso-1-empezar-simple&quot;&gt;Paso 1: Empezar simple&lt;/h3&gt;
+
+&lt;p&gt;No implementes TODO de una vez. Empieza con lo básico:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;DoR mínimo viable:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Título claro + número de ticket&lt;/li&gt;
+  &lt;li&gt;Criterios de aceptación&lt;/li&gt;
+  &lt;li&gt;Alcance técnico identificado&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;DoD mínimo viable:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Tests pasando&lt;/li&gt;
+  &lt;li&gt;Code review aprobado&lt;/li&gt;
+  &lt;li&gt;Sin linter warnings&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;paso-2-iterar-y-mejorar&quot;&gt;Paso 2: Iterar y mejorar&lt;/h3&gt;
+
+&lt;p&gt;Cada retrospectiva:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;¿Qué faltó en DoR que causó problemas?&lt;/li&gt;
+  &lt;li&gt;¿Qué en DoD no se cumplió y causó bugs?&lt;/li&gt;
+  &lt;li&gt;Agregar esos puntos al checklist&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;paso-3-automatizar&quot;&gt;Paso 3: Automatizar&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# pre-commit hook para DoD&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;rubocop &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;1
+bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;rspec &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;1
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;✅ DoD checks passed&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;paso-4-medir-impacto&quot;&gt;Paso 4: Medir impacto&lt;/h3&gt;
+
+&lt;p&gt;Métricas a trackear:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Tiempo promedio de desarrollo por story point (debe bajar)&lt;/li&gt;
+  &lt;li&gt;Bugs en producción post-deploy (debe bajar)&lt;/li&gt;
+  &lt;li&gt;Tickets regresados por falta de información (debe bajar)&lt;/li&gt;
+  &lt;li&gt;Velocity del equipo (debe subir o estabilizarse)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;10-reflexión-final&quot;&gt;10. Reflexión Final&lt;/h2&gt;
+
+&lt;p&gt;DoR y DoD no son burocracia. Son &lt;strong&gt;contratos&lt;/strong&gt; que protegen a todos:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Para Desarrolladores:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Claridad antes de empezar&lt;/li&gt;
+  &lt;li&gt;Confianza al hacer merge&lt;/li&gt;
+  &lt;li&gt;Menos interrupciones&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Para Product/PM:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Expectativas alineadas&lt;/li&gt;
+  &lt;li&gt;Menos sorpresas&lt;/li&gt;
+  &lt;li&gt;Features realmente terminados&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Para el Negocio:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Menos bugs en producción&lt;/li&gt;
+  &lt;li&gt;Entregas predecibles&lt;/li&gt;
+  &lt;li&gt;ROI medible&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Después de años implementando DoR/DoD en múltiples equipos, puedo afirmar:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Los equipos con DoR/DoD claro son 2-3x más rápidos que equipos sin ellos. No porque trabajen más rápido, sino porque &lt;strong&gt;no pierden tiempo en retrabajo, bugs y malentendidos&lt;/strong&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;La inversión inicial de definir estos checklists se paga en la primera semana.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;recursos-para-profundizar&quot;&gt;Recursos para Profundizar&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Plantillas descargables:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;DoR Template (Notion/Confluence/Jira)&lt;/li&gt;
+  &lt;li&gt;DoD Checklist (GitHub PR template)&lt;/li&gt;
+  &lt;li&gt;Code Review Checklist&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Herramientas recomendadas:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Danger.js - Automatizar code review checks&lt;/li&gt;
+  &lt;li&gt;Pronto - Code review automatizado&lt;/li&gt;
+  &lt;li&gt;SimpleCov - Coverage tracking&lt;/li&gt;
+  &lt;li&gt;Brakeman - Security scanning&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Lecturas recomendadas:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;“User Stories Applied” - Mike Cohn&lt;/li&gt;
+  &lt;li&gt;“The DevOps Handbook” - Gene Kim&lt;/li&gt;
+  &lt;li&gt;“Accelerate” - Nicole Forsgren&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;¿Tu equipo tiene DoR y DoD claros? ¿Qué otros criterios agregarías? Comparte tu experiencia en los comentarios.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Escrito desde la trinchera del desarrollo ágil, con café y muchos sprints de experiencia.&lt;/em&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/agile,/software/engineering,/best/practices/definition-of-ready-definition-of-done/&quot;&gt;Definition of Ready y Definition of Done - Los guardianes de la calidad en desarrollo ágil&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on August 15, 2025.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>

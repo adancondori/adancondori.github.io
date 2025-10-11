@@ -1,21 +1,13 @@
 ---
 layout: post
-
 title: 📝 Integration with Multiple Payment Gateways
-
 modified:
-
 categories: Payments, Stripe,Paypal
-
 excerpt: >
   Mis experiencia con 3Ds
-
 tags: []
-
 image:
-
 feature:
-
 date: 2025-01-25T08:12:53-07:00
 
 
