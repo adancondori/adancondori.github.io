@@ -3,7 +3,9 @@
     "allow": [
       "WebSearch",
       "Bash(docker compose:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(docker volume:*)",
+      "Bash(docker logs:*)"
     ],
     "deny": [],
     "ask": []
