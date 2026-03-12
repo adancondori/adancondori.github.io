@@ -23,24 +23,6 @@
     - <strong>Cloud:</strong> AWS (EC2, Lambda, RDS, S3, SQS, CloudFormation)<br/>
     - <strong>Tools:</strong> Docker, Kubernetes, Redis, PostgreSQL, Elasticsearch
 
-- title: University Professor
-  org: Universidad del Valle (BO)
-  startTime: 2023-01
-  endTime: present
-  desc: |
-    <strong>Responsibilities:</strong><br/>
-    - Course Development: Designed and taught courses focused on mobile application development using Android, React Native, iOS, and Flutter.<br/>
-    - Practical Learning: Emphasized hands-on experience in the classroom, guiding students through the process of building fully functional mobile applications.<br/>
-    - Remote Teaching: Delivered lectures and workshops remotely, utilizing interactive methods to engage students in virtual settings.<br/>
-    - Mentorship: Provided one-on-one support to students, helping them troubleshoot and optimize their projects.<br/><br/>
-
-    <strong>Technical Skills:</strong><br/>
-    - Mobile App Development (Android, iOS)<br/>
-    - Cross-Platform Frameworks (React Native, Flutter)<br/>
-    - Remote Education Techniques<br/>
-    - Student Guidance and Project Mentorship
-
-
 - title: Technical Leader
   org: NETACTICA - Colombia
   startTime: 2021-11
@@ -82,6 +64,38 @@
     - Azure DevOps (Repos, Pipelines, Artifacts, Boards)<br/>
     - Agile Methodologies (SCRUM Master)<br/>
     - Team and People Management
+
+- title: University Professor
+  org: Universidad del Valle (BO)
+  startTime: 2023-01
+  endTime: present
+  desc: |
+    <strong>Responsibilities:</strong><br/>
+    - Course Development: Designed and taught courses focused on mobile application development using Android, React Native, iOS, and Flutter.<br/>
+    - Practical Learning: Emphasized hands-on experience in the classroom, guiding students through the process of building fully functional mobile applications.<br/>
+    - Remote Teaching: Delivered lectures and workshops remotely, utilizing interactive methods to engage students in virtual settings.<br/>
+    - Mentorship: Provided one-on-one support to students, helping them troubleshoot and optimize their projects.<br/><br/>
+
+    <strong>Technical Skills:</strong><br/>
+    - Mobile App Development (Android, iOS)<br/>
+    - Cross-Platform Frameworks (React Native, Flutter)<br/>
+    - Remote Education Techniques<br/>
+    - Student Guidance and Project Mentorship
+
+- title: University Professor
+  org: INIFRANZ S.A. (BO)
+  startTime: 2022-01
+  endTime: 2024-12
+  desc: |
+    <strong>Responsibilities:</strong><br/>
+    - Web Development: Developed and maintained web applications using Ruby on Rails, React, and Vue.js.<br/>
+    - Mobile Development: Built and optimized mobile solutions for Android platforms.<br/>
+    - Collaboration: Worked closely with stakeholders to ensure that the solutions aligned with business objectives.<br/><br/>
+
+    <strong>Technical Skills:</strong><br/>
+    - Ruby on Rails Web Development<br/>
+    - Android App Development<br/>
+    - Requirement Analysis and Stakeholder Engagement
 
 - title: Freelancer Developer
   org: Inside and outside of the country
