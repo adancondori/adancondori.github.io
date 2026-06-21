@@ -4,13 +4,1105 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://0.0.0.0:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://0.0.0.0:4000" />
-<updated>2025-10-11T02:44:19+00:00</updated>
+<updated>2026-06-21T02:37:19+00:00</updated>
 <id>http://0.0.0.0:4000/</id>
 <author>
   <name>Adan Condori C.</name>
   <uri>http://0.0.0.0:4000/</uri>
   <email>adan.condoric@gmail.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Arquitectura base de un sistema de pagos multi-gateway - capas, patrones, comunicación y estrategias que aprendí en años de payments]]></title>
+  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/architecture,/payments,/software/design,/patterns/Arquitectura-Base-Sistema-Pagos-Multi-Gateway/" />
+  <id>http://0.0.0.0:4000/architecture,/payments,/software/design,/patterns/Arquitectura-Base-Sistema-Pagos-Multi-Gateway</id>
+  <published>2026-06-01T17:00:00+00:00</published>
+  <updated>2026-06-01T17:00:00+00:00</updated>
+  <author>
+    <name>Adan Condori C.</name>
+    <uri>http://0.0.0.0:4000</uri>
+    <email>adan.condoric@gmail.com</email>
+  </author>
+  <content type="html">&lt;h2 id=&quot;introducción-por-qué-casi-todos-los-sistemas-de-pagos-terminan-siendo-un-infierno&quot;&gt;Introducción: por qué casi todos los sistemas de pagos terminan siendo un infierno&lt;/h2&gt;
+
+&lt;p&gt;Llevo varios años trabajando con sistemas de pagos. He integrado más de 15 pasarelas distintas — Stripe, PayPal, Adyen, CardConnect, Xendit, Razorpay, BAC, OnePay, PixelPay y un largo etcétera. Y si algo aprendí es esto:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;Casi nadie diseña la arquitectura de un sistema de pagos antes de necesitarla. Se va añadiendo un gateway, luego otro, luego otro, hasta que el código se vuelve inmantenible.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;El patrón que veo repetirse en empresa tras empresa es siempre el mismo: el primer gateway se integra “rápido y sucio” porque hay que salir a producción. El segundo se copia del primero. El tercero ya empieza a tener sus condicionales especiales. Y para el quinto, agregar un gateway nuevo es un proyecto de &lt;strong&gt;3 meses&lt;/strong&gt; que toca 15 archivos distintos.&lt;/p&gt;
+
+&lt;p&gt;Yo mismo viví eso. Y tras varias rondas de refactor — algunos exitosos, otros que tuve que rehacer — fui consolidando un blueprint mental de cómo debería diseñarse un sistema de pagos multi-gateway desde el día uno. Este post es ese blueprint.&lt;/p&gt;
+
+&lt;p&gt;No es una receta universal. Es &lt;strong&gt;lo que yo haría si arrancara hoy un sistema de pagos&lt;/strong&gt; que tiene que soportar múltiples pasarelas, múltiples países, múltiples métodos de pago, y crecer sin colapsar. Si llegaste tarde y ya tienes un sistema hecho un desastre, también te sirve: las últimas secciones cubren la estrategia de migración.&lt;/p&gt;
+
+&lt;p&gt;Está dirigido a arquitectos, tech leads y devs senior que tienen que tomar decisiones de diseño. No voy a entrar en detalles específicos de Stripe vs Adyen — voy a hablar de &lt;strong&gt;conceptos generalizables&lt;/strong&gt; que aplican sin importar el stack, el lenguaje o la región.&lt;/p&gt;
+
+&lt;p&gt;Vamos.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;parte-i--fundamentos&quot;&gt;Parte I — Fundamentos&lt;/h1&gt;
+
+&lt;h2 id=&quot;1-por-qué-multi-gateway-no-es-opcional&quot;&gt;1. ¿Por qué multi-gateway no es opcional?&lt;/h2&gt;
+
+&lt;p&gt;Cuando alguien me dice &lt;em&gt;“para qué tantos gateways, con uno basta”&lt;/em&gt;, mi respuesta siempre incluye estos cinco puntos:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;🌍 &lt;strong&gt;Cobertura geográfica.&lt;/strong&gt; No existe un único PSP que cubra el mundo entero con buen pricing. Stripe es excelente en US/EU pero en Latinoamérica deja huecos. En India, RBI exige procesadores locales. En Brasil, Pix cambió las reglas del juego.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;💸 &lt;strong&gt;Tarifas competitivas.&lt;/strong&gt; Tener dos PSPs en paralelo te da &lt;strong&gt;poder de negociación&lt;/strong&gt;. Le dices a Stripe “Adyen me cobra X” y de repente bajan su fee. Si solo tienes uno, estás a merced de su pricing.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;🛡️ &lt;strong&gt;Resiliencia.&lt;/strong&gt; Los PSPs se caen. Stripe ha tenido incidentes globales de varias horas. Si el 100% de tu revenue pasa por un solo gateway, una caída del PSP &lt;strong&gt;es una caída tuya&lt;/strong&gt;. Con failover bien diseñado, los usuarios ni se enteran.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;🏦 &lt;strong&gt;Métodos de pago locales.&lt;/strong&gt; Pix en Brasil, OXXO en México, iDEAL en Holanda, UPI en India, SEPA en Europa. Cada región tiene su método preferido — y los locales suelen tener mejor conversión y menores fees que las tarjetas.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;⚖️ &lt;strong&gt;Regulación.&lt;/strong&gt; PSD2 + SCA en Europa, RBI en India, Open Finance en Brasil. Cada año aparecen nuevas exigencias. Estar atado a un solo PSP te deja a su ritmo de implementación.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;He visto a empresas perder el equivalente a &lt;strong&gt;cientos de miles de dólares&lt;/strong&gt; en una sola tarde por depender de un único gateway que se cayó. La pregunta no es &lt;em&gt;si&lt;/em&gt; va a pasar; es &lt;em&gt;cuándo&lt;/em&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;2-los-7-anti-patrones-que-matan-a-un-sistema-multi-gateway&quot;&gt;2. Los 7 anti-patrones que matan a un sistema multi-gateway&lt;/h2&gt;
+
+&lt;p&gt;Antes de hablar de cómo hacerlo bien, déjame mostrarte qué he visto repetirse en cada sistema que tuve que rescatar. Si alguno de estos te suena familiar, ya sabes por dónde empezar:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;God-model &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Payment&lt;/code&gt;.&lt;/strong&gt; Un único modelo de 1500+ líneas que mezcla ledger, callbacks, cobros, refunds, cuentas por cobrar, créditos, eventos y notificaciones realtime. Cualquier cambio toca a 30 personas.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;HTTP dentro de transacciones de base de datos.&lt;/strong&gt; Un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;before_create&lt;/code&gt; o un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;transaction do ... gateway.charge ... end&lt;/code&gt; mantiene locks de DB abiertos durante la llamada al PSP. Cuando Rails (o tu framework) reintenta y el PSP ya cobró → &lt;strong&gt;doble cobro real&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Dispatch dinámico sin contrato.&lt;/strong&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;#{gateway.classify}::Charge&quot;.constantize.call&lt;/code&gt;. Sin capability check, sin tipado, sin observabilidad por gateway. Funciona en demo, se cae en producción.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Webhooks sin disciplina.&lt;/strong&gt; Sin verificación de firma, sin dedupe, sin persistencia del payload crudo. He visto pagos perdidos solo porque un crash mató al worker antes de procesar el webhook.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Frontend acoplado al gateway.&lt;/strong&gt; Un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;switch (gateway)&lt;/code&gt; de 13 ramas en el cliente. Agregar un gateway = tocar el front, el back, el mobile, y rezar.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Procesamiento síncrono donde no debería serlo.&lt;/strong&gt; Bloquear al usuario 30 segundos esperando que un PSP latinoamericano responda. Spoiler: timeouts, retries del usuario, doble cobro.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Una sola fuente de verdad.&lt;/strong&gt; Confiar 100% en el webhook. O solo en el response síncrono. O solo en el cron de reconciliation. Spoiler: las tres mienten en algún momento. &lt;strong&gt;Necesitas cruzarlas&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;Si tu sistema actual tiene 3 o más de estos, no estás solo. Lo que sigue es cómo no caer en ellos.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;3-arquitectura-por-capas--el-blueprint-base&quot;&gt;3. Arquitectura por capas — el blueprint base&lt;/h2&gt;
+
+&lt;p&gt;La base de todo es separar responsabilidades en capas claras, donde &lt;strong&gt;cada capa solo conoce la inmediatamente inferior&lt;/strong&gt;. Esto es lo que llamo el blueprint base — funciona en cualquier lenguaje, en cualquier framework.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph TB
+    subgraph &quot;Presentation&quot;
+        C[Controllers / GraphQL / REST endpoints]
+    end
+    subgraph &quot;Public API (Facade)&quot;
+        F[Payments::Api]
+    end
+    subgraph &quot;Application (Use Cases)&quot;
+        UC[CreatePaymentIntent · Capture · Refund · Void · ProcessWebhook]
+    end
+    subgraph &quot;Domain&quot;
+        D[PaymentIntent · PaymentSession · PaymentTransaction · WebhookEvent]
+    end
+    subgraph &quot;Infrastructure Adapters&quot;
+        A[StripeAdapter · AdyenAdapter · LocalPSPAdapter ...]
+    end
+    subgraph &quot;Integration / Messaging&quot;
+        I[Webhooks · WebSockets · Listeners · Outbox · Pub/Sub]
+    end
+    C --&amp;gt; F --&amp;gt; UC --&amp;gt; D
+    UC --&amp;gt; A
+    UC --&amp;gt; I
+    I --&amp;gt; UC
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Las &lt;strong&gt;6 capas que separo siempre&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Capa&lt;/th&gt;
+      &lt;th&gt;Responsabilidad&lt;/th&gt;
+      &lt;th&gt;Lo que NO hace&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Presentation&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Cargar recursos, autorizar, delegar al facade, renderizar&lt;/td&gt;
+      &lt;td&gt;Lógica de pricing, selección de gateway, llamadas HTTP al PSP&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Public API (Facade)&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Único entry point al dominio de pagos. Retorna resultados tipados&lt;/td&gt;
+      &lt;td&gt;Permitir que código externo toque internals&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Application (Use Cases)&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Orquestar el flujo: idempotency → gateway selection → adapter call → persistir&lt;/td&gt;
+      &lt;td&gt;Hablar HTTP directamente; saltarse el dominio&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Domain&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Entidades, state machines, invariantes financieras&lt;/td&gt;
+      &lt;td&gt;Conocer HTTP, SDKs o adapters concretos&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Infrastructure Adapters&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Un adapter por gateway. Habla HTTP/SDK. Normaliza errores&lt;/td&gt;
+      &lt;td&gt;Tocar el ledger; conocer el dominio de negocio&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Integration / Messaging&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Webhooks entrantes, sockets, eventos de dominio, outbox&lt;/td&gt;
+      &lt;td&gt;Lógica de negocio; persistencia financiera&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;La regla de oro es: &lt;strong&gt;el dominio no sabe que existe Stripe. El controller no sabe que existe Adyen.&lt;/strong&gt; Toda la complejidad gateway-específica vive en los adapters.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;parte-ii--las-abstracciones-core&quot;&gt;Parte II — Las abstracciones core&lt;/h1&gt;
+
+&lt;h2 id=&quot;4-las-abstracciones-del-dominio-que-no-pueden-faltar&quot;&gt;4. Las abstracciones del dominio que no pueden faltar&lt;/h2&gt;
+
+&lt;p&gt;Estas son las 9 abstracciones que aparecen en todo sistema de pagos serio que he construido o auditado. Si alguna falta, hay un dolor garantizado más adelante:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PaymentIntent&lt;/code&gt;&lt;/strong&gt; — la intención de negocio. Es lo que el usuario quiere lograr: cobrar X monto por Y producto. Tiene una &lt;strong&gt;state machine&lt;/strong&gt; explícita (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;created → authorized → captured → refunded&lt;/code&gt;) e invariantes financieras. Es la unidad de trabajo del dominio.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PaymentTransaction&lt;/code&gt;&lt;/strong&gt; — el log técnico &lt;strong&gt;append-only&lt;/strong&gt;, una fila por cada llamada al PSP (authorize, capture, refund, void, tokenize). Es donde reconciliation va a buscar la verdad cuando el PSP y tu ledger no coinciden.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PaymentSession&lt;/code&gt;&lt;/strong&gt; — la sesión PSP-hosted. Cuando usas Drop-in, hosted fields, 3DS challenge o redirect, el PSP te devuelve un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;session.id&lt;/code&gt; con TTL. Eso no pertenece al &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PaymentIntent&lt;/code&gt; — vive aparte.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PaymentMethod&lt;/code&gt; / &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Token&lt;/code&gt;&lt;/strong&gt; — el método de pago tokenizado. Nunca guardes PAN/CVV. Guarda el token del PSP + metadata (last4, brand, exp).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;WebhookEvent&lt;/code&gt;&lt;/strong&gt; — el evento crudo del PSP, persistido &lt;strong&gt;antes&lt;/strong&gt; de procesar. Incluye payload, headers, IP, firma verificada y un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UNIQUE(gateway, event_id)&lt;/code&gt; que garantiza dedupe a nivel DB.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IdempotencyRecord&lt;/code&gt;&lt;/strong&gt; — el recovery point. No alcanza con un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Idempotency-Key&lt;/code&gt;; necesitas saber &lt;strong&gt;en qué paso del flujo estás&lt;/strong&gt; para no repetir el cobro.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GatewayRegistry&lt;/code&gt; + &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CapabilityRegistry&lt;/code&gt;&lt;/strong&gt; — el catálogo de gateways y qué puede hacer cada uno. El dominio consulta capacidades &lt;em&gt;antes&lt;/em&gt; de actuar.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OperationResult&lt;/code&gt;&lt;/strong&gt; — éxito o fracaso &lt;strong&gt;tipado&lt;/strong&gt;. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CardDeclined&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RequiresAction&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;InsufficientFunds&lt;/code&gt; son &lt;strong&gt;resultados&lt;/strong&gt;, no excepciones. Las excepciones quedan para bugs reales.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OutboxEntry&lt;/code&gt;&lt;/strong&gt; — el patrón outbox. Garantiza que un evento de dominio se publique exactamente cuando la transacción de DB se commitea, no antes, no después.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;La diferencia entre un sistema que escala y uno que no es si estas 9 piezas existen como conceptos explícitos o están &lt;strong&gt;dispersas como columnas y banderas en un único modelo gigante&lt;/strong&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;5-los-8-flujos-canónicos--reconcile&quot;&gt;5. Los 8 flujos canónicos (+ reconcile)&lt;/h2&gt;
+
+&lt;p&gt;Toda operación que cualquier PSP del mundo te puede ofrecer se reduce a estos &lt;strong&gt;8 flujos&lt;/strong&gt;. Si tu sistema tiene 30 “operaciones distintas”, lo más probable es que tengas 8 mal mapeadas.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Flujo&lt;/th&gt;
+      &lt;th&gt;Qué hace&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tokenize&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Convertir un método de pago en un token reutilizable&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;authorize&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Reservar fondos sin cobrar&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;capture&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Cobrar fondos previamente autorizados&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sale&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Authorize + Capture en un solo paso&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;refund_full&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Devolver el monto completo&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;refund_partial&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Devolver parte del monto&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;void&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Cancelar una autorización no capturada&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;webhook_event&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Procesar un evento asíncrono del PSP&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Más uno extra que rara vez se modela bien:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Flujo&lt;/th&gt;
+      &lt;th&gt;Qué hace&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reconcile&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Cruzar el estado del PSP contra mi ledger&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Cada gateway implementa &lt;strong&gt;solo el subset que su capability registry declara&lt;/strong&gt;. Por ejemplo: BAC no soporta &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;void&lt;/code&gt;, Razorpay no soporta &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;capture&lt;/code&gt; separado de &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sale&lt;/code&gt;. Tu dominio lo sabe vía el &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CapabilityRegistry&lt;/code&gt; y no intenta llamar a operaciones inexistentes.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;Si tu equipo está debatiendo “¿esto es un capture o un sale?”, es señal de que el modelo está bien — porque la pregunta tiene una sola respuesta correcta. Si están debatiendo “¿esto es un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;processPayment_v2_for_BAC&lt;/code&gt; o un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;processPayment_alternate&lt;/code&gt;?”, es señal de que el modelo no existe.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;6-capability-registry--el-cerebro-detrás-del-multi-gateway&quot;&gt;6. Capability Registry — el cerebro detrás del multi-gateway&lt;/h2&gt;
+
+&lt;p&gt;Esta es la pieza que más subestiman los equipos. El &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CapabilityRegistry&lt;/code&gt; es donde declaro &lt;strong&gt;qué puede hacer cada gateway&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;stripe&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;hosted_fields&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;3ds&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;auth_capture&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;one_step_sale&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;refund_partial&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;card_on_file&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;recurring&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;webhook&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;adyen&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;hosted_fields&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;3ds&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;auth_capture&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;refund_partial&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;card_on_file&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;webhook&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;bac&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;direct_pan&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;one_step_sale&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;refund_full&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;refund_partial&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;webhook&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;¿Por qué importa tanto?&lt;/p&gt;
+
+&lt;p&gt;Porque el dominio puede preguntar antes de actuar:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;registry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;supports?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gateway&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;adapter_for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gateway&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;intent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;adapter_for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gateway&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;refund_full&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;intent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Sin esto, terminas con &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if gateway == &apos;bac&apos;&lt;/code&gt; regados por todo el código. Con esto, &lt;strong&gt;agregar un gateway nuevo es declarar sus capacidades y escribir su adapter — no tocar 15 archivos&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Es también lo que el frontend consulta vía API: &lt;em&gt;“para este facility, con este método de pago, ¿qué puedo ofrecer al usuario?”&lt;/em&gt;. La UI se vuelve dinámica sin acoplarse a gateways específicos.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;parte-iii--patrones-de-diseño-que-uso-siempre&quot;&gt;Parte III — Patrones de diseño que uso siempre&lt;/h1&gt;
+
+&lt;h2 id=&quot;7-patrones-de-diseño-aplicados-a-payments&quot;&gt;7. Patrones de diseño aplicados a payments&lt;/h2&gt;
+
+&lt;p&gt;Voy a ser concreto: estos son los &lt;strong&gt;patrones que efectivamente uso&lt;/strong&gt; en sistemas de pagos, no una lista académica de GoF. Cada uno resuelve un problema específico.&lt;/p&gt;
+
+&lt;h3 id=&quot;71-adapter&quot;&gt;7.1 Adapter&lt;/h3&gt;
+&lt;p&gt;Un contrato uniforme (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GatewayAdapter&lt;/code&gt;), N implementaciones (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StripeAdapter&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AdyenAdapter&lt;/code&gt;…). Cada adapter expone los flujos canónicos que su gateway soporta. La inspiración clara es &lt;strong&gt;ActiveMerchant&lt;/strong&gt; del mundo Ruby.&lt;/p&gt;
+
+&lt;h3 id=&quot;72-strategy&quot;&gt;7.2 Strategy&lt;/h3&gt;
+&lt;p&gt;Selección dinámica del gateway según contexto: país, moneda, método de pago, monto, hora del día. El Strategy vive en una capa por encima de los adapters y decide &lt;em&gt;cuál&lt;/em&gt; usar.&lt;/p&gt;
+
+&lt;h3 id=&quot;73-registry&quot;&gt;7.3 Registry&lt;/h3&gt;
+&lt;p&gt;Lookup por nombre + metadata. El &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GatewayRegistry&lt;/code&gt; resuelve &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;stripe&quot;&lt;/code&gt; → &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StripeAdapter&lt;/code&gt;. El &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CapabilityRegistry&lt;/code&gt; resuelve &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(&quot;stripe&quot;, :3ds)&lt;/code&gt; → &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;true&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;74-factory&quot;&gt;7.4 Factory&lt;/h3&gt;
+&lt;p&gt;Construye adapters con sus dependencias inyectadas (credenciales del facility, logger, HTTP client). Centraliza la creación.&lt;/p&gt;
+
+&lt;h3 id=&quot;75-chain-of-responsibility&quot;&gt;7.5 Chain of Responsibility&lt;/h3&gt;
+&lt;p&gt;Un pipeline de validaciones antes de llamar al PSP: ¿tenemos credenciales? ¿el monto es válido? ¿el método de pago tiene los permisos? ¿hay anti-fraude que aprobar? Cada handler decide si continúa o aborta.&lt;/p&gt;
+
+&lt;h3 id=&quot;76-saga--process-manager&quot;&gt;7.6 Saga / Process Manager&lt;/h3&gt;
+&lt;p&gt;Para flujos largos: authorize → esperar 3DS → confirm → capture. &lt;strong&gt;No uso transacciones distribuidas&lt;/strong&gt; entre mi DB y el PSP — es imposible. Modelo cada paso como una etapa de saga con su propio commit local + idempotency.&lt;/p&gt;
+
+&lt;h3 id=&quot;77-outbox-pattern&quot;&gt;7.7 Outbox Pattern&lt;/h3&gt;
+&lt;p&gt;El más subestimado de todos. Cuando creo un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PaymentIntent&lt;/code&gt;, escribo en la misma transacción de DB:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;El &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PaymentIntent&lt;/code&gt; con estado &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;authorized&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Una fila en &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;outbox_entries&lt;/code&gt; con el evento &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PaymentAuthorized&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Un worker independiente lee la outbox y publica al bus (Kafka, RabbitMQ, Pub/Sub). &lt;strong&gt;Garantía exactly-once a costa de potencialmente entregar duplicados — pero nunca de perder eventos&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;78-circuit-breaker&quot;&gt;7.8 Circuit Breaker&lt;/h3&gt;
+&lt;p&gt;Cuando un PSP está caído, no quiero seguir mandándole requests. El circuit breaker abre el circuito tras N fallos consecutivos, deja pasar requests de prueba después de un cooldown, y se recupera solo. Sin esto, una caída del PSP &lt;strong&gt;te tumba a ti&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;79-bulkhead&quot;&gt;7.9 Bulkhead&lt;/h3&gt;
+&lt;p&gt;Separo los workers / threads / colas por gateway. Si Xendit está lento y satura su pool, &lt;strong&gt;Stripe sigue funcionando&lt;/strong&gt;. Sin bulkheading, un PSP lento contamina a todos los demás.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;8-idempotencia--la-disciplina-que-evita-el-doble-cobro&quot;&gt;8. Idempotencia — la disciplina que evita el doble cobro&lt;/h2&gt;
+
+&lt;p&gt;Si tuviera que elegir &lt;strong&gt;un único concepto&lt;/strong&gt; que define la madurez de un sistema de pagos, sería este. Y casi nadie lo hace bien.&lt;/p&gt;
+
+&lt;p&gt;Lo que la mayoría hace: mandar un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Idempotency-Key&lt;/code&gt; al PSP. Está bien, pero &lt;strong&gt;no es suficiente&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Lo que hace Brandur en su famoso post sobre Rocket Rides (te lo recomiendo si no lo has leído): cada operación de pago es una secuencia de pasos, y cada paso es un &lt;strong&gt;recovery point&lt;/strong&gt;. Si crasheo en el paso 3, al reintentar arranco desde el paso 3 — no desde cero.&lt;/p&gt;
+
+&lt;p&gt;Pseudo-flujo:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. CreatePaymentIntent → recovery_point = &apos;intent_created&apos;
+2. CallGatewayAuthorize → recovery_point = &apos;authorized&apos;
+3. PersistTransactionLog → recovery_point = &apos;logged&apos;
+4. PublishEvent → recovery_point = &apos;published&apos;
+5. Done → recovery_point = &apos;done&apos;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Si crasheo entre 2 y 3, el reintento ve &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;authorized&lt;/code&gt; y &lt;strong&gt;no vuelve a llamar al PSP&lt;/strong&gt;. Solo persiste el log y publica el evento.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;La regla de oro:&lt;/strong&gt; nunca llamar al PSP dentro de una transacción de DB. La secuencia es:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Persistir el intento + idempotency key (commit).&lt;/li&gt;
+  &lt;li&gt;Llamar al PSP (sin transacción abierta).&lt;/li&gt;
+  &lt;li&gt;Persistir el resultado + actualizar recovery point (commit).&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;El escenario más peligroso es el &lt;strong&gt;timeout del PSP&lt;/strong&gt;. Si el PSP no responde, &lt;strong&gt;no sabes si cobró o no&lt;/strong&gt;. La única salida segura: dedicar el siguiente reintento a &lt;strong&gt;consultar el estado&lt;/strong&gt; (no a reintentar el cobro). Aquí es donde el &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Idempotency-Key&lt;/code&gt; te salva — al consultar, el PSP devuelve el resultado de la primera llamada.&lt;/p&gt;
+
+&lt;p&gt;Idempotency vive a &lt;strong&gt;tres niveles&lt;/strong&gt;: en el cliente (no doble click), en tu API (no doble request del cliente), y en el adapter (no doble llamada al PSP).&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;parte-iv--comunicación-con-el-mundo-exterior&quot;&gt;Parte IV — Comunicación con el mundo exterior&lt;/h1&gt;
+
+&lt;h2 id=&quot;9-webhooks--la-pieza-más-subestimada&quot;&gt;9. Webhooks — la pieza más subestimada&lt;/h2&gt;
+
+&lt;p&gt;Los webhooks son donde más he visto perder pagos. Tres reglas innegociables:&lt;/p&gt;
+
+&lt;h3 id=&quot;91-persistir-el-payload-crudo-antes-de-procesar&quot;&gt;9.1 Persistir el payload crudo ANTES de procesar&lt;/h3&gt;
+&lt;p&gt;La secuencia que uso:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Recibo el HTTP request del PSP.&lt;/li&gt;
+  &lt;li&gt;Verifico firma (timing-safe — &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;==&lt;/code&gt; no sirve, leak de side-channel).&lt;/li&gt;
+  &lt;li&gt;Persisto &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;WebhookEvent&lt;/code&gt; con raw payload, headers, IP, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;signature_verified&lt;/code&gt;, y un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UNIQUE(gateway, event_id)&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Encolo job de procesamiento.&lt;/li&gt;
+  &lt;li&gt;Respondo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;200 OK&lt;/code&gt; al PSP.&lt;/li&gt;
+  &lt;li&gt;El worker procesa el evento desde la tabla, &lt;strong&gt;no desde el request HTTP&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;¿Por qué? Si el worker crashea, el evento sigue en la DB. Si el PSP reenvía, el &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UNIQUE&lt;/code&gt; lo deduplica. Si necesito debuggear, el raw payload está ahí.&lt;/p&gt;
+
+&lt;h3 id=&quot;92-responder-200-ok-antes-de-procesar&quot;&gt;9.2 Responder 200 OK antes de procesar&lt;/h3&gt;
+&lt;p&gt;Muchos PSPs reintentan agresivamente si tardas más de 5 segundos. &lt;strong&gt;No proceses el evento de forma síncrona&lt;/strong&gt;. Persiste, encola, responde 200, y procesa async. Si después falla, lo retomas — ya tienes el raw.&lt;/p&gt;
+
+&lt;h3 id=&quot;93-orden-de-eventos&quot;&gt;9.3 Orden de eventos&lt;/h3&gt;
+&lt;p&gt;Los webhooks &lt;strong&gt;no llegan en orden&lt;/strong&gt;. Puedes recibir &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;payment.refunded&lt;/code&gt; antes que &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;payment.captured&lt;/code&gt; por race conditions del PSP. Tu state machine debe ser tolerante: si llega &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;refunded&lt;/code&gt; y el intent está en &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;authorized&lt;/code&gt;, lo dejas en una cola de “pendiente de reordenar” y reintenta cuando llegue &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;captured&lt;/code&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;Y por favor: nunca confíes en que el webhook es la única señal. Es &lt;strong&gt;una&lt;/strong&gt; señal. La verdad la define reconciliation.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;10-sockets-y-comunicación-en-tiempo-real&quot;&gt;10. Sockets y comunicación en tiempo real&lt;/h2&gt;
+
+&lt;p&gt;Aquí entran flujos que muchos olvidan diseñar. Cuando un pago es &lt;strong&gt;asíncrono&lt;/strong&gt; (Xendit, 3DS con redirect, Pix con QR), el usuario está mirando una pantalla esperando el resultado. ¿Cómo le aviso cuándo termina?&lt;/p&gt;
+
+&lt;h3 id=&quot;101-websockets&quot;&gt;10.1 WebSockets&lt;/h3&gt;
+&lt;p&gt;Conexión bidireccional persistente. Útil cuando necesitas push del backend al cliente. El patrón típico:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;El cliente abre socket y se subscribe a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;payment_intent.{id}&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Backend recibe webhook → procesa → publica evento interno.&lt;/li&gt;
+  &lt;li&gt;Un listener escucha el evento y emite por el socket al cliente subscrito.&lt;/li&gt;
+  &lt;li&gt;El cliente recibe el evento y actualiza la UI.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;102-server-sent-events-sse&quot;&gt;10.2 Server-Sent Events (SSE)&lt;/h3&gt;
+&lt;p&gt;Más simple que WebSocket si solo necesitas comunicación &lt;strong&gt;del backend al cliente&lt;/strong&gt;. HTTP plano, reconnect automático, fácil de operar. Lo uso cuando el flujo es solo “esperar resultado de pago” y no requiere bidirección.&lt;/p&gt;
+
+&lt;h3 id=&quot;103-long-polling&quot;&gt;10.3 Long polling&lt;/h3&gt;
+&lt;p&gt;Cuando WebSocket no es viable (corporate proxies, ambientes legacy). El cliente hace request, el backend lo retiene hasta tener resultado o timeout, y responde. El cliente repite. Sirve, pero escala peor.&lt;/p&gt;
+
+&lt;h3 id=&quot;104-push-via-pubsub-provider-pusher-ably-pubsub&quot;&gt;10.4 Push via PubSub provider (Pusher, Ably, Pub/Sub)&lt;/h3&gt;
+&lt;p&gt;Para mobile + multi-cliente. El cliente se subscribe a un canal y el backend publica al canal. Manejas menos infraestructura propia.&lt;/p&gt;
+
+&lt;h3 id=&quot;tabla-comparativa-rápida&quot;&gt;Tabla comparativa rápida&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Mecanismo&lt;/th&gt;
+      &lt;th&gt;Bidireccional&lt;/th&gt;
+      &lt;th&gt;Operativamente&lt;/th&gt;
+      &lt;th&gt;Cuándo lo uso&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;WebSocket&lt;/td&gt;
+      &lt;td&gt;Sí&lt;/td&gt;
+      &lt;td&gt;Complejo (sticky sessions, scale-out)&lt;/td&gt;
+      &lt;td&gt;Apps con muchas interacciones realtime&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SSE&lt;/td&gt;
+      &lt;td&gt;No (solo server→client)&lt;/td&gt;
+      &lt;td&gt;Simple&lt;/td&gt;
+      &lt;td&gt;Notificación de resultado de pago&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Long polling&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;Sencillo, mal performance&lt;/td&gt;
+      &lt;td&gt;Ambientes con restricciones de red&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;PubSub provider&lt;/td&gt;
+      &lt;td&gt;Sí&lt;/td&gt;
+      &lt;td&gt;Tercerizado&lt;/td&gt;
+      &lt;td&gt;Mobile + multi-device&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;11-listeners-y-arquitectura-event-driven&quot;&gt;11. Listeners y arquitectura event-driven&lt;/h2&gt;
+
+&lt;p&gt;Cuando un pago se autoriza, suelen pasar &lt;strong&gt;muchas cosas&lt;/strong&gt;: enviar email, actualizar inventario, notificar al CRM, gatillar workflows de loyalty, escribir al data warehouse. Si lo haces todo síncrono en el use case, el código se vuelve un monstruo.&lt;/p&gt;
+
+&lt;p&gt;La solución es publicar &lt;strong&gt;eventos de dominio&lt;/strong&gt; y dejar que listeners reaccionen.&lt;/p&gt;
+
+&lt;h3 id=&quot;111-domain-events-vs-integration-events&quot;&gt;11.1 Domain events vs Integration events&lt;/h3&gt;
+&lt;p&gt;Esta diferencia casi nadie la respeta y es crítica:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Domain events&lt;/strong&gt; — internos a tu sistema. Ejemplo: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PaymentAuthorized&lt;/code&gt;. Los publicas en proceso o en un bus interno. Los consume tu propio código.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Integration events&lt;/strong&gt; — para sistemas externos. Ejemplo: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;customer.charge.completed&lt;/code&gt;. Los publicas a Kafka/Pub/Sub. Los consume otro servicio o equipo.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Mezclarlos es un error: cambias un domain event interno y rompes un consumidor externo del que no sabías.&lt;/p&gt;
+
+&lt;h3 id=&quot;112-listeners-idempotentes&quot;&gt;11.2 Listeners idempotentes&lt;/h3&gt;
+&lt;p&gt;Los eventos se &lt;strong&gt;reentregan&lt;/strong&gt;. Tu listener debe ser idempotente. Si recibe el mismo evento dos veces, no manda dos emails, no carga dos veces el saldo. Esto se logra con un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;processed_events&lt;/code&gt; table o con un check explícito antes de actuar.&lt;/p&gt;
+
+&lt;h3 id=&quot;113-event-sourcing-parcial&quot;&gt;11.3 Event sourcing parcial&lt;/h3&gt;
+&lt;p&gt;No hago event sourcing completo en payments (es overkill y complica la consistencia financiera), pero sí uso &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PaymentTransaction&lt;/code&gt; &lt;strong&gt;como log de eventos&lt;/strong&gt;: una fila append-only por cada acción significativa. El estado del &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PaymentIntent&lt;/code&gt; se deriva del último estado válido, pero la historia está intacta.&lt;/p&gt;
+
+&lt;h3 id=&quot;114-cómo-evito-que-se-vuelva-un-caos&quot;&gt;11.4 Cómo evito que se vuelva un caos&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Registro explícito&lt;/strong&gt; de listeners. Nada de auto-discovery mágico.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Naming convention&lt;/strong&gt;: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;On&amp;lt;Event&amp;gt;&lt;/code&gt; (e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OnPaymentAuthorized::SendReceiptEmail&lt;/code&gt;).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Un listener por archivo&lt;/strong&gt;, un test por listener.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Lista única&lt;/strong&gt; de eventos del dominio, documentada como contrato.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;12-polling--cuando-no-queda-otra&quot;&gt;12. Polling — cuando no queda otra&lt;/h2&gt;
+
+&lt;p&gt;Algunos PSPs (especialmente en mercados emergentes) &lt;strong&gt;no envían webhooks confiables&lt;/strong&gt; o los envían con horas de retraso. Para estos casos, polling es la salida pragmática.&lt;/p&gt;
+
+&lt;p&gt;Estrategia:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Crear el intent.&lt;/li&gt;
+  &lt;li&gt;Encolar un job que consulta el estado del PSP.&lt;/li&gt;
+  &lt;li&gt;Si no hay resolución, reencolar con &lt;strong&gt;backoff exponencial&lt;/strong&gt; (1s, 5s, 30s, 2min, 10min…).&lt;/li&gt;
+  &lt;li&gt;Cortar a un timeout sensato (24h o lo que dicte el PSP).&lt;/li&gt;
+  &lt;li&gt;Si pasa el timeout sin resolución, el intent va a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;expired&lt;/code&gt; y reconciliation lo detecta.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Polling &lt;strong&gt;no reemplaza&lt;/strong&gt; webhooks ni reconciliation. Es una tercera señal. Las tres se complementan.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;parte-v--estrategias-operativas-y-de-resiliencia&quot;&gt;Parte V — Estrategias operativas y de resiliencia&lt;/h1&gt;
+
+&lt;h2 id=&quot;13-retry-failover-y-backoff&quot;&gt;13. Retry, failover y backoff&lt;/h2&gt;
+
+&lt;p&gt;Aquí distingo cuatro estrategias que &lt;strong&gt;no son intercambiables&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Estrategia&lt;/th&gt;
+      &lt;th&gt;Cuándo aplica&lt;/th&gt;
+      &lt;th&gt;Riesgo&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Retry inmediato&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Timeout puro, network blip&lt;/td&gt;
+      &lt;td&gt;Muy bajo&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Retry con backoff&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;5xx del PSP, rate limit&lt;/td&gt;
+      &lt;td&gt;Bajo&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Failover a otro gateway&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;PSP completamente caído&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;Alto&lt;/strong&gt; — riesgo de doble cobro&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;No retry&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;4xx del usuario (CardDeclined, InsufficientFunds)&lt;/td&gt;
+      &lt;td&gt;N/A — sería gastar fees&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Backoff exponencial con jitter.&lt;/strong&gt; Sin jitter, todos tus workers reintentan al mismo tiempo y golpean al PSP justo cuando empieza a recuperarse. El jitter (variación aleatoria) los espacia.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Failover entre gateways&lt;/strong&gt; es la estrategia más peligrosa. Si el PSP A ya cobró pero respondió con timeout, y haces failover a B, &lt;strong&gt;acabas de cobrar dos veces&lt;/strong&gt;. Solo es seguro si:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;A definitivamente no cobró (respuesta explícita de error sin transacción persistida).&lt;/li&gt;
+  &lt;li&gt;O tienes un mecanismo posterior de reconciliation y refund automático.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Dead Letter Queue (DLQ).&lt;/strong&gt; Todo lo que no se resuelve tras N reintentos va a la DLQ. Una persona revisa diariamente. Sin esto, los pagos fallidos se acumulan en silencio.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;14-selección-dinámica-de-gateway-routing&quot;&gt;14. Selección dinámica de gateway (routing)&lt;/h2&gt;
+
+&lt;p&gt;Routing es decidir, en tiempo real, &lt;strong&gt;a qué PSP mando este pago&lt;/strong&gt;. Las estrategias que uso:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Routing por geografía/moneda&lt;/strong&gt; — pagos en BRL van a un PSP local; pagos en EUR van a Adyen.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Least-cost routing&lt;/strong&gt; — entre los PSPs habilitados, elijo el más barato para ese tipo de transacción.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Capability-based routing&lt;/strong&gt; — si necesito 3DS y el PSP A no lo soporta, voy al B.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;A/B routing&lt;/strong&gt; — el 10% del tráfico va a un PSP nuevo para validarlo en producción.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Health-check routing&lt;/strong&gt; — si el circuit breaker de un PSP está abierto, lo excluyo automáticamente.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;El routing debe ser &lt;strong&gt;observable&lt;/strong&gt;: tengo que saber, para cada pago, &lt;em&gt;por qué&lt;/em&gt; eligió el gateway que eligió. Un log estructurado con &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;routing_reason&lt;/code&gt; me ha salvado de varios incidentes.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;15-reconciliation--la-verdad-cruzada&quot;&gt;15. Reconciliation — la verdad cruzada&lt;/h2&gt;
+
+&lt;p&gt;Reconciliation es la &lt;strong&gt;red de seguridad&lt;/strong&gt; del sistema entero. Es lo que detecta cuándo tu ledger y el PSP no coinciden. Y casi siempre va a coincidir 99% — pero ese 1% es donde está el dinero perdido.&lt;/p&gt;
+
+&lt;p&gt;La idea es simple: descargar diariamente el extracto del PSP (settlements, payouts) y compararlo contra tu &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PaymentTransaction&lt;/code&gt; log. Tres outcomes posibles:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Coinciden&lt;/strong&gt; → todo bien, marca como reconciliado.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;El PSP cobró pero no tienes registro&lt;/strong&gt; → ghost charge. Investiga.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Tienes registro pero el PSP no cobró&lt;/strong&gt; → fantasma local. Posiblemente intent abandonado.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Mi recomendación cuando arrancas con un sistema legacy: &lt;strong&gt;la primera capacidad de la nueva arquitectura que entregas a producción es reconciliation read-only&lt;/strong&gt;. ¿Por qué?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Blast radius cero — no escribe nada.&lt;/li&gt;
+  &lt;li&gt;Valor inmediato a Finance Ops.&lt;/li&gt;
+  &lt;li&gt;Te enseña cómo es el modelo real de eventos del PSP sin riesgo.&lt;/li&gt;
+  &lt;li&gt;Te da una base de verdad para todo lo que viene después.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Schema gateway-agnostic + adapter por PSP. Agregar el segundo gateway a reconciliation es escribir un adapter, no migrar un schema.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;16-observabilidad--logs-métricas-traces-alertas&quot;&gt;16. Observabilidad — logs, métricas, traces, alertas&lt;/h2&gt;
+
+&lt;p&gt;En payments, &lt;em&gt;“no sé qué pasó con ese pago”&lt;/em&gt; no es una respuesta aceptable. La observabilidad mínima:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Logs estructurados con &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;correlation_id&lt;/code&gt;&lt;/strong&gt; — todo lo que tocó ese pago (controller → use case → adapter → webhook → listener) comparte el mismo ID. Trazar un pago de punta a punta es un solo query.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Métricas críticas por gateway&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;Success rate (target &amp;gt; 95%).&lt;/li&gt;
+      &lt;li&gt;Latencia P95/P99 (alerta si crece 50%).&lt;/li&gt;
+      &lt;li&gt;Retry rate (si sube, algo está mal).&lt;/li&gt;
+      &lt;li&gt;Webhook lag (tiempo entre evento del PSP y procesamiento).&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Distributed tracing&lt;/strong&gt; (OpenTelemetry, Datadog APM) — sigue un pago desde el click del usuario hasta el settlement bancario.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Alertas con criterio.&lt;/strong&gt; Alarmar por &lt;em&gt;success rate &amp;lt; 90% sostenido 5 min&lt;/em&gt; sí. Alarmar por &lt;em&gt;un pago falló&lt;/em&gt; no. Aprende a calibrar; alertas mal calibradas matan equipos.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Dashboard por gateway + dashboard global.&lt;/strong&gt; Cuando algo se rompe, el primer instinto es &lt;em&gt;“¿es uno o son todos?”&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;parte-vi--seguridad-y-compliance&quot;&gt;Parte VI — Seguridad y compliance&lt;/h1&gt;
+
+&lt;h2 id=&quot;17-pci-tokenización-y-vault&quot;&gt;17. PCI, tokenización y vault&lt;/h2&gt;
+
+&lt;p&gt;PCI-DSS es el marco regulatorio de tarjetas. Determina &lt;strong&gt;qué tan auditado&lt;/strong&gt; tiene que estar tu sistema. La diferencia entre &lt;strong&gt;SAQ A&lt;/strong&gt; (mínimo) y &lt;strong&gt;SAQ D&lt;/strong&gt; (máximo) son cientos de miles de dólares al año en compliance.&lt;/p&gt;
+
+&lt;p&gt;La regla que sigo: &lt;strong&gt;nunca toco PAN/CVV en mi infraestructura&lt;/strong&gt;. Uso:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Hosted fields / iframes del PSP&lt;/strong&gt; — el usuario teclea la tarjeta dentro de un iframe del PSP. Tú nunca ves los datos.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Drop-in UI&lt;/strong&gt; — el PSP te da un componente UI completo. Aún más simple.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Tokenización en el cliente&lt;/strong&gt; — SDK del PSP convierte la tarjeta en un token &lt;em&gt;antes&lt;/em&gt; de tocar tu servidor.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;¿Vault propio? &lt;strong&gt;Casi nunca vale la pena&lt;/strong&gt;. El costo de mantener PCI SAQ D supera por mucho el ahorro en fees. Excepción: si tu negocio es procesar pagos a escala masiva y los fees del vault del PSP son prohibitivos.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Network tokens&lt;/strong&gt; son el futuro cercano. En vez de tokens propietarios del PSP, las redes (Visa, Mastercard) emiten tokens que sobreviven a re-emisiones de tarjeta. Tu rate de aprobación sube.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3DS / SCA&lt;/strong&gt; — necesario en Europa por PSD2, opcional en otras regiones. Mi recomendación: integralo desde el inicio aunque tu mercado no lo exija — luego no quieres retrofittearlo.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;18-seguridad-operativa&quot;&gt;18. Seguridad operativa&lt;/h2&gt;
+
+&lt;p&gt;Más allá de PCI, hay capas de seguridad operativa que muchos olvidan:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Rate limiting&lt;/strong&gt; — por IP, por user, por método de pago. Sin esto, eres víctima fácil de &lt;strong&gt;card-testing attacks&lt;/strong&gt; (bots probando tarjetas robadas en tu sistema).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Card-testing detection&lt;/strong&gt; — patrones como muchos rechazos seguidos desde la misma IP, montos chiquitos consecutivos, tarjetas con BIN sospechoso. Modelo simple → alerta → bloqueo temporal.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Honeypots&lt;/strong&gt; — endpoints decoy, campos anti-bot en formularios, partial fake credentials. Detectan probing sin alertar al atacante. Es seguridad &lt;strong&gt;observability low-interaction&lt;/strong&gt; — no bloqueas, observas.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Rotación de credenciales del PSP&lt;/strong&gt; — calendarizada, automatizada, sin downtime. Si un secret leakea, debe ser cambiable en minutos.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Auditoría de accesos&lt;/strong&gt; — quién consulta qué método de pago de qué usuario. Log inmutable.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;parte-vii--frontend-en-sistemas-multi-gateway&quot;&gt;Parte VII — Frontend en sistemas multi-gateway&lt;/h1&gt;
+
+&lt;h2 id=&quot;19-cómo-no-acoplar-tu-ui-al-gateway&quot;&gt;19. Cómo no acoplar tu UI al gateway&lt;/h2&gt;
+
+&lt;p&gt;El frontend es donde más he visto sistemas multi-gateway colapsar. El típico patrón malo: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if (gateway === &apos;stripe&apos;) { ... } else if (gateway === &apos;adyen&apos;) { ... }&lt;/code&gt; por todas partes.&lt;/p&gt;
+
+&lt;p&gt;Lo que hago en su lugar:&lt;/p&gt;
+
+&lt;h3 id=&quot;191-plugin-pattern&quot;&gt;19.1 Plugin pattern&lt;/h3&gt;
+&lt;p&gt;La UI emite &lt;strong&gt;eventos canónicos&lt;/strong&gt;, no eventos por gateway. Los eventos son del estilo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;payment:requires_action&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;payment:authorized&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;payment:failed&lt;/code&gt;. El plugin (que internamente sí conoce al gateway) traduce los eventos del SDK del PSP a este vocabulario común.&lt;/p&gt;
+
+&lt;p&gt;El resto del frontend escucha &lt;strong&gt;solo&lt;/strong&gt; los eventos canónicos. Agregar un gateway nuevo = escribir un plugin nuevo. No tocar el resto.&lt;/p&gt;
+
+&lt;h3 id=&quot;192-hosted-fields--iframes-del-psp&quot;&gt;19.2 Hosted fields / iframes del PSP&lt;/h3&gt;
+&lt;p&gt;Reducen el PCI scope a casi nada. Trade-off: pierdes algo de control de UX. En 9 de cada 10 casos vale la pena.&lt;/p&gt;
+
+&lt;h3 id=&quot;193-capability-driven-ui&quot;&gt;19.3 Capability-driven UI&lt;/h3&gt;
+&lt;p&gt;El frontend consulta a la API: &lt;em&gt;“para este facility + método + monto, ¿qué puedo ofrecer?”&lt;/em&gt;. El backend responde con las capacidades aplicables. La UI se renderiza dinámicamente.&lt;/p&gt;
+
+&lt;p&gt;Resultado: si mañana un facility cambia de gateway, la UI se adapta sola — sin redeploy del frontend.&lt;/p&gt;
+
+&lt;h3 id=&quot;194-mobile&quot;&gt;19.4 Mobile&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Deep links para volver a la app tras un 3DS web.&lt;/li&gt;
+  &lt;li&gt;SDK nativo del PSP cuando exista (mejor UX).&lt;/li&gt;
+  &lt;li&gt;Fallback a web view cuando no.&lt;/li&gt;
+  &lt;li&gt;Mismo vocabulario canónico de eventos que el web.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;parte-viii--testing-despliegue-y-migración&quot;&gt;Parte VIII — Testing, despliegue y migración&lt;/h1&gt;
+
+&lt;h2 id=&quot;20-testing-en-sistemas-de-pagos&quot;&gt;20. Testing en sistemas de pagos&lt;/h2&gt;
+
+&lt;p&gt;No puedes confiar en tests manuales. Lo que uso:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Contract testing&lt;/strong&gt; — el adapter cumple el contrato del &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GatewayAdapter&lt;/code&gt;. Sin esto, alguien rompe la interfaz y nadie se da cuenta hasta producción.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Fake gateways&lt;/strong&gt; (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BogusGateway&lt;/code&gt; à la ActiveMerchant) — adapter en memoria con escenarios programables: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;decline&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;requires_action&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;timeout&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;network_error&lt;/code&gt;. Permite testear flujos completos sin tocar al PSP real.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Sandbox del PSP&lt;/strong&gt; — para tests de integración nightly. Lentos pero realistas.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Webhook replay tests&lt;/strong&gt; — alimento el sistema con secuencias grabadas de webhooks reales (en orden y desorden) y verifico que el state machine se comporta bien.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Chaos / load tests&lt;/strong&gt; — antes de meter un PSP nuevo a producción: ¿qué pasa con 1000 webhooks/segundo? ¿qué pasa si el PSP devuelve timeouts el 20% del tiempo?&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;21-estrategias-de-despliegue&quot;&gt;21. Estrategias de despliegue&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Feature flags por gateway + por facility&lt;/strong&gt; — habilito el gateway nuevo para 1 cliente, luego para 10, luego para 100. Si algo falla, revierto el flag.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Canary deployments&lt;/strong&gt; — un % chico del tráfico va a la versión nueva. Observo métricas. Promuevo si todo está bien.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Shadow mode&lt;/strong&gt; — el gateway nuevo procesa &lt;strong&gt;en paralelo&lt;/strong&gt; al actual pero &lt;strong&gt;no commitea&lt;/strong&gt;. Comparo los resultados. Valido sin riesgo financiero.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Strangler-fig&lt;/strong&gt; — para sistemas legacy. Lo cubro en la siguiente sección.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;22-migración-cuando-ya-tienes-un-sistema-legacy-hecho-un-desastre&quot;&gt;22. Migración: cuando ya tienes un sistema legacy hecho un desastre&lt;/h2&gt;
+
+&lt;p&gt;Si llegaste a este post con un sistema legacy que ya tiene 5 anti-patrones encima, no te desesperes. Yo he migrado varios. La estrategia que funciona:&lt;/p&gt;
+
+&lt;h3 id=&quot;221-no-hagas-un-rewrite&quot;&gt;22.1 No hagas un rewrite&lt;/h3&gt;
+&lt;p&gt;Los rewrites de sistemas de pagos &lt;strong&gt;fracasan el 90% del tiempo&lt;/strong&gt;. Demasiada lógica de negocio invisible, demasiados edge cases que solo viven en producción. No vas a poder pararlos durante 6 meses para reescribir.&lt;/p&gt;
+
+&lt;h3 id=&quot;222-strangler-fig--nuevo-gateway-como-piloto&quot;&gt;22.2 Strangler-fig + nuevo gateway como piloto&lt;/h3&gt;
+&lt;p&gt;La estrategia que me ha funcionado: introducir la nueva arquitectura &lt;strong&gt;junto con un gateway nuevo&lt;/strong&gt; (greenfield). El gateway nuevo vive 100% en el nuevo modelo. El legacy queda intacto.&lt;/p&gt;
+
+&lt;p&gt;¿Por qué con uno nuevo? Porque no carga deuda histórica, no rompe paridad con clientes existentes, y te deja validar el diseño sin riesgo de regresión.&lt;/p&gt;
+
+&lt;h3 id=&quot;223-reconciliation-first&quot;&gt;22.3 Reconciliation-first&lt;/h3&gt;
+&lt;p&gt;La primera capacidad de la nueva arquitectura que entregas a producción es &lt;strong&gt;reconciliation read-only sobre el legacy&lt;/strong&gt;. Cero blast radius, valor inmediato, te enseña el modelo real.&lt;/p&gt;
+
+&lt;h3 id=&quot;224-coexistencia-larga&quot;&gt;22.4 Coexistencia larga&lt;/h3&gt;
+&lt;p&gt;El legacy y la nueva arquitectura van a convivir &lt;strong&gt;meses o años&lt;/strong&gt;. Acéptalo desde el principio. Diseña los namespaces y las abstracciones pensando en convivencia, no en switch.&lt;/p&gt;
+
+&lt;h3 id=&quot;225-retira-el-legacy-cuando-ya-no-quede-nada&quot;&gt;22.5 Retira el legacy cuando ya no quede nada&lt;/h3&gt;
+&lt;p&gt;El último gateway legacy se migra cuando hay justificación de negocio (cambio de pricing, nueva capability requerida). No por estética arquitectónica.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;parte-ix--lo-que-no-debes-hacer&quot;&gt;Parte IX — Lo que NO debes hacer&lt;/h1&gt;
+
+&lt;h2 id=&quot;23-errores-que-cometí-o-vi-cometer&quot;&gt;23. Errores que cometí o vi cometer&lt;/h2&gt;
+
+&lt;p&gt;Cierro con la lista anti-pattern definitiva. Si no haces nada de lo anterior pero al menos evitas esto, ya estás mejor que la mayoría:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;❌ &lt;strong&gt;Dual-write entre dos ledgers.&lt;/strong&gt; Mantener dos &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Payment&lt;/code&gt;-equivalentes sincronizados durante meses introduce más bugs financieros de los que arregla.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;❌ &lt;strong&gt;Migrar todos los gateways al mismo tiempo.&lt;/strong&gt; Strangler-fig siempre. Uno por uno.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;❌ &lt;strong&gt;Esconder los gateways detrás de una gem/lib “mágica”&lt;/strong&gt; que abstrae todo. Pierdes control de los flows reales, depuras a ciegas, y la magia se rompe cuando un PSP introduce un edge case nuevo.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;❌ &lt;strong&gt;Tratar a los webhooks como source of truth.&lt;/strong&gt; Son notificaciones. La verdad la define reconciliation cruzando contra el ledger del PSP.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;❌ &lt;strong&gt;Hacer failover automático entre gateways sin idempotency garantizada.&lt;/strong&gt; Riesgo de doble cobro real.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;❌ &lt;strong&gt;Mantener tarjetas en tu propia DB.&lt;/strong&gt; El costo de PCI SAQ D es brutal. Casi nunca compensa.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;❌ &lt;strong&gt;Acoplar tu modelo financiero al modelo del PSP.&lt;/strong&gt; Tu &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PaymentIntent&lt;/code&gt; no debería tener un campo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;stripe_payment_intent_id&lt;/code&gt;. Debería tener un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gateway&lt;/code&gt; + &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;external_id&lt;/code&gt; agnóstico.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;❌ &lt;strong&gt;No persistir el raw payload de los webhooks.&lt;/strong&gt; Cuando algo falle en producción (y va a fallar), sin el raw payload estás a ciegas.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;❌ &lt;strong&gt;Reintentar todo, incluidos los 4xx.&lt;/strong&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CardDeclined&lt;/code&gt; no se reintenta. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;InsufficientFunds&lt;/code&gt; no se reintenta. Cada reintento es un fee gastado.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;❌ &lt;strong&gt;No tener observabilidad por gateway.&lt;/strong&gt; Cuando tu success rate global cae al 80%, necesitas saber &lt;strong&gt;cuál PSP&lt;/strong&gt; es el culpable en segundos, no en horas.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;conclusión-la-arquitectura-no-se-hace-en-powerpoint-se-construye-iterando&quot;&gt;Conclusión: la arquitectura no se hace en PowerPoint, se construye iterando&lt;/h2&gt;
+
+&lt;p&gt;Lo que leíste no es teoría. Es la suma de cicatrices de varios proyectos donde aprendí lo que NO funciona — a veces a costa de incidentes en producción, otras veces refactorizando código heredado que ya nadie entendía.&lt;/p&gt;
+
+&lt;p&gt;Si arrancas hoy un sistema de pagos multi-gateway, este esqueleto te va a evitar dolor en dos años:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Separa las 6 capas&lt;/strong&gt; desde el día uno.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Modela las 9 abstracciones core&lt;/strong&gt; explícitamente — no como columnas en un modelo gigante.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Usa los 8 flujos canónicos&lt;/strong&gt; + reconcile como vocabulario único.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Capability registry&lt;/strong&gt; como cerebro del multi-gateway.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Adapters con contrato uniforme&lt;/strong&gt;, errores normalizados en el borde.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Idempotencia con recovery points&lt;/strong&gt;, no solo con &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Idempotency-Key&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Webhooks → persistir antes de procesar&lt;/strong&gt;, dedupe en DB.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Sockets / SSE&lt;/strong&gt; para feedback realtime al usuario.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Listeners idempotentes&lt;/strong&gt; para mantener el código de los use cases limpio.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Reconciliation read-only&lt;/strong&gt; como red de seguridad.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Observabilidad y métricas por gateway&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;PCI scope mínimo&lt;/strong&gt; — hosted fields, jamás vault propio salvo excepción.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Si llegaste tarde y ya tienes un sistema legacy, el camino es: &lt;strong&gt;strangler-fig + nuevo gateway como piloto + reconciliation-first&lt;/strong&gt;. No rewrite. No big-bang. Coexistencia larga, migración incremental.&lt;/p&gt;
+
+&lt;p&gt;Ningún sistema de pagos sobrevive sin disciplina arquitectónica. Y la disciplina arquitectónica se construye &lt;strong&gt;antes&lt;/strong&gt; de necesitarla, no después.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;El día que un PSP global se cae durante 4 horas, y tu sistema sigue funcionando porque routeó al backup automático, es el día que entiendes por qué valió la pena cada hora invertida en este esqueleto.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;En el próximo post de esta serie hablaremos de cómo comunicar arquitectura de payments a stakeholders no técnicos — el arte de pasar de diagramas a decisiones de negocio.&lt;/em&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/architecture,/payments,/software/design,/patterns/Arquitectura-Base-Sistema-Pagos-Multi-Gateway/&quot;&gt;Arquitectura base de un sistema de pagos multi-gateway - capas, patrones, comunicación y estrategias que aprendí en años de payments&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on June 01, 2026.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[ADRs en sistemas de pagos - por qué documentar decisiones te salva de auditorías, incidentes y reescrituras]]></title>
+  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/architecture,/payments,/documentation/ADRs-en-sistemas-de-pagos/" />
+  <id>http://0.0.0.0:4000/architecture,/payments,/documentation/ADRs-en-sistemas-de-pagos</id>
+  <published>2026-05-07T16:00:00+00:00</published>
+  <updated>2026-05-07T16:00:00+00:00</updated>
+  <author>
+    <name>Adan Condori C.</name>
+    <uri>http://0.0.0.0:4000</uri>
+    <email>adan.condoric@gmail.com</email>
+  </author>
+  <content type="html">&lt;h2 id=&quot;introducción-por-qué-hicimos-esto-así&quot;&gt;Introducción: “¿Por qué hicimos esto así?”&lt;/h2&gt;
+
+&lt;p&gt;Imagínate esta escena: estás en una reunión de incidentes. Producción está cayéndose porque un gateway de pagos respondió con un timeout y el sistema reintentó la transacción tres veces. Resultado: el cliente fue cobrado tres veces.&lt;/p&gt;
+
+&lt;p&gt;Alguien pregunta lo inevitable:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;“¿Por qué reintentamos tres veces sin idempotency key? ¿Quién decidió esto?”&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Silencio incómodo. El que tomó la decisión ya no trabaja en la empresa. El commit dice &lt;em&gt;“add retry logic”&lt;/em&gt; y no hay más contexto. Nadie sabe si fue una decisión deliberada, un workaround temporal, o simplemente algo que se copió de un tutorial.&lt;/p&gt;
+
+&lt;p&gt;Esto, queridos lectores, es exactamente el problema que los &lt;strong&gt;ADRs (Architecture Decision Records)&lt;/strong&gt; vienen a resolver. Y en sistemas de pagos, &lt;strong&gt;no tenerlos es jugar a la ruleta con el dinero del negocio&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;En este artículo te explico qué son, por qué en payments son críticos, qué decisiones siempre deberías documentar, y cómo no caer en los errores típicos.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;1-qué-es-un-adr-y-por-qué-no-es-solo-documentación-más&quot;&gt;1. ¿Qué es un ADR (y por qué no es solo “documentación más”)?&lt;/h2&gt;
+
+&lt;p&gt;Un ADR es un documento corto que captura &lt;strong&gt;una decisión arquitectónica importante&lt;/strong&gt; junto con su &lt;strong&gt;contexto&lt;/strong&gt; y sus &lt;strong&gt;consecuencias&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;La estructura mínima es brutal de simple:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Título&lt;/strong&gt; — qué se decidió.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Estado&lt;/strong&gt; — propuesto, aceptado, deprecado, superseded.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Contexto&lt;/strong&gt; — qué problema o restricción motivó la decisión.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Decisión&lt;/strong&gt; — qué se eligió hacer.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Consecuencias&lt;/strong&gt; — qué ganamos y qué perdemos.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;✅ &lt;em&gt;La wiki documenta el &lt;strong&gt;qué&lt;/strong&gt;. El ADR documenta el &lt;strong&gt;porqué&lt;/strong&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Esa diferencia es la que cambia todo. Un nuevo dev puede leer el código y entender qué hace. Pero solo un ADR le dice &lt;strong&gt;por qué se hizo así y qué alternativas se descartaron&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;2-por-qué-los-sistemas-de-pagos-son-un-caso-especial&quot;&gt;2. ¿Por qué los sistemas de pagos son un caso especial?&lt;/h2&gt;
+
+&lt;p&gt;He trabajado con sistemas de logística, e-commerce, reservas y pagos. Te lo digo con honestidad: &lt;strong&gt;payments es donde más caro pagas la falta de ADRs&lt;/strong&gt;. Y aquí está el porqué:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;💰 &lt;strong&gt;El costo de equivocarse se mide en dinero real.&lt;/strong&gt; Un retry mal implementado es un chargeback. Un webhook mal documentado es una transacción perdida. No es un bug cosmético, es revenue.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;🔒 &lt;strong&gt;El compliance manda.&lt;/strong&gt; PCI-DSS, SCA (Strong Customer Authentication), PSD2, 3DS v2. Los auditores &lt;strong&gt;te van a preguntar por qué tu sistema hace X&lt;/strong&gt;, y “porque sí” no es una respuesta válida.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;🔌 &lt;strong&gt;Dependes de terceros.&lt;/strong&gt; Stripe, PayPal, Adyen, Braintree. Cuando ellos cambian su API, tú tienes que reaccionar. Si no documentaste por qué elegiste un flow en particular, &lt;strong&gt;vas a estar reverse-engineering tus propias decisiones&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;⏳ &lt;strong&gt;Las decisiones envejecen rápido.&lt;/strong&gt; Lo que era óptimo hace dos años hoy es deuda técnica. Sin ADRs, no sabes qué decisiones revisar.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;3-las-5-decisiones-que-siempre-deberías-documentar-como-adr&quot;&gt;3. Las 5 decisiones que SIEMPRE deberías documentar como ADR&lt;/h2&gt;
+
+&lt;p&gt;No todo merece un ADR. Pero en payments, estas cinco categorías son innegociables:&lt;/p&gt;
+
+&lt;h3 id=&quot;31-elección-y-estrategia-de-payment-gateway&quot;&gt;3.1 Elección y estrategia de payment gateway&lt;/h3&gt;
+&lt;p&gt;¿Single gateway o multi-gateway? ¿Por qué Stripe sobre Adyen para ese mercado? ¿Qué criterios pesaron — fees, cobertura geográfica, soporte 3DS, time-to-market?&lt;/p&gt;
+
+&lt;h3 id=&quot;32-estrategia-de-reintentos-e-idempotencia&quot;&gt;3.2 Estrategia de reintentos e idempotencia&lt;/h3&gt;
+&lt;p&gt;¿Cuántos reintentos? ¿Con qué backoff? ¿Cómo se garantiza idempotencia? Este ADR solo te puede salvar de un incidente como el de la introducción.&lt;/p&gt;
+
+&lt;h3 id=&quot;33-manejo-de-3ds--sca&quot;&gt;3.3 Manejo de 3DS / SCA&lt;/h3&gt;
+&lt;p&gt;¿Qué flow se usa — challenge obligatorio, frictionless, fallback? ¿Qué exenciones aplican (low-value, trusted beneficiary)? Aquí el compliance se mezcla con UX, y las decisiones son polémicas.&lt;/p&gt;
+
+&lt;h3 id=&quot;34-tokenización-y-almacenamiento-de-datos-sensibles&quot;&gt;3.4 Tokenización y almacenamiento de datos sensibles&lt;/h3&gt;
+&lt;p&gt;¿Vault propio o del provider? ¿Qué scope de PCI te queda (SAQ-A vs SAQ-D)? Esta decisión define &lt;strong&gt;literalmente qué tan caro es tu compliance anual&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;35-webhooks-y-reconciliación&quot;&gt;3.5 Webhooks y reconciliación&lt;/h3&gt;
+&lt;p&gt;¿Entrega garantizada o eventual consistency? ¿Cómo se manejan los duplicados? ¿Hay reconciliación batch además del stream de eventos? Aquí es donde la realidad de los sistemas distribuidos te golpea más fuerte.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;4-anatomía-de-un-adr-real-ejemplo&quot;&gt;4. Anatomía de un ADR real (ejemplo)&lt;/h2&gt;
+
+&lt;p&gt;Veamos cómo se vería un ADR concreto para el caso de la introducción:&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gh&quot;&gt;# ADR-007: Adoptar idempotency keys en todas las llamadas a gateways&lt;/span&gt;
+
+&lt;span class=&quot;gu&quot;&gt;## Estado&lt;/span&gt;
+Aceptado — 2026-03-15
+
+&lt;span class=&quot;gu&quot;&gt;## Contexto&lt;/span&gt;
+El 12 de marzo tuvimos un incidente: un timeout en el gateway X
+disparó el retry automático de nuestro cliente HTTP. La transacción
+se procesó tres veces. Impacto: 47 clientes cobrados duplicado,
+~USD 8.200 en refunds y soporte.
+
+Las llamadas actuales no envían un identificador único que permita
+al gateway deduplicar.
+
+&lt;span class=&quot;gu&quot;&gt;## Decisión&lt;/span&gt;
+Todas las llamadas a gateways de pago deberán incluir un header
+&lt;span class=&quot;sb&quot;&gt;`Idempotency-Key`&lt;/span&gt; con un UUID v4 generado en el momento de crear
+la intención de pago, no en el momento del retry.
+
+La clave se persiste en la tabla &lt;span class=&quot;sb&quot;&gt;`payment_attempts`&lt;/span&gt; y se reutiliza
+en todos los reintentos del mismo intento de pago.
+
+&lt;span class=&quot;gu&quot;&gt;## Consecuencias&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;+&lt;/span&gt; Eliminamos cobros duplicados por reintentos.
+&lt;span class=&quot;p&quot;&gt;+&lt;/span&gt; Cumplimos con la recomendación oficial de Stripe y Adyen.
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; Requiere migración de los servicios existentes (ver ADR-008).
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; Aumenta ligeramente el tamaño de la tabla &lt;span class=&quot;sb&quot;&gt;`payment_attempts`&lt;/span&gt;.
+
+&lt;span class=&quot;gu&quot;&gt;## Alternativas consideradas&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; Deshabilitar reintentos automáticos: rechazada, degrada UX.
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; Locks distribuidos: rechazada, complejidad operativa innecesaria.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;¿Ves? &lt;strong&gt;Corto, contextual, accionable.&lt;/strong&gt; Cualquier dev que llegue en seis meses entiende qué pasó, por qué se hizo así, y qué no se debe romper.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;5-errores-comunes-al-escribir-adrs-en-payments&quot;&gt;5. Errores comunes al escribir ADRs en payments&lt;/h2&gt;
+
+&lt;p&gt;Después de ver decenas de ADRs (algunos míos, algunos heredados), estos son los errores más frecuentes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;❌ &lt;strong&gt;Escribirlos después del incidente.&lt;/strong&gt; El ADR debería ser parte del proceso de decisión, no el postmortem. Si lo escribes después, es un &lt;em&gt;Incident Report&lt;/em&gt; con otro nombre.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;❌ &lt;strong&gt;Escribir novelas de 20 páginas.&lt;/strong&gt; Si un ADR no se lee en 5 minutos, nadie lo va a leer. Punto.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;❌ &lt;strong&gt;No marcar como &lt;em&gt;superseded&lt;/em&gt;.&lt;/strong&gt; Cuando una decisión cambia, el ADR viejo debe quedar marcado y enlazar al nuevo. De lo contrario, conviven dos verdades.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;❌ &lt;strong&gt;Mezclar ADR con runbook o spec de producto.&lt;/strong&gt; El ADR no explica &lt;em&gt;cómo operar&lt;/em&gt; el sistema ni &lt;em&gt;qué funcionalidad&lt;/em&gt; tiene. Solo &lt;em&gt;por qué se decidió&lt;/em&gt; así.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;❌ &lt;strong&gt;No referenciarlos desde el código o los PRs.&lt;/strong&gt; Un ADR que nadie linkea es un ADR que nadie encuentra.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;6-dónde-viven-los-adrs&quot;&gt;6. ¿Dónde viven los ADRs?&lt;/h2&gt;
+
+&lt;p&gt;Mi recomendación, simple y probada:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Carpeta &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/docs/adr/&lt;/code&gt; en el mismo repo.&lt;/strong&gt; Numeración secuencial: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0001-payment-gateway-selection.md&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0002-retry-strategy.md&lt;/code&gt;, etc.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Referenciados desde los PRs.&lt;/strong&gt; Toda decisión arquitectónica nueva debe linkear al ADR correspondiente.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Vinculados a la documentación de alto nivel.&lt;/strong&gt; Si tienes documentación en capas (executive, approach, detail), los ADRs son la capa más profunda — donde viven las decisiones reales.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Indexados en un README&lt;/strong&gt; dentro de la carpeta, con título, estado y fecha.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;No necesitas Confluence, no necesitas Notion. &lt;strong&gt;Markdown plano, versionado con el código, revisable por PR.&lt;/strong&gt; Esa es la magia.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;conclusión-los-adrs-no-son-burocracia-son-seguros-de-vida&quot;&gt;Conclusión: Los ADRs no son burocracia, son seguros de vida&lt;/h2&gt;
+
+&lt;p&gt;He visto equipos que evitaban los ADRs porque “no tenemos tiempo”. Y luego he visto a esos mismos equipos perder &lt;strong&gt;semanas&lt;/strong&gt; intentando entender por qué un sistema de pagos hace lo que hace, en medio de una auditoría PCI o de un cambio de gateway.&lt;/p&gt;
+
+&lt;p&gt;Los ADRs te protegen:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ante &lt;strong&gt;auditorías de compliance&lt;/strong&gt; — puedes mostrar el &lt;em&gt;porqué&lt;/em&gt; de cada decisión.&lt;/li&gt;
+  &lt;li&gt;Ante &lt;strong&gt;el onboarding de nuevos devs&lt;/strong&gt; — dejan de hacer las mismas preguntas una y otra vez.&lt;/li&gt;
+  &lt;li&gt;Ante &lt;strong&gt;ti mismo en seis meses&lt;/strong&gt; — porque sí, vas a olvidar por qué hiciste eso.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;En sistemas de pagos, donde cada decisión toca dinero, compliance y proveedores externos, los ADRs no son un &lt;em&gt;nice-to-have&lt;/em&gt;. Son &lt;strong&gt;infraestructura para que tu arquitectura sobreviva al tiempo&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;Si vas a tomar una decisión que en seis meses alguien va a cuestionar — y en payments &lt;strong&gt;todas&lt;/strong&gt; lo son — escríbela como ADR. Tu yo futuro te lo va a agradecer.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;En el próximo post de esta serie hablaremos de cómo comunicar arquitectura de payments a stakeholders no técnicos — el arte de pasar de diagramas a decisiones.&lt;/em&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/architecture,/payments,/documentation/ADRs-en-sistemas-de-pagos/&quot;&gt;ADRs en sistemas de pagos - por qué documentar decisiones te salva de auditorías, incidentes y reescrituras&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on May 07, 2026.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
