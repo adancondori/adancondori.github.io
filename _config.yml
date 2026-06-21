@@ -8,7 +8,7 @@ url:              https://adancondori.github.io
 
 # Jekyll configuration
 
-permalink:   /:categories/:title/
+permalink:   /posts/:title/
 markdown:    kramdown
 highlighter: rouge
 future:      true

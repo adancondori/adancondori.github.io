@@ -1,5 +1,8 @@
 ---
 layout: post
+last_modified_at: 2026-06-21T00:00:00-07:00
+redirect_from:
+  - "/payments,/stripe,paypal/Integration-with-Multiple-Payment-Gateways/"
 title: 📝 Integration with Multiple Payment Gateways
 modified:
 categories: Payments, Stripe,Paypal

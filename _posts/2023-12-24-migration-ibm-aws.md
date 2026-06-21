@@ -1,5 +1,8 @@
 ---
 layout: post
+last_modified_at: 2026-06-21T00:00:00-07:00
+redirect_from:
+  - "/aws,/ibm,/cloud/migration-ibm-aws/"
 
 title: 🚀 ¡Migra tu infraestructura de IBM a AWS con éxito! 🚀
 

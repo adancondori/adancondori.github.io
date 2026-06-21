@@ -1,5 +1,6 @@
 ---
 layout: post
+last_modified_at: 2026-06-21T00:00:00-07:00
 
 title: "Summary About: \n Success Skills for Architects with Neil Ford - Spanish"
 

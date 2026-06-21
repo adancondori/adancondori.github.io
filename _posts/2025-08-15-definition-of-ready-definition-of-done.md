@@ -1,5 +1,8 @@
 ---
 layout: post
+last_modified_at: 2026-06-21T00:00:00-07:00
+redirect_from:
+  - "/agile,/software/engineering,/best/practices/definition-of-ready-definition-of-done/"
 
 title: Definition of Ready y Definition of Done - Los guardianes de la calidad en desarrollo ágil
 

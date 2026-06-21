@@ -1,5 +1,8 @@
 ---
 layout: post
+last_modified_at: 2026-06-21T00:00:00-07:00
+redirect_from:
+  - "/3ds/card/payments/Trazabilidad_en_Transacciones_3DS/"
 title: 🛡️🔒 Seguridad y Trazabilidad en Transacciones de Pagos 🔍💳
 modified:
 categories: [3DS, Card, Payments]

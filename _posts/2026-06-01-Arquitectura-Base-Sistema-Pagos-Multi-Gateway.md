@@ -1,10 +1,17 @@
 ---
 layout: post
+redirect_from:
+  - "/architecture,/payments,/software/design,/patterns/Arquitectura-Base-Sistema-Pagos-Multi-Gateway/"
 title: Arquitectura base de un sistema de pagos multi-gateway - capas, patrones, comunicación y estrategias que aprendí en años de payments
 modified:
 last_modified_at: 2026-06-21T00:00:00-07:00
 lang: es
 categories: Architecture, Payments, Software Design, Patterns
+article_section:
+  - Architecture
+  - Payments
+  - Software Design
+  - Patterns
 excerpt: >
   Una guía completa — desde las capas del dominio hasta los WebSockets y listeners — sobre cómo diseño sistemas de pagos que soportan múltiples pasarelas sin volverse inmantenibles.
 tldr: >

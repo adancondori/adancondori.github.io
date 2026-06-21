@@ -100,14 +100,18 @@
 }
 </script>
 {% elsif page.layout == 'post' %}
-{% comment %} Clean categories: split on comma, trim, filter blanks. {% endcomment %}
-{% assign raw_cats = page.categories | join: ',' %}
-{% assign cat_parts = raw_cats | split: ',' %}
-{% assign clean_cats = '' | split: '' %}
-{% for c in cat_parts %}
-  {% assign trimmed = c | strip %}
-  {% if trimmed != '' %}{% assign clean_cats = clean_cats | push: trimmed %}{% endif %}
-{% endfor %}
+{% comment %} Prefer hand-curated article_section; fallback to cleaned categories. {% endcomment %}
+{% if page.article_section %}
+  {% assign clean_cats = page.article_section %}
+{% else %}
+  {% assign raw_cats = page.categories | join: ',' %}
+  {% assign cat_parts = raw_cats | split: ',' %}
+  {% assign clean_cats = '' | split: '' %}
+  {% for c in cat_parts %}
+    {% assign trimmed = c | strip %}
+    {% if trimmed != '' %}{% assign clean_cats = clean_cats | push: trimmed %}{% endif %}
+  {% endfor %}
+{% endif %}
 {% assign primary_cat = clean_cats | first | default: 'Posts' %}
 {% assign post_image = '' %}
 {% if page.image.feature %}{% assign post_image = site.url | append: '/images/' | append: page.image.feature %}

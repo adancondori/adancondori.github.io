@@ -1,10 +1,16 @@
 ---
 layout: post
+redirect_from:
+  - "/architecture,/payments,/documentation/ADRs-en-sistemas-de-pagos/"
 title: ADRs en sistemas de pagos - por qué documentar decisiones te salva de auditorías, incidentes y reescrituras
 modified:
 last_modified_at: 2026-06-21T00:00:00-07:00
 lang: es
 categories: Architecture, Payments, Documentation
+article_section:
+  - Architecture
+  - Payments
+  - Documentation
 excerpt: >
   Por qué los Architecture Decision Records son innegociables cuando manejas dinero, compliance y proveedores externos.
 tldr: >

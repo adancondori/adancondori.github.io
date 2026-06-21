@@ -1,10 +1,16 @@
 ---
 layout: post
+redirect_from:
+  - "/agile,/devops,/engineering/guardia-del-sprint-triage-engineer/"
 title: Guardia del Sprint - el escudo invisible del equipo de desarrollo
 modified:
 last_modified_at: 2026-06-21T00:00:00-07:00
 lang: es
 categories: Agile, DevOps, Engineering
+article_section:
+  - Agile
+  - DevOps
+  - Engineering
 excerpt: >
   El rol que protege al equipo, estabiliza el producto y mantiene la cordura en medio del caos
 tldr: >

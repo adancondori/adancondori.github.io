@@ -1,5 +1,8 @@
 ---
 layout: post
+last_modified_at: 2026-06-21T00:00:00-07:00
+redirect_from:
+  - "/refactoring/clean-code-tips/"
 
 title: Aplicando los Principios de Código Limpio de "Clean Code" en la Práctica
 
