@@ -1,0 +1,104 @@
+{% comment %}
+  Structured data for AI/search discoverability.
+  Emits Person + WebSite + ProfilePage on the homepage.
+  Emits BlogPosting + Person (author) on posts.
+{% endcomment %}
+
+{% if page.layout == 'home' or page.url == '/' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "{{ site.url }}/#person",
+      "name": "Adan Condori",
+      "alternateName": "Adan Condori C.",
+      "url": "{{ site.url }}/",
+      "image": "{{ site.url }}/images/{{ site.owner.avatar }}",
+      "jobTitle": "Senior Full Stack Engineer — Payment Systems Lead",
+      "description": "Senior Engineering Leader with 10+ years building scalable payment systems and fintech solutions.",
+      "email": "mailto:{{ site.owner.email }}",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Playbypoint",
+        "url": "https://playbypoint.com"
+      },
+      "knowsAbout": [
+        "Payment Gateways",
+        "Stripe",
+        "PayPal",
+        "3DS 2.0",
+        "Ruby on Rails",
+        "React",
+        "AWS",
+        "Software Architecture",
+        "Fintech",
+        "Distributed Systems"
+      ],
+      "sameAs": [
+        "https://github.com/{{ site.owner.github }}",
+        "https://www.linkedin.com/in/{{ site.owner.linkedin }}",
+        "https://twitter.com/{{ site.owner.twitter }}",
+        "https://scholar.google.com/citations?user={{ site.owner.scholar }}"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ site.url }}/#website",
+      "url": "{{ site.url }}/",
+      "name": "{{ site.title }}",
+      "description": "Personal site and engineering blog of Adan Condori — payment systems, software architecture, and engineering leadership.",
+      "publisher": { "@id": "{{ site.url }}/#person" },
+      "inLanguage": ["en", "es"]
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "{{ site.url }}/#profilepage",
+      "url": "{{ site.url }}/",
+      "name": "Adan Condori — Engineering Profile",
+      "mainEntity": { "@id": "{{ site.url }}/#person" }
+    }
+  ]
+}
+</script>
+{% elsif page.layout == 'post' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ page.url | absolute_url }}"
+  },
+  "headline": {{ page.title | jsonify }},
+  {% if page.excerpt %}"description": {{ page.excerpt | strip_html | strip_newlines | truncate: 200 | jsonify }},{% endif %}
+  {% if page.image.feature %}"image": "{{ site.url }}/images/{{ page.image.feature }}",{% endif %}
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "dateModified": "{% if page.modified %}{{ page.modified | date_to_xmlschema }}{% else %}{{ page.date | date_to_xmlschema }}{% endif %}",
+  "author": {
+    "@type": "Person",
+    "name": "Adan Condori",
+    "url": "{{ site.url }}/",
+    "sameAs": [
+      "https://github.com/{{ site.owner.github }}",
+      "https://www.linkedin.com/in/{{ site.owner.linkedin }}",
+      "https://twitter.com/{{ site.owner.twitter }}",
+      "https://scholar.google.com/citations?user={{ site.owner.scholar }}"
+    ]
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Adan Condori",
+    "url": "{{ site.url }}/"
+  },
+  {% if page.categories.size > 0 %}"articleSection": {{ page.categories | jsonify }},{% endif %}
+  {% if page.tags.size > 0 %}"keywords": {{ page.tags | join: ", " | jsonify }},{% endif %}
+  "inLanguage": "{{ page.lang | default: 'es' }}",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["h1", ".article-wrap p:first-of-type"]
+  }
+}
+</script>
+{% endif %}

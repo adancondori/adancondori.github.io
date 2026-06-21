@@ -1,12 +1,17 @@
 <meta charset="utf-8">
 <title>{% if page.title %}{{ page.title }} &#8211; {% endif %}{{ site.title }}</title>
-{% if page.excerpt %}<meta name="description" content="{{ page.excerpt | strip_html }}">{% endif %}
+{% if page.description %}<meta name="description" content="{{ page.description | strip_html }}">
+{% elsif page.excerpt %}<meta name="description" content="{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}">
+{% else %}<meta name="description" content="Adan Condori — Senior Engineering Leader with 10+ years building scalable payment systems. Blog on payment gateways, 3DS, software architecture, and engineering leadership.">
+{% endif %}
 <meta name="keywords" content="{{ page.tags | join: ', ' }}">
+<meta name="author" content="{{ site.owner.name }}">
 {% if page.author %}
   {% assign author = site.data.authors[page.author] %}{% else %}{% assign author = site.owner %}
 {% endif %}
 
 {% include _open-graph.html %}
+{% include _jsonld.html %}
 {% include google_analytics.html %}
 
 {% if site.owner.google.verify %}<!-- Webmaster Tools verfication -->
@@ -37,7 +42,9 @@
 <!-- Modernizr -->
 <script src="{{ site.url }}/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
 
-<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic&display=swap' rel='stylesheet' type='text/css'>
 
 <!-- Icons -->
 <!-- 16x16 -->

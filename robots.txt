@@ -1,3 +1,6 @@
+---
+# This file is processed by Jekyll so site.url resolves correctly.
+---
 User-agent: *
 Allow: /
 Disallow: /assets/js/vendor/
@@ -58,4 +61,4 @@ Allow: /
 # Emerging IETF AI Preferences signal (informational; non-enforcing).
 Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
 
-Sitemap: https://adancondori.github.io/sitemap.xml
+Sitemap: {{ site.url }}/sitemap.xml

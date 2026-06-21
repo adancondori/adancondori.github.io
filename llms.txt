@@ -1,0 +1,39 @@
+# Adan Condori
+
+> Senior Engineering Leader, 10+ years building payment systems. Currently leading payment integrations at Playbypoint (USA). Blog covers payment gateway architecture, 3DS security, ADRs, design patterns, and engineering leadership. Content is mostly in Spanish, some in English.
+
+## About
+- [Homepage / Bio](https://adancondori.github.io/): Profile, skills, work history, achievements
+- [CV (PDF)](https://adancondori.github.io/cv/adan-cv.pdf): Full curriculum vitae
+
+## Payment Systems
+- [Arquitectura Base de un Sistema de Pagos Multi-Gateway](https://adancondori.github.io/architecture,/payments,/software/design,/patterns/Arquitectura-Base-Sistema-Pagos-Multi-Gateway/): 6-layer architecture, capability registry, idempotency, 15+ gateways
+- [ADRs en sistemas de pagos](https://adancondori.github.io/architecture,/payments,/documentation/ADRs-en-sistemas-de-pagos/): Architecture Decision Records for payments
+- [Trazabilidad en Transacciones 3DS](https://adancondori.github.io/3ds/card/payments/Trazabilidad_en_Transacciones_3DS/): Observability and tracing for 3DS flows
+- [Seguridad en Transacciones 3DS](https://adancondori.github.io/3ds,/card,/payments/Seguridad_en_Transacciones_3DS/): 3DS 2.0 security model
+- [Integration with Multiple Payment Gateways](https://adancondori.github.io/payments,/stripe,paypal/Integration-with-Multiple-Payment-Gateways/): Stripe + PayPal integration patterns
+
+## Engineering Practices
+- [Guardia del Sprint / Triage Engineer](https://adancondori.github.io/agile,/devops,/engineering/guardia-del-sprint-triage-engineer/): Sprint guard role, MTTR improvement (4h to 45min), SLA tables
+- [Definition of Ready / Definition of Done](https://adancondori.github.io/agile,/software/engineering,/best/practices/definition-of-ready-definition-of-done/): Agile delivery criteria
+- [Clean Code Tips](https://adancondori.github.io/refactoring/clean-code-tips/): Refactoring and code quality
+
+## Architecture & Design
+- [A Good Software Architecture](https://adancondori.github.io/a-good-architecture/): Foundations of good architecture
+- [Architecture Representation](https://adancondori.github.io/Architecture-representation/): Documenting architectures
+- [Success Skills for Architects (English)](https://adancondori.github.io/Success-Skills-for-Architects-English/): Soft skills for architects
+- [Success Skills for Architects (Español)](https://adancondori.github.io/Success-Skills-for-Architects/)
+- [Design Patterns](https://adancondori.github.io/desing-patterns/): Classic patterns overview
+- [Software Design](https://adancondori.github.io/software-design/): Design principles
+
+## Cloud & Tools
+- [Migration from IBM Cloud to AWS](https://adancondori.github.io/aws,/ibm,/cloud/migration-ibm-aws/): Cloud migration experience
+- [Linux Basics](https://adancondori.github.io/Linux-basic/)
+- [Git Notes](https://adancondori.github.io/notes-git/)
+- [Android vs Kotlin](https://adancondori.github.io/android-vs-kotlin/)
+
+## Optional
+- [GitHub](https://github.com/adancondori): Open-source code and personal projects
+- [LinkedIn](https://www.linkedin.com/in/adancondori): Professional profile
+- [Twitter / X](https://twitter.com/AdanCondori): Engineering commentary
+- [Google Scholar](https://scholar.google.com/citations?user=adancondori): Publications
