@@ -58,4 +58,4 @@ Allow: /
 # Emerging IETF AI Preferences signal (informational; non-enforcing).
 Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
 
-Sitemap: https://adancondori.github.io/sitemap.xml
+Sitemap: http://0.0.0.0:4000/sitemap.xml
