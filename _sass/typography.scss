@@ -150,6 +150,23 @@ pre {
 	overflow-x: auto;
 }
 
+// Mermaid diagrams
+// --------------------------------------------------
+.mermaid {
+	margin: 1.8em auto;
+	padding: 1em;
+	text-align: center;
+	background-color: color.adjust($basecolor, $lightness: 73%);
+	border: 1px solid color.adjust($black, $lightness: 80%);
+	@include rounded(4px);
+	overflow-x: auto;
+
+	svg {
+		max-width: 100%;
+		height: auto;
+	}
+}
+
 // Tables
 // --------------------------------------------------
 .post table,
