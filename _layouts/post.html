@@ -41,14 +41,20 @@
       {% endif %}
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
+      {% if page.tldr %}
+      <div class="post-tldr" role="doc-abstract">
+        <p><strong>TL;DR.</strong> {{ page.tldr }}</p>
+      </div>
+      {% endif %}
       {{ content }}
+      {% include _post_author_footer.html %}
       <hr />
       <footer role="contentinfo">
         <div class="article-author-bottom">
           {% include _author-bio.html %}
         </div>
         <p class="byline">
-          Published <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>{% if page.modified %} Last modified <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{{ page.modified | date: "%B %d, %Y" }}</time>{% endif %}.</p>
+          Published <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%B %d, %Y" }}</time>{% if page.modified or page.last_modified_at %} · Last updated <time datetime="{% if page.modified %}{{ page.modified | date_to_xmlschema }}{% else %}{{ page.last_modified_at | date_to_xmlschema }}{% endif %}" itemprop="dateModified">{% if page.modified %}{{ page.modified | date: "%B %d, %Y" }}{% else %}{{ page.last_modified_at | date: "%B %d, %Y" }}{% endif %}</time>{% endif %}.</p>
       </footer>
     </div><!-- /.article-wrap -->
   {% if site.owner.disqus-shortname and page.comments == true %}

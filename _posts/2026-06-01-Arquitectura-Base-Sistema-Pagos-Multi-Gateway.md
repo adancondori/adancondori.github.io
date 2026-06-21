@@ -2,13 +2,26 @@
 layout: post
 title: Arquitectura base de un sistema de pagos multi-gateway - capas, patrones, comunicación y estrategias que aprendí en años de payments
 modified:
+last_modified_at: 2026-06-21T00:00:00-07:00
+lang: es
 categories: Architecture, Payments, Software Design, Patterns
 excerpt: >
   Una guía completa — desde las capas del dominio hasta los WebSockets y listeners — sobre cómo diseño sistemas de pagos que soportan múltiples pasarelas sin volverse inmantenibles.
+tldr: >
+  Después de integrar más de 15 pasarelas en producción, este es el blueprint que uso para diseñar sistemas de pagos multi-gateway desde el día uno. Seis capas (Domain, Gateway Adapters, Capability Registry, Routing, Orchestration, Reconciliation), idempotency obligatoria, comunicación por eventos, y una estrategia de migración strangler-fig para sistemas legacy. Si tuviera que arrancar hoy un sistema de pagos, así lo haría.
 tags: []
 image:
 feature:
 date: 2026-06-01T10:00:00-07:00
+faq:
+  - q: "¿Por qué no se puede integrar todos los gateways con un solo abstract pattern?"
+    a: "Porque cada PSP tiene capacidades distintas - algunos soportan 3DS 2.0 nativo, otros no; algunos manejan multi-currency, otros solo USD; algunos tienen idempotency keys, otros requieren que tú la implementes a nivel de aplicación. El capability registry permite enrutar transacciones al gateway que realmente puede ejecutarlas, en vez de forzar un mínimo común denominador."
+  - q: "¿Qué es un capability registry en sistemas de pagos?"
+    a: "Es una tabla (o servicio) que describe qué puede hacer cada gateway: qué métodos de pago soporta, qué monedas, qué países, si maneja 3DS 2.0, si soporta partial captures, refunds, recurring, etc. El router de pagos consulta este registry para decidir a qué gateway enviar cada transacción según la intent del cliente."
+  - q: "¿Cómo implementas idempotency en pagos multi-gateway?"
+    a: "Idempotency key generada en la capa de orchestration (no en el gateway), persistida en una tabla con uniqueness constraint, y propagada al gateway si éste la soporta nativamente (Stripe, Adyen). Si el gateway no la soporta, la app es la fuente de verdad: ante un retry, verifica el estado en la tabla antes de re-llamar al PSP."
+  - q: "¿Cuál es la estrategia de migración si ya tengo un sistema legacy hecho un desastre?"
+    a: "Strangler-fig + nuevo gateway como piloto + reconciliation-first. No hagas big-bang rewrite. Introduce el nuevo gateway por una nueva capa (sin tocar lo viejo), monta reconciliation diaria entre los dos sistemas, y migra tráfico gradualmente por feature flag mientras el legacy sigue procesando lo que ya tenía. Pueden coexistir 6-12 meses sin drama."
 ---
 
 ## Introducción: por qué casi todos los sistemas de pagos terminan siendo un infierno
@@ -644,6 +657,22 @@ Si llegaste tarde y ya tienes un sistema legacy, el camino es: **strangler-fig +
 Ningún sistema de pagos sobrevive sin disciplina arquitectónica. Y la disciplina arquitectónica se construye **antes** de necesitarla, no después.
 
 > *El día que un PSP global se cae durante 4 horas, y tu sistema sigue funcionando porque routeó al backup automático, es el día que entiendes por qué valió la pena cada hora invertida en este esqueleto.*
+
+---
+
+## Referencias y fuentes primarias
+
+Lo que cuento aquí lo aprendí en producción, pero los principios se apoyan en specs y literatura que vale la pena tener a mano:
+
+- [Stripe API Reference — Idempotent Requests](https://docs.stripe.com/api/idempotent_requests) — la implementación de referencia de idempotency keys en un PSP moderno.
+- [Adyen Documentation — Payment methods](https://docs.adyen.com/payment-methods/) — buen ejemplo de cómo se modela el matrix de capabilities por país y método.
+- [EMVCo 3-D Secure Specification](https://www.emvco.com/emv-technologies/3d-secure/) — la spec original de 3DS 2.x. Si vas a integrar 3DS, léela.
+- [PCI DSS v4.0](https://www.pcisecuritystandards.org/document_library/) — alcance, requirements, y por qué la capa de Gateway Adapters reduce dramáticamente tu PCI scope.
+- [Brandur Leach — Implementing Stripe-like Idempotency Keys in Postgres](https://brandur.org/idempotency-keys) — el post canónico sobre idempotency a nivel base de datos. Si trabajas con Postgres y pagos, es lectura obligada.
+- [Martin Fowler — StranglerFigApplication](https://martinfowler.com/bliki/StranglerFigApplication.html) — la estrategia de migración que menciono en el cierre.
+- [Adyen Engineering — Building reliable payment systems](https://www.adyen.com/blog/building-reliable-payment-systems) — buena referencia sobre reconciliation y observability en producción.
+
+Si quieres profundizar en algún punto específico de este post, [escríbeme](mailto:adan.condoric@gmail.com). Y si tienes un sistema de pagos legacy y no sabes por dónde empezar la migración, también — me interesa mucho ver cómo lo han estructurado otros equipos.
 
 ---
 

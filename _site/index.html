@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <title>Senior Engineering Leader | 10+ Years Building Scalable Systems &#8211; ADAN CONDORI</title>
-<meta name="description" content="Adan Condori — Senior Engineering Leader with 10+ years building scalable payment systems. Blog on payment gateways, 3DS, software architecture, and engineering leadership.">
+<meta name="description" content="Engineering Leader, 10+ years building payment systems. Blog on payment gateways, 3DS, software architecture, and engineering leadership.">
 
 <meta name="keywords" content="engineering leader, software architect, cloud solutions, fintech, payments">
 <meta name="author" content="Adan Condori C.">
@@ -42,6 +42,9 @@
 
 
 
+
+
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -52,7 +55,12 @@
       "name": "Adan Condori",
       "alternateName": "Adan Condori C.",
       "url": "https://adancondori.github.io/",
-      "image": "https://adancondori.github.io/images/perfil-cv.jpeg",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://adancondori.github.io/images/perfil-cv.jpeg",
+        "width": 400,
+        "height": 400
+      },
       "jobTitle": "Senior Full Stack Engineer — Payment Systems Lead",
       "description": "Senior Engineering Leader with 10+ years building scalable payment systems and fintech solutions.",
       "email": "mailto:adan.condoric@gmail.com",
@@ -61,17 +69,16 @@
         "name": "Playbypoint",
         "url": "https://playbypoint.com"
       },
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Universidad Autónoma Gabriel René Moreno",
+        "sameAs": "https://www.uagrm.edu.bo/"
+      },
       "knowsAbout": [
-        "Payment Gateways",
-        "Stripe",
-        "PayPal",
-        "3DS 2.0",
-        "Ruby on Rails",
-        "React",
-        "AWS",
-        "Software Architecture",
-        "Fintech",
-        "Distributed Systems"
+        "Payment Gateways", "Stripe", "PayPal", "Adyen",
+        "3DS 2.0", "PCI-DSS", "Idempotency", "Reconciliation",
+        "Ruby on Rails", "React", "AWS", "Software Architecture",
+        "Architecture Decision Records", "Fintech", "Distributed Systems"
       ],
       "sameAs": [
         "https://github.com/adancondori",
@@ -81,19 +88,48 @@
       ]
     },
     {
+      "@type": "Organization",
+      "@id": "https://adancondori.github.io/#organization",
+      "name": "ADAN CONDORI",
+      "alternateName": "Adan Condori",
+      "url": "https://adancondori.github.io/",
+      "founder": { "@id": "https://adancondori.github.io/#person" },
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://adancondori.github.io/images/perfil-cv.jpeg",
+        "width": 600,
+        "height": 600
+      },
+      "sameAs": [
+        "https://github.com/adancondori",
+        "https://www.linkedin.com/in/adancondori",
+        "https://twitter.com/AdanCondori"
+      ]
+    },
+    {
       "@type": "WebSite",
       "@id": "https://adancondori.github.io/#website",
       "url": "https://adancondori.github.io/",
       "name": "ADAN CONDORI",
       "description": "Personal site and engineering blog of Adan Condori — payment systems, software architecture, and engineering leadership.",
-      "publisher": { "@id": "https://adancondori.github.io/#person" },
-      "inLanguage": ["en", "es"]
+      "publisher": { "@id": "https://adancondori.github.io/#organization" },
+      "inLanguage": ["en", "es"],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.google.com/search?q=site%3Aadancondori.github.io+{search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
       "@type": "ProfilePage",
       "@id": "https://adancondori.github.io/#profilepage",
       "url": "https://adancondori.github.io/",
       "name": "Adan Condori — Engineering Profile",
+      "isPartOf": { "@id": "https://adancondori.github.io/#website" },
+      "about": { "@id": "https://adancondori.github.io/#person" },
       "mainEntity": { "@id": "https://adancondori.github.io/#person" }
     }
   ]

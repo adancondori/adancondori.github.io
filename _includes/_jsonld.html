@@ -1,8 +1,12 @@
 {% comment %}
   Structured data for AI/search discoverability.
-  Emits Person + WebSite + ProfilePage on the homepage.
-  Emits BlogPosting + Person (author) on posts.
+  Homepage: Person + Organization + WebSite + ProfilePage @graph.
+  Posts: BlogPosting + BreadcrumbList + optional FAQPage.
+  Logo dims: 600x60 minimum for Google rich results.
 {% endcomment %}
+
+{% assign org_id = site.url | append: '/#organization' %}
+{% assign person_id = site.url | append: '/#person' %}
 
 {% if page.layout == 'home' or page.url == '/' %}
 <script type="application/ld+json">
@@ -11,11 +15,16 @@
   "@graph": [
     {
       "@type": "Person",
-      "@id": "{{ site.url }}/#person",
+      "@id": "{{ person_id }}",
       "name": "Adan Condori",
       "alternateName": "Adan Condori C.",
       "url": "{{ site.url }}/",
-      "image": "{{ site.url }}/images/{{ site.owner.avatar }}",
+      "image": {
+        "@type": "ImageObject",
+        "url": "{{ site.url }}/images/{{ site.owner.avatar }}",
+        "width": 400,
+        "height": 400
+      },
       "jobTitle": "Senior Full Stack Engineer — Payment Systems Lead",
       "description": "Senior Engineering Leader with 10+ years building scalable payment systems and fintech solutions.",
       "email": "mailto:{{ site.owner.email }}",
@@ -24,17 +33,16 @@
         "name": "Playbypoint",
         "url": "https://playbypoint.com"
       },
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Universidad Autónoma Gabriel René Moreno",
+        "sameAs": "https://www.uagrm.edu.bo/"
+      },
       "knowsAbout": [
-        "Payment Gateways",
-        "Stripe",
-        "PayPal",
-        "3DS 2.0",
-        "Ruby on Rails",
-        "React",
-        "AWS",
-        "Software Architecture",
-        "Fintech",
-        "Distributed Systems"
+        "Payment Gateways", "Stripe", "PayPal", "Adyen",
+        "3DS 2.0", "PCI-DSS", "Idempotency", "Reconciliation",
+        "Ruby on Rails", "React", "AWS", "Software Architecture",
+        "Architecture Decision Records", "Fintech", "Distributed Systems"
       ],
       "sameAs": [
         "https://github.com/{{ site.owner.github }}",
@@ -44,61 +52,187 @@
       ]
     },
     {
+      "@type": "Organization",
+      "@id": "{{ org_id }}",
+      "name": "{{ site.title }}",
+      "alternateName": "Adan Condori",
+      "url": "{{ site.url }}/",
+      "founder": { "@id": "{{ person_id }}" },
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ site.url }}/images/{{ site.owner.avatar }}",
+        "width": 600,
+        "height": 600
+      },
+      "sameAs": [
+        "https://github.com/{{ site.owner.github }}",
+        "https://www.linkedin.com/in/{{ site.owner.linkedin }}",
+        "https://twitter.com/{{ site.owner.twitter }}"
+      ]
+    },
+    {
       "@type": "WebSite",
       "@id": "{{ site.url }}/#website",
       "url": "{{ site.url }}/",
       "name": "{{ site.title }}",
       "description": "Personal site and engineering blog of Adan Condori — payment systems, software architecture, and engineering leadership.",
-      "publisher": { "@id": "{{ site.url }}/#person" },
-      "inLanguage": ["en", "es"]
+      "publisher": { "@id": "{{ org_id }}" },
+      "inLanguage": ["en", "es"],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.google.com/search?q=site%3Aadancondori.github.io+{search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
       "@type": "ProfilePage",
       "@id": "{{ site.url }}/#profilepage",
       "url": "{{ site.url }}/",
       "name": "Adan Condori — Engineering Profile",
-      "mainEntity": { "@id": "{{ site.url }}/#person" }
+      "isPartOf": { "@id": "{{ site.url }}/#website" },
+      "about": { "@id": "{{ person_id }}" },
+      "mainEntity": { "@id": "{{ person_id }}" }
     }
   ]
 }
 </script>
 {% elsif page.layout == 'post' %}
+{% comment %} Clean categories: split on comma, trim, filter blanks. {% endcomment %}
+{% assign raw_cats = page.categories | join: ',' %}
+{% assign cat_parts = raw_cats | split: ',' %}
+{% assign clean_cats = '' | split: '' %}
+{% for c in cat_parts %}
+  {% assign trimmed = c | strip %}
+  {% if trimmed != '' %}{% assign clean_cats = clean_cats | push: trimmed %}{% endif %}
+{% endfor %}
+{% assign primary_cat = clean_cats | first | default: 'Posts' %}
+{% assign post_image = '' %}
+{% if page.image.feature %}{% assign post_image = site.url | append: '/images/' | append: page.image.feature %}
+{% else %}{% assign post_image = site.url | append: '/images/banners/mac-pro_adan.jpg' %}{% endif %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "{{ page.url | absolute_url }}"
-  },
-  "headline": {{ page.title | jsonify }},
-  {% if page.excerpt %}"description": {{ page.excerpt | strip_html | strip_newlines | truncate: 200 | jsonify }},{% endif %}
-  {% if page.image.feature %}"image": "{{ site.url }}/images/{{ page.image.feature }}",{% endif %}
-  "datePublished": "{{ page.date | date_to_xmlschema }}",
-  "dateModified": "{% if page.modified %}{{ page.modified | date_to_xmlschema }}{% else %}{{ page.date | date_to_xmlschema }}{% endif %}",
-  "author": {
-    "@type": "Person",
-    "name": "Adan Condori",
-    "url": "{{ site.url }}/",
-    "sameAs": [
-      "https://github.com/{{ site.owner.github }}",
-      "https://www.linkedin.com/in/{{ site.owner.linkedin }}",
-      "https://twitter.com/{{ site.owner.twitter }}",
-      "https://scholar.google.com/citations?user={{ site.owner.scholar }}"
-    ]
-  },
-  "publisher": {
-    "@type": "Person",
-    "name": "Adan Condori",
-    "url": "{{ site.url }}/"
-  },
-  {% if page.categories.size > 0 %}"articleSection": {{ page.categories | jsonify }},{% endif %}
-  {% if page.tags.size > 0 %}"keywords": {{ page.tags | join: ", " | jsonify }},{% endif %}
-  "inLanguage": "{{ page.lang | default: 'es' }}",
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": ["h1", ".article-wrap p:first-of-type"]
-  }
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "{{ page.url | absolute_url }}#blogposting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ page.url | absolute_url }}"
+      },
+      "headline": {{ page.title | jsonify }},
+      {% if page.excerpt %}"description": {{ page.excerpt | strip_html | strip_newlines | truncate: 200 | jsonify }},{% endif %}
+      "image": {
+        "@type": "ImageObject",
+        "url": "{{ post_image }}",
+        "width": 1200,
+        "height": 630
+      },
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{% if page.modified %}{{ page.modified | date_to_xmlschema }}{% elsif page.last_modified_at %}{{ page.last_modified_at | date_to_xmlschema }}{% else %}{{ page.date | date_to_xmlschema }}{% endif %}",
+      "author": { "@id": "{{ person_id }}" },
+      "publisher": { "@id": "{{ org_id }}" },
+      {% if clean_cats.size > 0 %}"articleSection": {{ clean_cats | jsonify }},{% endif %}
+      {% if page.tags.size > 0 %}"keywords": {{ page.tags | join: ", " | jsonify }},{% endif %}
+      "inLanguage": "{{ page.lang | default: 'es' }}",
+      "wordCount": "{{ content | strip_html | number_of_words }}",
+      "isPartOf": { "@id": "{{ site.url }}/#website" },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", ".article-wrap p:first-of-type", ".post-tldr"]
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "{{ person_id }}",
+      "name": "Adan Condori",
+      "url": "{{ site.url }}/",
+      "image": {
+        "@type": "ImageObject",
+        "url": "{{ site.url }}/images/{{ site.owner.avatar }}",
+        "width": 400,
+        "height": 400
+      },
+      "jobTitle": "Senior Full Stack Engineer — Payment Systems Lead",
+      "worksFor": { "@type": "Organization", "name": "Playbypoint", "url": "https://playbypoint.com" },
+      "sameAs": [
+        "https://github.com/{{ site.owner.github }}",
+        "https://www.linkedin.com/in/{{ site.owner.linkedin }}",
+        "https://twitter.com/{{ site.owner.twitter }}",
+        "https://scholar.google.com/citations?user={{ site.owner.scholar }}"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "{{ org_id }}",
+      "name": "{{ site.title }}",
+      "url": "{{ site.url }}/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ site.url }}/images/{{ site.owner.avatar }}",
+        "width": 600,
+        "height": 600
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "{{ page.url | absolute_url }}#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "{{ site.url }}/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Posts",
+          "item": "{{ site.url }}/posts/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ page.title | jsonify }},
+          "item": "{{ page.url | absolute_url }}"
+        }
+      ]
+    }{% if page.faq %},
+    {
+      "@type": "FAQPage",
+      "@id": "{{ page.url | absolute_url }}#faqpage",
+      "mainEntity": [
+        {% for q in page.faq %}
+        {
+          "@type": "Question",
+          "name": {{ q.q | jsonify }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": {{ q.a | jsonify }}
+          }
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }{% endif %}
+  ]
+}
+</script>
+{% else %}
+{% comment %} Generic page (about, privacy, hubs). {% endcomment %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "{{ page.url | absolute_url }}",
+  "url": "{{ page.url | absolute_url }}",
+  "name": {{ page.title | default: site.title | jsonify }},
+  {% if page.description %}"description": {{ page.description | jsonify }},{% endif %}
+  "isPartOf": { "@id": "{{ site.url }}/#website" },
+  "inLanguage": "{{ page.lang | default: 'en' }}",
+  "about": { "@id": "{{ person_id }}" }
 }
 </script>
 {% endif %}

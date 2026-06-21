@@ -2,7 +2,7 @@
 <title>{% if page.title %}{{ page.title }} &#8211; {% endif %}{{ site.title }}</title>
 {% if page.description %}<meta name="description" content="{{ page.description | strip_html }}">
 {% elsif page.excerpt %}<meta name="description" content="{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}">
-{% else %}<meta name="description" content="Adan Condori — Senior Engineering Leader with 10+ years building scalable payment systems. Blog on payment gateways, 3DS, software architecture, and engineering leadership.">
+{% else %}<meta name="description" content="Engineering Leader, 10+ years building payment systems. Blog on payment gateways, 3DS, software architecture, and engineering leadership.">
 {% endif %}
 <meta name="keywords" content="{{ page.tags | join: ', ' }}">
 <meta name="author" content="{{ site.owner.name }}">

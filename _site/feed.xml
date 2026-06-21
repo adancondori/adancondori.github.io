@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="https://adancondori.github.io/feed.xml" />
 <link rel="alternate" type="text/html" href="https://adancondori.github.io" />
-<updated>2026-06-21T04:02:09+00:00</updated>
+<updated>2026-06-21T04:22:22+00:00</updated>
 <id>https://adancondori.github.io/</id>
 <author>
   <name>Adan Condori C.</name>
@@ -900,6 +900,24 @@
 
 &lt;hr /&gt;
 
+&lt;h2 id=&quot;referencias-y-fuentes-primarias&quot;&gt;Referencias y fuentes primarias&lt;/h2&gt;
+
+&lt;p&gt;Lo que cuento aquí lo aprendí en producción, pero los principios se apoyan en specs y literatura que vale la pena tener a mano:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.stripe.com/api/idempotent_requests&quot;&gt;Stripe API Reference — Idempotent Requests&lt;/a&gt; — la implementación de referencia de idempotency keys en un PSP moderno.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.adyen.com/payment-methods/&quot;&gt;Adyen Documentation — Payment methods&lt;/a&gt; — buen ejemplo de cómo se modela el matrix de capabilities por país y método.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.emvco.com/emv-technologies/3d-secure/&quot;&gt;EMVCo 3-D Secure Specification&lt;/a&gt; — la spec original de 3DS 2.x. Si vas a integrar 3DS, léela.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.pcisecuritystandards.org/document_library/&quot;&gt;PCI DSS v4.0&lt;/a&gt; — alcance, requirements, y por qué la capa de Gateway Adapters reduce dramáticamente tu PCI scope.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://brandur.org/idempotency-keys&quot;&gt;Brandur Leach — Implementing Stripe-like Idempotency Keys in Postgres&lt;/a&gt; — el post canónico sobre idempotency a nivel base de datos. Si trabajas con Postgres y pagos, es lectura obligada.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://martinfowler.com/bliki/StranglerFigApplication.html&quot;&gt;Martin Fowler — StranglerFigApplication&lt;/a&gt; — la estrategia de migración que menciono en el cierre.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.adyen.com/blog/building-reliable-payment-systems&quot;&gt;Adyen Engineering — Building reliable payment systems&lt;/a&gt; — buena referencia sobre reconciliation y observability en producción.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Si quieres profundizar en algún punto específico de este post, &lt;a href=&quot;mailto:adan.condoric@gmail.com&quot;&gt;escríbeme&lt;/a&gt;. Y si tienes un sistema de pagos legacy y no sabes por dónde empezar la migración, también — me interesa mucho ver cómo lo han estructurado otros equipos.&lt;/p&gt;
+
+&lt;hr /&gt;
+
 &lt;p&gt;&lt;em&gt;En el próximo post de esta serie hablaremos de cómo comunicar arquitectura de payments a stakeholders no técnicos — el arte de pasar de diagramas a decisiones de negocio.&lt;/em&gt;&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;https://adancondori.github.io/architecture,/payments,/software/design,/patterns/Arquitectura-Base-Sistema-Pagos-Multi-Gateway/&quot;&gt;Arquitectura base de un sistema de pagos multi-gateway - capas, patrones, comunicación y estrategias que aprendí en años de payments&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;https://adancondori.github.io&quot;&gt;ADAN CONDORI&lt;/a&gt; on June 01, 2026.&lt;/p&gt;</content>
@@ -1096,6 +1114,23 @@ en todos los reintentos del mismo intento de pago.
 &lt;blockquote&gt;
   &lt;p&gt;&lt;em&gt;Si vas a tomar una decisión que en seis meses alguien va a cuestionar — y en payments &lt;strong&gt;todas&lt;/strong&gt; lo son — escríbela como ADR. Tu yo futuro te lo va a agradecer.&lt;/em&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;referencias-y-fuentes&quot;&gt;Referencias y fuentes&lt;/h2&gt;
+
+&lt;p&gt;Si vas a empezar con ADRs y quieres ir más profundo:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions&quot;&gt;Michael Nygard — Documenting Architecture Decisions&lt;/a&gt; — el post original de 2011 que arrancó toda la práctica de ADRs. Si lees uno solo, que sea este.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://adr.github.io/&quot;&gt;adr.github.io&lt;/a&gt; — colección de templates (MADR, Nygard, Y-Statements) y patrones. El MADR template es el que yo uso.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.thoughtworks.com/radar/techniques/lightweight-architecture-decision-records&quot;&gt;ThoughtWorks Technology Radar — ADRs&lt;/a&gt; — por qué los lightweight ADRs están en “Adopt” desde hace años.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/npryce/adr-tools&quot;&gt;adr-tools (Nat Pryce)&lt;/a&gt; — CLI para crear y mantener ADRs con número correlativo. Lo uso en todos mis repos.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://industriallogic.com/blog/architecture-decision-records-in-action/&quot;&gt;Architecture Decision Records in Action — Industrial Logic&lt;/a&gt; — un walkthrough práctico con ejemplos reales.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.stripe.com/api/idempotent_requests&quot;&gt;Stripe API — Idempotent Requests&lt;/a&gt; — referencia técnica que cito en el ejemplo de ADR sobre retry logic.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Y si manejas pagos y todavía no tienes ADRs, &lt;a href=&quot;mailto:adan.condoric@gmail.com&quot;&gt;escríbeme&lt;/a&gt;. Te ayudo a montar los primeros tres — son los más difíciles, después se vuelve hábito.&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -1778,6 +1813,22 @@ Revisar Sidekiq queue y status de workers
 &lt;p&gt;&lt;strong&gt;¿Has sido guardia del sprint? ¿Qué estrategias te funcionaron mejor? Déjame saber en los comentarios o contáctame directamente.&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Escrito desde la trinchera, con café y mucho cariño técnico.&lt;/em&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;referencias&quot;&gt;Referencias&lt;/h2&gt;
+
+&lt;p&gt;Si quieres profundizar en la teoría detrás del rol:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://sre.google/sre-book/being-on-call/&quot;&gt;Google SRE Book — Being On-Call&lt;/a&gt; — la referencia canónica sobre on-call rotations. Mucho de lo que aplico viene de aquí.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://increment.com/on-call/&quot;&gt;Increment — On-call (issue #5)&lt;/a&gt; — colección de ensayos sobre cómo manejan on-call equipos de distintas empresas. Buen contraste con mi setup.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.atlassian.com/incident-management/handbook&quot;&gt;Atlassian Incident Handbook&lt;/a&gt; — handbook open-source de Atlassian sobre incident management. Mucho overlap con responsabilidades del guardia.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://response.pagerduty.com/&quot;&gt;PagerDuty Incident Response Documentation&lt;/a&gt; — la doc de PagerDuty sobre incident response, severity levels y postmortems. Las severidades que uso están basadas en esto.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://newsletter.pragmaticengineer.com/p/oncall-as-engineering-manager&quot;&gt;The Pragmatic Engineer — Engineering Managers and On-Call&lt;/a&gt; — buena lectura sobre cómo manejan otras compañías el balance del rol.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Y si quieres ver el handover template, las plantillas de runbook que usamos, o los dashboards de métricas del rol, &lt;a href=&quot;mailto:adan.condoric@gmail.com&quot;&gt;escríbeme&lt;/a&gt; — los comparto sin problema.&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;https://adancondori.github.io/agile,/devops,/engineering/guardia-del-sprint-triage-engineer/&quot;&gt;Guardia del Sprint - el escudo invisible del equipo de desarrollo&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;https://adancondori.github.io&quot;&gt;ADAN CONDORI&lt;/a&gt; on October 10, 2025.&lt;/p&gt;</content>
 </entry>

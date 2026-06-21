@@ -1,335 +1,196 @@
-# GEO Audit Report: adancondori.github.io
+# GEO Audit Report (V2 — Post-Fix): adancondori.github.io
 
-**Audit Date:** 2026-06-20
+**Audit Date:** 2026-06-21
 **URL:** https://adancondori.github.io/
 **Business Type:** Personal Brand / Technical Publisher (Engineering Portfolio)
-**Pages Analyzed:** Homepage, CV, 4 representative blog posts (multi-gateway architecture, triage engineer, ADRs en pagos, 3DS security) + sitemap (26 URLs)
+**Baseline audit date:** 2026-06-20 (previous score: 51/100)
 
 ---
 
 ## Executive Summary
 
-**Overall GEO Score: 51/100 (Poor — Borderline Fair)**
+**Overall GEO Score: 70/100 (Fair — Borderline Good) — Δ +19 vs. baseline**
 
-The site has unusually strong raw material — first-person, incident-grounded technical writing with concrete metrics (MTTR 4h→45min, $5M+ transactions handled, 15+ gateway integrations) and consistent 2026 publishing cadence. Content E-E-A-T scores in the top quartile for personal tech blogs. **The gap is mechanical, not editorial:** zero structured data, no llms.txt, and almost no entity-recognition footprint outside GitHub. AI engines can't yet confidently identify "Adan Condori" as the payments-engineering authority the content proves him to be. The good news: every critical fix is template-level (one `_layouts/post.html` edit ships schema to all 17 posts at once).
+In a single deploy cycle the site went from "AI-invisible despite great content" to a near-complete GEO foundation. Every mechanical gap from the V1 audit is now closed: schema is live and valid, llms.txt is comprehensive, robots.txt explicitly allows 18 AI crawlers with the IETF Content-Signal directive, og:type is correct per page, and `/about/` + `/privacy/` ground the entity. The biggest remaining gap is **off-site** — entity recognition outside GitHub — not on-site engineering.
 
-### Score Breakdown
+### Score Delta
 
-| Category | Score | Weight | Weighted Score |
-|---|---|---|---|
-| AI Citability | 65/100 | 25% | 16.25 |
-| Brand Authority | 22/100 | 20% | 4.40 |
-| Content E-E-A-T | 82/100 | 20% | 16.40 |
-| Technical GEO | 68/100 | 15% | 10.20 |
-| Schema & Structured Data | 5/100 | 10% | 0.50 |
-| Platform Optimization | 34/100 | 10% | 3.40 |
-| **Overall GEO Score** | | | **51/100** |
+| Category | V1 Score | V2 Score | Δ | Weight | V2 Weighted |
+|---|---|---|---|---|---|
+| AI Citability | 65 | 75 | **+10** | 25% | 18.75 |
+| Brand Authority | 22 | 38 | **+16** | 20% | 7.60 |
+| Content E-E-A-T | 82 | 88 | **+6** | 20% | 17.60 |
+| Technical GEO | 68 | 79 | **+11** | 15% | 11.85 |
+| Schema & Structured Data | 5 | 78 | **+73** | 10% | 7.80 |
+| Platform Optimization | 34 | 68 | **+34** | 10% | 6.80 |
+| **Overall** | **51** | **70** | **+19** | | **70.40** |
 
-**One-line diagnosis:** Strong content, invisible entity. Ship schema + llms.txt + LinkedIn/dev.to footprint and this site jumps to 70+ within a quarter.
+The Schema jump (+73) and Platform jump (+34) carry most of the weighted impact — fixes that AI engines actually parse, not just human-facing polish.
 
 ---
 
-## Critical Issues (Fix Immediately)
+## What Changed Between Audits
+
+| Fix | Status | Impact |
+|---|---|---|
+| `/llms.txt` deployed (39 lines, topic-grouped) | LIVE | AI discovery file present; major Citability lift |
+| `/robots.txt` with 18 explicit AI crawler User-agents | LIVE | Removes any ambiguity for GPTBot, ClaudeBot, PerplexityBot, etc. |
+| `Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes` | LIVE | Forward-compatible IETF AI Preferences signal |
+| Person + WebSite + ProfilePage JSON-LD on homepage | LIVE | Entity now resolvable: name + jobTitle + worksFor + knowsAbout + sameAs |
+| BlogPosting JSON-LD on every post | LIVE | Author Person with sameAs propagates to all 17+ posts |
+| `<meta name="description">` + `<meta name="author">` | LIVE | SERP + AI snippet eligibility |
+| `og:type` correct per page (profile / article / website) | LIVE | Was incorrectly `article` everywhere |
+| Google Fonts: preconnect + display=swap | LIVE | Reduces render-blocking, modest LCP/CWV win |
+| `/about/` page (first-person bio + editorial policy) | LIVE | Major Trustworthiness signal |
+| `/privacy/` page (clear data practices) | LIVE | Closes the most-cited E-E-A-T gap |
+| `article:published_time` / `article:modified_time` / `article:tag` | LIVE | Better social + AI parsing |
+
+---
+
+## High Priority Issues Remaining
 
 | # | Issue | Where | Fix |
 |---|---|---|---|
-| C1 | **Zero JSON-LD anywhere on the site** | Homepage + every post | Add `Person` + `WebSite` schema in `_layouts/home.html`; add `BlogPosting` schema in `_layouts/post.html` (templates below in Schema section) |
-| C2 | **No `sameAs` entity linking** | All pages | Without sameAs to LinkedIn / GitHub / Scholar / Twitter, AI models cannot disambiguate "Adan Condori" from unrelated namesakes |
-| C3 | **`og:type` is `article` on homepage** | `_includes/head.html` | Change to `profile` (or `website`) for the homepage |
+| H1 | **`articleSection` array is broken in BlogPosting JSON-LD** — commas baked in from category slugs (`["Architecture,","Payments,",...]`) | `_includes/_jsonld.html` | Strip trailing commas in the Liquid map before jsonify |
+| H2 | **`publisher` in BlogPosting is a Person, not an Organization** | `_includes/_jsonld.html` | Add a self Organization (`@id: /#organization`) with logo ImageObject (≥600×60) and reference it as publisher — required for Google Article rich results |
+| H3 | **Comma-separated category URLs** (`/architecture,/payments,/...`) | `_config.yml` permalink + post front matter | Switch to clean slugs `/posts/<slug>/` with `redirect_from` on each post |
+| H4 | **No outbound primary-source citations** in long-form posts | All posts | Add 3-5 authoritative outbound links per post (Stripe docs, PCI-DSS, EMVCo 3DS spec, Brandur/Fowler) — your `/about/` editorial policy *promises* this; deliver on it |
+| H5 | **Brand entity gap** — Wikipedia, dev.to/Medium, Reddit, StackOverflow, YouTube still empty | External | Cross-post top 3 articles to dev.to (English) with canonical → site; answer 5-10 SO questions on Stripe/3DS/payments |
+| H6 | **No BreadcrumbList schema** on posts | `_layouts/post.html` | Easy win, post URLs already have category structure |
 
-## High Priority Issues (Fix Within 1 Week)
-
-| # | Issue | Where | Fix |
-|---|---|---|---|
-| H1 | **No `/llms.txt`** (404) | Site root | Deploy the draft in the Citability section — single file, immediate AI-discovery win |
-| H2 | **No `<meta name="description">` on homepage** | `_includes/head.html` | Add a 150-char description; surfaces in SERP and AI snippets |
-| H3 | **Comma-separated category URLs** (`/architecture,/payments,/software/design,/patterns/...`) | `_config.yml` permalink + post front matter | Switch to clean slugs (`/posts/<slug>/`); add 301 redirects from old paths via Jekyll redirect_from |
-| H4 | **No outbound citations in long-form posts** | All posts | Add 3–5 authoritative outbound links per post (Stripe docs, PCI-DSS, EMVCo 3DS spec, Brandur/Fowler) — Perplexity and AIO reward primary-source citing |
-| H5 | **No author bio block on posts** | `_layouts/post.html` | Append a 2-3 line "About Adan" with link to `/cv/` |
-| H6 | **Brand entity gap** — no Wikipedia, almost no Reddit/StackOverflow/YouTube footprint | External | Activate LinkedIn (2 posts/month, cross-post existing content); answer 5-10 SO questions on payments/Stripe/3DS; mirror top 3 posts on dev.to / Hashnode in English |
-
-## Medium Priority Issues (Fix Within 1 Month)
+## Medium Priority
 
 | # | Issue | Fix |
 |---|---|---|
-| M1 | No question-style H2s (`¿Qué es...?`, `How does...?`) | Rewrite section openers as questions on top 5 posts |
-| M2 | No TL;DR / answer-target block at top of posts | Insert a 40-60 word summary after H1 |
-| M3 | Missing `og:description` and complete Twitter Card | Add defaults in `_includes/head.html` |
-| M4 | No `dateModified` / "Last updated" | Add `last_modified_at` to front matter; surface in post header |
-| M5 | Missing `BreadcrumbList` schema | Add to post layout |
-| M6 | No `/about`, `/privacy`, `/editorial-policy` pages | One paragraph each materially boosts Trustworthiness |
-| M7 | No `Content-Signal` directive in robots.txt | Add `Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes` |
-| M8 | Render-blocking Google Fonts + duplicate analytics (GTM + gtag + legacy analytics.js) | Add `preconnect` + `font-display: swap`; drop one analytics stack |
-| M9 | Spanish/English content mixed without per-post `lang` | Add `lang` to post front matter, set on `<html>` |
+| M1 | `image` in JSON-LD is a bare URL, not ImageObject with width/height | Wrap as `{"@type":"ImageObject","url":"...","width":1200,"height":630}` |
+| M2 | No `alumniOf` on Person schema (UAGRM master's) | Add `EducationalOrganization` reference |
+| M3 | No TL;DR / answer-target block at top of posts | Insert 40-60 word summary div under H1 |
+| M4 | No question-style H2s (`¿Qué es...?`, `How does...?`) on top posts | Rewrite section openers as questions (AIO/ChatGPT/Bing love this pattern) |
+| M5 | No `last_modified_at` front matter on most posts → dateModified == datePublished | Add to front matter, surface "Updated:" in post header |
+| M6 | No author-bio content block in post body footer (only sidebar via `_author-bio.html`) | Add ~60-word bio + photo + sameAs links at post end |
+| M7 | Duplicate analytics (GTM + gtag + legacy `analytics.js`) | Pick GTM, drop the rest — INP win |
+| M8 | Sitemap `<lastmod>` coverage ~57% | Backfill remaining 43% |
+| M9 | Missing image `width`/`height` causes minor CLS | Add dimensions to inline `<img>` |
+| M10 | Description on homepage 190 chars (slightly long) | Trim to 150-160 |
+| M11 | No Bing Webmaster verification (`msvalidate.01`) + IndexNow key | Easy Bing Copilot win |
 
-## Low Priority Issues
+## Low Priority
 
 | # | Issue | Fix |
 |---|---|---|
-| L1 | Images missing explicit width/height | Causes minor CLS — add dimensions |
-| L2 | FAQ-format Q&A blocks absent | Quote-ready for AI answer engines |
+| L1 | No `potentialAction` SearchAction in WebSite schema | Add when on-site search is wired |
+| L2 | No Wikidata anchor in `sameAs` | Create after entity has more independent references |
 | L3 | Inconsistent URL casing (`Linux-basic` vs lowercase) | Normalize to lowercase-kebab |
-| L4 | Sitemap `<lastmod>` only ~57% coverage | Ensure every entry has lastmod |
+| L4 | FAQPage / HowTo schema unused | Optional — Google has deprecated FAQ rich snippets for most sites |
 
 ---
 
 ## Category Deep Dives
 
-### AI Citability (65/100)
+### AI Citability (75/100) — was 65
 
-**Strong.** Sampled passages scored well above average for technical blogs:
+Crawler access went from "implicit allow" to "explicit best-in-class allowlist + IETF Content-Signal". llms.txt jumped from 404 to a 39-line, topic-grouped, summary-prefixed resource. Per-post BlogPosting + Person sameAs means every post now carries verifiable author identity — entity grounding for ChatGPT/Perplexity citations improves measurably even before any content rewrites.
 
-| Page | Passage Score | Why |
-|---|---|---|
-| Homepage hero | 85/100 | Self-contained, dense with concrete metrics ($5M+ transactions, 40% success-rate lift, 800ms latency, 65% fraud reduction) |
-| Arquitectura Multi-Gateway intro | 82/100 | 15+ gateways credentialed, 7 anti-patterns enumerated, 8 canonical flows, ASCII diagrams, tables, code |
-| Guardia del Sprint | 80/100 | Concrete MTTR delta (4h→45min), sprint completion (65%→85%), SLA tables |
-| ADRs en pagos | 74/100 | Real incident numbers ($8,200 refund, 47 customers), full ADR template; intro defers definition slightly |
+**What didn't move:** content blocks themselves. Statistical density and answer-block structure remain mid-tier. JSON-LD helps machines understand *who* wrote it; passage rewrites would help them understand *what each passage answers*.
 
-**Bottlenecks lowering the composite to 65:**
-- llms.txt 404 (zero discovery signal)
-- No FAQ-formatted Q&A blocks
-- Spanish-language content limits English LLM citation frequency
-- No schema to disambiguate entities
+### Brand Authority (38/100) — was 22
 
-**Recommended `/llms.txt` (ready to deploy):**
+Modest lift comes from `sameAs` declarations: AI models can now reconcile Adan Condori → GitHub + LinkedIn + Twitter + Google Scholar as one entity. Wikipedia: still NOT FOUND. Reddit/dev.to/Medium/SO/YouTube: still empty. **No further on-site work moves this needle** — the next +30 points are off-site: cross-posting on dev.to (English versions), LinkedIn article cadence, SO answers, and eventually a Wikidata stub.
 
-```
-# Adan Condori
+### Content E-E-A-T (88/100) — was 82
 
-> Senior Engineering Leader, 10+ years building payment systems. Currently leading payment integrations at Playbypoint. Blog covers payment gateway architecture, 3DS, ADRs, design patterns, and engineering leadership (mostly Spanish, some English).
+| Dimension | V1 | V2 | Why |
+|---|---|---|---|
+| Experience | 23/25 | 23/25 | — |
+| Expertise | 20/25 | 22/25 | `/about/` exposes credentials previously buried |
+| Authoritativeness | 17/25 | 20/25 | `sameAs` to Scholar + LinkedIn + GitHub propagates per-post |
+| Trustworthiness | 22/25 | 23/25 | `/privacy/` page + editorial policy close the visible-trust gap |
 
-## About
-- [Homepage / Bio](https://adancondori.github.io/): Profile, skills, work history, achievements
-- [CV (PDF)](https://adancondori.github.io/cv/): Full curriculum vitae
+**Remaining drag:** No outbound citations to primary sources (your editorial policy promises them but posts don't deliver yet). No `last_modified_at`. No certifications listed.
 
-## Payment Systems
-- [Arquitectura Multi-Gateway](https://adancondori.github.io/architecture,/payments,/software/design,/patterns/Arquitectura-Base-Sistema-Pagos-Multi-Gateway/): 6-layer architecture, capability registry, idempotency, 15+ gateways
-- [ADRs en sistemas de pagos](https://adancondori.github.io/architecture,/payments,/documentation/ADRs-en-sistemas-de-pagos/): Architecture Decision Records for payments
-- [Seguridad 3DS](https://adancondori.github.io/3ds,/card,/payments/Seguridad_en_Transacciones_3DS/)
-- [Integration with Multiple Payment Gateways](https://adancondori.github.io/payments,/stripe,paypal/Integration-with-Multiple-Payment-Gateways/)
+### Technical GEO (79/100) — was 68
 
-## Engineering Practices
-- [Guardia del Sprint / Triage Engineer](https://adancondori.github.io/agile,/devops,/engineering/guardia-del-sprint-triage-engineer/)
-- [Definition of Ready / Done](https://adancondori.github.io/agile,/software/engineering,/best/practices/definition-of-ready-definition-of-done/)
-- [Clean Code Tips](https://adancondori.github.io/refactoring/clean-code-tips/)
+| Category | V1 | V2 | Note |
+|---|---|---|---|
+| SSR | 100 | 100 | — |
+| Meta tags | 55 | 90 | description + author + og:* fixed |
+| Crawlability | 65 | 88 | robots + Content-Signal + sitemap intact |
+| Security headers | 30 | 25 | Still missing — GitHub Pages platform limit |
+| CWV risk | 55 | 70 | Fonts optimized; image dims and analytics duplication still present |
+| Mobile | 90 | 95 | — |
+| URL structure | 50 | 60 | Unchanged (comma URLs still in place) |
 
-## Architecture & Design
-- [A Good Software Architecture](https://adancondori.github.io/a-good-architecture/)
-- [Success Skills for Architects (EN)](https://adancondori.github.io/Success-Skills-for-Architects-English/)
-- [Design Patterns](https://adancondori.github.io/desing-patterns/)
+### Schema & Structured Data (78/100) — was 5 **(+73)**
 
-## Optional
-- [GitHub](https://github.com/adancondori)
-- [LinkedIn](https://www.linkedin.com/in/adancondori)
-```
+The biggest single delta in the audit. All three homepage entities (Person/WebSite/ProfilePage) cross-reference correctly via `@id`. BlogPosting is valid JSON, server-rendered, includes author Person + sameAs + speakable + inLanguage.
 
-### Brand Authority (22/100) — Critical Gap
+**Bugs to fix in your JSON-LD include:**
+1. `articleSection` array contains commas: `["Architecture,","Payments,","Software","Design,","Patterns"]` — should be `["Architecture","Payments","Software Design","Patterns"]`
+2. `publisher` should be Organization (with logo ImageObject) for Article rich result eligibility, not Person
 
-| Platform | Status | Notes |
-|---|---|---|
-| Wikipedia | Absent | No entity. Top "Adan Condori" search hits are unrelated (Bolivian assembly, films) |
-| Reddit | Absent | Zero brand mentions |
-| YouTube | Absent | No channel or video mentions |
-| Stack Overflow | Absent | No identifiable profile in search |
-| LinkedIn | Minimal | Only one Pulse article ("A good Software Architecture", Jun 2021) surfaces |
-| GitHub | Present | github.com/adancondori — active profile, real signal for code-context queries |
-| dev.to / Medium / Hashnode | Absent | No syndication footprint |
+### Platform Optimization (68/100) — was 34
 
-**This is the #1 leverage point for AI visibility.** Content quality is already excellent; the AI models simply don't know this entity exists. LinkedIn + dev.to syndication is the fastest, cheapest, highest-impact path.
-
-### Content E-E-A-T (82/100) — Strongest Category
-
-| Dimension | Score | Evidence |
-|---|---|---|
-| Experience | 23/25 | First-person throughout, named incidents with metrics, 15+ gateway integrations, weekly incident logs |
-| Expertise | 20/25 | Master's degree, 13 years documented history, 8+ named employers, university professor role, deep technical depth (ASCII diagrams, Ruby/JS code, state machines) |
-| Authoritativeness | 17/25 | CV page + PDF, Google Scholar profile, sameAs links present in social — but no external media mentions or industry awards |
-| Trustworthiness | 22/25 | HTTPS, visible email, every post dated, real employer names (Playbypoint, Banco Fassil, NETACTICA), Disqus comments |
-
-**Gaps:** No outbound citations on long-form posts, no per-post author bio, no `last_modified_at`, no `/about` or `/privacy` pages, certifications (if any) not listed.
-
-### Technical GEO (68/100)
-
-| Subcategory | Status |
-|---|---|
-| SSR (Jekyll static) | PASS — full HTML delivered, no JS dependency for crawlers |
-| Mobile / Viewport | PASS |
-| Sitemap | PARTIAL — 26 URLs, ~57% lastmod coverage |
-| Robots.txt | OK but bare — only Sitemap directive |
-| Meta description | MISSING on homepage |
-| JSON-LD | MISSING |
-| Security headers (HSTS, CSP, X-Frame-Options) | Not emitted by GitHub Pages (unfixable without Cloudflare proxy) |
-| CWV risk (LCP, INP, CLS) | MEDIUM — render-blocking fonts, redundant analytics, no img dimensions |
-| URL structure | POOR — comma-separated category paths |
-
-### Schema & Structured Data (5/100) — Critical
-
-**Zero JSON-LD detected.** Open Graph and Twitter Card tags are present but are not a substitute for Schema.org markup.
-
-**Template #1 — Person + WebSite (add to `_layouts/home.html` or `_includes/head.html`):**
-
-```html
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "@id": "https://adancondori.github.io/#person",
-      "name": "Adan Condori",
-      "alternateName": "Adan Condori C.",
-      "url": "https://adancondori.github.io/",
-      "image": "https://adancondori.github.io/images/perfil-cv.jpeg",
-      "jobTitle": "Senior Full Stack Engineer — Payment Systems Lead",
-      "description": "Senior Engineering Leader with 10+ years building scalable payment systems and fintech solutions.",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Playbypoint",
-        "url": "https://playbypoint.com"
-      },
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "Gabriel René Moreno Autonomous University"
-      },
-      "knowsAbout": [
-        "Payment Gateways", "Stripe", "PayPal", "3DS 2.0",
-        "Ruby on Rails", "React", "AWS", "Software Architecture",
-        "Fintech", "Distributed Systems"
-      ],
-      "sameAs": [
-        "https://github.com/adancondori",
-        "https://www.linkedin.com/in/adancondori",
-        "https://twitter.com/AdanCondori",
-        "https://scholar.google.com/citations?user=adancondori"
-      ]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://adancondori.github.io/#website",
-      "url": "https://adancondori.github.io/",
-      "name": "Adan Condori",
-      "publisher": { "@id": "https://adancondori.github.io/#person" },
-      "inLanguage": ["en", "es"]
-    },
-    {
-      "@type": "ProfilePage",
-      "@id": "https://adancondori.github.io/#profilepage",
-      "mainEntity": { "@id": "https://adancondori.github.io/#person" }
-    }
-  ]
-}
-</script>
-```
-
-**Template #2 — BlogPosting (add to `_layouts/post.html`):**
-
-```html
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "{{ page.url | absolute_url }}"
-  },
-  "headline": {{ page.title | jsonify }},
-  "description": {{ page.excerpt | strip_html | strip_newlines | truncate: 200 | jsonify }},
-  "image": "{{ site.url }}{% if page.image %}{{ page.image }}{% else %}/images/banners/default.jpg{% endif %}",
-  "datePublished": "{{ page.date | date_to_xmlschema }}",
-  "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
-  "author": {
-    "@type": "Person",
-    "name": "Adan Condori",
-    "url": "{{ site.url }}/",
-    "sameAs": [
-      "https://github.com/adancondori",
-      "https://www.linkedin.com/in/adancondori",
-      "https://twitter.com/AdanCondori"
-    ]
-  },
-  "publisher": {
-    "@type": "Person",
-    "name": "Adan Condori",
-    "url": "{{ site.url }}/"
-  },
-  "articleSection": {{ page.categories | jsonify }},
-  "keywords": {{ page.tags | jsonify }},
-  "inLanguage": "{{ page.lang | default: 'es' }}",
-  "wordCount": "{{ content | number_of_words }}",
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": ["h1", ".post-excerpt", "article p:first-of-type"]
-  }
-}
-</script>
-```
-
-### Platform Optimization (34/100)
-
-| Platform | Score | Strongest Lever |
-|---|---|---|
-| Google AI Overviews | 38/100 | Article + FAQPage schema; question-style H2s; TL;DR blocks |
-| ChatGPT Web Search | 35/100 | Person schema + sameAs (Wikipedia stub); author bylines |
-| Perplexity | 32/100 | Outbound primary-source citations (RFC, PCI-DSS, vendor docs) |
-| Gemini | 36/100 | Organization schema linking Scholar + LinkedIn + GitHub |
-| Bing Copilot | 30/100 | IndexNow key file, Bing Webmaster verification, schema |
-
-The same handful of fixes (schema, llms.txt, citations, question-style H2s) move all five platforms together — there isn't much per-platform specialization needed at this stage.
+| Platform | V1 | V2 | Notes |
+|---|---|---|---|
+| Google AI Overviews | 38 | 62 | Schema + author entity strong; still no question-H2/TL;DR pattern |
+| ChatGPT Web Search | 35 | 74 | Strongest now — full crawler allowlist + Person/sameAs |
+| Perplexity | 32 | 64 | Crawler + dateModified visible; community signals still flat |
+| Gemini | 36 | 66 | Scholar sameAs propagated; no YouTube, no Knowledge Panel |
+| Bing Copilot | 30 | 72 | Schema + meta lift; needs IndexNow + msvalidate.01 |
 
 ---
 
-## Quick Wins (Implement This Week)
+## Next 7 Days: High-ROI Punch List
 
-1. **Deploy `/llms.txt`** — copy the draft above to the site root, commit, ship. ~5 minutes.
-2. **Add Person + WebSite JSON-LD to `_layouts/home.html`** — Template #1 above. ~15 minutes.
-3. **Add BlogPosting JSON-LD to `_layouts/post.html`** — Template #2 above. Applies to all 17 posts in one commit. ~15 minutes.
-4. **Add `<meta name="description">` and fix `og:type`** in `_includes/head.html` — homepage description + change `og:type` from `article` → `profile`. ~10 minutes.
-5. **Activate LinkedIn distribution** — cross-post the multi-gateway architecture article (the strongest pillar) as a LinkedIn article this week, tagging payments/fintech topics. Highest brand-authority ROI on the list.
-
----
-
-## 30-Day Action Plan
-
-### Week 1: Structural Foundations (Mechanical Fixes)
-- [ ] Ship `/llms.txt` (root of repo)
-- [ ] Add Person + WebSite JSON-LD in `_layouts/home.html`
-- [ ] Add BlogPosting JSON-LD in `_layouts/post.html`
-- [ ] Add homepage `<meta name="description">`
-- [ ] Fix `og:type` → `profile` on homepage
-- [ ] Validate everything in [Schema Markup Validator](https://validator.schema.org/) and [Google Rich Results Test](https://search.google.com/test/rich-results)
-
-### Week 2: URLs, Bios, Citations
-- [ ] Switch permalink config away from comma-separated category paths; add `redirect_from` in front matter of affected posts
-- [ ] Append standardized author-bio block to `_layouts/post.html` (3 lines + link to `/cv/`)
-- [ ] Add 3–5 outbound citations to the multi-gateway and 3DS posts (Stripe docs, EMVCo 3DS spec, PCI-DSS)
-- [ ] Add `lang` to post front matter (`es` for Spanish posts, `en` for English)
-
-### Week 3: Brand Footprint
-- [ ] Publish LinkedIn article #1: multi-gateway architecture (English summary + Spanish original link)
-- [ ] Publish LinkedIn article #2: Guardia del Sprint
-- [ ] Mirror top 2 posts to dev.to or Hashnode in English with canonical link back
-- [ ] Answer 3 Stack Overflow questions on Stripe/3DS/payments with profile linking to site
-
-### Week 4: Content Polish
-- [ ] Add TL;DR / answer-target block (40–60 words) to top 5 posts
-- [ ] Convert section H2s to question form on top 5 posts (e.g., "¿Qué es un capability registry?")
-- [ ] Add `last_modified_at` to front matter; surface "Updated: YYYY-MM-DD" in post header
-- [ ] Publish minimal `/about` and `/privacy` pages
-- [ ] Add `Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes` to robots.txt
-- [ ] Re-run `/geo audit` and target 70+ composite
+1. **Fix the two BlogPosting schema bugs** (`articleSection` commas + Person→Organization publisher) — 10 min Liquid edit
+2. **Add BreadcrumbList to post layout** — 15 min, pure win
+3. **Add 3-5 outbound citations to your multi-gateway article** (Stripe docs, EMVCo 3DS spec, PCI-DSS) — 30 min, biggest single-post citability lift
+4. **Set up Bing Webmaster Tools verification + IndexNow** — 20 min, only Bing Copilot fix you can ship before content work
+5. **Cross-post the multi-gateway article to dev.to** (English summary + canonical link to original) — biggest brand-authority ROI
 
 ---
 
-## Appendix: Pages Sampled
+## Next 30 Days: Sustained Lift
 
-| URL | Title | Notable GEO Issues |
-|---|---|---|
-| `/` | Senior Engineering Leader \| 10+ Years... | No description, no JSON-LD, `og:type=article` |
-| `/cv/` | CV | No Person schema, no ProfilePage markup |
-| `/architecture,/payments,/software/design,/patterns/Arquitectura-Base-Sistema-Pagos-Multi-Gateway/` | Arquitectura base multi-gateway | URL malformed; no BlogPosting schema; no outbound citations |
-| `/agile,/devops,/engineering/guardia-del-sprint-triage-engineer/` | Guardia del Sprint / Triage Engineer | URL malformed; no schema; strong content |
-| `/architecture,/payments,/documentation/ADRs-en-sistemas-de-pagos/` | ADRs en sistemas de pagos | URL malformed; no schema |
-| `/3ds,/card,/payments/Seguridad_en_Transacciones_3DS/` | Seguridad en Transacciones 3DS | URL malformed; mixed case slug; no schema |
+### Week 1: Schema polish + URL cleanup discussion
+- [ ] Fix the two BlogPosting bugs
+- [ ] Add BreadcrumbList
+- [ ] Convert `image` to ImageObject with width/height
+- [ ] Decide on URL migration strategy (clean slugs + `redirect_from`)
 
-**Sitemap coverage:** 26 URLs total. ~57% have `<lastmod>`. Most recent: 2026-06-01.
+### Week 2: Content depth
+- [ ] Add TL;DR (40-60 words) under H1 on top 5 posts
+- [ ] Convert top 3 H2s per post to question form ("¿Qué es idempotency en pagos?")
+- [ ] Add 3-5 outbound citations per long-form post
+- [ ] Add `last_modified_at` to front matter; surface "Updated:" in post header
+
+### Week 3: Brand footprint
+- [ ] Cross-post top 2 articles to dev.to (English) with canonical → site
+- [ ] Publish 2 LinkedIn articles using existing pillar posts as basis
+- [ ] Answer 3-5 Stack Overflow questions on Stripe/3DS/payments tagged with profile link
+- [ ] Verify Bing Webmaster Tools + IndexNow key file
+
+### Week 4: Platform polish
+- [ ] Build `/payments/` topic hub page linking all payment posts (Gemini ecosystem lift)
+- [ ] Consolidate analytics to GTM-only
+- [ ] Add image width/height to top 5 most-trafficked posts
+- [ ] Backfill `<lastmod>` on remaining sitemap entries
+- [ ] Re-audit: target 80+ composite
+
+---
+
+## Appendix: V1 → V2 Verification
+
+| Asset | V1 | V2 | Status |
+|---|---|---|---|
+| `/llms.txt` | 404 | 200, 39 lines | ✓ Live |
+| `/robots.txt` user-agents | 0 explicit | 18 explicit | ✓ Live |
+| `Content-Signal` directive | Absent | Present | ✓ Live |
+| Homepage JSON-LD blocks | 0 | 1 (Person+WebSite+ProfilePage @graph) | ✓ Valid |
+| Post JSON-LD blocks | 0 | 1 (BlogPosting) | ✓ Valid (2 minor bugs) |
+| `<meta name="description">` on home | Missing | Present | ✓ Live |
+| `og:type` correctness | Always "article" | Per-page (profile/article/website) | ✓ Live |
+| Google Fonts loading | Render-blocking | preconnect + display=swap | ✓ Live |
+| `/about/` page | 404 | 200 | ✓ Live |
+| `/privacy/` page | Did not exist as site-level | 200 | ✓ Live |
+| `sameAs` entity links | None | GitHub, LinkedIn, Twitter, Scholar | ✓ Live |

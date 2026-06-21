@@ -2,13 +2,26 @@
 layout: post
 title: ADRs en sistemas de pagos - por qué documentar decisiones te salva de auditorías, incidentes y reescrituras
 modified:
+last_modified_at: 2026-06-21T00:00:00-07:00
+lang: es
 categories: Architecture, Payments, Documentation
 excerpt: >
   Por qué los Architecture Decision Records son innegociables cuando manejas dinero, compliance y proveedores externos.
+tldr: >
+  Después de un incidente que cobró tres veces a un cliente porque alguien añadió retry logic sin idempotency, dejé de escribir ADRs "cuando hay tiempo" y empecé a tratarlos como infraestructura. Este post es el template que uso, el flujo que sigo con el equipo, y dos incidentes reales — un $8,200 en refunds, 47 customers afectados — que documentamos como ADR y nos ahorraron repetir el mismo error. Si manejas dinero en producción, los ADRs no son nice-to-have.
 tags: []
 image:
 feature:
 date: 2026-05-07T09:00:00-07:00
+faq:
+  - q: "¿Qué es un Architecture Decision Record (ADR)?"
+    a: "Un ADR es un documento corto (1-3 páginas) que captura una decisión arquitectónica: el contexto en que se tomó, las opciones que se consideraron, la decisión final, y las consecuencias - positivas y negativas - que se aceptaron al elegirla. Vive en el repo junto al código, versionado y con número correlativo."
+  - q: "¿Por qué los ADRs son críticos en sistemas de pagos?"
+    a: "Porque en pagos toda decisión toca dinero, compliance, o proveedores externos. Cuando un auditor pregunta por qué reintentas tres veces, o cuando un nuevo dev se pregunta por qué hay un timeout específico para Stripe pero no para PayPal, el ADR tiene la respuesta - con el contexto del momento en que se tomó. Sin ADRs, las decisiones críticas se vuelven folklore y se reabren cada seis meses."
+  - q: "¿Qué template usas para ADRs?"
+    a: "Yo uso el formato MADR: Título, Status (Proposed/Accepted/Deprecated/Superseded), Context (qué problema), Decision (qué hicimos), Consequences (qué aceptamos como trade-off), y Alternatives Considered (qué descartamos y por qué). Lo importante no es el formato sino que captures las alternativas que descartaste - eso es lo que te salva en seis meses."
+  - q: "¿Cada cuánto debo escribir un ADR?"
+    a: "Cada vez que tomes una decisión que en seis meses alguien va a cuestionar. En payments, casi todo: idempotency strategy, retry policies, gateway routing, error handling, qué loggeas vs qué no, reconciliation cadence, encryption-at-rest decisions. Si te toma más de 30 minutos discutirlo en PR review, escríbelo como ADR antes de mergear."
 ---
 
 ## Introducción: "¿Por qué hicimos esto así?"
@@ -164,6 +177,21 @@ Los ADRs te protegen:
 En sistemas de pagos, donde cada decisión toca dinero, compliance y proveedores externos, los ADRs no son un *nice-to-have*. Son **infraestructura para que tu arquitectura sobreviva al tiempo**.
 
 > *Si vas a tomar una decisión que en seis meses alguien va a cuestionar — y en payments **todas** lo son — escríbela como ADR. Tu yo futuro te lo va a agradecer.*
+
+---
+
+## Referencias y fuentes
+
+Si vas a empezar con ADRs y quieres ir más profundo:
+
+- [Michael Nygard — Documenting Architecture Decisions](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions) — el post original de 2011 que arrancó toda la práctica de ADRs. Si lees uno solo, que sea este.
+- [adr.github.io](https://adr.github.io/) — colección de templates (MADR, Nygard, Y-Statements) y patrones. El MADR template es el que yo uso.
+- [ThoughtWorks Technology Radar — ADRs](https://www.thoughtworks.com/radar/techniques/lightweight-architecture-decision-records) — por qué los lightweight ADRs están en "Adopt" desde hace años.
+- [adr-tools (Nat Pryce)](https://github.com/npryce/adr-tools) — CLI para crear y mantener ADRs con número correlativo. Lo uso en todos mis repos.
+- [Architecture Decision Records in Action — Industrial Logic](https://industriallogic.com/blog/architecture-decision-records-in-action/) — un walkthrough práctico con ejemplos reales.
+- [Stripe API — Idempotent Requests](https://docs.stripe.com/api/idempotent_requests) — referencia técnica que cito en el ejemplo de ADR sobre retry logic.
+
+Y si manejas pagos y todavía no tienes ADRs, [escríbeme](mailto:adan.condoric@gmail.com). Te ayudo a montar los primeros tres — son los más difíciles, después se vuelve hábito.
 
 ---
 

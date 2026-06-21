@@ -43,42 +43,107 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://adancondori.github.io/desing-patterns/"
-  },
-  "headline": "Desing Patterns - Spanish",
-  "description": "Son técnicas de desarrollo aplicables bajo el paradigma orientado a objetos que tienen como objetivo principal dar una solución genérica a problemáticas tipicas y recurrentes que se presentan en la...",
-  
-  "datePublished": "2020-10-16T06:23:53+00:00",
-  "dateModified": "2020-10-16T06:23:53+00:00",
-  "author": {
-    "@type": "Person",
-    "name": "Adan Condori",
-    "url": "https://adancondori.github.io/",
-    "sameAs": [
-      "https://github.com/adancondori",
-      "https://www.linkedin.com/in/adancondori",
-      "https://twitter.com/AdanCondori",
-      "https://scholar.google.com/citations?user=adancondori"
-    ]
-  },
-  "publisher": {
-    "@type": "Person",
-    "name": "Adan Condori",
-    "url": "https://adancondori.github.io/"
-  },
-  
-  
-  "inLanguage": "es",
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": ["h1", ".article-wrap p:first-of-type"]
-  }
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://adancondori.github.io/desing-patterns/#blogposting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://adancondori.github.io/desing-patterns/"
+      },
+      "headline": "Desing Patterns - Spanish",
+      "description": "Son técnicas de desarrollo aplicables bajo el paradigma orientado a objetos que tienen como objetivo principal dar una solución genérica a problemáticas tipicas y recurrentes que se presentan en la...",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://adancondori.github.io/images/banners/mac-pro_adan.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "datePublished": "2020-10-16T06:23:53+00:00",
+      "dateModified": "2020-10-16T06:23:53+00:00",
+      "author": { "@id": "https://adancondori.github.io/#person" },
+      "publisher": { "@id": "https://adancondori.github.io/#organization" },
+      
+      
+      "inLanguage": "es",
+      "wordCount": "232",
+      "isPartOf": { "@id": "https://adancondori.github.io/#website" },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", ".article-wrap p:first-of-type", ".post-tldr"]
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://adancondori.github.io/#person",
+      "name": "Adan Condori",
+      "url": "https://adancondori.github.io/",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://adancondori.github.io/images/perfil-cv.jpeg",
+        "width": 400,
+        "height": 400
+      },
+      "jobTitle": "Senior Full Stack Engineer — Payment Systems Lead",
+      "worksFor": { "@type": "Organization", "name": "Playbypoint", "url": "https://playbypoint.com" },
+      "sameAs": [
+        "https://github.com/adancondori",
+        "https://www.linkedin.com/in/adancondori",
+        "https://twitter.com/AdanCondori",
+        "https://scholar.google.com/citations?user=adancondori"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://adancondori.github.io/#organization",
+      "name": "ADAN CONDORI",
+      "url": "https://adancondori.github.io/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://adancondori.github.io/images/perfil-cv.jpeg",
+        "width": 600,
+        "height": 600
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://adancondori.github.io/desing-patterns/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://adancondori.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Posts",
+          "item": "https://adancondori.github.io/posts/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Desing Patterns - Spanish",
+          "item": "https://adancondori.github.io/desing-patterns/"
+        }
+      ]
+    }
+  ]
 }
 </script>
 
@@ -247,6 +312,7 @@
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
+      
       <h2 id="patrones-de-diseño-desing-patern">Patrones de Diseño (Desing Patern)</h2>
 
 <p>Soy un programdor y muchas siempre escuche hablar de patrones de diseño.  Y de seguro que has manejado o conoces algunos patrones como el conocido Singleton. Los patrones de diseño son muy útiles al momento de hacer software, por lo cual cada programados deberia conocer por lo menos los patrones mas conocidos de esta manera evitaremos dolores de  cabeza.</p>
@@ -262,6 +328,21 @@
 <p>Como ya vimos en el artículo sobre <a href="https://www.genbetadev.com/metodologias-de-programacion/doce-principios-de-diseno-que-todo-desarrollador-deberia-conocer">principios de diseño</a>, si queremos desarrollar aplicaciones robustas y fáciles de mantener, debemos cumplir ciertas “reglas”. Lo pongo entre comillas porque aunque estas reglas de diseño son recomendables (muy recomendables), no son obligatorias. Siempre podemos decidir no aplicarlas. Aunque si no lo hacemos, hay que ser conscientes de la razón de no aplicarlas y de sus consecuencias.</p>
 
 <p><strong>Los patrones de diseño nos ayudan a cumplir muchos de estos principios o reglas de diseño</strong>. Programación <a href="https://www.genbetadev.com/paradigmas-de-programacion/solid-cinco-principios-basicos-de-diseno-de-clases">SOLID</a>, control de cohesión y acoplamiento o reutilización de código son algunos de los beneficios que podemos conseguir al utilizar patrones.</p>
+
+      <div class="post-author-footer" itemscope itemtype="https://schema.org/Person">
+  <img src="https://adancondori.github.io/images/perfil-cv.jpeg" alt="Adan Condori" class="post-author-footer-avatar" itemprop="image" width="80" height="80" />
+  <div class="post-author-footer-body">
+    <p class="post-author-footer-name"><strong>Written by <a href="https://adancondori.github.io/about/" itemprop="url"><span itemprop="name">Adan Condori</span></a></strong></p>
+    <p class="post-author-footer-bio" itemprop="description">Senior Engineering Leader with 10+ years building scalable payment systems. I lead payment integrations at <a href="https://playbypoint.com" rel="noopener">Playbypoint</a> (USA). I write here about gateway architecture, 3DS, ADRs, and the engineering practices behind real-world payments.</p>
+    <p class="post-author-footer-links">
+      <a href="https://github.com/adancondori" rel="me noopener">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/adancondori" rel="me noopener">LinkedIn</a> ·
+      <a href="https://twitter.com/AdanCondori" rel="me noopener">Twitter</a> ·
+      <a href="https://scholar.google.com/citations?user=adancondori" rel="me noopener">Google Scholar</a> ·
+      <a href="https://adancondori.github.io/cv/">CV</a>
+    </p>
+  </div>
+</div>
 
       <hr />
       <footer role="contentinfo">
@@ -293,7 +374,7 @@
 
         </div>
         <p class="byline">
-          Published <time datetime="2020-10-16T06:23:53+00:00">October 16, 2020</time>.</p>
+          Published <time datetime="2020-10-16T06:23:53+00:00" itemprop="datePublished">October 16, 2020</time>.</p>
       </footer>
     </div><!-- /.article-wrap -->
   

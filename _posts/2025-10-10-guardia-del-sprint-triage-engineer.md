@@ -2,13 +2,26 @@
 layout: post
 title: Guardia del Sprint - el escudo invisible del equipo de desarrollo
 modified:
+last_modified_at: 2026-06-21T00:00:00-07:00
+lang: es
 categories: Agile, DevOps, Engineering
 excerpt: >
   El rol que protege al equipo, estabiliza el producto y mantiene la cordura en medio del caos
+tldr: >
+  Implementar el rol de "guardia del sprint" (triage engineer rotativo) bajó el MTTR de mi equipo de 4 horas a 45 minutos y subió el sprint completion del 65% al 85% en ocho semanas. Es una persona por sprint, dedicada al 100% a interrupciones, bugs urgentes y triage — el resto del equipo no se entera de que el mundo arde. Este post es la guía práctica: responsabilidades, rotación, métricas, y los errores que cometí montándolo.
 tags: []
 image:
 feature:
 date: 2025-10-10T08:12:53-07:00
+faq:
+  - q: "¿Qué es el rol de guardia del sprint o triage engineer?"
+    a: "Es un developer del equipo que durante un sprint (1-2 semanas) está dedicado al 100% a atender interrupciones: bugs urgentes, requests de soporte, alertas de producción, dudas de otros equipos. El resto del equipo trabaja en el sprint sin interrupciones. El rol rota cada sprint entre 2-4 personas para que nadie quede atrapado."
+  - q: "¿Cuánto baja el MTTR con un guardia del sprint?"
+    a: "En mi equipo bajamos de 4 horas a 45 minutos en 8 semanas. La razón es simple: hay una persona designada, despierta, con contexto del producto y autoridad para decidir, esperando que algo pase. Sin el rol, el ticket viaja por Slack hasta que alguien tiene tiempo - y ese 'tiempo' es de horas, no de minutos."
+  - q: "¿Cómo evitas que el guardia del sprint queme al equipo?"
+    a: "Rotación obligatoria (no más de un sprint cada 4-6 semanas por persona), kit de handoff documentado entre guardias, prohibición explícita de pedirle al guardia que también entregue tickets del sprint regular, y reviewing semanal del workload. Si el guardia está saturado, el problema no es él - es el volumen de interrupciones, y eso se ataca por separado."
+  - q: "¿El guardia del sprint reemplaza a SRE u On-Call?"
+    a: "No. SRE/On-Call cubre la infraestructura y la disponibilidad del servicio. El guardia del sprint cubre el producto - bugs funcionales, requests de equipos internos, soporte de nivel 2 escalado. Se complementan pero las responsabilidades no se solapan. En mi equipo el guardia tiene contacto directo con On-Call cuando un bug de producto causa una alerta de infra."
 ---
 
 ## Introducción: Cuando el mundo arde y alguien tiene que sostener el fuego
@@ -494,3 +507,17 @@ Te garantizo que en un mes, no querrán volver a trabajar sin un guardia del spr
 **¿Has sido guardia del sprint? ¿Qué estrategias te funcionaron mejor? Déjame saber en los comentarios o contáctame directamente.**
 
 *Escrito desde la trinchera, con café y mucho cariño técnico.*
+
+---
+
+## Referencias
+
+Si quieres profundizar en la teoría detrás del rol:
+
+- [Google SRE Book — Being On-Call](https://sre.google/sre-book/being-on-call/) — la referencia canónica sobre on-call rotations. Mucho de lo que aplico viene de aquí.
+- [Increment — On-call (issue #5)](https://increment.com/on-call/) — colección de ensayos sobre cómo manejan on-call equipos de distintas empresas. Buen contraste con mi setup.
+- [Atlassian Incident Handbook](https://www.atlassian.com/incident-management/handbook) — handbook open-source de Atlassian sobre incident management. Mucho overlap con responsabilidades del guardia.
+- [PagerDuty Incident Response Documentation](https://response.pagerduty.com/) — la doc de PagerDuty sobre incident response, severity levels y postmortems. Las severidades que uso están basadas en esto.
+- [The Pragmatic Engineer — Engineering Managers and On-Call](https://newsletter.pragmaticengineer.com/p/oncall-as-engineering-manager) — buena lectura sobre cómo manejan otras compañías el balance del rol.
+
+Y si quieres ver el handover template, las plantillas de runbook que usamos, o los dashboards de métricas del rol, [escríbeme](mailto:adan.condoric@gmail.com) — los comparto sin problema.
