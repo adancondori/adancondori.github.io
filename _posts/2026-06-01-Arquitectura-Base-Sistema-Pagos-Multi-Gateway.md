@@ -20,6 +20,18 @@ tags: []
 image:
 feature:
 date: 2026-06-01T10:00:00-07:00
+mentions:
+  - { type: "Organization", name: "Stripe", url: "https://stripe.com", sameAs: "https://en.wikipedia.org/wiki/Stripe,_Inc." }
+  - { type: "Organization", name: "PayPal", url: "https://paypal.com", sameAs: "https://en.wikipedia.org/wiki/PayPal" }
+  - { type: "Organization", name: "Adyen", url: "https://adyen.com", sameAs: "https://en.wikipedia.org/wiki/Adyen" }
+  - { type: "Thing", name: "3-D Secure 2.0", sameAs: "https://en.wikipedia.org/wiki/3-D_Secure" }
+  - { type: "Thing", name: "Idempotency", sameAs: "https://en.wikipedia.org/wiki/Idempotence" }
+citation:
+  - { name: "Idempotent Requests", url: "https://docs.stripe.com/api/idempotent_requests", author: "Stripe", authorType: "Organization" }
+  - { name: "3-D Secure Specification", url: "https://www.emvco.com/emv-technologies/3d-secure/", author: "EMVCo", authorType: "Organization" }
+  - { name: "PCI DSS v4.0", url: "https://www.pcisecuritystandards.org/document_library/", author: "PCI Security Standards Council", authorType: "Organization" }
+  - { name: "Implementing Stripe-like Idempotency Keys in Postgres", url: "https://brandur.org/idempotency-keys", author: "Brandur Leach", authorType: "Person" }
+  - { name: "StranglerFigApplication", url: "https://martinfowler.com/bliki/StranglerFigApplication.html", author: "Martin Fowler", authorType: "Person" }
 faq:
   - q: "¿Por qué no se puede integrar todos los gateways con un solo abstract pattern?"
     a: "Porque cada PSP tiene capacidades distintas - algunos soportan 3DS 2.0 nativo, otros no; algunos manejan multi-currency, otros solo USD; algunos tienen idempotency keys, otros requieren que tú la implementes a nivel de aplicación. El capability registry permite enrutar transacciones al gateway que realmente puede ejecutarlas, en vez de forzar un mínimo común denominador."

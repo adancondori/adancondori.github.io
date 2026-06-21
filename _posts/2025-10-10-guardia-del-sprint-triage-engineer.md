@@ -19,6 +19,15 @@ tags: []
 image:
 feature:
 date: 2025-10-10T08:12:53-07:00
+mentions:
+  - { type: "Thing", name: "Mean time to recovery (MTTR)", sameAs: "https://en.wikipedia.org/wiki/Mean_time_to_recovery" }
+  - { type: "Thing", name: "Site Reliability Engineering", sameAs: "https://en.wikipedia.org/wiki/Site_reliability_engineering" }
+  - { type: "Thing", name: "On-call rotation", sameAs: "https://en.wikipedia.org/wiki/On-call_engineer" }
+citation:
+  - { name: "Site Reliability Engineering — Being On-Call", url: "https://sre.google/sre-book/being-on-call/", author: "Google", authorType: "Organization" }
+  - { name: "On-call (Increment magazine, issue 5)", url: "https://increment.com/on-call/", author: "Increment", authorType: "Organization" }
+  - { name: "Incident Handbook", url: "https://www.atlassian.com/incident-management/handbook", author: "Atlassian", authorType: "Organization" }
+  - { name: "PagerDuty Incident Response Documentation", url: "https://response.pagerduty.com/", author: "PagerDuty", authorType: "Organization" }
 faq:
   - q: "¿Qué es el rol de guardia del sprint o triage engineer?"
     a: "Es un developer del equipo que durante un sprint (1-2 semanas) está dedicado al 100% a atender interrupciones: bugs urgentes, requests de soporte, alertas de producción, dudas de otros equipos. El resto del equipo trabaja en el sprint sin interrupciones. El rol rota cada sprint entre 2-4 personas para que nadie quede atrapado."

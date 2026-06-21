@@ -19,6 +19,15 @@ tags: []
 image:
 feature:
 date: 2026-05-07T09:00:00-07:00
+mentions:
+  - { type: "Thing", name: "Architecture Decision Record", sameAs: "https://en.wikipedia.org/wiki/Architectural_decision" }
+  - { type: "Organization", name: "Stripe", url: "https://stripe.com" }
+  - { type: "Thing", name: "PCI DSS" }
+citation:
+  - { name: "Documenting Architecture Decisions", url: "https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions", author: "Michael Nygard", authorType: "Person" }
+  - { name: "Architecture Decision Records (templates and patterns)", url: "https://adr.github.io/", author: "ADR community", authorType: "Organization" }
+  - { name: "Lightweight Architecture Decision Records — Technology Radar", url: "https://www.thoughtworks.com/radar/techniques/lightweight-architecture-decision-records", author: "ThoughtWorks", authorType: "Organization" }
+  - { name: "adr-tools", url: "https://github.com/npryce/adr-tools", author: "Nat Pryce", authorType: "Person" }
 faq:
   - q: "¿Qué es un Architecture Decision Record (ADR)?"
     a: "Un ADR es un documento corto (1-3 páginas) que captura una decisión arquitectónica: el contexto en que se tomó, las opciones que se consideraron, la decisión final, y las consecuencias - positivas y negativas - que se aceptaron al elegirla. Vive en el repo junto al código, versionado y con número correlativo."

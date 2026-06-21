@@ -2,26 +2,26 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">ADAN CONDORI</title>
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="http://0.0.0.0:4000/feed.xml" />
-<link rel="alternate" type="text/html" href="http://0.0.0.0:4000" />
-<updated>2026-06-21T04:35:54+00:00</updated>
-<id>http://0.0.0.0:4000/</id>
+<link rel="self" type="application/atom+xml" href="https://adancondori.github.io/feed.xml" />
+<link rel="alternate" type="text/html" href="https://adancondori.github.io" />
+<updated>2026-06-21T04:39:44+00:00</updated>
+<id>https://adancondori.github.io/</id>
 <author>
   <name>Adan Condori C.</name>
-  <uri>http://0.0.0.0:4000/</uri>
+  <uri>https://adancondori.github.io/</uri>
   <email>adan.condoric@gmail.com</email>
 </author>
 
 
 <entry>
   <title type="html"><![CDATA[Arquitectura base de un sistema de pagos multi-gateway - capas, patrones, comunicación y estrategias que aprendí en años de payments]]></title>
-  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/architecture,/payments,/software/design,/patterns/Arquitectura-Base-Sistema-Pagos-Multi-Gateway/" />
-  <id>http://0.0.0.0:4000/architecture,/payments,/software/design,/patterns/Arquitectura-Base-Sistema-Pagos-Multi-Gateway</id>
+  <link rel="alternate" type="text/html" href="https://adancondori.github.io/posts/Arquitectura-Base-Sistema-Pagos-Multi-Gateway/" />
+  <id>https://adancondori.github.io/posts/Arquitectura-Base-Sistema-Pagos-Multi-Gateway</id>
   <published>2026-06-01T17:00:00+00:00</published>
   <updated>2026-06-01T17:00:00+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://0.0.0.0:4000</uri>
+    <uri>https://adancondori.github.io</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;h2 id=&quot;introducción-por-qué-casi-todos-los-sistemas-de-pagos-terminan-siendo-un-infierno&quot;&gt;Introducción: por qué casi todos los sistemas de pagos terminan siendo un infierno&lt;/h2&gt;
@@ -920,19 +920,19 @@
 
 &lt;p&gt;&lt;em&gt;En el próximo post de esta serie hablaremos de cómo comunicar arquitectura de payments a stakeholders no técnicos — el arte de pasar de diagramas a decisiones de negocio.&lt;/em&gt;&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/architecture,/payments,/software/design,/patterns/Arquitectura-Base-Sistema-Pagos-Multi-Gateway/&quot;&gt;Arquitectura base de un sistema de pagos multi-gateway - capas, patrones, comunicación y estrategias que aprendí en años de payments&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on June 01, 2026.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;https://adancondori.github.io/posts/Arquitectura-Base-Sistema-Pagos-Multi-Gateway/&quot;&gt;Arquitectura base de un sistema de pagos multi-gateway - capas, patrones, comunicación y estrategias que aprendí en años de payments&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;https://adancondori.github.io&quot;&gt;ADAN CONDORI&lt;/a&gt; on June 01, 2026.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[ADRs en sistemas de pagos - por qué documentar decisiones te salva de auditorías, incidentes y reescrituras]]></title>
-  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/architecture,/payments,/documentation/ADRs-en-sistemas-de-pagos/" />
-  <id>http://0.0.0.0:4000/architecture,/payments,/documentation/ADRs-en-sistemas-de-pagos</id>
+  <link rel="alternate" type="text/html" href="https://adancondori.github.io/posts/ADRs-en-sistemas-de-pagos/" />
+  <id>https://adancondori.github.io/posts/ADRs-en-sistemas-de-pagos</id>
   <published>2026-05-07T16:00:00+00:00</published>
   <updated>2026-05-07T16:00:00+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://0.0.0.0:4000</uri>
+    <uri>https://adancondori.github.io</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;h2 id=&quot;introducción-por-qué-hicimos-esto-así&quot;&gt;Introducción: “¿Por qué hicimos esto así?”&lt;/h2&gt;
@@ -1136,19 +1136,19 @@ en todos los reintentos del mismo intento de pago.
 
 &lt;p&gt;&lt;em&gt;En el próximo post de esta serie hablaremos de cómo comunicar arquitectura de payments a stakeholders no técnicos — el arte de pasar de diagramas a decisiones.&lt;/em&gt;&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/architecture,/payments,/documentation/ADRs-en-sistemas-de-pagos/&quot;&gt;ADRs en sistemas de pagos - por qué documentar decisiones te salva de auditorías, incidentes y reescrituras&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on May 07, 2026.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;https://adancondori.github.io/posts/ADRs-en-sistemas-de-pagos/&quot;&gt;ADRs en sistemas de pagos - por qué documentar decisiones te salva de auditorías, incidentes y reescrituras&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;https://adancondori.github.io&quot;&gt;ADAN CONDORI&lt;/a&gt; on May 07, 2026.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Guardia del Sprint - el escudo invisible del equipo de desarrollo]]></title>
-  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/agile,/devops,/engineering/guardia-del-sprint-triage-engineer/" />
-  <id>http://0.0.0.0:4000/agile,/devops,/engineering/guardia-del-sprint-triage-engineer</id>
+  <link rel="alternate" type="text/html" href="https://adancondori.github.io/posts/guardia-del-sprint-triage-engineer/" />
+  <id>https://adancondori.github.io/posts/guardia-del-sprint-triage-engineer</id>
   <published>2025-10-10T15:12:53+00:00</published>
   <updated>2025-10-10T15:12:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://0.0.0.0:4000</uri>
+    <uri>https://adancondori.github.io</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;h2 id=&quot;introducción-cuando-el-mundo-arde-y-alguien-tiene-que-sostener-el-fuego&quot;&gt;Introducción: Cuando el mundo arde y alguien tiene que sostener el fuego&lt;/h2&gt;
@@ -1830,19 +1830,19 @@ Revisar Sidekiq queue y status de workers
 
 &lt;p&gt;Y si quieres ver el handover template, las plantillas de runbook que usamos, o los dashboards de métricas del rol, &lt;a href=&quot;mailto:adan.condoric@gmail.com&quot;&gt;escríbeme&lt;/a&gt; — los comparto sin problema.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/agile,/devops,/engineering/guardia-del-sprint-triage-engineer/&quot;&gt;Guardia del Sprint - el escudo invisible del equipo de desarrollo&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on October 10, 2025.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;https://adancondori.github.io/posts/guardia-del-sprint-triage-engineer/&quot;&gt;Guardia del Sprint - el escudo invisible del equipo de desarrollo&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;https://adancondori.github.io&quot;&gt;ADAN CONDORI&lt;/a&gt; on October 10, 2025.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Definition of Ready y Definition of Done - Los guardianes de la calidad en desarrollo ágil]]></title>
-  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/agile,/software/engineering,/best/practices/definition-of-ready-definition-of-done/" />
-  <id>http://0.0.0.0:4000/agile,/software/engineering,/best/practices/definition-of-ready-definition-of-done</id>
+  <link rel="alternate" type="text/html" href="https://adancondori.github.io/posts/definition-of-ready-definition-of-done/" />
+  <id>https://adancondori.github.io/posts/definition-of-ready-definition-of-done</id>
   <published>2025-08-15T15:12:53+00:00</published>
   <updated>2025-08-15T15:12:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://0.0.0.0:4000</uri>
+    <uri>https://adancondori.github.io</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;h2 id=&quot;introducción-el-problema-del-casi-listo&quot;&gt;Introducción: El problema del “casi listo”&lt;/h2&gt;
@@ -2749,19 +2749,19 @@ bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;rspec &lt;span class=&
 
 &lt;p&gt;&lt;em&gt;Escrito desde la trinchera del desarrollo ágil, con café y muchos sprints de experiencia.&lt;/em&gt;&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/agile,/software/engineering,/best/practices/definition-of-ready-definition-of-done/&quot;&gt;Definition of Ready y Definition of Done - Los guardianes de la calidad en desarrollo ágil&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on August 15, 2025.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;https://adancondori.github.io/posts/definition-of-ready-definition-of-done/&quot;&gt;Definition of Ready y Definition of Done - Los guardianes de la calidad en desarrollo ágil&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;https://adancondori.github.io&quot;&gt;ADAN CONDORI&lt;/a&gt; on August 15, 2025.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[🛡️🔒 Seguridad y Trazabilidad en Transacciones de Pagos 🔍💳]]></title>
-  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/3ds/card/payments/Trazabilidad_en_Transacciones_3DS/" />
-  <id>http://0.0.0.0:4000/3ds/card/payments/Trazabilidad_en_Transacciones_3DS</id>
+  <link rel="alternate" type="text/html" href="https://adancondori.github.io/posts/Trazabilidad_en_Transacciones_3DS/" />
+  <id>https://adancondori.github.io/posts/Trazabilidad_en_Transacciones_3DS</id>
   <published>2025-06-24T15:12:53+00:00</published>
   <updated>2025-06-24T15:12:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://0.0.0.0:4000</uri>
+    <uri>https://adancondori.github.io</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;h2 id=&quot;-el-hilo-invisible-trazabilidad-en-el-caos-distribuido&quot;&gt;🧵 El Hilo Invisible: Trazabilidad en el Caos Distribuido&lt;/h2&gt;
@@ -2916,19 +2916,19 @@ Tres palabras que pueden parecer simples, pero en el contexto de un sistema dist
 
 &lt;hr /&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/3ds/card/payments/Trazabilidad_en_Transacciones_3DS/&quot;&gt;🛡️🔒 Seguridad y Trazabilidad en Transacciones de Pagos 🔍💳&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on June 24, 2025.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;https://adancondori.github.io/posts/Trazabilidad_en_Transacciones_3DS/&quot;&gt;🛡️🔒 Seguridad y Trazabilidad en Transacciones de Pagos 🔍💳&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;https://adancondori.github.io&quot;&gt;ADAN CONDORI&lt;/a&gt; on June 24, 2025.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[🛡️🔒 ¡Seguridad en Transacciones 3DS! 🔒🛡️]]></title>
-  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/3ds,/card,/payments/Seguridad_en_Transacciones_3DS/" />
-  <id>http://0.0.0.0:4000/3ds,/card,/payments/Seguridad_en_Transacciones_3DS</id>
+  <link rel="alternate" type="text/html" href="https://adancondori.github.io/posts/Seguridad_en_Transacciones_3DS/" />
+  <id>https://adancondori.github.io/posts/Seguridad_en_Transacciones_3DS</id>
   <published>2025-01-28T15:12:53+00:00</published>
   <updated>2025-01-28T15:12:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://0.0.0.0:4000</uri>
+    <uri>https://adancondori.github.io</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;h1 id=&quot;seguridad-entransacciones-3ds-experiencias-para-desarrolladoreso-cómoevitar-que-tu-sistema-de-pagos-se-convierta-enun-circo&quot;&gt;“Seguridad en Transacciones 3DS: Experiencias para Desarrolladores (O Cómo Evitar que tu Sistema de Pagos se Convierta en un Circo)”&lt;/h1&gt;
@@ -3017,19 +3017,19 @@ Tres palabras que pueden parecer simples, pero en el contexto de un sistema dist
 
 &lt;p&gt;¿Qué estrategias han implementado en sus proyectos para optimizar la seguridad sin comprometer la experiencia del usuario? ¿Alguna vez han tenido que lidiar con un sistema 3DS tan complicado que parecía diseñado por un comité de gatos caminando sobre teclados? ¿O quizás han experimentado ese momento de pánico cuando un pago falla en producción y el cliente es el CEO de la empresa? ¡Los leo en los comentarios!&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/3ds,/card,/payments/Seguridad_en_Transacciones_3DS/&quot;&gt;🛡️🔒 ¡Seguridad en Transacciones 3DS! 🔒🛡️&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on January 28, 2025.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;https://adancondori.github.io/posts/Seguridad_en_Transacciones_3DS/&quot;&gt;🛡️🔒 ¡Seguridad en Transacciones 3DS! 🔒🛡️&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;https://adancondori.github.io&quot;&gt;ADAN CONDORI&lt;/a&gt; on January 28, 2025.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[📝 Integration with Multiple Payment Gateways]]></title>
-  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/payments,/stripe,/paypal/Integration-with-Multiple-Payment-Gateways/" />
-  <id>http://0.0.0.0:4000/payments,/stripe,/paypal/Integration-with-Multiple-Payment-Gateways</id>
+  <link rel="alternate" type="text/html" href="https://adancondori.github.io/posts/Integration-with-Multiple-Payment-Gateways/" />
+  <id>https://adancondori.github.io/posts/Integration-with-Multiple-Payment-Gateways</id>
   <published>2025-01-25T15:12:53+00:00</published>
   <updated>2025-01-25T15:12:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://0.0.0.0:4000</uri>
+    <uri>https://adancondori.github.io</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;h2 id=&quot;-integración-con-múltiples-pasarelas-de-pago&quot;&gt;📝 &lt;strong&gt;Integración con Múltiples Pasarelas de Pago&lt;/strong&gt;&lt;/h2&gt;
@@ -3158,19 +3158,19 @@ Tres palabras que pueden parecer simples, pero en el contexto de un sistema dist
 
 &lt;p&gt;Si estás por integrar tu segunda o tercera pasarela, ¡detente y piensa en la arquitectura! Vale más hacerlo bien una vez que mal diez veces.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/payments,/stripe,/paypal/Integration-with-Multiple-Payment-Gateways/&quot;&gt;📝 Integration with Multiple Payment Gateways&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on January 25, 2025.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;https://adancondori.github.io/posts/Integration-with-Multiple-Payment-Gateways/&quot;&gt;📝 Integration with Multiple Payment Gateways&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;https://adancondori.github.io&quot;&gt;ADAN CONDORI&lt;/a&gt; on January 25, 2025.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[🚀 ¡Migra tu infraestructura de IBM a AWS con éxito! 🚀]]></title>
-  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/aws,/ibm,/cloud/migration-ibm-aws/" />
-  <id>http://0.0.0.0:4000/aws,/ibm,/cloud/migration-ibm-aws</id>
+  <link rel="alternate" type="text/html" href="https://adancondori.github.io/posts/migration-ibm-aws/" />
+  <id>https://adancondori.github.io/posts/migration-ibm-aws</id>
   <published>2023-12-24T15:12:53+00:00</published>
   <updated>2023-12-24T15:12:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://0.0.0.0:4000</uri>
+    <uri>https://adancondori.github.io</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;&lt;strong&gt;Contexto:&lt;/strong&gt;&lt;/p&gt;
@@ -3276,19 +3276,19 @@ En esta transición de la infraestructura entre Clouds como IBM a AWS las empres
 
 &lt;p&gt;La migración de la infraestructura de IBM a AWS es un proceso complejo que requiere una cuidadosa planificación y ejecución. Sin embargo, con una estrategia bien definida y la colaboración adecuada entre los equipos técnicos y comerciales, las empresas pueden lograr una transición exitosa hacia la nube. Al migrar a AWS, las organizaciones pueden beneficiarse de una mayor flexibilidad, escalabilidad y agilidad, allanando el camino hacia la innovación y el crecimiento empresarial en el futuro digital.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/aws,/ibm,/cloud/migration-ibm-aws/&quot;&gt;🚀 ¡Migra tu infraestructura de IBM a AWS con éxito! 🚀&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on December 24, 2023.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;https://adancondori.github.io/posts/migration-ibm-aws/&quot;&gt;🚀 ¡Migra tu infraestructura de IBM a AWS con éxito! 🚀&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;https://adancondori.github.io&quot;&gt;ADAN CONDORI&lt;/a&gt; on December 24, 2023.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Aplicando los Principios de Código Limpio de "Clean Code" en la Práctica]]></title>
-  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/refactoring/clean-code-tips/" />
-  <id>http://0.0.0.0:4000/refactoring/clean-code-tips</id>
+  <link rel="alternate" type="text/html" href="https://adancondori.github.io/posts/clean-code-tips/" />
+  <id>https://adancondori.github.io/posts/clean-code-tips</id>
   <published>2023-08-01T15:12:53+00:00</published>
   <updated>2023-08-01T15:12:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://0.0.0.0:4000</uri>
+    <uri>https://adancondori.github.io</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;&lt;strong&gt;Objetivo:&lt;/strong&gt; El objetivo de este artículo es explorar la aplicación de los principios de código limpio del libro “Clean Code” de Robert C. Martin en ejemplos concretos. Esto promoverá la comprensión y la práctica de las buenas prácticas de programación, resaltando la importancia de escribir código limpio y mantenible en el desarrollo de software.&lt;/p&gt;
@@ -3387,19 +3387,19 @@ En esta transición de la infraestructura entre Clouds como IBM a AWS las empres
 &lt;p&gt;La aplicación de los principios de código limpio de “Clean Code” es esencial para crear software de calidad. Los conceptos de nombres significativos, funciones pequeñas y concisas, comentarios significativos y evitar la repetición son fundamentales para escribir código limpio y mantenible. Al seguir estos principios, los desarrolladores pueden mejorar la calidad de su código y facilitar la colaboración en proyectos de desarrollo de software. En última instancia, la búsqueda de la excelencia en la escritura de código es un objetivo que beneficia tanto a los desarrolladores como a los usuarios finales del software.&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/refactoring/clean-code-tips/&quot;&gt;Aplicando los Principios de Código Limpio de "Clean Code" en la Práctica&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on August 01, 2023.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;https://adancondori.github.io/posts/clean-code-tips/&quot;&gt;Aplicando los Principios de Código Limpio de "Clean Code" en la Práctica&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;https://adancondori.github.io&quot;&gt;ADAN CONDORI&lt;/a&gt; on August 01, 2023.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Representación de Arquitectura de Software]]></title>
-  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/Architecture-representation/" />
-  <id>http://0.0.0.0:4000/Architecture-representation</id>
+  <link rel="alternate" type="text/html" href="https://adancondori.github.io/posts/Architecture-representation/" />
+  <id>https://adancondori.github.io/posts/Architecture-representation</id>
   <published>2021-07-06T15:23:53+00:00</published>
   <updated>2021-07-06T15:23:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://0.0.0.0:4000</uri>
+    <uri>https://adancondori.github.io</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;h2 id=&quot;representación-de-arquitectura-de-software&quot;&gt;Representación de Arquitectura de Software&lt;/h2&gt;
@@ -3464,20 +3464,20 @@ En esta transición de la infraestructura entre Clouds como IBM a AWS las empres
 &lt;p&gt;En este articulo he presentado mis investigaciones he ideas sobre las representaciones de una arquitectura de software. Cada una de estas características merece una discusión más larga y también hay otras características que no se mencionado.&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/Architecture-representation/&quot;&gt;Representación de Arquitectura de Software&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on July 06, 2021.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;https://adancondori.github.io/posts/Architecture-representation/&quot;&gt;Representación de Arquitectura de Software&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;https://adancondori.github.io&quot;&gt;ADAN CONDORI&lt;/a&gt; on July 06, 2021.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Summary About: 
  Success Skills for Architects with Neil Ford - Spanish]]></title>
-  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/Success-Skills-for-Architects/" />
-  <id>http://0.0.0.0:4000/Success-Skills-for-Architects</id>
+  <link rel="alternate" type="text/html" href="https://adancondori.github.io/posts/Success-Skills-for-Architects/" />
+  <id>https://adancondori.github.io/posts/Success-Skills-for-Architects</id>
   <published>2021-06-15T15:08:53+00:00</published>
   <updated>2021-06-15T15:08:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://0.0.0.0:4000</uri>
+    <uri>https://adancondori.github.io</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;This article was extracted from &lt;a href=&quot;http://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford/&quot;&gt;Potcast Episode 287 for Neil Ford&lt;/a&gt;.&lt;/p&gt;
@@ -3526,21 +3526,21 @@ En esta transición de la infraestructura entre Clouds como IBM a AWS las empres
   &lt;li&gt;Success Skills for Architects with Neil Ford page https://www.se-radio.net/se-radio-episode-287-success-skills-for-architects-with-neil-ford/&lt;/li&gt;
 &lt;/ul&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/Success-Skills-for-Architects/&quot;&gt;Summary About: 
- Success Skills for Architects with Neil Ford - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on June 15, 2021.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;https://adancondori.github.io/posts/Success-Skills-for-Architects/&quot;&gt;Summary About: 
+ Success Skills for Architects with Neil Ford - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;https://adancondori.github.io&quot;&gt;ADAN CONDORI&lt;/a&gt; on June 15, 2021.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Summary About: 
  Success Skills for Architects with Neil Ford - English]]></title>
-  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/Success-Skills-for-Architects-English/" />
-  <id>http://0.0.0.0:4000/Success-Skills-for-Architects-English</id>
+  <link rel="alternate" type="text/html" href="https://adancondori.github.io/posts/Success-Skills-for-Architects-English/" />
+  <id>https://adancondori.github.io/posts/Success-Skills-for-Architects-English</id>
   <published>2021-06-15T15:08:53+00:00</published>
   <updated>2021-06-15T15:08:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://0.0.0.0:4000</uri>
+    <uri>https://adancondori.github.io</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;p&gt;This article was extracted from &lt;a href=&quot;http://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford/&quot;&gt;Potcast Episode 287 for Neil Ford&lt;/a&gt;.&lt;/p&gt;
@@ -3589,20 +3589,20 @@ En esta transición de la infraestructura entre Clouds como IBM a AWS las empres
   &lt;li&gt;Success Skills for Architects with Neil Ford page https://www.se-radio.net/se-radio-episode-287-success-skills-for-architects-with-neil-ford/&lt;/li&gt;
 &lt;/ul&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/Success-Skills-for-Architects-English/&quot;&gt;Summary About: 
- Success Skills for Architects with Neil Ford - English&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on June 15, 2021.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;https://adancondori.github.io/posts/Success-Skills-for-Architects-English/&quot;&gt;Summary About: 
+ Success Skills for Architects with Neil Ford - English&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;https://adancondori.github.io&quot;&gt;ADAN CONDORI&lt;/a&gt; on June 15, 2021.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Una buena Arquitectura de Software - Spanish]]></title>
-  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/a-good-architecture/" />
-  <id>http://0.0.0.0:4000/a-good-architecture</id>
+  <link rel="alternate" type="text/html" href="https://adancondori.github.io/posts/a-good-architecture/" />
+  <id>https://adancondori.github.io/posts/a-good-architecture</id>
   <published>2021-05-29T15:23:53+00:00</published>
   <updated>2021-05-29T15:23:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://0.0.0.0:4000</uri>
+    <uri>https://adancondori.github.io</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;h1 id=&quot;a-good-software-architecture&quot;&gt;A good Software Architecture&lt;/h1&gt;
@@ -3700,19 +3700,19 @@ En esta transición de la infraestructura entre Clouds como IBM a AWS las empres
 &lt;p&gt;La arquitectura de software que diseñes siempre debe estar enfocada a lo que necesita el cliente, en entender que es lo que nuestro software va a trabajar y cómo lo va a hacer. Pudiendo ser capaces de conocer los pro y contras de cada opción que tomemos desde antes de empezar a codificar.&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/a-good-architecture/&quot;&gt;Una buena Arquitectura de Software - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on May 29, 2021.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;https://adancondori.github.io/posts/a-good-architecture/&quot;&gt;Una buena Arquitectura de Software - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;https://adancondori.github.io&quot;&gt;ADAN CONDORI&lt;/a&gt; on May 29, 2021.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Notes Linux]]></title>
-  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/Linux-basic/" />
-  <id>http://0.0.0.0:4000/Linux-basic</id>
+  <link rel="alternate" type="text/html" href="https://adancondori.github.io/posts/Linux-basic/" />
+  <id>https://adancondori.github.io/posts/Linux-basic</id>
   <published>2021-04-29T15:23:53+00:00</published>
   <updated>2021-04-29T15:23:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://0.0.0.0:4000</uri>
+    <uri>https://adancondori.github.io</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;h1 id=&quot;notes-linux-command-spanish---building&quot;&gt;Notes Linux Command (Spanish) - Building…..&lt;/h1&gt;
@@ -3898,19 +3898,19 @@ El B solo se va ejecutar si el A se ejecuta exitosamente, y el C solo se va ejec
   &lt;li&gt;https://ndpsoftware.com/git-cheatsheet.html#loc=remote_repo&lt;/li&gt;
 &lt;/ul&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/Linux-basic/&quot;&gt;Notes Linux&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on April 29, 2021.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;https://adancondori.github.io/posts/Linux-basic/&quot;&gt;Notes Linux&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;https://adancondori.github.io&quot;&gt;ADAN CONDORI&lt;/a&gt; on April 29, 2021.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Notes Git - Spanish]]></title>
-  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/notes-git/" />
-  <id>http://0.0.0.0:4000/notes-git</id>
+  <link rel="alternate" type="text/html" href="https://adancondori.github.io/posts/notes-git/" />
+  <id>https://adancondori.github.io/posts/notes-git</id>
   <published>2021-04-29T15:23:53+00:00</published>
   <updated>2021-04-29T15:23:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://0.0.0.0:4000</uri>
+    <uri>https://adancondori.github.io</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;h1 id=&quot;notes-git-spanish&quot;&gt;Notes Git (Spanish)&lt;/h1&gt;
@@ -4109,19 +4109,19 @@ git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; alias.lodag &l
   &lt;li&gt;https://ndpsoftware.com/git-cheatsheet.html#loc=remote_repo&lt;/li&gt;
 &lt;/ul&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/notes-git/&quot;&gt;Notes Git - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on April 29, 2021.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;https://adancondori.github.io/posts/notes-git/&quot;&gt;Notes Git - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;https://adancondori.github.io&quot;&gt;ADAN CONDORI&lt;/a&gt; on April 29, 2021.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[¿What is Software Design? - Spanish]]></title>
-  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/software-design/" />
-  <id>http://0.0.0.0:4000/software-design</id>
+  <link rel="alternate" type="text/html" href="https://adancondori.github.io/posts/software-design/" />
+  <id>https://adancondori.github.io/posts/software-design</id>
   <published>2020-10-21T06:23:53+00:00</published>
   <updated>2020-10-21T06:23:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://0.0.0.0:4000</uri>
+    <uri>https://adancondori.github.io</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;h3 id=&quot;qué-es-diseño-de--de-software&quot;&gt;¿Qué es Diseño de  de Software?&lt;/h3&gt;
@@ -4159,19 +4159,19 @@ git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; alias.lodag &l
 &lt;p&gt;https://www.monografias.com/trabajos73/diseno-software/diseno-software.shtml&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/software-design/&quot;&gt;¿What is Software Design? - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on October 21, 2020.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;https://adancondori.github.io/posts/software-design/&quot;&gt;¿What is Software Design? - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;https://adancondori.github.io&quot;&gt;ADAN CONDORI&lt;/a&gt; on October 21, 2020.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Desing Patterns - Spanish]]></title>
-  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/desing-patterns/" />
-  <id>http://0.0.0.0:4000/desing-patterns</id>
+  <link rel="alternate" type="text/html" href="https://adancondori.github.io/posts/desing-patterns/" />
+  <id>https://adancondori.github.io/posts/desing-patterns</id>
   <published>2020-10-16T06:23:53+00:00</published>
   <updated>2020-10-16T06:23:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://0.0.0.0:4000</uri>
+    <uri>https://adancondori.github.io</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;h2 id=&quot;patrones-de-diseño-desing-patern&quot;&gt;Patrones de Diseño (Desing Patern)&lt;/h2&gt;
@@ -4190,19 +4190,19 @@ git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; alias.lodag &l
 
 &lt;p&gt;&lt;strong&gt;Los patrones de diseño nos ayudan a cumplir muchos de estos principios o reglas de diseño&lt;/strong&gt;. Programación &lt;a href=&quot;https://www.genbetadev.com/paradigmas-de-programacion/solid-cinco-principios-basicos-de-diseno-de-clases&quot;&gt;SOLID&lt;/a&gt;, control de cohesión y acoplamiento o reutilización de código son algunos de los beneficios que podemos conseguir al utilizar patrones.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/desing-patterns/&quot;&gt;Desing Patterns - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on October 16, 2020.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;https://adancondori.github.io/posts/desing-patterns/&quot;&gt;Desing Patterns - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;https://adancondori.github.io&quot;&gt;ADAN CONDORI&lt;/a&gt; on October 16, 2020.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Kotlin vs Java  - Spanish]]></title>
-  <link rel="alternate" type="text/html" href="http://0.0.0.0:4000/android-vs-kotlin/" />
-  <id>http://0.0.0.0:4000/android-vs-kotlin</id>
+  <link rel="alternate" type="text/html" href="https://adancondori.github.io/posts/android-vs-kotlin/" />
+  <id>https://adancondori.github.io/posts/android-vs-kotlin</id>
   <published>2019-12-06T02:23:53+00:00</published>
   <updated>2019-12-06T02:23:53+00:00</updated>
   <author>
     <name>Adan Condori C.</name>
-    <uri>http://0.0.0.0:4000</uri>
+    <uri>https://adancondori.github.io</uri>
     <email>adan.condoric@gmail.com</email>
   </author>
   <content type="html">&lt;h2 id=&quot;kotlin-vs-java&quot;&gt;&lt;strong&gt;Kotlin vs Java&lt;/strong&gt;&lt;/h2&gt;
@@ -4276,7 +4276,7 @@ git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; alias.lodag &l
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://0.0.0.0:4000/android-vs-kotlin/&quot;&gt;Kotlin vs Java  - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;http://0.0.0.0:4000&quot;&gt;ADAN CONDORI&lt;/a&gt; on December 06, 2019.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;https://adancondori.github.io/posts/android-vs-kotlin/&quot;&gt;Kotlin vs Java  - Spanish&lt;/a&gt; was originally published by Adan Condori C. at &lt;a href=&quot;https://adancondori.github.io&quot;&gt;ADAN CONDORI&lt;/a&gt; on December 06, 2019.&lt;/p&gt;</content>
 </entry>
 
 </feed>

@@ -26,6 +26,14 @@
         "height": 400
       },
       "jobTitle": "Senior Full Stack Engineer — Payment Systems Lead",
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Software Engineer",
+        "occupationLocation": { "@type": "Country", "name": "Bolivia" },
+        "skills": "Payment systems architecture, Stripe and PayPal integration, 3DS 2.0, PCI-DSS, distributed systems, Ruby on Rails, React, AWS, software architecture, ADRs"
+      },
+      "knowsLanguage": ["es", "en"],
+      "nationality": { "@type": "Country", "name": "Bolivia" },
       "description": "Senior Engineering Leader with 10+ years building scalable payment systems and fintech solutions.",
       "email": "mailto:{{ site.owner.email }}",
       "worksFor": {
@@ -143,11 +151,39 @@
       {% if page.tags.size > 0 %}"keywords": {{ page.tags | join: ", " | jsonify }},{% endif %}
       "inLanguage": "{{ page.lang | default: 'es' }}",
       "wordCount": "{{ content | strip_html | number_of_words }}",
+      {% assign word_count = content | strip_html | number_of_words %}
+      {% assign read_minutes = word_count | divided_by: 220 | plus: 1 %}
+      "timeRequired": "PT{{ read_minutes }}M",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Software engineers, architects, and engineering leaders"
+      },
       "isPartOf": { "@id": "{{ site.url }}/#website" },
+      "isAccessibleForFree": true,
       "speakable": {
         "@type": "SpeakableSpecification",
         "cssSelector": ["h1", ".article-wrap p:first-of-type", ".post-tldr"]
-      }
+      }{% if page.mentions %},
+      "mentions": [
+        {% for m in page.mentions %}
+        {
+          "@type": "{{ m.type | default: 'Thing' }}",
+          "name": {{ m.name | jsonify }}{% if m.url %},
+          "url": {{ m.url | jsonify }}{% endif %}{% if m.sameAs %},
+          "sameAs": {{ m.sameAs | jsonify }}{% endif %}
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]{% endif %}{% if page.citation %},
+      "citation": [
+        {% for c in page.citation %}
+        {
+          "@type": "CreativeWork",
+          "name": {{ c.name | jsonify }},
+          "url": {{ c.url | jsonify }}{% if c.author %},
+          "author": { "@type": "{{ c.authorType | default: 'Organization' }}", "name": {{ c.author | jsonify }} }{% endif %}
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]{% endif %}
     },
     {
       "@type": "Person",
