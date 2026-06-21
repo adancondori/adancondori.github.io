@@ -3,6 +3,10 @@ source 'https://rubygems.org'
 # Jekyll - Latest stable version
 gem 'jekyll', '~> 4.3.4'
 
+# Modern Dart Sass via sass-embedded (supports @use, color.adjust, math.div)
+gem 'jekyll-sass-converter', '~> 3.0'
+gem 'sass-embedded', '~> 1.69'
+
 # GitHub Pages supported plugins
 gem 'jekyll-sitemap', '~> 1.4'
 gem 'jekyll-feed', '~> 0.17'
