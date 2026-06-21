@@ -1,5 +1,9 @@
-hr { 
-	display: block; 
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'grid' as *;
+
+hr {
+	display: block;
 	margin: 1em 0; 
 	padding: 0;
 	height: 1px; 

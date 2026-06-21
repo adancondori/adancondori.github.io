@@ -1,3 +1,6 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
 /* Ordered lists from bib2xhtml ==================================== */
 ol {
   li {

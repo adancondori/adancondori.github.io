@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 // TYPOGRAPHY ================================================
 $doc-font-size: 16;
 $doc-line-height: 26;
@@ -14,7 +16,7 @@ $textcolor      : #333332;
 $text-color     : $textcolor;
 $border-color   : $text-color;
 $basecolor 		  : #343434;
-$compcolor 		  : spin($basecolor, 180);
+$compcolor 		  : color.adjust($basecolor, $hue: 180deg);
 $bordercolor    : $basecolor;
 $white          : #fff;
 $black          : #111;
@@ -32,9 +34,9 @@ $info				  : #308cbc;
 $header-linkcolor   : $basecolor;
 $linkcolor 		    : $blue;
 $link-color         : $linkcolor;
-$linkcolorhover 	: darken($linkcolor, 10);
-$linkcolorvisited   : lighten($linkcolorhover, 20);
-$linkcolorfocus 	: darken($linkcolorvisited, 10);
+$linkcolorhover 	: color.adjust($linkcolor, $lightness: -10%);
+$linkcolorvisited   : color.adjust($linkcolorhover, $lightness: 20%);
+$linkcolorfocus 	: color.adjust($linkcolorvisited, $lightness: -10%);
 
 // Media Queries
 $micro            : "only screen and (min-width: 30em)";

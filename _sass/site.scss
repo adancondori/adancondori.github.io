@@ -1,11 +1,15 @@
+@use 'sass:color';
+@use 'variables' as *;
+@use 'mixins' as *;
+
 /* Selection ============================================= */
 ::-moz-selection {
-	background-color: lighten($basecolor, 65%);
+	background-color: color.adjust($basecolor, $lightness: 65%);
 	color: $basecolor;
 	text-shadow: none;
 }
 ::selection {
-	background-color: lighten($basecolor, 65%);
+	background-color: color.adjust($basecolor, $lightness: 65%);
 	color: $basecolor;
 	text-shadow: none;
 }
