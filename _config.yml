@@ -25,6 +25,8 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-paginate
+  - jekyll-redirect-from
+  - jekyll-last-modified-at
 
 kramdown:
   auto_ids: true
