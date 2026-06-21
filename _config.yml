@@ -11,6 +11,7 @@ url:              https://adancondori.github.io
 permalink:   /:categories/:title/
 markdown:    kramdown
 highlighter: rouge
+future:      true
 sass:
   sass_dir: _sass
   style: compressed
