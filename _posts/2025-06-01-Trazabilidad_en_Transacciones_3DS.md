@@ -3,12 +3,28 @@ layout: post
 last_modified_at: 2026-06-21T00:00:00-07:00
 redirect_from:
   - "/3ds/card/payments/Trazabilidad_en_Transacciones_3DS/"
+lang: es
 title: 🛡️🔒 Seguridad y Trazabilidad en Transacciones de Pagos 🔍💳
 modified:
 categories: [3DS, Card, Payments]
+article_section:
+  - 3DS
+  - Card
+  - Payments
 excerpt: >
   Descubre cómo diseñamos una arquitectura robusta para trazabilidad de pagos 3DS en sistemas distribuidos. De la incertidumbre al diagnóstico preciso.
+tldr: >
+  La mayoría de implementaciones 3DS son cajas negras cuando fallan en producción. Después de varias rondas de debugging a ciegas, monté una arquitectura de trazabilidad basada en structured logging con correlation ID por intent, persistencia del payload crudo de ACS, métricas por step del protocolo (fingerprinting, challenge, result), y dashboards que cruzan los tres. Este post es esa arquitectura - código Ruby/Rails incluido y los queries de Datadog/New Relic que uso para diagnosticar 3DS rotos.
 tags: [3DS, Payments, Ruby on Rails, Logging, Observability]
+faq:
+  - q: "¿Por qué los pagos 3DS son tan difíciles de debuggear en producción?"
+    a: "Porque el protocolo cruza 4-5 sistemas (tu app, PSP, ACS del issuer, DS de la red, Schemes). Si algo falla y solo tienes los logs de tu app, ves authentication failed sin contexto. Sin persistir el payload crudo de cada request/response al ACS y sin correlation ID que ate todos los hops, estás adivinando."
+  - q: "¿Qué nivel de logging es seguro para 3DS sin violar PCI-DSS?"
+    a: "Puedes loggear todo el payload de cardholder authentication EXCEPTO el PAN completo (primary account number) y el CVV. Los últimos 4 dígitos, BIN, expiration year-only, cardholder name pueden estar en logs. Cualquier identificador de transacción de PSP/ACS es seguro y crítico para correlation. Si tu logging incluye PAN completo automáticamente subes a SAQ-D y multiplicas tu costo de compliance."
+  - q: "¿Qué correlation ID debes propagar a través del flujo 3DS?"
+    a: "Mínimo dos - un internal correlation_id que tu app genera al crear el payment intent y propaga por todos sus logs, y el threeDSServerTransID que devuelve el ACS persistido en tu DB junto al intent. Cualquier query de soporte o auditoría empieza con uno de estos dos. Sin ellos atar el log de tu app al log del PSP al log del ACS es trabajo manual de horas."
+  - q: "¿Qué métricas de 3DS debes monitorear en producción?"
+    a: "Cuatro críticas - frictionless rate como porcentaje de intents que pasan sin challenge, challenge completion rate como porcentaje de challenges iniciados que el cliente termina, authentication success rate post-challenge, y latency por step del protocolo (fingerprinting menor a 3s, challenge menor a 30s). Alertas en cualquiera de estas debajo del baseline detecta problemas antes de que afecten conversion."
 image:
 feature:
 date: 2025-6-24T08:12:53-07:00

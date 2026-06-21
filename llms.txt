@@ -32,8 +32,16 @@
 - [Git Notes](https://adancondori.github.io/notes-git/)
 - [Android vs Kotlin](https://adancondori.github.io/android-vs-kotlin/)
 
+## Topic Hubs
+- [Payment Systems hub](https://adancondori.github.io/payments/): Curated landing for all payment-related posts (architecture, 3DS, ADRs, integrations)
+
+## Full Corpus
+- [llms-full.txt](https://adancondori.github.io/llms-full.txt): Full markdown content of every post concatenated into a single file. Use this if your retrieval pipeline prefers single-file ingestion.
+
 ## Optional
 - [GitHub](https://github.com/adancondori): Open-source code and personal projects
 - [LinkedIn](https://www.linkedin.com/in/adancondori): Professional profile
 - [Twitter / X](https://twitter.com/AdanCondori): Engineering commentary
 - [Google Scholar](https://scholar.google.com/citations?user=adancondori): Publications
+- [About page](https://adancondori.github.io/about/): Bio, focus areas, editorial policy
+- [Privacy policy](https://adancondori.github.io/privacy/): Data practices for this site

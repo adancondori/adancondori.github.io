@@ -4,14 +4,32 @@ last_modified_at: 2026-06-21T00:00:00-07:00
 redirect_from:
   - "/3ds,/card,/payments/Seguridad_en_Transacciones_3DS/"
 
+lang: es
 title: 🛡️🔒 ¡Seguridad en Transacciones 3DS! 🔒🛡️
 
 modified:
 
-categories: 3Ds, Card, Payments
+categories: 3DS, Card, Payments
+article_section:
+  - 3DS
+  - Card
+  - Payments
 
 excerpt: >
-  Mis experiencia con 3Ds
+  El modelo de seguridad de 3D Secure 2.0 explicado desde la trinchera de la integración - issuer, acquirer, ACS, DS, exenciones SCA, y por qué casi todas las implementaciones que veo están mal.
+
+tldr: >
+  3D Secure 2.0 desplaza el riesgo de fraude del comerciante al issuer, pero solo si la integración está hecha correctamente. En este post explico el modelo - issuer, acquirer, ACS, DS - desde la perspectiva del que tiene que integrarlo, por qué las exenciones SCA (low-value, trusted beneficiary, TRA) son las palancas que más impactan tu conversion rate, y los errores típicos que veo en producción que rompen el liability shift sin que nadie se entere.
+
+faq:
+  - q: "¿Qué es 3D Secure 2.0 y en qué se diferencia de 3DS 1.0?"
+    a: "3DS 2.0 es la versión actual del protocolo de autenticación para pagos con tarjeta no presente, definida por EMVCo. Comparado con 3DS 1.0 elimina la mayoría del friction (challenge solo cuando el risk score lo amerita), envía 100+ data points al issuer para que tome decisiones inteligentes, y soporta autenticación nativa en apps móviles. 3DS 1.0 está deprecado desde 2022."
+  - q: "¿Quién es responsable del fraude después de 3DS - merchant o issuer?"
+    a: "Con 3DS 2.0 completado exitosamente (frictionless o challenge), el liability shift pasa al issuer. Si el cliente disputa la transacción como fraude posteriormente, el chargeback va contra el issuer, no contra el merchant. Esto es la razón principal por la que 3DS existe - sin liability shift no tiene sentido económico."
+  - q: "¿Qué son las exenciones SCA y cuándo aplicarlas?"
+    a: "Las exenciones SCA permiten saltar el challenge de autenticación. Las principales son low-value (transacciones bajo €30), trusted beneficiary (el cliente añadió al merchant a su whitelist), TRA (Transaction Risk Analysis del PSP cuando su fraud rate está bajo umbral), y MIT (Merchant Initiated Transaction como suscripciones). Aplicarlas bien sube conversion 5-15% sin perder liability shift."
+  - q: "¿Por qué algunos pagos 3DS fallan con authentication failed incluso con datos correctos?"
+    a: "Las causas más comunes son ACS del issuer caído o lento causando timeout en challenge, data quality del cardholder authentication request con campos faltantes, device fingerprinting incompleto cuando el iframe del 3DS no carga bien o se bloquea con cookies de terceros, y issuer demasiado conservador con risk. Logging exhaustivo del request/response al ACS es la única forma de diagnosticar esto en producción."
 
 tags: []
 

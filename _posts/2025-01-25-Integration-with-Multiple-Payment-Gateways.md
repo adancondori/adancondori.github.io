@@ -3,11 +3,27 @@ layout: post
 last_modified_at: 2026-06-21T00:00:00-07:00
 redirect_from:
   - "/payments,/stripe,paypal/Integration-with-Multiple-Payment-Gateways/"
+lang: en
 title: 📝 Integration with Multiple Payment Gateways
 modified:
-categories: Payments, Stripe,Paypal
+categories: Payments, Stripe, PayPal
+article_section:
+  - Payments
+  - Stripe
+  - PayPal
 excerpt: >
-  Mis experiencia con 3Ds
+  How I architect Stripe and PayPal in the same codebase without one bleeding into the other — abstraction layers, fallback strategies, and the gateway-specific quirks that ruin clean architecture.
+tldr: >
+  Integrating Stripe and PayPal in the same codebase usually starts clean and ends in a giant if-else. After doing this in production multiple times, I use a thin Gateway Adapter layer that hides PSP-specific quirks behind a common interface, plus a Capability Registry that lets the router pick the right gateway per transaction instead of forcing a lowest-common-denominator. This post walks through both layers and the patterns I'd defend in any architecture review.
+faq:
+  - q: "How do you abstract Stripe and PayPal behind a common interface?"
+    a: "Define a thin GatewayAdapter interface with three core operations - authorize, capture, refund. Each PSP gets its own adapter that translates the common interface into PSP-specific calls. Don't expose PSP types up the stack - the business logic should never know whether Stripe or PayPal handled the transaction."
+  - q: "What is a Capability Registry and why do you need one with multiple gateways?"
+    a: "A Capability Registry is a config-driven table that describes what each gateway can do: which payment methods, which currencies, which countries, whether it supports 3DS 2.0, partial captures, recurring, etc. The payment router queries the registry to decide which gateway is eligible for each transaction, instead of forcing all gateways to support the same lowest-common-denominator feature set."
+  - q: "How do you handle fallback when the primary gateway fails?"
+    a: "Two strategies - automatic retry with the next-eligible gateway from the Capability Registry for transient PSP outages, or explicit fallback chains configured per route when business rules require a specific order. Both require idempotency keys so the failed attempt does not double-charge."
+  - q: "Should the frontend know which gateway is being used?"
+    a: "No. The frontend should send a payment intent (amount, currency, method) and let the backend route it. The only exception is when a PSP requires hosted UI like PayPal Smart Buttons or Stripe Checkout. In that case the backend returns a redirect or iframe instruction without leaking which PSP is behind it."
 tags: []
 image:
 feature:

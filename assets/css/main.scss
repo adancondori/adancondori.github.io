@@ -493,6 +493,21 @@ a {
     text-decoration: underline;
 }
 
+/* CLS-safe defaults for post-body images: enforce aspect-ratio + lazy loading */
+.article-wrap img,
+.post-tldr img,
+article img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    content-visibility: auto;
+    contain-intrinsic-size: 800px 450px;
+}
+
+article img:not([loading]) {
+    /* Inline images without explicit loading get lazy by default (browsers honor it). */
+}
+
 /* TL;DR block under H1 on posts */
 .post-tldr {
     background: rgba(58, 131, 121, 0.08);

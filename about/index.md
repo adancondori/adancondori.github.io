@@ -28,9 +28,33 @@ Posts are mostly in Spanish — there's a real shortage of senior-level engineer
 - **Google Scholar:** [Publications](https://scholar.google.com/citations?user=adancondori)
 - **Email:** adan.condoric@gmail.com
 
+## Education
+
+- **Master's in Software Engineering** — Universidad Autónoma Gabriel René Moreno (UAGRM), Bolivia
+- Multiple specialization courses in distributed systems, payment security (PCI-DSS), and cloud architecture
+
+## Selected work history
+
+- **Playbypoint (USA)** — Senior Full Stack Engineer / Payment Systems Lead. Multi-gateway payment platform, 3DS 2.0 integration, reconciliation pipelines.
+- Multiple prior roles across **Banco Fassil, NETACTICA, and consulting engagements** in payment platforms, banking integrations, and high-availability systems.
+- **University teaching role** — guest lecturer on software architecture and design patterns.
+
+Full timeline in my [CV (PDF)](/cv/adan-cv.pdf).
+
+## Speaking, teaching, mentoring
+
+I'm available for:
+- Internal engineering talks (payment systems, architecture, ADRs, engineering practice)
+- Podcast appearances on fintech / payments engineering
+- 1:1 mentoring for senior engineers transitioning into payments
+- Code review and architecture review for payment platforms
+
+Reach out if any of this is useful: adan.condoric@gmail.com.
+
 ## Editorial policy
 
 - Every post is written by me, from first-hand experience. No AI-generated content.
-- I cite primary sources (Stripe docs, EMVCo 3DS spec, PCI-DSS, RFCs) when applicable.
-- If I get something wrong, I update the post and note the change. Corrections are a feature, not a bug.
+- I cite primary sources (Stripe docs, EMVCo 3DS spec, PCI-DSS, RFCs) when applicable. References section at the bottom of each long-form post.
+- If I get something wrong, I update the post and note the change. Corrections are a feature, not a bug — the `last_modified_at` date in the schema reflects when each post was last reviewed.
 - Code samples are illustrative — production systems always have more context than fits a blog post.
+- No sponsored content. No affiliate links. No paywall.

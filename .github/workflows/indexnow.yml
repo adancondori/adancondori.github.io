@@ -1,0 +1,58 @@
+name: Submit URLs to IndexNow
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - '_posts/**'
+      - '_layouts/**'
+      - 'index.md'
+      - 'about/**'
+      - 'privacy/**'
+      - 'payments/**'
+      - 'pubs/**'
+      - 'cv/**'
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch sitemap and submit changed URLs to IndexNow
+        env:
+          INDEXNOW_KEY: a7d4c9e2f8b1a3c5e9d7b4f2e8c6a1d3
+          HOST: adancondori.github.io
+        run: |
+          # Wait briefly for Pages deploy to settle before notifying.
+          sleep 60
+
+          # Pull the canonical URL list from the live sitemap.
+          curl -sSL "https://$HOST/sitemap.xml" \
+            | grep -oE '<loc>[^<]+</loc>' \
+            | sed -E 's|</?loc>||g' \
+            | head -200 > urls.txt
+
+          # Build IndexNow payload.
+          jq -n \
+            --arg host "$HOST" \
+            --arg key "$INDEXNOW_KEY" \
+            --arg keyLoc "https://$HOST/$INDEXNOW_KEY.txt" \
+            --rawfile urls urls.txt \
+            '{
+              host: $host,
+              key: $key,
+              keyLocation: $keyLoc,
+              urlList: ($urls | split("\n") | map(select(length > 0)))
+            }' > payload.json
+
+          echo "Submitting $(jq '.urlList | length' payload.json) URLs to IndexNow"
+
+          # IndexNow accepts the same payload at any compliant endpoint and
+          # propagates it to participating engines (Bing, Yandex, Seznam, Naver).
+          curl -sS -X POST "https://api.indexnow.org/IndexNow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            --data @payload.json \
+            -w "\nHTTP %{http_code}\n"
